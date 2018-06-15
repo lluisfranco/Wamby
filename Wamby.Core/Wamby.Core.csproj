@@ -41,7 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
-    <Compile Include="Model\FolderItem.cs" />
+    <Compile Include="Model\FolderInfo.cs" />
+    <Compile Include="Model\ScanException.cs" />
+    <Compile Include="Model\ScanOptions.cs" />
+    <Compile Include="Model\ScanResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

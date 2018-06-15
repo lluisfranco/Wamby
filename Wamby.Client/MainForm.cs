@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using Wamby.API.Extensions;
+using DevExpress.XtraBars.FluentDesignSystem;
 
 namespace Wamby.Client
 {
-    public partial class Form1 : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
+    public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -32,5 +25,11 @@ namespace Wamby.Client
                 $"In:   {result.TotalFilesCount()} files\n" +
                 $"Time: {result.ElapsedTime.TotalMilliseconds.ToString("n2")} ms.");
         }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(Application.ExecutablePath);
+        }
+
     }
 }

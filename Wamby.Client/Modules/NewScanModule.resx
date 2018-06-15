@@ -117,29 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Results" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Results.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="New" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\New.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="New Scan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\New Scan.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Analyze" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Analyze.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Schedule" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Schedule.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Errors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Errors.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Map" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Map.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Settings.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
 </root>

@@ -50,17 +50,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Interfaces\IModule.cs" />
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\NewScanModule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\NewScanModule.Designer.cs">
+      <DependentUpon>NewScanModule.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modules\NewScanModule.resx">
+      <DependentUpon>NewScanModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -69,6 +80,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -92,6 +104,30 @@
       <Project>{abbf9aac-0b09-43c0-9064-b134d7cdb3e4}</Project>
       <Name>Wamby.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New Scan.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Results.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Map.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Analyze.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Errors.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Schedule.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
