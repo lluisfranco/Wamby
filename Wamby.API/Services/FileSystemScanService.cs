@@ -27,8 +27,6 @@ namespace Wamby.API.Services
             clock.Restart();
             ScanResult.FolderInfo = await Task.Run(() => ScanFolder(BaseFolder));
             ScanResult.FolderInfo.AllFolders = ScanResult.FolderInfo.Folders.SelectManyRecursive(p => p.Folders).ToList();
-            var size = ScanResult.FolderInfo.Files.Sum(p => p.Length) + ScanResult.FolderInfo.AllFolders.Sum(p => p.Length);
-            var numfiles = ScanResult.FolderInfo.Files.Count + ScanResult.FolderInfo.AllFolders.Sum(p => p.Files.Count);
             clock.Stop();
             ScanResult.ElapsedTime = clock.Elapsed;
             return ScanResult;

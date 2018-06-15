@@ -26,7 +26,6 @@ namespace Wamby.Core.Model
         public List<FolderInfo> Folders { get; set; } = new List<FolderInfo>();
         public List<System.IO.FileInfo> Files { get; set; } = new List<System.IO.FileInfo>();
         public List<FolderInfo> AllFolders { get; set; } = new List<FolderInfo>();
-        //public List<System.IO.FileInfo> AllFiles { get; set; } = new List<System.IO.FileInfo>();
         public double Length { get; set; }
     }
 

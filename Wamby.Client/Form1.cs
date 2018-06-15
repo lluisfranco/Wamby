@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Wamby.API.Extensions;
 
 namespace Wamby.Client
 {
@@ -26,6 +27,10 @@ namespace Wamby.Client
                     IncludeSubFolders = true, BaseFolderPath = @"D:\DabetSec"
                 });
             var result = await wambyapiService.DoScan();
+            MessageBox.Show(
+                $"Size: {result.TotalSize()}\n" +
+                $"In:   {result.TotalFilesCount()} files\n" +
+                $"Time: {result.ElapsedTime.TotalMilliseconds.ToString("n2")} ms.");
         }
     }
 }
