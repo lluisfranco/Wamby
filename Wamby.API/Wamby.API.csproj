@@ -43,6 +43,7 @@
     <Compile Include="Extensions\ScanResultExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\FileSystemScanService.cs" />
+    <Compile Include="Services\ScanningFolderEventArhs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wamby.Core\Wamby.Core.csproj">

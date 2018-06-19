@@ -31,25 +31,27 @@ namespace Wamby.Client.Modules
             searchPatternButtonEdit.Text = FileSystemScanService.ScanOptions.SearchPattern;
             FileSystemScanService.CancelledByUser -= FileSystemScanService_CancelledByUser;
             FileSystemScanService.CancelledByUser += FileSystemScanService_CancelledByUser;
-            cancelScanSimpleButton.Click += CancelScanSimpleButton_Click;
+            FileSystemScanService.ScanningFolder -= FileSystemScanService_ScanningFolder;
+            FileSystemScanService.ScanningFolder += FileSystemScanService_ScanningFolder;            
             Initialized = true;
             setEventHandlers();
-        }
-
-        private void CancelScanSimpleButton_Click(object sender, EventArgs e)
-        {
-            FileSystemScanService?.Cancel();
         }
 
         private void setEventHandlers()
         {
             newScanPathButtonEdit.ButtonClick += NewScanPathButtonEdit_ButtonClick;
+            scanLogGroupControl.CustomButtonClick += ScanLogGroupControl_CustomButtonClick;
+        }
+
+        private void ScanLogGroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
+        {
+            if(e.Button.Properties.Caption == "Cancel") FileSystemScanService?.Cancel();
         }
 
         private async void NewScanPathButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if (e.Button.Index == 0) showSelectPathDialog();
-            if (e.Button.Index == 1) FileSystemScanService.ScanResult = await DoScan();
+            if (e.Button.Index == 1) await DoScan();
         }
 
         private async void showSelectPathDialog()
@@ -60,7 +62,7 @@ namespace Wamby.Client.Modules
             {                
                 newScanPathButtonEdit.Text = fd.SelectedPath;
                 if (Properties.Settings.Default.DoScanAfterChangingBaseFolderPath)
-                    FileSystemScanService.ScanResult = await DoScan();
+                    await DoScan();
             }
         }
 
@@ -71,18 +73,44 @@ namespace Wamby.Client.Modules
             FileSystemScanService.ScanOptions.SearchPattern = searchPatternButtonEdit.Text;
             try
             {
-                FileSystemScanService.ScanResult = await FileSystemScanService.DoScan();                
+                StartScan();            
+                await FileSystemScanService.DoScan();                
                 SaveScanOptions();
-                MessageBox.Show(
-                    $"Size: {FileSystemScanService.ScanResult.TotalSize()}\n" +
-                    $"In:   {FileSystemScanService.ScanResult.TotalFilesCount()} files\n" +
-                    $"Time: {FileSystemScanService.ScanResult.ElapsedTime.TotalMilliseconds.ToString("n2")} ms.");
+                //MessageBox.Show(
+                //    $"Size: {FileSystemScanService.ScanResult.TotalSize()}\n" +
+                //    $"In:   {FileSystemScanService.ScanResult.TotalFilesCount()} files\n" +
+                //    $"Time: {FileSystemScanService.ScanResult.ElapsedTime.TotalMilliseconds.ToString("n2")} ms.");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                EndScan();
+            }
             return FileSystemScanService.ScanResult;
+        }
+
+        private void FileSystemScanService_ScanningFolder(object sender, API.Services.ScanningFolderEventArhs e)
+        {
+            AddMessageToLog($"Reading: {e.FolderInfo.DirectoryInfo.FullName}");
+        }
+
+        private void AddMessageToLog(string message)
+        {
+            Invoke(new Action(() =>
+            {
+                var newindex = logListBoxControl.Items.Add(message);
+                logListBoxControl.TopIndex = newindex;
+                logListBoxControl.Refresh();
+            }));
+        }
+
+        private void FileSystemScanService_CancelledByUser(object sender, EventArgs e)
+        {
+            AddMessageToLog($"** Scan cancelled by user **");
+            EndScan();
         }
 
         void SaveScanOptions()
@@ -92,9 +120,44 @@ namespace Wamby.Client.Modules
             Properties.Settings.Default.Save();
         }
 
-        private void FileSystemScanService_CancelledByUser(object sender, EventArgs e)
+        void StartScan()
         {
-            MessageBox.Show("Canceled");
+            logListBoxControl.Items.Clear();
+            AddMessageToLog(
+                $"Started scan at {DateTime.Now.ToShortDateString()}");
+            ActivateUI(false);
+        }
+
+        void EndScan()
+        {
+            AddMessageToLog(
+                $"Finished scan. Ellapsed time: " +
+                $"{FileSystemScanService.ScanResult.ElapsedTime.TotalMilliseconds.ToString("n2")}ms.");
+            UpdateResults();
+            ActivateUI(true);
+        }
+
+        private void UpdateResults()
+        {
+            resultsGroupControl.CustomHeaderButtons[0].Properties.Caption =
+                $"{FileSystemScanService.ScanResult.TotalSizeInKb().ToString("n0")} KB in " +
+                $"{FileSystemScanService.ScanResult.FolderInfo.AllFolders.Count.ToString("n0")} folders and " +
+                $"{FileSystemScanService.ScanResult.TotalFilesCount().ToString("n0")} files";
+            resultsGroupControl.CustomHeaderButtons[3].Properties.Caption =
+                FileSystemScanService.ScanResult.ScanExceptions.Count == 0 ?
+                "No errors" : 
+                $"Check {FileSystemScanService.ScanResult.ScanExceptions.Count} errors";
+            resultsGroupControl.Refresh();
+        }
+
+        private void ActivateUI(bool activated)
+        {
+            newScanPathButtonEdit.ReadOnly = !activated;
+            newScanPathButtonEdit.Properties.Buttons[0].Enabled = activated;
+            newScanPathButtonEdit.Properties.Buttons[1].Enabled = activated;
+            searchPatternButtonEdit.ReadOnly = !activated;
+            includeSubfoldersCheckEdit.ReadOnly = !activated;
+            scanLogGroupControl.CustomHeaderButtons["Cancel"].Properties.Visible = !activated;
         }
 
         public async Task RefreshDataAsync()

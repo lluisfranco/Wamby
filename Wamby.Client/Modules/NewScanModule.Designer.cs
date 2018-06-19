@@ -38,45 +38,56 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions3 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions4 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions5 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            this.scanOptionsGroupControl = new DevExpress.XtraEditors.GroupControl();
             this.newScanPathButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.includeSubfoldersCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.searchPatternButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
-            this.cancelScanSimpleButton = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
+            this.scanLogGroupControl = new DevExpress.XtraEditors.GroupControl();
+            this.logListBoxControl = new DevExpress.XtraEditors.ImageListBoxControl();
+            this.resultsGroupControl = new DevExpress.XtraEditors.GroupControl();
+            ((System.ComponentModel.ISupportInitialize)(this.scanOptionsGroupControl)).BeginInit();
+            this.scanOptionsGroupControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newScanPathButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.includeSubfoldersCheckEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchPatternButtonEdit.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scanLogGroupControl)).BeginInit();
+            this.scanLogGroupControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logListBoxControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resultsGroupControl)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupControl1
+            // scanOptionsGroupControl
             // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.scanOptionsGroupControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupControl1.Controls.Add(this.includeSubfoldersCheckEdit);
-            this.groupControl1.Controls.Add(this.searchPatternButtonEdit);
-            this.groupControl1.Controls.Add(this.labelControl2);
-            this.groupControl1.Controls.Add(this.newScanPathButtonEdit);
-            this.groupControl1.Controls.Add(this.labelControl1);
-            this.groupControl1.Location = new System.Drawing.Point(3, 3);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(760, 114);
-            this.groupControl1.TabIndex = 0;
-            this.groupControl1.Text = "Scan options";
+            this.scanOptionsGroupControl.Controls.Add(this.includeSubfoldersCheckEdit);
+            this.scanOptionsGroupControl.Controls.Add(this.searchPatternButtonEdit);
+            this.scanOptionsGroupControl.Controls.Add(this.labelControl2);
+            this.scanOptionsGroupControl.Controls.Add(this.newScanPathButtonEdit);
+            this.scanOptionsGroupControl.Controls.Add(this.labelControl1);
+            this.scanOptionsGroupControl.Location = new System.Drawing.Point(3, 3);
+            this.scanOptionsGroupControl.Name = "scanOptionsGroupControl";
+            this.scanOptionsGroupControl.Size = new System.Drawing.Size(768, 114);
+            this.scanOptionsGroupControl.TabIndex = 0;
+            this.scanOptionsGroupControl.Text = "Scan options";
             // 
             // newScanPathButtonEdit
             // 
             this.newScanPathButtonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.newScanPathButtonEdit.Location = new System.Drawing.Point(91, 37);
+            this.newScanPathButtonEdit.Location = new System.Drawing.Point(94, 37);
             this.newScanPathButtonEdit.Name = "newScanPathButtonEdit";
             this.newScanPathButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "Change folder", null, null, DevExpress.Utils.ToolTipAnchor.Default),
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Search, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "Scan now", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.newScanPathButtonEdit.Size = new System.Drawing.Size(648, 20);
+            this.newScanPathButtonEdit.Size = new System.Drawing.Size(653, 20);
             this.newScanPathButtonEdit.TabIndex = 1;
             // 
             // labelControl1
@@ -89,7 +100,7 @@
             // 
             // includeSubfoldersCheckEdit
             // 
-            this.includeSubfoldersCheckEdit.Location = new System.Drawing.Point(16, 76);
+            this.includeSubfoldersCheckEdit.Location = new System.Drawing.Point(423, 76);
             this.includeSubfoldersCheckEdit.Name = "includeSubfoldersCheckEdit";
             this.includeSubfoldersCheckEdit.Properties.Caption = "Include subfolders";
             this.includeSubfoldersCheckEdit.Size = new System.Drawing.Size(159, 20);
@@ -98,7 +109,7 @@
             // labelControl2
             // 
             this.labelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl2.Location = new System.Drawing.Point(365, 79);
+            this.labelControl2.Location = new System.Drawing.Point(16, 79);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(72, 13);
             this.labelControl2.TabIndex = 0;
@@ -106,48 +117,92 @@
             // 
             // searchPatternButtonEdit
             // 
-            this.searchPatternButtonEdit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.searchPatternButtonEdit.EditValue = "*";
-            this.searchPatternButtonEdit.Location = new System.Drawing.Point(440, 76);
+            this.searchPatternButtonEdit.Location = new System.Drawing.Point(94, 76);
             this.searchPatternButtonEdit.Name = "searchPatternButtonEdit";
-            this.searchPatternButtonEdit.Size = new System.Drawing.Size(299, 20);
+            this.searchPatternButtonEdit.Size = new System.Drawing.Size(307, 20);
             this.searchPatternButtonEdit.TabIndex = 1;
             // 
-            // cancelScanSimpleButton
+            // scanLogGroupControl
             // 
-            this.cancelScanSimpleButton.Location = new System.Drawing.Point(3, 137);
-            this.cancelScanSimpleButton.Name = "cancelScanSimpleButton";
-            this.cancelScanSimpleButton.Size = new System.Drawing.Size(153, 23);
-            this.cancelScanSimpleButton.TabIndex = 1;
-            this.cancelScanSimpleButton.Text = "Cancel";
+            this.scanLogGroupControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.scanLogGroupControl.Controls.Add(this.logListBoxControl);
+            this.scanLogGroupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Cancel", true, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, null, -1)});
+            this.scanLogGroupControl.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
+            this.scanLogGroupControl.Location = new System.Drawing.Point(3, 123);
+            this.scanLogGroupControl.Name = "scanLogGroupControl";
+            this.scanLogGroupControl.Size = new System.Drawing.Size(768, 150);
+            this.scanLogGroupControl.TabIndex = 2;
+            this.scanLogGroupControl.Text = "Scan log";
+            // 
+            // logListBoxControl
+            // 
+            this.logListBoxControl.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.logListBoxControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logListBoxControl.Location = new System.Drawing.Point(2, 27);
+            this.logListBoxControl.Name = "logListBoxControl";
+            this.logListBoxControl.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.logListBoxControl.Size = new System.Drawing.Size(764, 121);
+            this.logListBoxControl.TabIndex = 0;
+            // 
+            // resultsGroupControl
+            // 
+            this.resultsGroupControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            buttonImageOptions2.SvgImage = global::Wamby.Client.Properties.Resources.Results;
+            buttonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
+            buttonImageOptions3.SvgImage = global::Wamby.Client.Properties.Resources.Map;
+            buttonImageOptions3.SvgImageSize = new System.Drawing.Size(16, 16);
+            buttonImageOptions4.SvgImage = global::Wamby.Client.Properties.Resources.Analyze;
+            buttonImageOptions4.SvgImageSize = new System.Drawing.Size(16, 16);
+            buttonImageOptions5.SvgImage = global::Wamby.Client.Properties.Resources.Errors;
+            buttonImageOptions5.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.resultsGroupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("View Results", true, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("See a map of the content", true, buttonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Analyze items in deep", true, buttonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("No errors", true, buttonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
+            this.resultsGroupControl.Location = new System.Drawing.Point(3, 277);
+            this.resultsGroupControl.Name = "resultsGroupControl";
+            this.resultsGroupControl.Size = new System.Drawing.Size(768, 27);
+            this.resultsGroupControl.TabIndex = 3;
             // 
             // NewScanModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.cancelScanSimpleButton);
-            this.Controls.Add(this.groupControl1);
+            this.Controls.Add(this.resultsGroupControl);
+            this.Controls.Add(this.scanLogGroupControl);
+            this.Controls.Add(this.scanOptionsGroupControl);
             this.Name = "NewScanModule";
-            this.Size = new System.Drawing.Size(766, 316);
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
+            this.Size = new System.Drawing.Size(774, 307);
+            ((System.ComponentModel.ISupportInitialize)(this.scanOptionsGroupControl)).EndInit();
+            this.scanOptionsGroupControl.ResumeLayout(false);
+            this.scanOptionsGroupControl.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.newScanPathButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.includeSubfoldersCheckEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchPatternButtonEdit.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scanLogGroupControl)).EndInit();
+            this.scanLogGroupControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.logListBoxControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.resultsGroupControl)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.GroupControl scanOptionsGroupControl;
         private DevExpress.XtraEditors.ButtonEdit newScanPathButtonEdit;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.CheckEdit includeSubfoldersCheckEdit;
         private DevExpress.XtraEditors.ButtonEdit searchPatternButtonEdit;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.SimpleButton cancelScanSimpleButton;
+        private DevExpress.XtraEditors.GroupControl scanLogGroupControl;
+        private DevExpress.XtraEditors.ImageListBoxControl logListBoxControl;
+        private DevExpress.XtraEditors.GroupControl resultsGroupControl;
     }
 }
