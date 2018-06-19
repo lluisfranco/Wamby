@@ -16,6 +16,7 @@ namespace Wamby.Client
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            DevExpress.XtraEditors.WindowsFormsSettings.ForceDirectXPaint();
             Application.Run(new MainForm());
         }
     }

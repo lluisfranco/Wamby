@@ -139,5 +139,15 @@ namespace Wamby.Client.Properties {
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Wamby_App_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Wamby_App_Icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }

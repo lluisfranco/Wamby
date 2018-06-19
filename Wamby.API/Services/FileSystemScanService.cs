@@ -10,19 +10,24 @@ namespace Wamby.API.Services
 {
     public class FileSystemScanService
     {
+        public event EventHandler CancelledByUser;
+        public bool Cancelled { get; private set; }
+        System.Threading.CancellationTokenSource CancellationToken;
         public Core.Model.ScanOptions ScanOptions { get; private set; }
-        public Core.Model.ScanResult ScanResult { get; private set; }
+        public Core.Model.ScanResult ScanResult { get; set; }
         public DirectoryInfo BaseFolder { get; private set; }
-        public FileSystemScanService(Core.Model.ScanOptions scanOptions)
+        public FileSystemScanService()
         {
-            ScanOptions = scanOptions;
+            ScanOptions = new Core.Model.ScanOptions();
             ScanResult = new Core.Model.ScanResult();
-            BaseFolder = CheckBaseFolder(ScanOptions.BaseFolderPath);
         }
 
         FileSystemInfo _CurrentFileSystemInfo;
         public async Task<Core.Model.ScanResult> DoScan()
         {
+            BaseFolder = CheckBaseFolder(ScanOptions.BaseFolderPath);
+            CancellationToken = new System.Threading.CancellationTokenSource();
+            Cancelled = false;
             var clock = new System.Diagnostics.Stopwatch();
             clock.Restart();
             ScanResult.FolderInfo = await Task.Run(() => ScanFolder(BaseFolder));
@@ -32,9 +37,15 @@ namespace Wamby.API.Services
             return ScanResult;
         }
 
+        public void Cancel()
+        {
+            CancellationToken.Cancel();
+        }
+        
         private Core.Model.FolderInfo ScanFolder(DirectoryInfo currentFolder)
         {
-            var currentFolderInfo = new Core.Model.FolderInfo() { DirectoryInfo = currentFolder };
+            var currentFolderInfo = new Core.Model.FolderInfo() { DirectoryInfo = currentFolder };            
+            if (Cancelled) return currentFolderInfo;
             if (ScanOptions.IncludeSubFolders)
             {
                 try
@@ -42,6 +53,7 @@ namespace Wamby.API.Services
                     foreach (var folder in currentFolder.GetDirectories())
                     {
                         _CurrentFileSystemInfo = folder;
+                        if (CheckIfCancellationRequested()) return currentFolderInfo;
                         var folderInfo = ScanFolder(folder);
                         currentFolderInfo.Folders.Add(folderInfo);
                     }
@@ -53,9 +65,10 @@ namespace Wamby.API.Services
             }
             try
             {
-                foreach (var file in currentFolder.GetFiles())
+                foreach (var file in currentFolder.GetFiles(ScanOptions.SearchPattern))
                 {
                     _CurrentFileSystemInfo = file;
+                    if (CheckIfCancellationRequested()) return currentFolderInfo;
                     currentFolderInfo.Files.Add(file);
                     currentFolderInfo.Length = currentFolderInfo.Files.Sum(p => p.Length);
                 }
@@ -66,6 +79,17 @@ namespace Wamby.API.Services
                 AddExceptionToResult(ex, _CurrentFileSystemInfo);
                 return currentFolderInfo;
             }
+        }
+
+        private bool CheckIfCancellationRequested()
+        {
+            if (CancellationToken.IsCancellationRequested && !Cancelled)
+            {
+                Cancelled = true;
+                CancelledByUser?.Invoke(this, new EventArgs());
+                return true;
+            }
+            return false;
         }
 
         private void AddExceptionToResult(Exception ex, FileSystemInfo currentFileSystemInfo)

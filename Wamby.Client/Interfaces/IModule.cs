@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Wamby.Client.Interfaces
 {
-    public interface IModule
+    public interface IModule : IFileSystemScanService
     {
-        bool Initialized { get; set; }
-        void InitializeControl();
+        bool Initialized { get; }
+        void InitializeControl(API.Services.FileSystemScanService scanService);
         Task RefreshDataAsync();
     }
 }

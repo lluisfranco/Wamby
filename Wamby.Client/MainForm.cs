@@ -1,35 +1,40 @@
 ﻿using System;
 using System.Windows.Forms;
-using Wamby.API.Extensions;
-using DevExpress.XtraBars.FluentDesignSystem;
+using Wamby.API.Services;
 
 namespace Wamby.Client
 {
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+        public ViewModels.MainFormViewModel ViewModel { get; set; }
         public MainForm()
         {
             InitializeComponent();
+            Icon = Properties.Resources.Wamby_App_Icon;
+            ViewModel = new ViewModels.MainFormViewModel(new FileSystemScanService());
+            setEventHandlers();
         }
 
-        private async void simpleButton1_Click(object sender, EventArgs e)
+        private void setEventHandlers()
         {
-            var wambyapiService = new API.Services.FileSystemScanService(
-                new Core.Model.ScanOptions()
-                {
-                    IncludeSubFolders = true, BaseFolderPath = @"D:\DabetSec"
-                });
-            var result = await wambyapiService.DoScan();
-            MessageBox.Show(
-                $"Size: {result.TotalSize()}\n" +
-                $"In:   {result.TotalFilesCount()} files\n" +
-                $"Time: {result.ElapsedTime.TotalMilliseconds.ToString("n2")} ms.");
+            Shown += MainForm_Shown;
+            newAppBarButtonItem.ItemClick += NewAppBarButtonItem_ItemClick;
         }
 
-        private void simpleButton2_Click(object sender, EventArgs e)
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            ViewModel.LoadDefaultSettings();
+            newScanModule.InitializeControl(ViewModel.FileSystemScanService);
+        }
+
+        private void NewAppBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenNewWamby();
+        }
+
+        private void OpenNewWamby()
         {
             System.Diagnostics.Process.Start(Application.ExecutablePath);
         }
-
     }
 }
