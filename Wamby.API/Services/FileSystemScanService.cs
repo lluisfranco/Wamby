@@ -57,7 +57,7 @@ namespace Wamby.API.Services
             {
                 DirectoryInfo = currentFolder,
                 FullName = currentFolder.FullName,
-                ParentFullName = currentFolder.Parent.FullName,
+                ParentFullName = currentFolder.Parent?.FullName,
                 IsFolder = true,
                 Level = currentFolder.FullName.Replace(BaseFolder.FullName, string.Empty).Split('\\').Length - 1
             };

@@ -152,7 +152,7 @@ namespace Wamby.Client.Modules
             StartingScan?.Invoke(this, new EventArgs());
             logListBoxControl.Items.Clear();
             AddMessageToLog(
-                $"Started scan at {DateTime.Now.ToShortDateString()}", 
+                $"Started scan at {DateTime.Now.ToShortTimeString()}", 
                 string.Empty, Properties.Resources.Log_Info);
             resultsGroupControl.CustomHeaderButtons[0].Properties.Caption = "Scanning...";
             ActivateUI(false);
