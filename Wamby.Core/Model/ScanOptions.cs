@@ -8,5 +8,6 @@ namespace Wamby.Core.Model
         public string BaseFolderPath { get; set; }
         public bool IncludeSubFolders { get; set; }
         public string SearchPattern { get; set; }
+        public int ShowMinimumFolderLevelInLog { get; set; }
     }
 }

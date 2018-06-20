@@ -70,5 +70,17 @@ namespace Wamby.Client.Properties {
                 this["DefaultSearchPattern"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public int ShowMinimumFolderLevelInLog {
+            get {
+                return ((int)(this["ShowMinimumFolderLevelInLog"]));
+            }
+            set {
+                this["ShowMinimumFolderLevelInLog"] = value;
+            }
+        }
     }
 }

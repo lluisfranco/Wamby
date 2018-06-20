@@ -11,7 +11,8 @@ namespace Wamby.API.Services
 {
     public class FileSystemScanService
     {
-        public event EventHandler<ScanningFolderEventArhs> ScanningFolder;
+        public event EventHandler<FolderEventArgs> ScanningFolder;
+        public event EventHandler<FileSystemInfoEventArgs> ErrorReadingFileSystemInfo;
         public event EventHandler CancelledByUser;
         public bool Cancelled { get; private set; }
         System.Threading.CancellationTokenSource CancellationToken;
@@ -31,13 +32,15 @@ namespace Wamby.API.Services
         FileSystemInfo _CurrentFileSystemInfo;
         public async Task<Core.Model.ScanResult> DoScan()
         {
+            ScanResult.ScanExceptions.Clear();
             BaseFolder = CheckBaseFolder(ScanOptions.BaseFolderPath);
             CancellationToken = new System.Threading.CancellationTokenSource();
             Cancelled = false;
             var clock = new System.Diagnostics.Stopwatch();
             clock.Restart();
             ScanResult.FolderInfo = await Task.Run(() => ScanFolder(BaseFolder));
-            ScanResult.FolderInfo.AllFolders = ScanResult.FolderInfo.Folders.SelectManyRecursive(p => p.Folders).ToList();
+            ScanResult.FolderInfo.AllFolders = ScanResult.FolderInfo.Folders.
+                Where(p => p.IsFolder).SelectManyRecursive(p => p.Folders).ToList();
             clock.Stop();
             ScanResult.ElapsedTime = clock.Elapsed;
             return ScanResult;
@@ -54,6 +57,8 @@ namespace Wamby.API.Services
             {
                 DirectoryInfo = currentFolder,
                 FullName = currentFolder.FullName,
+                ParentFullName = currentFolder.Parent.FullName,
+                IsFolder = true,
                 Level = currentFolder.FullName.Replace(BaseFolder.FullName, string.Empty).Split('\\').Length - 1
             };
             if (Cancelled) return currentFolderInfo;
@@ -72,7 +77,11 @@ namespace Wamby.API.Services
                 }
                 catch (Exception ex)
                 {
-                    AddExceptionToResult(ex, _CurrentFileSystemInfo);
+                    if (!existsExceptionInResult(ex, _CurrentFileSystemInfo))
+                    {
+                        AddExceptionToResult(ex, _CurrentFileSystemInfo);
+                        RaiseEventErrorReadingFileSystemInfo(_CurrentFileSystemInfo);
+                    }
                 }
             }
             try
@@ -84,19 +93,46 @@ namespace Wamby.API.Services
                     currentFolderInfo.Files.Add(file);
                     currentFolderInfo.Length = currentFolderInfo.Files.Sum(p => p.Length);
                 }
+                var currentFolderFilesInfo = new Core.Model.FolderInfo()
+                {
+                    DirectoryInfo = currentFolder,
+                    FullName = $"Files in {currentFolder.FullName}",
+                    ParentFullName = currentFolder.Parent.FullName,
+                    IsFolder = false,
+                    Level = currentFolder.FullName.Replace(BaseFolder.FullName, string.Empty).Split('\\').Length - 1,
+                    Length = currentFolderInfo.Files.Sum(p => p.Length)
+                };
+                currentFolderInfo.Folders.Add(currentFolderFilesInfo);
                 return currentFolderInfo;
             }
             catch (Exception ex)
             {
-                AddExceptionToResult(ex, _CurrentFileSystemInfo);
+                if (!existsExceptionInResult(ex, _CurrentFileSystemInfo))
+                {
+                    AddExceptionToResult(ex, _CurrentFileSystemInfo);
+                    RaiseEventErrorReadingFileSystemInfo(_CurrentFileSystemInfo);
+                }
                 return currentFolderInfo;
             }
         }
 
+        bool existsExceptionInResult(Exception ex, FileSystemInfo currentFileSystemInfo)
+        {
+            return ScanResult.ScanExceptions.Any(p =>
+                p.Exception.Message == ex.Message &&
+                p.FileSystemInfo.FullName == currentFileSystemInfo.FullName);
+        }
+
         private void RaiseEventScanningFolder(Core.Model.FolderInfo currentFolderInfo)
         {
-            if(currentFolderInfo.Level < 3)
-                ScanningFolder?.Invoke(this, new ScanningFolderEventArhs() { FolderInfo = currentFolderInfo });
+            if(currentFolderInfo.Level < ScanOptions.ShowMinimumFolderLevelInLog)
+                ScanningFolder?.Invoke(this, new FolderEventArgs() { FolderInfo = currentFolderInfo });
+        }
+
+        private void RaiseEventErrorReadingFileSystemInfo(FileSystemInfo currentItem)
+        {
+            //if(currentFolderInfo.Level < ScanOptions.ShowMinimumFolderLevelInLog)
+            ErrorReadingFileSystemInfo?.Invoke(this, new FileSystemInfoEventArgs() { FileSystemItem = currentItem });
         }
 
         private bool CheckIfCancellationRequested()
@@ -122,14 +158,19 @@ namespace Wamby.API.Services
         private DirectoryInfo CheckBaseFolder(string baseFolderPath)
         {
             if (baseFolderPath == null) throw new ArgumentNullException(nameof(baseFolderPath));
-            if (!Directory.Exists(baseFolderPath)) throw new DirectoryNotFoundException();
+            if (!Directory.Exists(baseFolderPath))
+            {
+                AddExceptionToResult(new DirectoryNotFoundException(), _CurrentFileSystemInfo);
+                throw new DirectoryNotFoundException();
+            }
             try
             {
                 BaseFolder = new DirectoryInfo(baseFolderPath);
                 return BaseFolder;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                AddExceptionToResult(ex, _CurrentFileSystemInfo);
                 throw;
             }
         }

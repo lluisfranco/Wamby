@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Wamby.API.Services
 {
-    public class ScanningFolderEventArhs : EventArgs
+    public class FolderEventArgs : EventArgs
     {
         public Core.Model.FolderInfo FolderInfo { get; set; }
     }

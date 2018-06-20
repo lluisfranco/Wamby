@@ -10,6 +10,7 @@ namespace Wamby.API.Extensions
     {
         public static double TotalSize(this Core.Model.ScanResult scanResult)
         {
+            if (scanResult.FolderInfo == null) return 0;
             return scanResult.FolderInfo.Files.Sum(p => p.Length) + scanResult.FolderInfo.AllFolders.Sum(p => p.Length);
         }
 

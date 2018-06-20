@@ -54,6 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\OverlayExtensions.cs" />
+    <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Interfaces\IFileSystemScanService.cs" />
     <Compile Include="Interfaces\IModule.cs" />
     <Compile Include="MainForm.cs">
@@ -137,6 +139,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Wamby App Icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log Folder.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log Info.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
