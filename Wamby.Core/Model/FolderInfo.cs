@@ -17,5 +17,9 @@ namespace Wamby.Core.Model
         public List<System.IO.FileInfo> Files { get; set; } = new List<System.IO.FileInfo>();
         public List<FolderInfo> AllFolders { get; set; } = new List<FolderInfo>();
         public double Length { get; set; }
+        public double FilesCount { get; set; }
+        public double DeepLength { get; set; }
+        public double DeepFilesCount { get; set; }
+        public double DeepLengthInKB { get { return DeepLength / 1024; } }
     }
 }

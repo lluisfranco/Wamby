@@ -117,41 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Results" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Results.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="New" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\New.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Analyze" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Analyze.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Settings.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Schedule" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Schedule.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Map" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Map.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Wamby_App_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Wamby App Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Log_Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Log Folder.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="New_Scan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\New Scan.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Errors" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Errors.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Log_Info" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Log Info.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
-  <data name="Files_Summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Files_Summary.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
+  <metadata name="resultsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

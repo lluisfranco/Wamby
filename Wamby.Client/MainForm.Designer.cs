@@ -40,6 +40,7 @@
             this.tabPageNewScan = new DevExpress.XtraTab.XtraTabPage();
             this.newScanModule = new Wamby.Client.Modules.NewScanModule();
             this.tabPageResults = new DevExpress.XtraTab.XtraTabPage();
+            this.resultsModule = new Wamby.Client.Modules.ResultsModule();
             this.tabPageMap = new DevExpress.XtraTab.XtraTabPage();
             this.tabPageAnalysis = new DevExpress.XtraTab.XtraTabPage();
             this.tabPageErrors = new DevExpress.XtraTab.XtraTabPage();
@@ -49,6 +50,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabPageNewScan.SuspendLayout();
+            this.tabPageResults.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbon
@@ -149,10 +151,20 @@
             // 
             // tabPageResults
             // 
+            this.tabPageResults.Controls.Add(this.resultsModule);
             this.tabPageResults.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Results;
             this.tabPageResults.Name = "tabPageResults";
             this.tabPageResults.Size = new System.Drawing.Size(827, 465);
             this.tabPageResults.Text = "Results";
+            // 
+            // resultsModule
+            // 
+            this.resultsModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resultsModule.Location = new System.Drawing.Point(0, 0);
+            this.resultsModule.Name = "resultsModule";
+            this.resultsModule.Padding = new System.Windows.Forms.Padding(3);
+            this.resultsModule.Size = new System.Drawing.Size(827, 465);
+            this.resultsModule.TabIndex = 0;
             // 
             // tabPageMap
             // 
@@ -204,6 +216,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.tabPageNewScan.ResumeLayout(false);
+            this.tabPageResults.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,5 +241,6 @@
         private DevExpress.XtraTab.XtraTabPage tabPageSchedule;
         private DevExpress.XtraTab.XtraTabPage tabPageSettings;
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
+        private Modules.ResultsModule resultsModule;
     }
 }

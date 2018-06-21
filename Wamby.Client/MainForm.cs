@@ -27,6 +27,7 @@ namespace Wamby.Client
         {
             ViewModel.LoadDefaultSettings();
             newScanModule.InitializeControl(ViewModel.FileSystemScanService);
+            resultsModule.InitializeControl(ViewModel.FileSystemScanService);
         }
 
         private void NewScanModule_StartingScan(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace Wamby.Client
         private void NewScanModule_EndingScan(object sender, EventArgs e)
         {
             EnablePages(true);
+            resultsModule.RefreshModuleData();
         }
 
         private void EnablePages(bool enabled)

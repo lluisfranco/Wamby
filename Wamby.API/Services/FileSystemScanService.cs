@@ -41,6 +41,9 @@ namespace Wamby.API.Services
             ScanResult.FolderInfo = await Task.Run(() => ScanFolder(BaseFolder));
             ScanResult.FolderInfo.AllFolders = ScanResult.FolderInfo.Folders.
                 Where(p => p.IsFolder).SelectManyRecursive(p => p.Folders).ToList();
+            ScanResult.FolderInfo.AllFolders.Add(ScanResult.FolderInfo);
+            if (ScanResult.FolderInfo.Files.Count > 0)
+                ScanResult.FolderInfo.AllFolders.Add(AddCurrentFolderFileSummary(ScanResult.FolderInfo));
             clock.Stop();
             ScanResult.ElapsedTime = clock.Elapsed;
             return ScanResult;
@@ -51,15 +54,15 @@ namespace Wamby.API.Services
             CancellationToken.Cancel();
         }
         
-        private Core.Model.FolderInfo ScanFolder(DirectoryInfo currentFolder)
+        private Core.Model.FolderInfo ScanFolder(DirectoryInfo currentDirectoryInfo)
         {
             var currentFolderInfo = new Core.Model.FolderInfo()
             {
-                DirectoryInfo = currentFolder,
-                FullName = currentFolder.FullName,
-                ParentFullName = currentFolder.Parent?.FullName,
+                DirectoryInfo = currentDirectoryInfo,
+                FullName = currentDirectoryInfo.FullName,
+                ParentFullName = currentDirectoryInfo.Parent?.FullName,
                 IsFolder = true,
-                Level = currentFolder.FullName.Replace(BaseFolder.FullName, string.Empty).Split('\\').Length - 1
+                Level = currentDirectoryInfo.FullName.Replace(BaseFolder.FullName, string.Empty).Split('\\').Length - 1
             };
             if (Cancelled) return currentFolderInfo;
             RaiseEventScanningFolder(currentFolderInfo);
@@ -67,7 +70,7 @@ namespace Wamby.API.Services
             {
                 try
                 {
-                    foreach (var folder in currentFolder.GetDirectories())
+                    foreach (var folder in currentDirectoryInfo.GetDirectories())
                     {
                         _CurrentFileSystemInfo = folder;                        
                         if (CheckIfCancellationRequested()) return currentFolderInfo;
@@ -86,23 +89,21 @@ namespace Wamby.API.Services
             }
             try
             {
-                foreach (var file in currentFolder.GetFiles(ScanOptions.SearchPattern))
+                foreach (var file in currentDirectoryInfo.GetFiles(ScanOptions.SearchPattern))
                 {
                     _CurrentFileSystemInfo = file;
                     if (CheckIfCancellationRequested()) return currentFolderInfo;
                     currentFolderInfo.Files.Add(file);
                     currentFolderInfo.Length = currentFolderInfo.Files.Sum(p => p.Length);
                 }
-                var currentFolderFilesInfo = new Core.Model.FolderInfo()
-                {
-                    DirectoryInfo = currentFolder,
-                    FullName = $"Files in {currentFolder.FullName}",
-                    ParentFullName = currentFolder.Parent.FullName,
-                    IsFolder = false,
-                    Level = currentFolder.FullName.Replace(BaseFolder.FullName, string.Empty).Split('\\').Length - 1,
-                    Length = currentFolderInfo.Files.Sum(p => p.Length)
-                };
-                currentFolderInfo.Folders.Add(currentFolderFilesInfo);
+                if (currentFolderInfo.Files.Count > 0)
+                    currentFolderInfo.Folders.Add(AddCurrentFolderFileSummary(currentFolderInfo));
+                currentFolderInfo.Length = currentFolderInfo.Files.Sum(p => p.Length);
+                currentFolderInfo.FilesCount = currentFolderInfo.Files.Count;
+                currentFolderInfo.DeepLength = currentFolderInfo.Length + 
+                    currentFolderInfo.Folders.Where(p => p.IsFolder).Sum(p => p.DeepLength);
+                currentFolderInfo.DeepFilesCount = currentFolderInfo.FilesCount + 
+                    currentFolderInfo.Folders.Where(p => p.IsFolder).Sum(p => p.DeepFilesCount);
                 return currentFolderInfo;
             }
             catch (Exception ex)
@@ -114,6 +115,23 @@ namespace Wamby.API.Services
                 }
                 return currentFolderInfo;
             }
+        }
+
+        private Core.Model.FolderInfo AddCurrentFolderFileSummary(Core.Model.FolderInfo currentFolderInfo)
+        {
+            var currentFolderFilesSummaryInfo = new Core.Model.FolderInfo()
+            {
+                DirectoryInfo = new DirectoryInfo(currentFolderInfo.FullName),
+                FullName = $"Files in: {currentFolderInfo.FullName}",
+                ParentFullName = currentFolderInfo.FullName,
+                IsFolder = false,
+                Level = currentFolderInfo.FullName.Replace(BaseFolder.FullName, string.Empty).Split('\\').Length - 1,
+                Length = currentFolderInfo.Files.Sum(p => p.Length),
+                FilesCount = currentFolderInfo.Files.Count,
+                DeepLength = currentFolderInfo.Files.Sum(p => p.Length),
+                DeepFilesCount = currentFolderInfo.Files.Count
+            };
+            return currentFolderFilesSummaryInfo;           
         }
 
         bool existsExceptionInResult(Exception ex, FileSystemInfo currentFileSystemInfo)
@@ -131,7 +149,6 @@ namespace Wamby.API.Services
 
         private void RaiseEventErrorReadingFileSystemInfo(FileSystemInfo currentItem)
         {
-            //if(currentFolderInfo.Level < ScanOptions.ShowMinimumFolderLevelInLog)
             ErrorReadingFileSystemInfo?.Invoke(this, new FileSystemInfoEventArgs() { FileSystemItem = currentItem });
         }
 

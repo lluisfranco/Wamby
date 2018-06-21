@@ -16,5 +16,13 @@ namespace Wamby.Client.Helpers
             imgscol.Add("Log_Folder", "Log_Folder", typeof(Properties.Resources));
             return imgscol;
         }
+
+        public static DevExpress.Utils.SvgImageCollection GetResultsItemTypeImageCollection()
+        {
+            var imgscol = new DevExpress.Utils.SvgImageCollection();
+            imgscol.Add("Log_Folder", "Log_Folder", typeof(Properties.Resources));
+            imgscol.Add("Files_Summary", "Files_Summary", typeof(Properties.Resources));
+            return imgscol;
+        }
     }
 }

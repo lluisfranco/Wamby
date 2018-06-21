@@ -2,7 +2,6 @@
 using System;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Wamby.API.Extensions;
 using Wamby.Client.Extensions;
 using Wamby.Core.Model;
 
@@ -171,9 +170,9 @@ namespace Wamby.Client.Modules
         private void UpdateResults()
         {            
             resultsGroupControl.CustomHeaderButtons[0].Properties.Caption =
-                $"{FileSystemScanService.ScanResult.TotalSizeInKb().ToString("n0")} KB in " +
+                $"{FileSystemScanService.ScanResult.FolderInfo.DeepLengthInKB.ToString("n0")} KB in " +
                 $"{FileSystemScanService.ScanResult.FolderInfo.AllFolders.Count.ToString("n0")} folders and " +
-                $"{FileSystemScanService.ScanResult.TotalFilesCount().ToString("n0")} files";
+                $"{FileSystemScanService.ScanResult.FolderInfo.DeepFilesCount.ToString("n0")} files";
             resultsGroupControl.CustomHeaderButtons[3].Properties.Caption =
                 FileSystemScanService.ScanResult.ScanExceptions.Count == 0 ?
                 "No errors" : 
