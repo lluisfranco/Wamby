@@ -13,6 +13,7 @@ namespace Wamby.Client.Modules
 {
     public partial class ResultsModule : DevExpress.XtraEditors.XtraUserControl, Interfaces.IModule
     {
+        [Browsable(false)]
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
 

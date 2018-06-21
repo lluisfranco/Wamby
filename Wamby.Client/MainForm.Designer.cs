@@ -42,6 +42,7 @@
             this.tabPageResults = new DevExpress.XtraTab.XtraTabPage();
             this.resultsModule = new Wamby.Client.Modules.ResultsModule();
             this.tabPageMap = new DevExpress.XtraTab.XtraTabPage();
+            this.mapModule = new Wamby.Client.Modules.MapModule();
             this.tabPageAnalysis = new DevExpress.XtraTab.XtraTabPage();
             this.tabPageErrors = new DevExpress.XtraTab.XtraTabPage();
             this.tabPageSchedule = new DevExpress.XtraTab.XtraTabPage();
@@ -51,6 +52,7 @@
             this.tabControl.SuspendLayout();
             this.tabPageNewScan.SuspendLayout();
             this.tabPageResults.SuspendLayout();
+            this.tabPageMap.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbon
@@ -63,6 +65,7 @@
             this.skinPaletteRibbonGalleryBarItem1});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.MaxItemId = 4;
+            this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1});
@@ -168,10 +171,20 @@
             // 
             // tabPageMap
             // 
+            this.tabPageMap.Controls.Add(this.mapModule);
             this.tabPageMap.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map;
             this.tabPageMap.Name = "tabPageMap";
             this.tabPageMap.Size = new System.Drawing.Size(827, 465);
             this.tabPageMap.Text = "Map";
+            // 
+            // mapModule
+            // 
+            this.mapModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapModule.Location = new System.Drawing.Point(0, 0);
+            this.mapModule.Name = "mapModule";
+            this.mapModule.Padding = new System.Windows.Forms.Padding(3);
+            this.mapModule.Size = new System.Drawing.Size(827, 465);
+            this.mapModule.TabIndex = 0;
             // 
             // tabPageAnalysis
             // 
@@ -217,6 +230,7 @@
             this.tabControl.ResumeLayout(false);
             this.tabPageNewScan.ResumeLayout(false);
             this.tabPageResults.ResumeLayout(false);
+            this.tabPageMap.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,5 +256,6 @@
         private DevExpress.XtraTab.XtraTabPage tabPageSettings;
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
         private Modules.ResultsModule resultsModule;
+        private Modules.MapModule mapModule;
     }
 }

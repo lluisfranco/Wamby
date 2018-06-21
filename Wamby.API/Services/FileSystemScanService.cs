@@ -38,12 +38,15 @@ namespace Wamby.API.Services
             Cancelled = false;
             var clock = new System.Diagnostics.Stopwatch();
             clock.Restart();
-            ScanResult.FolderInfo = await Task.Run(() => ScanFolder(BaseFolder));
+            var f = await Task.Run(() => ScanFolder(BaseFolder));
+            ScanResult.FolderInfo = f;
             ScanResult.FolderInfo.AllFolders = ScanResult.FolderInfo.Folders.
                 Where(p => p.IsFolder).SelectManyRecursive(p => p.Folders).ToList();
             ScanResult.FolderInfo.AllFolders.Add(ScanResult.FolderInfo);
             if (ScanResult.FolderInfo.Files.Count > 0)
                 ScanResult.FolderInfo.AllFolders.Add(AddCurrentFolderFileSummary(ScanResult.FolderInfo));
+            var allfiles = ScanResult.FolderInfo.AllFolders.SelectMany(p => p.Files);
+            ScanResult.FolderInfo.AllFiles.AddRange(allfiles);
             clock.Stop();
             ScanResult.ElapsedTime = clock.Elapsed;
             return ScanResult;
@@ -94,7 +97,7 @@ namespace Wamby.API.Services
                     _CurrentFileSystemInfo = file;
                     if (CheckIfCancellationRequested()) return currentFolderInfo;
                     currentFolderInfo.Files.Add(file);
-                    currentFolderInfo.Length = currentFolderInfo.Files.Sum(p => p.Length);
+                    currentFolderInfo.Length = currentFolderInfo.Files.Sum(p => p.Length);                    
                 }
                 if (currentFolderInfo.Files.Count > 0)
                     currentFolderInfo.Folders.Add(AddCurrentFolderFileSummary(currentFolderInfo));

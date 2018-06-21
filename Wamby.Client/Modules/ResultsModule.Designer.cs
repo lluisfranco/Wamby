@@ -31,16 +31,27 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule1 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            this.colDeepLength = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.resultsTreeList = new DevExpress.XtraTreeList.TreeList();
             this.colLevel = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colIsFolder = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colFullName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.resultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.colDeepLength = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colDeepFilesCount = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.resultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.resultsTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // colDeepLength
+            // 
+            this.colDeepLength.Caption = "Size (KB)";
+            this.colDeepLength.FieldName = "DeepLengthInKB";
+            this.colDeepLength.Format.FormatString = "n0";
+            this.colDeepLength.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colDeepLength.Name = "colDeepLength";
+            this.colDeepLength.Visible = true;
+            this.colDeepLength.VisibleIndex = 2;
+            this.colDeepLength.Width = 181;
             // 
             // resultsTreeList
             // 
@@ -88,22 +99,7 @@
             this.colFullName.Name = "colFullName";
             this.colFullName.Visible = true;
             this.colFullName.VisibleIndex = 0;
-            this.colFullName.Width = 338;
-            // 
-            // resultsBindingSource
-            // 
-            this.resultsBindingSource.DataSource = typeof(Wamby.Core.Model.FolderInfo);
-            // 
-            // colDeepLength
-            // 
-            this.colDeepLength.Caption = "Size (KB)";
-            this.colDeepLength.FieldName = "DeepLengthInKB";
-            this.colDeepLength.Format.FormatString = "n0";
-            this.colDeepLength.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colDeepLength.Name = "colDeepLength";
-            this.colDeepLength.Visible = true;
-            this.colDeepLength.VisibleIndex = 2;
-            this.colDeepLength.Width = 125;
+            this.colFullName.Width = 347;
             // 
             // colDeepFilesCount
             // 
@@ -114,7 +110,11 @@
             this.colDeepFilesCount.Name = "colDeepFilesCount";
             this.colDeepFilesCount.Visible = true;
             this.colDeepFilesCount.VisibleIndex = 1;
-            this.colDeepFilesCount.Width = 119;
+            this.colDeepFilesCount.Width = 80;
+            // 
+            // resultsBindingSource
+            // 
+            this.resultsBindingSource.DataSource = typeof(Wamby.Core.Model.FolderInfo);
             // 
             // ResultsModule
             // 

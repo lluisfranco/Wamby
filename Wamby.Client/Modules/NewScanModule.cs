@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraSplashScreen;
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wamby.Client.Extensions;
@@ -11,6 +12,7 @@ namespace Wamby.Client.Modules
     {
         public event EventHandler StartingScan;
         public event EventHandler EndingScan;
+        [Browsable(false)]
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
         public NewScanModule()
@@ -20,7 +22,7 @@ namespace Wamby.Client.Modules
 
         public string GetSelectedPath()
         {
-            return newScanPathButtonEdit.Text;
+            return newScanPathButtonEdit.Text;   
         }
 
         public void InitializeControl(API.Services.FileSystemScanService scanService)
