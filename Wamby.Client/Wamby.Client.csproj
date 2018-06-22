@@ -40,6 +40,7 @@
     <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.TreeMap.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -59,16 +60,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\MapLayoutAlgorithmEnum.cs" />
+    <Compile Include="Enums\MapValueDataMemberEnum.cs" />
     <Compile Include="Extensions\OverlayExtensions.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Interfaces\IFileSystemScanService.cs" />
     <Compile Include="Interfaces\IModule.cs" />
+    <Compile Include="Interfaces\IModuleMap.cs" />
+    <Compile Include="Interfaces\IModulePrintAndExport.cs" />
+    <Compile Include="Interfaces\IModuleResults.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\FileMapInfo.cs" />
     <Compile Include="Modules\NewScanModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,11 +97,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\MainFormViewModel.cs" />
-    <Compile Include="xf.cs">
+    <Compile Include="MainForm2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="xf.Designer.cs">
-      <DependentUpon>xf.cs</DependentUpon>
+    <Compile Include="MainForm2.Designer.cs">
+      <DependentUpon>MainForm2.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -119,8 +126,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="xf.resx">
-      <DependentUpon>xf.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm2.resx">
+      <DependentUpon>MainForm2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Wamby.Core.Model.FolderInfo.datasource" />
     <None Include="Properties\Settings.settings">
@@ -181,6 +188,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Files_Summary.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Print_Preview.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export_To_Excel.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export_To_Pdf.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tree_Expand.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tree_Compress.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tree_Expand_Level.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Map_By_Size.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Map_By_FilesCount.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Map_Layout.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Map_Direction.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

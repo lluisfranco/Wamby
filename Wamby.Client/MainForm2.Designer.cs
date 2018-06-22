@@ -1,6 +1,6 @@
 ﻿namespace Wamby.Client
 {
-    partial class xf
+    partial class MainForm2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(xf));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm2));
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.newAppBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
             this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.printBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.exportXlsBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.exportPdfBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonMainPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonCommonGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonSkinsGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPrintGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonMapGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonAnalysisGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.accordionControl1 = new DevExpress.XtraBars.Navigation.AccordionControl();
             this.accordionControlElement1 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.accordionControlElement4 = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -65,18 +71,22 @@
             // 
             // ribbon
             // 
+            this.ribbon.AllowMinimizeRibbon = false;
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
             this.skinDropDownButtonItem1,
             this.newAppBarButtonItem,
-            this.skinPaletteRibbonGalleryBarItem1});
+            this.skinPaletteRibbonGalleryBarItem1,
+            this.printBarButtonItem,
+            this.exportXlsBarButtonItem,
+            this.exportPdfBarButtonItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 4;
+            this.ribbon.MaxItemId = 9;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPage1});
+            this.ribbonMainPage});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
             this.ribbon.Size = new System.Drawing.Size(786, 31);
@@ -99,26 +109,68 @@
             this.skinPaletteRibbonGalleryBarItem1.Id = 3;
             this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
-            // ribbonPage1
+            // printBarButtonItem
             // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "ribbonPage1";
+            this.printBarButtonItem.Caption = "Print";
+            this.printBarButtonItem.Id = 4;
+            this.printBarButtonItem.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Print_Preview;
+            this.printBarButtonItem.Name = "printBarButtonItem";
             // 
-            // ribbonPageGroup1
+            // exportXlsBarButtonItem
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.newAppBarButtonItem);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
+            this.exportXlsBarButtonItem.Caption = "Export Excel";
+            this.exportXlsBarButtonItem.Id = 7;
+            this.exportXlsBarButtonItem.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Export_To_Excel;
+            this.exportXlsBarButtonItem.Name = "exportXlsBarButtonItem";
             // 
-            // ribbonPageGroup2
+            // exportPdfBarButtonItem
             // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.skinDropDownButtonItem1);
-            this.ribbonPageGroup2.ItemLinks.Add(this.skinPaletteRibbonGalleryBarItem1);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
+            this.exportPdfBarButtonItem.Caption = "Export Pdf";
+            this.exportPdfBarButtonItem.Id = 8;
+            this.exportPdfBarButtonItem.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Export_To_Pdf;
+            this.exportPdfBarButtonItem.Name = "exportPdfBarButtonItem";
+            // 
+            // ribbonMainPage
+            // 
+            this.ribbonMainPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonCommonGroup,
+            this.ribbonSkinsGroup,
+            this.ribbonPrintGroup,
+            this.ribbonMapGroup,
+            this.ribbonAnalysisGroup});
+            this.ribbonMainPage.Name = "ribbonMainPage";
+            this.ribbonMainPage.Text = "Main";
+            // 
+            // ribbonCommonGroup
+            // 
+            this.ribbonCommonGroup.ItemLinks.Add(this.newAppBarButtonItem);
+            this.ribbonCommonGroup.Name = "ribbonCommonGroup";
+            this.ribbonCommonGroup.Text = "Common";
+            // 
+            // ribbonSkinsGroup
+            // 
+            this.ribbonSkinsGroup.ItemLinks.Add(this.skinDropDownButtonItem1);
+            this.ribbonSkinsGroup.ItemLinks.Add(this.skinPaletteRibbonGalleryBarItem1);
+            this.ribbonSkinsGroup.Name = "ribbonSkinsGroup";
+            this.ribbonSkinsGroup.Text = "Skins";
+            // 
+            // ribbonPrintGroup
+            // 
+            this.ribbonPrintGroup.ItemLinks.Add(this.printBarButtonItem);
+            this.ribbonPrintGroup.ItemLinks.Add(this.exportXlsBarButtonItem);
+            this.ribbonPrintGroup.ItemLinks.Add(this.exportPdfBarButtonItem);
+            this.ribbonPrintGroup.Name = "ribbonPrintGroup";
+            this.ribbonPrintGroup.Text = "Results";
+            // 
+            // ribbonMapGroup
+            // 
+            this.ribbonMapGroup.Name = "ribbonMapGroup";
+            this.ribbonMapGroup.Text = "Map";
+            // 
+            // ribbonAnalysisGroup
+            // 
+            this.ribbonAnalysisGroup.Name = "ribbonAnalysisGroup";
+            this.ribbonAnalysisGroup.Text = "Analysis";
             // 
             // accordionControl1
             // 
@@ -251,10 +303,16 @@
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
         private DevExpress.XtraBars.BarButtonItem newAppBarButtonItem;
         private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonMainPage;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonCommonGroup;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonSkinsGroup;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement8;
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlElement9;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPrintGroup;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonMapGroup;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonAnalysisGroup;
+        private DevExpress.XtraBars.BarButtonItem printBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem exportXlsBarButtonItem;
+        private DevExpress.XtraBars.BarButtonItem exportPdfBarButtonItem;
     }
 }

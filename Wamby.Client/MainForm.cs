@@ -21,6 +21,19 @@ namespace Wamby.Client
             newAppBarButtonItem.ItemClick += NewAppBarButtonItem_ItemClick;
             newScanModule.StartingScan += NewScanModule_StartingScan;
             newScanModule.EndingScan += NewScanModule_EndingScan;
+            tabControl.SelectedPageChanged += TabControl_SelectedPageChanged;
+            barButtonItemPrint.ItemClick += BarButtonItemPrint_ItemClick;
+            barButtonItemExportXls.ItemClick += BarButtonItemExportXls_ItemClick;
+            barButtonItemExportPdf.ItemClick += BarButtonItemExportPdf_ItemClick;
+            barButtonItemExpandTree.ItemClick += BarButtonItemExpandTree_ItemClick;
+            barButtonItemCollapse.ItemClick += BarButtonItemCollapse_ItemClick;
+            barButtonItemExpandLevel1.ItemClick += BarButtonItemExpandLevel_ItemClick;
+            barButtonItemExpandLevel2.ItemClick += BarButtonItemExpandLevel_ItemClick;
+            barButtonItemExpandLevel3.ItemClick += BarButtonItemExpandLevel_ItemClick;
+            barButtonItemExpandLevel4.ItemClick += BarButtonItemExpandLevel_ItemClick;
+            barButtonItemExpandLevel5.ItemClick += BarButtonItemExpandLevel_ItemClick;
+            barCheckItemMapBySize.ItemClick += BarCheckItemMapBySize_ItemClick;
+            barCheckItemMapByFilesCount.ItemClick += BarCheckItemMapByFilesCount_ItemClick;
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -29,6 +42,7 @@ namespace Wamby.Client
             newScanModule.InitializeControl(ViewModel.FileSystemScanService);
             resultsModule.InitializeControl(ViewModel.FileSystemScanService);
             mapModule.InitializeControl(ViewModel.FileSystemScanService);
+            ViewModel.CurrentModule = newScanModule;
         }
 
         private void NewScanModule_StartingScan(object sender, EventArgs e)
@@ -58,5 +72,74 @@ namespace Wamby.Client
         {
             System.Diagnostics.Process.Start(Application.ExecutablePath);
         }
+
+        private void TabControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            setCurrentModule(e.Page.Name);
+            showCurrentModuleToolbars();
+        }
+
+        private void setCurrentModule(string moduleName)
+        {
+            if (moduleName == tabPageNewScan.Name) ViewModel.CurrentModule = newScanModule;
+            if (moduleName == tabPageResults.Name) ViewModel.CurrentModule = resultsModule;
+            if (moduleName == tabPageMap.Name) ViewModel.CurrentModule = mapModule;
+            //if (moduleName == analysisModule.Name) CurrentModule = resultsModule;
+        }
+
+        private void showCurrentModuleToolbars()
+        {
+            ribbonPageGroupPrint.Visible = false;
+            ribbonPageGroupResults.Visible = false;
+            ribbonPageGroupMap.Visible = false;
+            ribbonPageGroupAnalysis.Visible = false;
+            if (ViewModel.CurrentModule is Interfaces.IModulePrintAndExport) ribbonPageGroupPrint.Visible = true;
+            if (ViewModel.CurrentModule is Interfaces.IModuleResults) ribbonPageGroupResults.Visible = true;
+            if (ViewModel.CurrentModule is Interfaces.IModuleMap) ribbonPageGroupMap.Visible = true;
+        }
+
+        private void BarButtonItemPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            (ViewModel.CurrentModule as Interfaces.IModulePrintAndExport)?.Print();
+        }
+
+        private void BarButtonItemExportXls_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            (ViewModel.CurrentModule as Interfaces.IModulePrintAndExport)?.ExportToXls();
+        }
+
+        private void BarButtonItemExportPdf_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            (ViewModel.CurrentModule as Interfaces.IModulePrintAndExport)?.ExportToPdf();
+        }
+
+        private void BarButtonItemExpandTree_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            (ViewModel.CurrentModule as Interfaces.IModuleResults)?.ExpandTree();
+        }
+
+        private void BarButtonItemCollapse_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            (ViewModel.CurrentModule as Interfaces.IModuleResults)?.CollapseTree();
+        }
+
+        private void BarButtonItemExpandLevel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            (ViewModel.CurrentModule as Interfaces.IModuleResults)?.
+                ExpandTreeToLevel(Convert.ToInt32(e.Item.Tag) - 1);
+        }
+
+        private void BarCheckItemMapBySize_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            (ViewModel.CurrentModule as Interfaces.IModuleMap)?.
+                SetMapByDataMember(Enums.MapValueDataMemberEnum.Size);
+        }
+
+        private void BarCheckItemMapByFilesCount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            (ViewModel.CurrentModule as Interfaces.IModuleMap)?.
+                   SetMapByDataMember(Enums.MapValueDataMemberEnum.FilesCount);
+        }
+
     }
 }

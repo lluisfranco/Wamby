@@ -8,6 +8,7 @@ namespace Wamby.Client.ViewModels
 {
     public class MainFormViewModel : Interfaces.IFileSystemScanService
     {
+        public Interfaces.IModule CurrentModule { get; set; }
         public API.Services.FileSystemScanService FileSystemScanService { get; }
         public MainFormViewModel(API.Services.FileSystemScanService scanService)
         {

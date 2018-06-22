@@ -11,9 +11,9 @@ using DevExpress.XtraEditors;
 
 namespace Wamby.Client
 {
-    public partial class xf : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
+    public partial class MainForm2 : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
-        public xf()
+        public MainForm2()
         {
             InitializeComponent();
         }

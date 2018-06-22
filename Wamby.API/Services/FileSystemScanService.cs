@@ -194,5 +194,10 @@ namespace Wamby.API.Services
                 throw;
             }
         }
+
+        public string GetTempFileName(string extension)
+        {
+            return System.IO.Path.GetTempFileName().Replace("tmp", extension);
+        }
     }
 }
