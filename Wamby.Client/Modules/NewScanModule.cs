@@ -106,15 +106,15 @@ namespace Wamby.Client.Modules
             return FileSystemScanService.ScanResult;
         }
 
-        private void FileSystemScanService_ScanningFolder(object sender, API.Services.FolderEventArgs e)
+        private void FileSystemScanService_ScanningFolder(object sender, API.Services.WambyFolderEventArgs e)
         {
-            AddMessageToLog($"Reading: {e.FolderInfo.DirectoryInfo.FullName}", 
-                e.FolderInfo.DirectoryInfo.FullName, Properties.Resources.Log_Folder);
+            AddMessageToLog($"Reading: {e.WambyFolderInfo.DirectoryInfo.FullName}", 
+                e.WambyFolderInfo.DirectoryInfo.FullName, Properties.Resources.Log_Folder);
         }
 
-        private void FileSystemScanService_ErrorReadingFileSystemInfo(object sender, API.Services.FileSystemInfoEventArgs e)
+        private void FileSystemScanService_ErrorReadingFileSystemInfo(object sender, API.Services.WambyFileSystemInfoEventArgs e)
         {
-            AddMessageToLog($"ERROR: {e.FileSystemItem.FullName}",
+            AddMessageToLog($"ERROR: {e.WambyFileSystemItem.FullName}",
                 string.Empty, Properties.Resources.Errors);
         }
 
@@ -172,9 +172,9 @@ namespace Wamby.Client.Modules
         private void UpdateResults()
         {            
             resultsGroupControl.CustomHeaderButtons[0].Properties.Caption =
-                $"{FileSystemScanService.ScanResult.FolderInfo.DeepLengthInKB.ToString("n0")} KB in " +
-                $"{FileSystemScanService.ScanResult.FolderInfo.AllFolders.Count.ToString("n0")} folders and " +
-                $"{FileSystemScanService.ScanResult.FolderInfo.DeepFilesCount.ToString("n0")} files";
+                $"{FileSystemScanService.ScanResult.WambyFolderInfo.DeepLengthInKB.ToString("n0")} KB in " +
+                $"{FileSystemScanService.ScanResult.WambyFolderInfo.AllFolders.Count.ToString("n0")} folders and " +
+                $"{FileSystemScanService.ScanResult.WambyFolderInfo.DeepFilesCount.ToString("n0")} files";
             resultsGroupControl.CustomHeaderButtons[3].Properties.Caption =
                 FileSystemScanService.ScanResult.ScanExceptions.Count == 0 ?
                 "No errors" : 

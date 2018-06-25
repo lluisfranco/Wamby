@@ -37,7 +37,7 @@
             // 
             // resultsBindingSource
             // 
-            this.resultsBindingSource.DataSource = typeof(Wamby.Core.Model.FolderInfo);
+            this.resultsBindingSource.DataSource = typeof(Wamby.Core.Model.WambyFolderInfo);
             // 
             // treeMapControl
             // 

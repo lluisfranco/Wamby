@@ -38,7 +38,7 @@ namespace Wamby.Client.Modules
 
         public void RefreshModuleData()
         {
-            var files = FileSystemScanService.ScanResult.FolderInfo.AllFiles.
+            var files = FileSystemScanService.ScanResult.WambyFolderInfo.AllFiles.
                 GroupBy(p => p.Extension).Select(g => new Model.FileMapInfo()
                 {
                     Extension = g.Key,

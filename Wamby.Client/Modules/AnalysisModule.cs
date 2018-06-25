@@ -11,14 +11,15 @@ using DevExpress.XtraEditors;
 
 namespace Wamby.Client.Modules
 {
-    public partial class ResultsModule : DevExpress.XtraEditors.XtraUserControl, 
-        Interfaces.IModule, Interfaces.IModulePrintAndExport, Interfaces.IModuleResults
+    public partial class AnalysisModule : DevExpress.XtraEditors.XtraUserControl, 
+        Interfaces.IModule, Interfaces.IModulePrintAndExport, Interfaces.IAnalysisMap
     {
         [Browsable(false)]
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
+        public Enums.MapValueDataMemberEnum MapValueDataMember { get; private set; }
 
-        public ResultsModule()
+        public AnalysisModule()
         {
             InitializeComponent();
         }
@@ -26,60 +27,39 @@ namespace Wamby.Client.Modules
         public void InitializeControl(API.Services.FileSystemScanService scanService)
         {
             FileSystemScanService = scanService;
-            resultsTreeList.StateImageList = Helpers.UIHelper.GetResultsItemTypeImageCollection();
             Initialized = true;
             setEventHandlers();
         }
 
         private void setEventHandlers()
         {
-            resultsTreeList.GetStateImage += ResultsTreeList_GetStateImage;
-        }
-
-        private void ResultsTreeList_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
-        {
-            var isfolder = Convert.ToBoolean(e.Node.GetValue("IsFolder"));
-            e.NodeImageIndex = isfolder ? 0 : 1;
+            
         }
 
         public void RefreshModuleData()
         {
-            resultsBindingSource.DataSource = FileSystemScanService.ScanResult.WambyFolderInfo.AllFolders;
+            resultsBindingSource.DataSource = FileSystemScanService.ScanResult.WambyFolderInfo.AllFiles;
         }
 
         public void Print()
         {
-            resultsTreeList.ShowRibbonPrintPreview();
+            pivotGridControl.ShowRibbonPrintPreview();
         }
 
         public void ExportToXls()
         {
             var filename = FileSystemScanService.GetTempFileName("xlsx");
-            resultsTreeList.ExportToXlsx(filename);
+            pivotGridControl.ExportToXlsx(filename);
             System.Diagnostics.Process.Start(filename);
         }
 
         public void ExportToPdf()
         {
             var filename = FileSystemScanService.GetTempFileName("pdf");
-            resultsTreeList.ExportToPdf(filename);
+            pivotGridControl.ExportToPdf(filename);
             System.Diagnostics.Process.Start(filename);
         }
 
-        public void ExpandTree()
-        {
-            resultsTreeList.ExpandAll();
-        }
-
-        public void ExpandTreeToLevel(int level)
-        {
-            CollapseTree();
-            resultsTreeList.ExpandToLevel(level);
-        }
-
-        public void CollapseTree()
-        {
-            resultsTreeList.CollapseAll();
-        }
     }
+
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -11,8 +12,8 @@ namespace Wamby.API.Services
 {
     public class FileSystemScanService
     {
-        public event EventHandler<FolderEventArgs> ScanningFolder;
-        public event EventHandler<FileSystemInfoEventArgs> ErrorReadingFileSystemInfo;
+        public event EventHandler<WambyFolderEventArgs> ScanningFolder;
+        public event EventHandler<WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfo;
         public event EventHandler CancelledByUser;
         public bool Cancelled { get; private set; }
         System.Threading.CancellationTokenSource CancellationToken;
@@ -39,14 +40,14 @@ namespace Wamby.API.Services
             var clock = new System.Diagnostics.Stopwatch();
             clock.Restart();
             var f = await Task.Run(() => ScanFolder(BaseFolder));
-            ScanResult.FolderInfo = f;
-            ScanResult.FolderInfo.AllFolders = ScanResult.FolderInfo.Folders.
+            ScanResult.WambyFolderInfo = f;
+            ScanResult.WambyFolderInfo.AllFolders = ScanResult.WambyFolderInfo.Folders.
                 Where(p => p.IsFolder).SelectManyRecursive(p => p.Folders).ToList();
-            ScanResult.FolderInfo.AllFolders.Add(ScanResult.FolderInfo);
-            if (ScanResult.FolderInfo.Files.Count > 0)
-                ScanResult.FolderInfo.AllFolders.Add(AddCurrentFolderFileSummary(ScanResult.FolderInfo));
-            var allfiles = ScanResult.FolderInfo.AllFolders.SelectMany(p => p.Files);
-            ScanResult.FolderInfo.AllFiles.AddRange(allfiles);
+            ScanResult.WambyFolderInfo.AllFolders.Add(ScanResult.WambyFolderInfo);
+            if (ScanResult.WambyFolderInfo.Files.Count > 0)
+                ScanResult.WambyFolderInfo.AllFolders.Add(AddCurrentFolderFileSummary(ScanResult.WambyFolderInfo));
+            var allfiles = ScanResult.WambyFolderInfo.AllFolders.SelectMany(p => p.Files);
+            ScanResult.WambyFolderInfo.AllFiles.AddRange(allfiles);
             clock.Stop();
             ScanResult.ElapsedTime = clock.Elapsed;
             return ScanResult;
@@ -57,14 +58,19 @@ namespace Wamby.API.Services
             CancellationToken.Cancel();
         }
         
-        private Core.Model.FolderInfo ScanFolder(DirectoryInfo currentDirectoryInfo)
+        private Core.Model.WambyFolderInfo ScanFolder(DirectoryInfo currentDirectoryInfo)
         {
-            var currentFolderInfo = new Core.Model.FolderInfo()
+            var currentFolderInfo = new Core.Model.WambyFolderInfo()
             {
                 DirectoryInfo = currentDirectoryInfo,
                 FullName = currentDirectoryInfo.FullName,
+                Name = currentDirectoryInfo.Name,
                 ParentFullName = currentDirectoryInfo.Parent?.FullName,
                 IsFolder = true,
+                CreationTime = currentDirectoryInfo.CreationTime,
+                LastAccessTime = currentDirectoryInfo.LastAccessTime,
+                LastWriteTime = currentDirectoryInfo.LastWriteTime,
+                OwnerName = GetOwner(currentDirectoryInfo),
                 Level = currentDirectoryInfo.FullName.Replace(BaseFolder.FullName, string.Empty).Split('\\').Length - 1
             };
             if (Cancelled) return currentFolderInfo;
@@ -96,8 +102,22 @@ namespace Wamby.API.Services
                 {
                     _CurrentFileSystemInfo = file;
                     if (CheckIfCancellationRequested()) return currentFolderInfo;
-                    currentFolderInfo.Files.Add(file);
-                    currentFolderInfo.Length = currentFolderInfo.Files.Sum(p => p.Length);                    
+                    var wambyfile = new Core.Model.WambyFileInfo()
+                    {
+                        FullName = file.FullName,
+                        Name = file.Name,
+                        Length = file.Length,
+                        CreationTime = file.CreationTime,
+                        LastAccessTime = file.LastAccessTime,
+                        LastWriteTime = file.LastWriteTime,
+                        Extension = file.Extension,
+                        ParentFullName = file.DirectoryName,
+                        FileInfo = file,
+                        OwnerName = GetOwner(file)
+                    };
+                    currentFolderInfo.Files.Add(wambyfile);
+                    currentFolderInfo.Length = currentFolderInfo.Files.Sum(p => p.Length);
+                    var on = GetOwner(file);
                 }
                 if (currentFolderInfo.Files.Count > 0)
                     currentFolderInfo.Folders.Add(AddCurrentFolderFileSummary(currentFolderInfo));
@@ -120,19 +140,24 @@ namespace Wamby.API.Services
             }
         }
 
-        private Core.Model.FolderInfo AddCurrentFolderFileSummary(Core.Model.FolderInfo currentFolderInfo)
+        private Core.Model.WambyFolderInfo AddCurrentFolderFileSummary(Core.Model.WambyFolderInfo currentFolderInfo)
         {
-            var currentFolderFilesSummaryInfo = new Core.Model.FolderInfo()
+            var currentFolderFilesSummaryInfo = new Core.Model.WambyFolderInfo()
             {
                 DirectoryInfo = new DirectoryInfo(currentFolderInfo.FullName),
                 FullName = $"Files in: {currentFolderInfo.FullName}",
                 ParentFullName = currentFolderInfo.FullName,
+                Name = currentFolderInfo.Name,
                 IsFolder = false,
                 Level = currentFolderInfo.FullName.Replace(BaseFolder.FullName, string.Empty).Split('\\').Length - 1,
                 Length = currentFolderInfo.Files.Sum(p => p.Length),
                 FilesCount = currentFolderInfo.Files.Count,
                 DeepLength = currentFolderInfo.Files.Sum(p => p.Length),
-                DeepFilesCount = currentFolderInfo.Files.Count
+                DeepFilesCount = currentFolderInfo.Files.Count,
+                CreationTime = currentFolderInfo.CreationTime,
+                LastAccessTime = currentFolderInfo.LastAccessTime,
+                LastWriteTime = currentFolderInfo.LastWriteTime,
+                OwnerName = GetOwner(currentFolderInfo.DirectoryInfo),
             };
             return currentFolderFilesSummaryInfo;           
         }
@@ -144,15 +169,16 @@ namespace Wamby.API.Services
                 p.FileSystemInfo.FullName == currentFileSystemInfo.FullName);
         }
 
-        private void RaiseEventScanningFolder(Core.Model.FolderInfo currentFolderInfo)
+        private void RaiseEventScanningFolder(Core.Model.WambyFolderInfo currentFolderInfo)
         {
             if(currentFolderInfo.Level < ScanOptions.ShowMinimumFolderLevelInLog)
-                ScanningFolder?.Invoke(this, new FolderEventArgs() { FolderInfo = currentFolderInfo });
+                ScanningFolder?.Invoke(this, new WambyFolderEventArgs() { WambyFolderInfo = currentFolderInfo });
         }
 
         private void RaiseEventErrorReadingFileSystemInfo(FileSystemInfo currentItem)
         {
-            ErrorReadingFileSystemInfo?.Invoke(this, new FileSystemInfoEventArgs() { FileSystemItem = currentItem });
+            ErrorReadingFileSystemInfo?.Invoke(this, new WambyFileSystemInfoEventArgs()
+                { WambyFileSystemItem = currentItem });
         }
 
         private bool CheckIfCancellationRequested()
@@ -193,6 +219,22 @@ namespace Wamby.API.Services
                 AddExceptionToResult(ex, _CurrentFileSystemInfo);
                 throw;
             }
+        }
+
+        public string GetOwner(FileInfo file)
+        {
+            var fs = file.GetAccessControl();
+            var sid = fs.GetOwner(typeof(System.Security.Principal.SecurityIdentifier));
+            var ntAccount = sid.Translate(typeof(System.Security.Principal.NTAccount));
+            return ntAccount.ToString();
+        }
+
+        public string GetOwner(DirectoryInfo folder)
+        {
+            var fs = folder.GetAccessControl();
+            var sid = fs.GetOwner(typeof(System.Security.Principal.SecurityIdentifier));
+            var ntAccount = sid.Translate(typeof(System.Security.Principal.NTAccount));
+            return ntAccount.ToString();
         }
 
         public string GetTempFileName(string extension)

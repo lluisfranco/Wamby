@@ -45,7 +45,14 @@
             this.barButtonItemExpandLevel5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItemLayoutAlgorithm = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItemLayoutAlgorithmSliceAndDice = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemLayoutAlgorithmSquarified = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemLayoutAlgorithmStriped = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItemDirection = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItemDirectionBottomLeftToTopRight = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDirectionBottomRightToTopLeft = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDirectionTopLeftToBottomRight = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDirectionTopRightToBottomLeft = new DevExpress.XtraBars.BarButtonItem();
             this.barCheckItemMapBySize = new DevExpress.XtraBars.BarCheckItem();
             this.barCheckItemMapByFilesCount = new DevExpress.XtraBars.BarCheckItem();
             this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -67,12 +74,14 @@
             this.tabPageErrors = new DevExpress.XtraTab.XtraTabPage();
             this.tabPageSchedule = new DevExpress.XtraTab.XtraTabPage();
             this.tabPageSettings = new DevExpress.XtraTab.XtraTabPage();
+            this.analysisModule = new Wamby.Client.Modules.AnalysisModule();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabPageNewScan.SuspendLayout();
             this.tabPageResults.SuspendLayout();
             this.tabPageMap.SuspendLayout();
+            this.tabPageAnalysis.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbon
@@ -98,9 +107,16 @@
             this.barSubItemLayoutAlgorithm,
             this.barSubItemDirection,
             this.barCheckItemMapBySize,
-            this.barCheckItemMapByFilesCount});
+            this.barCheckItemMapByFilesCount,
+            this.barButtonItemLayoutAlgorithmSliceAndDice,
+            this.barButtonItemLayoutAlgorithmSquarified,
+            this.barButtonItemLayoutAlgorithmStriped,
+            this.barButtonItemDirectionBottomLeftToTopRight,
+            this.barButtonItemDirectionBottomRightToTopLeft,
+            this.barButtonItemDirectionTopLeftToBottomRight,
+            this.barButtonItemDirectionTopRightToBottomLeft});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 22;
+            this.ribbon.MaxItemId = 30;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -223,14 +239,65 @@
             this.barSubItemLayoutAlgorithm.Caption = "Layout algorithm";
             this.barSubItemLayoutAlgorithm.Id = 18;
             this.barSubItemLayoutAlgorithm.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_Layout;
+            this.barSubItemLayoutAlgorithm.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemLayoutAlgorithmSliceAndDice),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemLayoutAlgorithmSquarified),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemLayoutAlgorithmStriped)});
             this.barSubItemLayoutAlgorithm.Name = "barSubItemLayoutAlgorithm";
+            // 
+            // barButtonItemLayoutAlgorithmSliceAndDice
+            // 
+            this.barButtonItemLayoutAlgorithmSliceAndDice.Caption = "Slice And Dice";
+            this.barButtonItemLayoutAlgorithmSliceAndDice.Id = 23;
+            this.barButtonItemLayoutAlgorithmSliceAndDice.Name = "barButtonItemLayoutAlgorithmSliceAndDice";
+            // 
+            // barButtonItemLayoutAlgorithmSquarified
+            // 
+            this.barButtonItemLayoutAlgorithmSquarified.Caption = "Squarified";
+            this.barButtonItemLayoutAlgorithmSquarified.Id = 24;
+            this.barButtonItemLayoutAlgorithmSquarified.Name = "barButtonItemLayoutAlgorithmSquarified";
+            // 
+            // barButtonItemLayoutAlgorithmStriped
+            // 
+            this.barButtonItemLayoutAlgorithmStriped.Caption = "Striped";
+            this.barButtonItemLayoutAlgorithmStriped.Id = 25;
+            this.barButtonItemLayoutAlgorithmStriped.Name = "barButtonItemLayoutAlgorithmStriped";
             // 
             // barSubItemDirection
             // 
             this.barSubItemDirection.Caption = "Direction";
             this.barSubItemDirection.Id = 19;
             this.barSubItemDirection.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_Direction;
+            this.barSubItemDirection.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDirectionBottomLeftToTopRight),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDirectionBottomRightToTopLeft),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDirectionTopLeftToBottomRight),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDirectionTopRightToBottomLeft)});
             this.barSubItemDirection.Name = "barSubItemDirection";
+            // 
+            // barButtonItemDirectionBottomLeftToTopRight
+            // 
+            this.barButtonItemDirectionBottomLeftToTopRight.Caption = "Bottom Left To Top Right";
+            this.barButtonItemDirectionBottomLeftToTopRight.Id = 26;
+            this.barButtonItemDirectionBottomLeftToTopRight.Name = "barButtonItemDirectionBottomLeftToTopRight";
+            // 
+            // barButtonItemDirectionBottomRightToTopLeft
+            // 
+            this.barButtonItemDirectionBottomRightToTopLeft.Caption = "Bottom Right To Top Left";
+            this.barButtonItemDirectionBottomRightToTopLeft.Id = 27;
+            this.barButtonItemDirectionBottomRightToTopLeft.Name = "barButtonItemDirectionBottomRightToTopLeft";
+            // 
+            // barButtonItemDirectionTopLeftToBottomRight
+            // 
+            this.barButtonItemDirectionTopLeftToBottomRight.Caption = "Top Left To Bottom Right";
+            this.barButtonItemDirectionTopLeftToBottomRight.Id = 28;
+            this.barButtonItemDirectionTopLeftToBottomRight.Name = "barButtonItemDirectionTopLeftToBottomRight";
+            // 
+            // barButtonItemDirectionTopRightToBottomLeft
+            // 
+            this.barButtonItemDirectionTopRightToBottomLeft.Caption = "Top Right To Bottom Left";
+            this.barButtonItemDirectionTopRightToBottomLeft.Id = 29;
+            this.barButtonItemDirectionTopRightToBottomLeft.Name = "barButtonItemDirectionTopRightToBottomLeft";
             // 
             // barCheckItemMapBySize
             // 
@@ -385,6 +452,7 @@
             // 
             // tabPageAnalysis
             // 
+            this.tabPageAnalysis.Controls.Add(this.analysisModule);
             this.tabPageAnalysis.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analyze;
             this.tabPageAnalysis.Name = "tabPageAnalysis";
             this.tabPageAnalysis.Size = new System.Drawing.Size(1221, 591);
@@ -411,6 +479,14 @@
             this.tabPageSettings.Size = new System.Drawing.Size(1221, 591);
             this.tabPageSettings.Text = "Settings";
             // 
+            // analysisModule
+            // 
+            this.analysisModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.analysisModule.Location = new System.Drawing.Point(0, 0);
+            this.analysisModule.Name = "analysisModule";
+            this.analysisModule.Size = new System.Drawing.Size(1221, 591);
+            this.analysisModule.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -428,6 +504,7 @@
             this.tabPageNewScan.ResumeLayout(false);
             this.tabPageResults.ResumeLayout(false);
             this.tabPageMap.ResumeLayout(false);
+            this.tabPageAnalysis.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,5 +551,13 @@
         private DevExpress.XtraBars.BarSubItem barSubItemDirection;
         private DevExpress.XtraBars.BarCheckItem barCheckItemMapBySize;
         private DevExpress.XtraBars.BarCheckItem barCheckItemMapByFilesCount;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemLayoutAlgorithmSliceAndDice;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemLayoutAlgorithmSquarified;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemLayoutAlgorithmStriped;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDirectionBottomLeftToTopRight;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDirectionBottomRightToTopLeft;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDirectionTopLeftToBottomRight;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDirectionTopRightToBottomLeft;
+        private Modules.AnalysisModule analysisModule;
     }
 }

@@ -9,4 +9,4 @@ namespace Wamby.Client.Interfaces
         void SetLayoutAlgorithm(Enums.MapLayoutAlgorithmEnum layoutAlgorithm);
         void SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection layoutAlgorithmDirection);
     }
-}
+    }

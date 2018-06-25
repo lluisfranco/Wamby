@@ -6,9 +6,4 @@ namespace Wamby.Client.Enums
     {
         SliceAndDice, Squarified, Striped
     }
-
-    public enum MapLayoutAlgorithmDirectionEnum
-    {
-        BottomLeftToTopRight, BottomRightToTopLeft, TopLeftToBottomRight, TopRightToBottomLeft
-    }
 }

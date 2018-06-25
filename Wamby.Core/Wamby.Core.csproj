@@ -41,10 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\IEnumerableExtensions.cs" />
-    <Compile Include="Model\FolderInfo.cs" />
+    <Compile Include="Model\WambyFileInfo.cs" />
     <Compile Include="Model\ScanException.cs" />
     <Compile Include="Model\ScanOptions.cs" />
     <Compile Include="Model\ScanResult.cs" />
+    <Compile Include="Model\WambyFileSystemItem.cs" />
+    <Compile Include="Model\WambyFolderInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

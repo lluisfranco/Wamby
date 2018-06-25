@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.TreeMap.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -44,6 +45,7 @@
     <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPivotGrid.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeMap.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -60,10 +62,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\MapLayoutAlgorithmDirectionEnum.cs" />
     <Compile Include="Enums\MapLayoutAlgorithmEnum.cs" />
     <Compile Include="Enums\MapValueDataMemberEnum.cs" />
     <Compile Include="Extensions\OverlayExtensions.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
+    <Compile Include="Interfaces\IAnalysisMap.cs" />
     <Compile Include="Interfaces\IFileSystemScanService.cs" />
     <Compile Include="Interfaces\IModule.cs" />
     <Compile Include="Interfaces\IModuleMap.cs" />
@@ -76,6 +80,12 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\FileMapInfo.cs" />
+    <Compile Include="Modules\AnalysisModule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\AnalysisModule.Designer.cs">
+      <DependentUpon>AnalysisModule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modules\NewScanModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -106,6 +116,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Modules\AnalysisModule.resx">
+      <DependentUpon>AnalysisModule.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modules\NewScanModule.resx">
       <DependentUpon>NewScanModule.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +143,7 @@
       <DependentUpon>MainForm2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Wamby.Core.Model.FolderInfo.datasource" />
+    <None Include="Properties\DataSources\Wamby.Core.Model.WambyFileInfo.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
