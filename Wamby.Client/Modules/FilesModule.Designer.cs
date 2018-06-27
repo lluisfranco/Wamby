@@ -57,6 +57,8 @@
             this.colLengthInKB.FieldName = "LengthInKB";
             this.colLengthInKB.Name = "colLengthInKB";
             this.colLengthInKB.OptionsColumn.ReadOnly = true;
+            this.colLengthInKB.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "LengthInKB", "{0:n0}")});
             this.colLengthInKB.Visible = true;
             this.colLengthInKB.VisibleIndex = 1;
             this.colLengthInKB.Width = 51;
@@ -102,10 +104,15 @@
             gridFormatRule1.Rule = formatConditionRuleDataBar1;
             this.gridViewFiles.FormatRules.Add(gridFormatRule1);
             this.gridViewFiles.GridControl = this.gridControlFiles;
+            this.gridViewFiles.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Extension", null, "({0} items)")});
             this.gridViewFiles.Name = "gridViewFiles";
             this.gridViewFiles.OptionsBehavior.Editable = false;
             this.gridViewFiles.OptionsFind.AlwaysVisible = true;
             this.gridViewFiles.OptionsMenu.ShowConditionalFormattingItem = true;
+            this.gridViewFiles.OptionsView.ShowFooter = true;
+            this.gridViewFiles.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewFiles.OptionsView.ShowIndicator = false;
             this.gridViewFiles.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
             new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colFullName, DevExpress.Data.ColumnSortOrder.Ascending)});
             // 

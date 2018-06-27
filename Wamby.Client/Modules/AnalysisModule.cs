@@ -33,12 +33,30 @@ namespace Wamby.Client.Modules
 
         private void setEventHandlers()
         {
-            
+            columnsImageComboBoxEdit.SelectedIndexChanged += ColumnsImageComboBoxEdit_SelectedIndexChanged;
         }
 
         public void RefreshModuleData()
         {
             resultsBindingSource.DataSource = FileSystemScanService.ScanResult.WambyFolderInfo.AllFiles;
+            AddColumnsToPropertiesList();
+        }
+
+        private void AddColumnsToPropertiesList()
+        {
+            columnsImageComboBoxEdit.Properties.Items.Clear();
+            foreach (DevExpress.XtraPivotGrid.PivotGridField f in pivotGridControl.Fields)
+            {
+                columnsImageComboBoxEdit.Properties.Items.Add(f.Caption, f.Name, 0);
+            }
+            if(columnsImageComboBoxEdit.Properties.Items.Count > 0)
+                columnsImageComboBoxEdit.SelectedIndex = 0;
+        }
+
+        private void ColumnsImageComboBoxEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var f = pivotGridControl.Fields[columnsImageComboBoxEdit.SelectedIndex];
+            propertyGridControl.SelectedObject = f;
         }
 
         public void Print()
