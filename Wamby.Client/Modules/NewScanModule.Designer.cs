@@ -43,6 +43,7 @@
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions3 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions4 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions5 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewScanModule));
             this.scanOptionsGroupControl = new DevExpress.XtraEditors.GroupControl();
             this.includeSubfoldersCheckEdit = new DevExpress.XtraEditors.CheckEdit();
             this.searchPatternButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
@@ -152,19 +153,19 @@
             // 
             this.resultsGroupControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            buttonImageOptions2.SvgImage = global::Wamby.Client.Properties.Resources.Results;
+            buttonImageOptions2.SvgImage = global::Wamby.Client.Properties.Resources.mainResultsModule;
             buttonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
-            buttonImageOptions3.SvgImage = global::Wamby.Client.Properties.Resources.Map;
+            buttonImageOptions3.SvgImage = global::Wamby.Client.Properties.Resources.mainMapModule;
             buttonImageOptions3.SvgImageSize = new System.Drawing.Size(16, 16);
-            buttonImageOptions4.SvgImage = global::Wamby.Client.Properties.Resources.Analyze;
+            buttonImageOptions4.SvgImage = global::Wamby.Client.Properties.Resources.mainAnalysisModule;
             buttonImageOptions4.SvgImageSize = new System.Drawing.Size(16, 16);
-            buttonImageOptions5.SvgImage = global::Wamby.Client.Properties.Resources.Errors;
+            buttonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions5.SvgImage")));
             buttonImageOptions5.SvgImageSize = new System.Drawing.Size(16, 16);
             this.resultsGroupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("View results", true, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("See a map of the results", true, buttonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Analyze results in depth", true, buttonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("No errors", true, buttonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, null, -1)});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("View results", true, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, "tabPageResults", -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("See a map of the results", true, buttonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, "tabPageMap", -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Analyze results in depth", true, buttonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, "tabPageAnalysis", -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("No errors", true, buttonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, "tabPageErrors", -1)});
             this.resultsGroupControl.Location = new System.Drawing.Point(3, 277);
             this.resultsGroupControl.Name = "resultsGroupControl";
             this.resultsGroupControl.Size = new System.Drawing.Size(768, 27);

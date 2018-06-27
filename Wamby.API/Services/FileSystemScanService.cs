@@ -110,7 +110,7 @@ namespace Wamby.API.Services
                         CreationTime = file.CreationTime,
                         LastAccessTime = file.LastAccessTime,
                         LastWriteTime = file.LastWriteTime,
-                        Extension = file.Extension,
+                        Extension = file.Extension.ToLower(),
                         ParentFullName = file.DirectoryName,
                         FileInfo = file,
                         OwnerName = GetOwner(file)

@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraSplashScreen;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wamby.Client.Extensions;
@@ -12,9 +13,13 @@ namespace Wamby.Client.Modules
     {
         public event EventHandler StartingScan;
         public event EventHandler EndingScan;
+        public event EventHandler<Args.GotoTabButtonEventArgs> GotoTabButtonClicked;
+
         [Browsable(false)]
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
+        Timer timer = new Timer();
+        Stopwatch clock = new Stopwatch();
         public NewScanModule()
         {
             InitializeComponent();
@@ -39,8 +44,15 @@ namespace Wamby.Client.Modules
             FileSystemScanService.ScanningFolder += FileSystemScanService_ScanningFolder;
             FileSystemScanService.ErrorReadingFileSystemInfo -= FileSystemScanService_ErrorReadingFileSystemInfo;
             FileSystemScanService.ErrorReadingFileSystemInfo += FileSystemScanService_ErrorReadingFileSystemInfo;
+            resultsGroupControl.CustomButtonClick += ResultsGroupControl_CustomButtonClick;
             Initialized = true;
             setEventHandlers();
+        }
+
+        private void ResultsGroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
+        {
+            GotoTabButtonClicked?.Invoke(this, new Args.GotoTabButtonEventArgs()
+                { TabName = e.Button.Properties.Tag.ToString() });
         }
 
         private void setEventHandlers()
@@ -48,8 +60,11 @@ namespace Wamby.Client.Modules
             newScanPathButtonEdit.ButtonClick += NewScanPathButtonEdit_ButtonClick;
             scanLogGroupControl.CustomButtonClick += ScanLogGroupControl_CustomButtonClick;
             newScanPathButtonEdit.KeyDown += NewScanPathButtonEdit_KeyDown;
+            timer.Enabled = false;
+            timer.Interval = 500;
+            timer.Tick += Timer_Tick;
         }
-
+        
         private void ScanLogGroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
             if(e.Button.Properties.Caption == "Cancel") FileSystemScanService?.Cancel();
@@ -150,17 +165,20 @@ namespace Wamby.Client.Modules
 
         void StartScan()
         {
+            clock.Restart();
+            timer.Enabled = true;
             StartingScan?.Invoke(this, new EventArgs());
             logListBoxControl.Items.Clear();
             AddMessageToLog(
                 $"Started scan at {DateTime.Now.ToShortTimeString()}", 
                 string.Empty, Properties.Resources.Log_Info);
-            resultsGroupControl.CustomHeaderButtons[0].Properties.Caption = "Scanning...";
             ActivateUI(false);
         }
 
         void EndScan()
         {
+            clock.Stop();
+            timer.Enabled = false;
             AddMessageToLog(
                 $"Finished scan. Ellapsed time: " +
                 $"{FileSystemScanService.ScanResult.ElapsedTime.TotalMilliseconds.ToString("n2")}ms.", string.Empty, Properties.Resources.Log_Info);
@@ -193,6 +211,12 @@ namespace Wamby.Client.Modules
             searchPatternButtonEdit.ReadOnly = !activated;
             includeSubfoldersCheckEdit.ReadOnly = !activated;
             scanLogGroupControl.CustomHeaderButtons["Cancel"].Properties.Visible = !activated;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            var sec = clock.ElapsedMilliseconds / 1000;
+            if(sec > 0) resultsGroupControl.CustomHeaderButtons[0].Properties.Caption = $"Scanning...{sec} sec.";
         }
 
         public void RefreshModuleData()

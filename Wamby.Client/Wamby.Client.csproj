@@ -44,6 +44,7 @@
     <Reference Include="DevExpress.Xpo.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPivotGrid.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -66,10 +67,12 @@
     <Compile Include="Enums\MapLayoutAlgorithmEnum.cs" />
     <Compile Include="Enums\MapValueDataMemberEnum.cs" />
     <Compile Include="Extensions\OverlayExtensions.cs" />
+    <Compile Include="Args\GotoTabButtonEventArgs.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Interfaces\IAnalysisMap.cs" />
     <Compile Include="Interfaces\IFileSystemScanService.cs" />
     <Compile Include="Interfaces\IModule.cs" />
+    <Compile Include="Interfaces\IModuleFiles.cs" />
     <Compile Include="Interfaces\IModuleMap.cs" />
     <Compile Include="Interfaces\IModulePrintAndExport.cs" />
     <Compile Include="Interfaces\IModuleResults.cs" />
@@ -98,6 +101,12 @@
     <Compile Include="Modules\MapModule.Designer.cs">
       <DependentUpon>MapModule.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modules\FilesModule.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Modules\FilesModule.Designer.cs">
+      <DependentUpon>FilesModule.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modules\ResultsModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -124,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\MapModule.resx">
       <DependentUpon>MapModule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\FilesModule.resx">
+      <DependentUpon>FilesModule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\ResultsModule.resx">
       <DependentUpon>ResultsModule.cs</DependentUpon>
@@ -232,6 +244,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Map_Direction.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mainResultsModule.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mainMapModule.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mainAnalysisModule.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
