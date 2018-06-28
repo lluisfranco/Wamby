@@ -31,8 +31,9 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilesModule));
             this.colLengthInKB = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.resultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.filesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridControlFiles = new DevExpress.XtraGrid.GridControl();
             this.gridViewFiles = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colExtension = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -73,10 +74,12 @@
             this.barCheckItemMapByFilesCount = new DevExpress.XtraBars.BarCheckItem();
             this.barCheckItemShowProperties = new DevExpress.XtraBars.BarCheckItem();
             this.barCheckItemShowChart = new DevExpress.XtraBars.BarCheckItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemShowColumnList = new DevExpress.XtraBars.BarButtonItem();
+            this.barCheckItemShowFooter = new DevExpress.XtraBars.BarCheckItem();
+            this.barButtonItemSearch = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
@@ -96,13 +99,13 @@
             this.colLengthInKB.VisibleIndex = 1;
             this.colLengthInKB.Width = 51;
             // 
-            // resultsBindingSource
+            // filesBindingSource
             // 
-            this.resultsBindingSource.DataSource = typeof(Wamby.Core.Model.WambyFileInfo);
+            this.filesBindingSource.DataSource = typeof(Wamby.Core.Model.WambyFileInfo);
             // 
             // gridControlFiles
             // 
-            this.gridControlFiles.DataSource = this.resultsBindingSource;
+            this.gridControlFiles.DataSource = this.filesBindingSource;
             this.gridControlFiles.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControlFiles.EmbeddedNavigator.Buttons.Append.Visible = false;
             this.gridControlFiles.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
@@ -141,7 +144,6 @@
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Extension", null, "({0} items)")});
             this.gridViewFiles.Name = "gridViewFiles";
             this.gridViewFiles.OptionsBehavior.Editable = false;
-            this.gridViewFiles.OptionsFind.AlwaysVisible = true;
             this.gridViewFiles.OptionsMenu.ShowConditionalFormattingItem = true;
             this.gridViewFiles.OptionsView.ShowFooter = true;
             this.gridViewFiles.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
@@ -163,6 +165,8 @@
             // 
             this.colFullName.FieldName = "FullName";
             this.colFullName.Name = "colFullName";
+            this.colFullName.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "FullName", "{0}")});
             this.colFullName.Visible = true;
             this.colFullName.VisibleIndex = 0;
             this.colFullName.Width = 214;
@@ -255,9 +259,11 @@
             this.barButtonItemDirectionTopRightToBottomLeft,
             this.barCheckItemShowProperties,
             this.barCheckItemShowChart,
-            this.barButtonItem1});
+            this.barButtonItemShowColumnList,
+            this.barCheckItemShowFooter,
+            this.barButtonItemSearch});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 33;
+            this.ribbon.MaxItemId = 35;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -476,11 +482,28 @@
             this.barCheckItemShowChart.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Chart;
             this.barCheckItemShowChart.Name = "barCheckItemShowChart";
             // 
-            // barButtonItem1
+            // barButtonItemShowColumnList
             // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 32;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItemShowColumnList.Caption = "Show columns list";
+            this.barButtonItemShowColumnList.Id = 32;
+            this.barButtonItemShowColumnList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemShowColumnList.ImageOptions.SvgImage")));
+            this.barButtonItemShowColumnList.Name = "barButtonItemShowColumnList";
+            // 
+            // barCheckItemShowFooter
+            // 
+            this.barCheckItemShowFooter.BindableChecked = true;
+            this.barCheckItemShowFooter.Caption = "Show footer";
+            this.barCheckItemShowFooter.Checked = true;
+            this.barCheckItemShowFooter.Id = 33;
+            this.barCheckItemShowFooter.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Show_Footer;
+            this.barCheckItemShowFooter.Name = "barCheckItemShowFooter";
+            // 
+            // barButtonItemSearch
+            // 
+            this.barButtonItemSearch.Caption = "Search";
+            this.barButtonItemSearch.Id = 34;
+            this.barButtonItemSearch.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSearch.ImageOptions.SvgImage")));
+            this.barButtonItemSearch.Name = "barButtonItemSearch";
             // 
             // ribbonPageMain
             // 
@@ -491,7 +514,9 @@
             // 
             // ribbonPageGroupFiles
             // 
-            this.ribbonPageGroupFiles.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroupFiles.ItemLinks.Add(this.barButtonItemShowColumnList);
+            this.ribbonPageGroupFiles.ItemLinks.Add(this.barButtonItemSearch);
+            this.ribbonPageGroupFiles.ItemLinks.Add(this.barCheckItemShowFooter);
             this.ribbonPageGroupFiles.Name = "ribbonPageGroupFiles";
             this.ribbonPageGroupFiles.Text = "Files Main";
             // 
@@ -503,7 +528,7 @@
             this.Controls.Add(this.ribbon);
             this.Name = "FilesModule";
             this.Size = new System.Drawing.Size(610, 396);
-            ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
@@ -513,7 +538,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.BindingSource resultsBindingSource;
+        private System.Windows.Forms.BindingSource filesBindingSource;
         private DevExpress.XtraGrid.GridControl gridControlFiles;
         private DevExpress.XtraGrid.Views.Grid.GridView gridViewFiles;
         private DevExpress.XtraGrid.Columns.GridColumn colExtension;
@@ -555,8 +580,10 @@
         private DevExpress.XtraBars.BarCheckItem barCheckItemMapByFilesCount;
         private DevExpress.XtraBars.BarCheckItem barCheckItemShowProperties;
         private DevExpress.XtraBars.BarCheckItem barCheckItemShowChart;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemShowColumnList;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageMain;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupFiles;
+        private DevExpress.XtraBars.BarCheckItem barCheckItemShowFooter;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemSearch;
     }
 }

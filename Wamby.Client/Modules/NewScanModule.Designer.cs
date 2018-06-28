@@ -200,10 +200,10 @@
             buttonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions5.SvgImage")));
             buttonImageOptions5.SvgImageSize = new System.Drawing.Size(16, 16);
             this.resultsGroupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("View results", true, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, "tabPageResults", -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("See a map of the results", true, buttonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, "tabPageMap", -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Analyze results in depth", true, buttonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, "tabPageAnalysis", -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("No errors", true, buttonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, "tabPageErrors", -1)});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("", true, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, "tabPageResults", -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("See a map of the results", true, buttonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, "tabPageMap", -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Analyze results in depth", true, buttonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, "tabPageAnalysis", -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("No errors", true, buttonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, "tabPageErrors", -1)});
             this.resultsGroupControl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.resultsGroupControl.Location = new System.Drawing.Point(0, 280);
             this.resultsGroupControl.Name = "resultsGroupControl";

@@ -169,6 +169,7 @@
       <DependentUpon>MainRibbonForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Wamby.Core.Model.FolderInfo.datasource" />
+    <None Include="Properties\DataSources\Wamby.Core.Model.ScanException.datasource" />
     <None Include="Properties\DataSources\Wamby.Core.Model.WambyFileInfo.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -285,6 +286,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Select_None.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Show_Footer.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

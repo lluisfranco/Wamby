@@ -33,12 +33,29 @@ namespace Wamby.Client.Modules
 
         private void setEventHandlers()
         {
-            
+            barButtonItemShowColumnList.ItemClick += BarButtonItemShowColumnList_ItemClick;
+            barButtonItemSearch.ItemClick += BarButtonItemSearch_ItemClick;
+            barCheckItemShowFooter.CheckedChanged += BarCheckItemShowFooter_CheckedChanged;
+        }
+
+        private void BarButtonItemShowColumnList_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridViewFiles.ShowCustomization();
+        }
+
+        private void BarButtonItemSearch_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridViewFiles.ShowFindPanel();
+        }
+
+        private void BarCheckItemShowFooter_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            gridViewFiles.OptionsView.ShowFooter = barCheckItemShowFooter.Checked;
         }
 
         public void RefreshModuleData()
         {
-            resultsBindingSource.DataSource = FileSystemScanService.ScanResult.WambyFolderInfo.AllFiles;
+            filesBindingSource.DataSource = FileSystemScanService.ScanResult.WambyFolderInfo.AllFiles;
         }
 
         public void Print()

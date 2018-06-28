@@ -333,6 +333,16 @@ namespace Wamby.Client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage Show_Footer {
+            get {
+                object obj = ResourceManager.GetObject("Show_Footer", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage Tree_Compress {
             get {
                 object obj = ResourceManager.GetObject("Tree_Compress", resourceCulture);

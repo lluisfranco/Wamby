@@ -188,6 +188,7 @@ namespace Wamby.Client.Modules
                 $"Started scan at {DateTime.Now.ToShortTimeString()}", 
                 string.Empty, Properties.Resources.Log_Info);
             ActivateUI(false);
+            resultsGroupControl.CustomHeaderButtons[0].Properties.Visible = true;
         }
 
         void EndScan()
@@ -196,7 +197,7 @@ namespace Wamby.Client.Modules
             timer.Enabled = false;
             AddMessageToLog(
                 $"Finished scan. Ellapsed time: " +
-                $"{FileSystemScanService.ScanResult.ElapsedTime.TotalMilliseconds.ToString("n2")}ms.", string.Empty, Properties.Resources.Log_Info);
+                $"{FileSystemScanService.ScanResult.ElapsedTime.TotalSeconds.ToString("n2")} sec.", string.Empty, Properties.Resources.Log_Info);
             ActivateUI(true);
             UpdateResults();
             EndingScan?.Invoke(this, new EventArgs());

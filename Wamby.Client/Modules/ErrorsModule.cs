@@ -37,26 +37,26 @@ namespace Wamby.Client.Modules
 
         public void RefreshModuleData()
         {
-            resultsBindingSource.DataSource = FileSystemScanService.ScanResult.WambyFolderInfo.AllFiles;
+            errorsBindingSource.DataSource = FileSystemScanService.ScanResult.ScanExceptions;
         }
 
         public void Print()
         {
-            //gridControlFiles.ShowRibbonPrintPreview();
+            gridViewErrors.ShowRibbonPrintPreview();
         }
 
         public void ExportToXls()
         {
-            //var filename = FileSystemScanService.GetTempFileName("xlsx");
-            //gridControlFiles.ExportToXlsx(filename);
-            //System.Diagnostics.Process.Start(filename);
+            var filename = FileSystemScanService.GetTempFileName("xlsx");
+            gridViewErrors.ExportToXlsx(filename);
+            System.Diagnostics.Process.Start(filename);
         }
 
         public void ExportToPdf()
         {
-            //var filename = FileSystemScanService.GetTempFileName("pdf");
-            //gridControlFiles.ExportToPdf(filename);
-            //System.Diagnostics.Process.Start(filename);
+            var filename = FileSystemScanService.GetTempFileName("pdf");
+            gridViewErrors.ExportToPdf(filename);
+            System.Diagnostics.Process.Start(filename);
         }
 
     }

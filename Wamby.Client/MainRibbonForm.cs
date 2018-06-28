@@ -46,6 +46,7 @@ namespace Wamby.Client
             filesModule.InitializeControl(ViewModel.FileSystemScanService);
             mapModule.InitializeControl(ViewModel.FileSystemScanService);
             analysisModule.InitializeControl(ViewModel.FileSystemScanService);
+            errorsModule.InitializeControl(ViewModel.FileSystemScanService);
             ViewModel.CurrentModule = newScanModule;
             ShowCurrentModuleToolbars();
         }
@@ -62,6 +63,7 @@ namespace Wamby.Client
             filesModule.RefreshModuleData();
             mapModule.RefreshModuleData();
             analysisModule.RefreshModuleData();
+            errorsModule.RefreshModuleData();
         }
 
         private void EnablePages(bool enabled)

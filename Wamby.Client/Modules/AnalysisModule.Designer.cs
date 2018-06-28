@@ -44,6 +44,7 @@
             this.fieldParentFullName = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldOwnerName = new DevExpress.XtraPivotGrid.PivotGridField();
             this.dockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelProperties = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanel1_Container = new DevExpress.XtraBars.Docking.ControlContainer();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
@@ -86,10 +87,10 @@
             this.barButtonItemShowFieldList = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalysis = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
+            this.panelContainer1.SuspendLayout();
             this.dockPanelProperties.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl)).BeginInit();
@@ -100,7 +101,6 @@
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            this.panelContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pivotGridControl
@@ -235,6 +235,21 @@
             "DevExpress.XtraBars.TabFormControl",
             "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl"});
             // 
+            // panelContainer1
+            // 
+            this.panelContainer1.Controls.Add(this.dockPanelProperties);
+            this.panelContainer1.Controls.Add(this.dockPanelChart);
+            this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
+            this.panelContainer1.ID = new System.Guid("8003839f-fdac-4597-8a08-fa0a6b503af9");
+            this.panelContainer1.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
+            this.panelContainer1.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.panelContainer1.Location = new System.Drawing.Point(281, 34);
+            this.panelContainer1.Name = "panelContainer1";
+            this.panelContainer1.OriginalSize = new System.Drawing.Size(326, 200);
+            this.panelContainer1.SavedSizeFactor = 0D;
+            this.panelContainer1.Size = new System.Drawing.Size(326, 359);
+            this.panelContainer1.Text = "panelContainer1";
+            // 
             // dockPanelProperties
             // 
             this.dockPanelProperties.Controls.Add(this.dockPanel1_Container);
@@ -272,6 +287,7 @@
             this.propertyGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.propertyGridControl.Cursor = System.Windows.Forms.Cursors.Hand;
             this.propertyGridControl.Location = new System.Drawing.Point(0, 30);
             this.propertyGridControl.Name = "propertyGridControl";
             this.propertyGridControl.Size = new System.Drawing.Size(319, 116);
@@ -611,7 +627,7 @@
             // 
             this.barButtonItemShowFieldList.Caption = "Show field list";
             this.barButtonItemShowFieldList.Id = 34;
-            this.barButtonItemShowFieldList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemShowFields.ImageOptions.SvgImage")));
+            this.barButtonItemShowFieldList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemShowFieldList.ImageOptions.SvgImage")));
             this.barButtonItemShowFieldList.Name = "barButtonItemShowFieldList";
             // 
             // ribbonPageMain
@@ -631,21 +647,6 @@
             this.ribbonPageGroupAnalysis.Name = "ribbonPageGroupAnalysis";
             this.ribbonPageGroupAnalysis.Text = "Analysis Main";
             // 
-            // panelContainer1
-            // 
-            this.panelContainer1.Controls.Add(this.dockPanelProperties);
-            this.panelContainer1.Controls.Add(this.dockPanelChart);
-            this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
-            this.panelContainer1.ID = new System.Guid("8003839f-fdac-4597-8a08-fa0a6b503af9");
-            this.panelContainer1.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
-            this.panelContainer1.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            this.panelContainer1.Location = new System.Drawing.Point(281, 34);
-            this.panelContainer1.Name = "panelContainer1";
-            this.panelContainer1.OriginalSize = new System.Drawing.Size(326, 200);
-            this.panelContainer1.SavedSizeFactor = 0D;
-            this.panelContainer1.Size = new System.Drawing.Size(326, 359);
-            this.panelContainer1.Text = "panelContainer1";
-            // 
             // AnalysisModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -659,6 +660,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).EndInit();
+            this.panelContainer1.ResumeLayout(false);
             this.dockPanelProperties.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
             this.dockPanel1_Container.PerformLayout();
@@ -670,7 +672,6 @@
             ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            this.panelContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -82,5 +82,29 @@ namespace Wamby.Client.Properties {
                 this["ShowMinimumFolderLevelInLog"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Layouts_SaveOnExit {
+            get {
+                return ((bool)(this["Layouts_SaveOnExit"]));
+            }
+            set {
+                this["Layouts_SaveOnExit"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Layouts_LoadOnStart {
+            get {
+                return ((bool)(this["Layouts_LoadOnStart"]));
+            }
+            set {
+                this["Layouts_LoadOnStart"] = value;
+            }
+        }
     }
 }

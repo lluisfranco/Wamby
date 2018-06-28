@@ -29,6 +29,7 @@ namespace Wamby.Client.Modules
         {
             FileSystemScanService = scanService;
             Initialized = true;
+            pivotGridControl.CustomizationFormBounds = new Rectangle(0, 0, 300, 200);
             setEventHandlers();
         }
 
