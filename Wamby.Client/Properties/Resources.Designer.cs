@@ -63,6 +63,26 @@ namespace Wamby.Client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage Analysis_Show_Chart {
+            get {
+                object obj = ResourceManager.GetObject("Analysis_Show_Chart", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage Analysis_Show_Properties {
+            get {
+                object obj = ResourceManager.GetObject("Analysis_Show_Properties", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage Analyze {
             get {
                 object obj = ResourceManager.GetObject("Analyze", resourceCulture);
@@ -233,6 +253,26 @@ namespace Wamby.Client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage NewScan_Change_Folder {
+            get {
+                object obj = ResourceManager.GetObject("NewScan_Change_Folder", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage NewScan_ScanNow {
+            get {
+                object obj = ResourceManager.GetObject("NewScan_ScanNow", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage Print_Preview {
             get {
                 object obj = ResourceManager.GetObject("Print_Preview", resourceCulture);
@@ -256,6 +296,26 @@ namespace Wamby.Client.Properties {
         internal static DevExpress.Utils.Svg.SvgImage Schedule {
             get {
                 object obj = ResourceManager.GetObject("Schedule", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage Select_All {
+            get {
+                object obj = ResourceManager.GetObject("Select_All", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage Select_None {
+            get {
+                object obj = ResourceManager.GetObject("Select_None", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }

@@ -9,15 +9,18 @@ using Wamby.Core.Model;
 
 namespace Wamby.Client.Modules
 {
-    public partial class NewScanModule : DevExpress.XtraEditors.XtraUserControl, Interfaces.IModule
+    public partial class NewScanModule : DevExpress.XtraEditors.XtraUserControl, 
+        Interfaces.IModule, Interfaces.IModuleRibbon
     {
+        [Browsable(false)]
+        public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
+        public bool Initialized { get; private set; }
+        public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
+
         public event EventHandler StartingScan;
         public event EventHandler EndingScan;
         public event EventHandler<Args.GotoTabButtonEventArgs> GotoTabButtonClicked;
 
-        [Browsable(false)]
-        public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
-        public bool Initialized { get; private set; }
         Timer timer = new Timer();
         Stopwatch clock = new Stopwatch();
         public NewScanModule()
@@ -60,6 +63,8 @@ namespace Wamby.Client.Modules
             newScanPathButtonEdit.ButtonClick += NewScanPathButtonEdit_ButtonClick;
             scanLogGroupControl.CustomButtonClick += ScanLogGroupControl_CustomButtonClick;
             newScanPathButtonEdit.KeyDown += NewScanPathButtonEdit_KeyDown;
+            barButtonItemChangeFolder.ItemClick += BarButtonItemChangeFolder_ItemClick;
+            barButtonItemScanNow.ItemClick += BarButtonItemScanNow_ItemClick;
             timer.Enabled = false;
             timer.Interval = 500;
             timer.Tick += Timer_Tick;
@@ -68,6 +73,16 @@ namespace Wamby.Client.Modules
         private void ScanLogGroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
             if(e.Button.Properties.Caption == "Cancel") FileSystemScanService?.Cancel();
+        }
+
+        private void BarButtonItemChangeFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            showSelectPathDialog();
+        }
+
+        private async void BarButtonItemScanNow_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            await DoScan();
         }
 
         private async void NewScanPathButtonEdit_KeyDown(object sender, KeyEventArgs e)
@@ -103,7 +118,7 @@ namespace Wamby.Client.Modules
                 Properties.Settings.Default.ShowMinimumFolderLevelInLog;
             try
             {
-                handle = OverlayExtensions.ShowProgressPanel(logListBoxControl);
+                handle = OverlayFormExtensions.ShowProgressPanel(logListBoxControl);
                 StartScan();            
                 await FileSystemScanService.DoScan();
                 SaveScanOptions();
@@ -115,7 +130,7 @@ namespace Wamby.Client.Modules
             }
             finally
             {
-                if (handle != null) OverlayExtensions.CloseProgressPanel(handle);
+                if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle);
                 EndScan();
             }
             return FileSystemScanService.ScanResult;

@@ -4,10 +4,10 @@ using Wamby.API.Services;
 
 namespace Wamby.Client
 {
-    public partial class MainForm2 : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
+    public partial class MainRibbonForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         public ViewModels.MainFormViewModel ViewModel { get; set; }
-        public MainForm2()
+        public MainRibbonForm()
         {
             InitializeComponent();
             tabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
@@ -35,23 +35,7 @@ namespace Wamby.Client
             barButtonItemPrint.ItemClick += BarButtonItemPrint_ItemClick;
             barButtonItemExportXls.ItemClick += BarButtonItemExportXls_ItemClick;
             barButtonItemExportPdf.ItemClick += BarButtonItemExportPdf_ItemClick;
-            barButtonItemExpandTree.ItemClick += BarButtonItemExpandTree_ItemClick;
-            barButtonItemCollapse.ItemClick += BarButtonItemCollapse_ItemClick;
-            barButtonItemExpandLevel1.ItemClick += BarButtonItemExpandLevel_ItemClick;
-            barButtonItemExpandLevel2.ItemClick += BarButtonItemExpandLevel_ItemClick;
-            barButtonItemExpandLevel3.ItemClick += BarButtonItemExpandLevel_ItemClick;
-            barButtonItemExpandLevel4.ItemClick += BarButtonItemExpandLevel_ItemClick;
-            barButtonItemExpandLevel5.ItemClick += BarButtonItemExpandLevel_ItemClick;
-            barCheckItemMapBySize.ItemClick += BarCheckItemMapBySize_ItemClick;
-            barCheckItemMapByFilesCount.ItemClick += BarCheckItemMapByFilesCount_ItemClick;
-            barButtonItemLayoutAlgorithmSliceAndDice.ItemClick += BarButtonItemLayoutAlgorithmSliceAndDice_ItemClick;
-            barButtonItemLayoutAlgorithmSquarified.ItemClick += BarButtonItemLayoutAlgorithmSquarified_ItemClick;
-            barButtonItemLayoutAlgorithmStriped.ItemClick += BarButtonItemLayoutAlgorithmStriped_ItemClick;
-            barButtonItemDirectionBottomLeftToTopRight.ItemClick += BarButtonItemDirectionBottomLeftToTopRight_ItemClick;
-            barButtonItemDirectionBottomRightToTopLeft.ItemClick += BarButtonItemDirectionBottomRightToTopLeft_ItemClick;
-            barButtonItemDirectionTopLeftToBottomRight.ItemClick += BarButtonItemDirectionTopLeftToBottomRight_ItemClick;
-            barButtonItemDirectionTopRightToBottomLeft.ItemClick += BarButtonItemDirectionTopRightToBottomLeft_ItemClick;
-            newScanModule.GotoTabButtonClicked += NewScanModule_GotoTabButtonClicked;
+            newScanModule.GotoTabButtonClicked += NewScanModule_GotoTabButtonClicked;            
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -63,6 +47,7 @@ namespace Wamby.Client
             mapModule.InitializeControl(ViewModel.FileSystemScanService);
             analysisModule.InitializeControl(ViewModel.FileSystemScanService);
             ViewModel.CurrentModule = newScanModule;
+            ShowCurrentModuleToolbars();
         }
 
         private void NewScanModule_StartingScan(object sender, EventArgs e)
@@ -108,18 +93,16 @@ namespace Wamby.Client
             if (moduleName == tabPageFiles.Name) ViewModel.CurrentModule = filesModule;
             if (moduleName == tabPageMap.Name) ViewModel.CurrentModule = mapModule;
             if (moduleName == tabPageAnalysis.Name) ViewModel.CurrentModule = analysisModule;
+            if (moduleName == tabPageErrors.Name) ViewModel.CurrentModule = errorsModule;
         }
 
         private void ShowCurrentModuleToolbars()
         {
             ribbonPageGroupPrint.Visible = false;
-            ribbonPageGroupResults.Visible = false;
-            ribbonPageGroupMap.Visible = false;
-            ribbonPageGroupAnalysis.Visible = false;
             if (ViewModel.CurrentModule is Interfaces.IModulePrintAndExport) ribbonPageGroupPrint.Visible = true;
-            if (ViewModel.CurrentModule is Interfaces.IModuleResults) ribbonPageGroupResults.Visible = true;
-            if (ViewModel.CurrentModule is Interfaces.IModuleMap) ribbonPageGroupMap.Visible = true;
-            if (ViewModel.CurrentModule is Interfaces.IAnalysisMap) ribbonPageGroupMap.Visible = true;
+            ribbon.UnMergeRibbon();
+            if (ViewModel.CurrentModule is Interfaces.IModuleRibbon)
+                ribbon.MergeRibbon((ViewModel.CurrentModule as Interfaces.IModuleRibbon).Ribbon);
         }
 
         private void NewScanModule_GotoTabButtonClicked(object sender, Args.GotoTabButtonEventArgs e)
@@ -186,74 +169,5 @@ namespace Wamby.Client
             (ViewModel.CurrentModule as Interfaces.IModulePrintAndExport)?.ExportToPdf();
         }
 
-        private void BarButtonItemExpandTree_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            (ViewModel.CurrentModule as Interfaces.IModuleResults)?.ExpandTree();
-        }
-
-        private void BarButtonItemCollapse_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            (ViewModel.CurrentModule as Interfaces.IModuleResults)?.CollapseTree();
-        }
-
-        private void BarButtonItemExpandLevel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            (ViewModel.CurrentModule as Interfaces.IModuleResults)?.
-                ExpandTreeToLevel(Convert.ToInt32(e.Item.Tag) - 1);
-        }
-
-        private void BarCheckItemMapBySize_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            (ViewModel.CurrentModule as Interfaces.IModuleMap)?.
-                SetMapByDataMember(Enums.MapValueDataMemberEnum.Size);
-        }
-
-        private void BarCheckItemMapByFilesCount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            (ViewModel.CurrentModule as Interfaces.IModuleMap)?.
-                   SetMapByDataMember(Enums.MapValueDataMemberEnum.FilesCount);
-        }
-
-        private void BarButtonItemLayoutAlgorithmSliceAndDice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            (ViewModel.CurrentModule as Interfaces.IModuleMap)?.
-                SetLayoutAlgorithm(Enums.MapLayoutAlgorithmEnum.SliceAndDice);
-        }
-
-        private void BarButtonItemLayoutAlgorithmSquarified_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            (ViewModel.CurrentModule as Interfaces.IModuleMap)?.
-                SetLayoutAlgorithm(Enums.MapLayoutAlgorithmEnum.Squarified);
-        }
-
-        private void BarButtonItemLayoutAlgorithmStriped_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            (ViewModel.CurrentModule as Interfaces.IModuleMap)?.
-                SetLayoutAlgorithm(Enums.MapLayoutAlgorithmEnum.Striped);
-        }
-
-        private void BarButtonItemDirectionBottomLeftToTopRight_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            (ViewModel.CurrentModule as Interfaces.IModuleMap)?.
-                SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.BottomLeftToTopRight);
-        }
-
-        private void BarButtonItemDirectionBottomRightToTopLeft_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            (ViewModel.CurrentModule as Interfaces.IModuleMap)?.
-                SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.BottomRightToTopLeft);
-        }
-
-        private void BarButtonItemDirectionTopLeftToBottomRight_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            (ViewModel.CurrentModule as Interfaces.IModuleMap)?.
-                SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.TopLeftToBottomRight);
-        }
-
-        private void BarButtonItemDirectionTopRightToBottomLeft_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            (ViewModel.CurrentModule as Interfaces.IModuleMap)?.
-                SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.TopRightToBottomLeft);
-        }
     }
 }

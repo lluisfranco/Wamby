@@ -12,11 +12,12 @@ using DevExpress.XtraEditors;
 namespace Wamby.Client.Modules
 {
     public partial class ResultsModule : DevExpress.XtraEditors.XtraUserControl, 
-        Interfaces.IModule, Interfaces.IModulePrintAndExport, Interfaces.IModuleResults
+        Interfaces.IModule, Interfaces.IModulePrintAndExport, Interfaces.IModuleResults, Interfaces.IModuleRibbon
     {
         [Browsable(false)]
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
+        public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
 
         public ResultsModule()
         {
@@ -33,7 +34,29 @@ namespace Wamby.Client.Modules
 
         private void setEventHandlers()
         {
+            barButtonItemExpandTree.ItemClick += BarButtonItemExpandTree_ItemClick;
+            barButtonItemCollapse.ItemClick += BarButtonItemCollapse_ItemClick;
+            barButtonItemExpandLevel1.ItemClick += BarButtonItemExpandLevel_ItemClick;
+            barButtonItemExpandLevel2.ItemClick += BarButtonItemExpandLevel_ItemClick;
+            barButtonItemExpandLevel3.ItemClick += BarButtonItemExpandLevel_ItemClick;
+            barButtonItemExpandLevel4.ItemClick += BarButtonItemExpandLevel_ItemClick;
+            barButtonItemExpandLevel5.ItemClick += BarButtonItemExpandLevel_ItemClick;
             resultsTreeList.GetStateImage += ResultsTreeList_GetStateImage;
+        }
+
+        private void BarButtonItemExpandTree_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ExpandTree();
+        }
+
+        private void BarButtonItemCollapse_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            CollapseTree();
+        }
+
+        private void BarButtonItemExpandLevel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            ExpandTreeToLevel(Convert.ToInt32(e.Item.Tag) - 1);
         }
 
         private void ResultsTreeList_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)

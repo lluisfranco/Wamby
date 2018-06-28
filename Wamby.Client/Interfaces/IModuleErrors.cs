@@ -3,7 +3,8 @@ using System.Linq;
 
 namespace Wamby.Client.Interfaces
 {
-    public interface IAnalysisMap
+    public interface IModuleErrors
     {
+
     }
 }

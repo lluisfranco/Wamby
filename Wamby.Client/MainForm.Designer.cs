@@ -28,6 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.tabControl = new DevExpress.XtraTab.XtraTabControl();
+            this.tabPageNewScan = new DevExpress.XtraTab.XtraTabPage();
+            this.newScanModule = new Wamby.Client.Modules.NewScanModule();
+            this.tabPageResults = new DevExpress.XtraTab.XtraTabPage();
+            this.resultsModule = new Wamby.Client.Modules.ResultsModule();
+            this.tabPageMap = new DevExpress.XtraTab.XtraTabPage();
+            this.mapModule = new Wamby.Client.Modules.MapModule();
+            this.tabPageAnalysis = new DevExpress.XtraTab.XtraTabPage();
+            this.analysisModule = new Wamby.Client.Modules.AnalysisModule();
+            this.tabPageErrors = new DevExpress.XtraTab.XtraTabPage();
+            this.tabPageSchedule = new DevExpress.XtraTab.XtraTabPage();
+            this.tabPageSettings = new DevExpress.XtraTab.XtraTabPage();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.newAppBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
@@ -55,37 +68,139 @@
             this.barButtonItemDirectionTopRightToBottomLeft = new DevExpress.XtraBars.BarButtonItem();
             this.barCheckItemMapBySize = new DevExpress.XtraBars.BarCheckItem();
             this.barCheckItemMapByFilesCount = new DevExpress.XtraBars.BarCheckItem();
+            this.barCheckItemShowProperties = new DevExpress.XtraBars.BarCheckItem();
+            this.barCheckItemShowChart = new DevExpress.XtraBars.BarCheckItem();
             this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupMain = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupSkins = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupPrint = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupResults = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupMap = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupAnalysis = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.tabControl = new DevExpress.XtraTab.XtraTabControl();
-            this.tabPageNewScan = new DevExpress.XtraTab.XtraTabPage();
-            this.newScanModule = new Wamby.Client.Modules.NewScanModule();
-            this.tabPageResults = new DevExpress.XtraTab.XtraTabPage();
-            this.resultsModule = new Wamby.Client.Modules.ResultsModule();
-            this.tabPageMap = new DevExpress.XtraTab.XtraTabPage();
-            this.mapModule = new Wamby.Client.Modules.MapModule();
-            this.tabPageAnalysis = new DevExpress.XtraTab.XtraTabPage();
-            this.tabPageErrors = new DevExpress.XtraTab.XtraTabPage();
-            this.tabPageSchedule = new DevExpress.XtraTab.XtraTabPage();
-            this.tabPageSettings = new DevExpress.XtraTab.XtraTabPage();
-            this.analysisModule = new Wamby.Client.Modules.AnalysisModule();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).BeginInit();
             this.tabControl.SuspendLayout();
             this.tabPageNewScan.SuspendLayout();
             this.tabPageResults.SuspendLayout();
             this.tabPageMap.SuspendLayout();
             this.tabPageAnalysis.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ribbonPage2
+            // 
+            this.ribbonPage2.Name = "ribbonPage2";
+            this.ribbonPage2.Text = "ribbonPage2";
+            // 
+            // tabControl
+            // 
+            this.tabControl.Location = new System.Drawing.Point(0, 61);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedTabPage = this.tabPageNewScan;
+            this.tabControl.Size = new System.Drawing.Size(1223, 639);
+            this.tabControl.TabIndex = 2;
+            this.tabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
+            this.tabPageNewScan,
+            this.tabPageResults,
+            this.tabPageMap,
+            this.tabPageAnalysis,
+            this.tabPageErrors,
+            this.tabPageSchedule,
+            this.tabPageSettings});
+            this.tabControl.TabPageWidth = 90;
+            // 
+            // tabPageNewScan
+            // 
+            this.tabPageNewScan.Controls.Add(this.newScanModule);
+            this.tabPageNewScan.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.New_Scan;
+            this.tabPageNewScan.Name = "tabPageNewScan";
+            this.tabPageNewScan.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
+            this.tabPageNewScan.Size = new System.Drawing.Size(1221, 591);
+            this.tabPageNewScan.Text = "New Scan";
+            // 
+            // newScanModule
+            // 
+            this.newScanModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.newScanModule.Location = new System.Drawing.Point(0, 0);
+            this.newScanModule.Name = "newScanModule";
+            this.newScanModule.Size = new System.Drawing.Size(1221, 591);
+            this.newScanModule.TabIndex = 0;
+            // 
+            // tabPageResults
+            // 
+            this.tabPageResults.Controls.Add(this.resultsModule);
+            this.tabPageResults.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Results;
+            this.tabPageResults.Name = "tabPageResults";
+            this.tabPageResults.Size = new System.Drawing.Size(1221, 591);
+            this.tabPageResults.Text = "Results";
+            // 
+            // resultsModule
+            // 
+            this.resultsModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resultsModule.Location = new System.Drawing.Point(0, 0);
+            this.resultsModule.Name = "resultsModule";
+            this.resultsModule.Padding = new System.Windows.Forms.Padding(3);
+            this.resultsModule.Size = new System.Drawing.Size(1221, 591);
+            this.resultsModule.TabIndex = 0;
+            // 
+            // tabPageMap
+            // 
+            this.tabPageMap.Controls.Add(this.mapModule);
+            this.tabPageMap.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map;
+            this.tabPageMap.Name = "tabPageMap";
+            this.tabPageMap.Size = new System.Drawing.Size(1221, 591);
+            this.tabPageMap.Text = "Map";
+            // 
+            // mapModule
+            // 
+            this.mapModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapModule.Location = new System.Drawing.Point(0, 0);
+            this.mapModule.Name = "mapModule";
+            this.mapModule.Padding = new System.Windows.Forms.Padding(3);
+            this.mapModule.Size = new System.Drawing.Size(1221, 591);
+            this.mapModule.TabIndex = 0;
+            // 
+            // tabPageAnalysis
+            // 
+            this.tabPageAnalysis.Controls.Add(this.analysisModule);
+            this.tabPageAnalysis.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analyze;
+            this.tabPageAnalysis.Name = "tabPageAnalysis";
+            this.tabPageAnalysis.Size = new System.Drawing.Size(1221, 591);
+            this.tabPageAnalysis.Text = "Analyze";
+            // 
+            // analysisModule
+            // 
+            this.analysisModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.analysisModule.Location = new System.Drawing.Point(0, 0);
+            this.analysisModule.Name = "analysisModule";
+            this.analysisModule.Padding = new System.Windows.Forms.Padding(3);
+            this.analysisModule.Size = new System.Drawing.Size(1221, 591);
+            this.analysisModule.TabIndex = 0;
+            // 
+            // tabPageErrors
+            // 
+            this.tabPageErrors.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Errors;
+            this.tabPageErrors.Name = "tabPageErrors";
+            this.tabPageErrors.Size = new System.Drawing.Size(1221, 591);
+            this.tabPageErrors.Text = "Errors";
+            // 
+            // tabPageSchedule
+            // 
+            this.tabPageSchedule.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Schedule;
+            this.tabPageSchedule.Name = "tabPageSchedule";
+            this.tabPageSchedule.Size = new System.Drawing.Size(1221, 591);
+            this.tabPageSchedule.Text = "Schedule";
+            // 
+            // tabPageSettings
+            // 
+            this.tabPageSettings.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Settings;
+            this.tabPageSettings.Name = "tabPageSettings";
+            this.tabPageSettings.Size = new System.Drawing.Size(1221, 591);
+            this.tabPageSettings.Text = "Settings";
             // 
             // ribbon
             // 
+            this.ribbon.AllowMinimizeRibbon = false;
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
@@ -114,9 +229,11 @@
             this.barButtonItemDirectionBottomLeftToTopRight,
             this.barButtonItemDirectionBottomRightToTopLeft,
             this.barButtonItemDirectionTopLeftToBottomRight,
-            this.barButtonItemDirectionTopRightToBottomLeft});
+            this.barButtonItemDirectionTopRightToBottomLeft,
+            this.barCheckItemShowProperties,
+            this.barCheckItemShowChart});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 30;
+            this.ribbon.MaxItemId = 32;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -317,6 +434,24 @@
             this.barCheckItemMapByFilesCount.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_By_FilesCount;
             this.barCheckItemMapByFilesCount.Name = "barCheckItemMapByFilesCount";
             // 
+            // barCheckItemShowProperties
+            // 
+            this.barCheckItemShowProperties.BindableChecked = true;
+            this.barCheckItemShowProperties.Caption = "Properties";
+            this.barCheckItemShowProperties.Checked = true;
+            this.barCheckItemShowProperties.Id = 30;
+            this.barCheckItemShowProperties.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
+            this.barCheckItemShowProperties.Name = "barCheckItemShowProperties";
+            // 
+            // barCheckItemShowChart
+            // 
+            this.barCheckItemShowChart.BindableChecked = true;
+            this.barCheckItemShowChart.Caption = "Chart";
+            this.barCheckItemShowChart.Checked = true;
+            this.barCheckItemShowChart.Id = 31;
+            this.barCheckItemShowChart.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Chart;
+            this.barCheckItemShowChart.Name = "barCheckItemShowChart";
+            // 
             // ribbonPageMain
             // 
             this.ribbonPageMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -324,10 +459,11 @@
             this.ribbonPageGroupSkins,
             this.ribbonPageGroupPrint,
             this.ribbonPageGroupResults,
+            this.ribbonPageGroupFiles,
             this.ribbonPageGroupMap,
             this.ribbonPageGroupAnalysis});
             this.ribbonPageMain.Name = "ribbonPageMain";
-            this.ribbonPageMain.Text = "ribbonPage1";
+            this.ribbonPageMain.Text = "Main Page";
             // 
             // ribbonPageGroupMain
             // 
@@ -348,7 +484,7 @@
             this.ribbonPageGroupPrint.ItemLinks.Add(this.barButtonItemExportXls);
             this.ribbonPageGroupPrint.ItemLinks.Add(this.barButtonItemExportPdf);
             this.ribbonPageGroupPrint.Name = "ribbonPageGroupPrint";
-            this.ribbonPageGroupPrint.Text = "Print";
+            this.ribbonPageGroupPrint.Text = "Print Main";
             this.ribbonPageGroupPrint.Visible = false;
             // 
             // ribbonPageGroupResults
@@ -357,8 +493,14 @@
             this.ribbonPageGroupResults.ItemLinks.Add(this.barButtonItemCollapse);
             this.ribbonPageGroupResults.ItemLinks.Add(this.barSubItemExpandLevel, true);
             this.ribbonPageGroupResults.Name = "ribbonPageGroupResults";
-            this.ribbonPageGroupResults.Text = "Results";
+            this.ribbonPageGroupResults.Text = "Results Main";
             this.ribbonPageGroupResults.Visible = false;
+            // 
+            // ribbonPageGroupFiles
+            // 
+            this.ribbonPageGroupFiles.Name = "ribbonPageGroupFiles";
+            this.ribbonPageGroupFiles.Text = "Files Main";
+            this.ribbonPageGroupFiles.Visible = false;
             // 
             // ribbonPageGroupMap
             // 
@@ -367,125 +509,16 @@
             this.ribbonPageGroupMap.ItemLinks.Add(this.barSubItemLayoutAlgorithm, true);
             this.ribbonPageGroupMap.ItemLinks.Add(this.barSubItemDirection);
             this.ribbonPageGroupMap.Name = "ribbonPageGroupMap";
-            this.ribbonPageGroupMap.Text = "Map";
+            this.ribbonPageGroupMap.Text = "Map Main";
             this.ribbonPageGroupMap.Visible = false;
             // 
             // ribbonPageGroupAnalysis
             // 
+            this.ribbonPageGroupAnalysis.ItemLinks.Add(this.barCheckItemShowProperties);
+            this.ribbonPageGroupAnalysis.ItemLinks.Add(this.barCheckItemShowChart);
             this.ribbonPageGroupAnalysis.Name = "ribbonPageGroupAnalysis";
-            this.ribbonPageGroupAnalysis.Text = "Analysis";
+            this.ribbonPageGroupAnalysis.Text = "Analysis Main";
             this.ribbonPageGroupAnalysis.Visible = false;
-            // 
-            // ribbonPage2
-            // 
-            this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "ribbonPage2";
-            // 
-            // tabControl
-            // 
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 61);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedTabPage = this.tabPageNewScan;
-            this.tabControl.Size = new System.Drawing.Size(1223, 639);
-            this.tabControl.TabIndex = 2;
-            this.tabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.tabPageNewScan,
-            this.tabPageResults,
-            this.tabPageMap,
-            this.tabPageAnalysis,
-            this.tabPageErrors,
-            this.tabPageSchedule,
-            this.tabPageSettings});
-            this.tabControl.TabPageWidth = 90;
-            // 
-            // tabPageNewScan
-            // 
-            this.tabPageNewScan.Controls.Add(this.newScanModule);
-            this.tabPageNewScan.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.New_Scan;
-            this.tabPageNewScan.Name = "tabPageNewScan";
-            this.tabPageNewScan.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            this.tabPageNewScan.Size = new System.Drawing.Size(1221, 591);
-            this.tabPageNewScan.Text = "New Scan";
-            // 
-            // newScanModule
-            // 
-            this.newScanModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newScanModule.Location = new System.Drawing.Point(0, 0);
-            this.newScanModule.Name = "newScanModule";
-            this.newScanModule.Size = new System.Drawing.Size(1221, 591);
-            this.newScanModule.TabIndex = 0;
-            // 
-            // tabPageResults
-            // 
-            this.tabPageResults.Controls.Add(this.resultsModule);
-            this.tabPageResults.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Results;
-            this.tabPageResults.Name = "tabPageResults";
-            this.tabPageResults.Size = new System.Drawing.Size(1221, 591);
-            this.tabPageResults.Text = "Results";
-            // 
-            // resultsModule
-            // 
-            this.resultsModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resultsModule.Location = new System.Drawing.Point(0, 0);
-            this.resultsModule.Name = "resultsModule";
-            this.resultsModule.Padding = new System.Windows.Forms.Padding(3);
-            this.resultsModule.Size = new System.Drawing.Size(1221, 591);
-            this.resultsModule.TabIndex = 0;
-            // 
-            // tabPageMap
-            // 
-            this.tabPageMap.Controls.Add(this.mapModule);
-            this.tabPageMap.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map;
-            this.tabPageMap.Name = "tabPageMap";
-            this.tabPageMap.Size = new System.Drawing.Size(1221, 591);
-            this.tabPageMap.Text = "Map";
-            // 
-            // mapModule
-            // 
-            this.mapModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mapModule.Location = new System.Drawing.Point(0, 0);
-            this.mapModule.Name = "mapModule";
-            this.mapModule.Padding = new System.Windows.Forms.Padding(3);
-            this.mapModule.Size = new System.Drawing.Size(1221, 591);
-            this.mapModule.TabIndex = 0;
-            // 
-            // tabPageAnalysis
-            // 
-            this.tabPageAnalysis.Controls.Add(this.analysisModule);
-            this.tabPageAnalysis.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analyze;
-            this.tabPageAnalysis.Name = "tabPageAnalysis";
-            this.tabPageAnalysis.Size = new System.Drawing.Size(1221, 591);
-            this.tabPageAnalysis.Text = "Analyze";
-            // 
-            // tabPageErrors
-            // 
-            this.tabPageErrors.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Errors;
-            this.tabPageErrors.Name = "tabPageErrors";
-            this.tabPageErrors.Size = new System.Drawing.Size(1221, 591);
-            this.tabPageErrors.Text = "Errors";
-            // 
-            // tabPageSchedule
-            // 
-            this.tabPageSchedule.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Schedule;
-            this.tabPageSchedule.Name = "tabPageSchedule";
-            this.tabPageSchedule.Size = new System.Drawing.Size(1221, 591);
-            this.tabPageSchedule.Text = "Schedule";
-            // 
-            // tabPageSettings
-            // 
-            this.tabPageSettings.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Settings;
-            this.tabPageSettings.Name = "tabPageSettings";
-            this.tabPageSettings.Size = new System.Drawing.Size(1221, 591);
-            this.tabPageSettings.Text = "Settings";
-            // 
-            // analysisModule
-            // 
-            this.analysisModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.analysisModule.Location = new System.Drawing.Point(0, 0);
-            this.analysisModule.Name = "analysisModule";
-            this.analysisModule.Size = new System.Drawing.Size(1221, 591);
-            this.analysisModule.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -498,43 +531,36 @@
             this.Ribbon = this.ribbon;
             this.Text = "Wamby?";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(255)))));
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).EndInit();
             this.tabControl.ResumeLayout(false);
             this.tabPageNewScan.ResumeLayout(false);
             this.tabPageResults.ResumeLayout(false);
             this.tabPageMap.ResumeLayout(false);
             this.tabPageAnalysis.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageMain;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupMain;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
-        private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSkins;
         private DevExpress.XtraTab.XtraTabControl tabControl;
         private DevExpress.XtraTab.XtraTabPage tabPageNewScan;
         private DevExpress.XtraTab.XtraTabPage tabPageResults;
         private DevExpress.XtraTab.XtraTabPage tabPageMap;
         private DevExpress.XtraTab.XtraTabPage tabPageAnalysis;
         private DevExpress.XtraTab.XtraTabPage tabPageErrors;
-        private DevExpress.XtraBars.BarButtonItem newAppBarButtonItem;
         private Modules.NewScanModule newScanModule;
         private DevExpress.XtraTab.XtraTabPage tabPageSchedule;
         private DevExpress.XtraTab.XtraTabPage tabPageSettings;
-        private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
         private Modules.ResultsModule resultsModule;
         private Modules.MapModule mapModule;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupPrint;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupResults;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupMap;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAnalysis;
+        private Modules.AnalysisModule analysisModule;
+        private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
+        private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem newAppBarButtonItem;
+        private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItemPrint;
         private DevExpress.XtraBars.BarButtonItem barButtonItemExportXls;
         private DevExpress.XtraBars.BarButtonItem barButtonItemExportPdf;
@@ -548,16 +574,25 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemExpandLevel5;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
         private DevExpress.XtraBars.BarSubItem barSubItemLayoutAlgorithm;
-        private DevExpress.XtraBars.BarSubItem barSubItemDirection;
-        private DevExpress.XtraBars.BarCheckItem barCheckItemMapBySize;
-        private DevExpress.XtraBars.BarCheckItem barCheckItemMapByFilesCount;
         private DevExpress.XtraBars.BarButtonItem barButtonItemLayoutAlgorithmSliceAndDice;
         private DevExpress.XtraBars.BarButtonItem barButtonItemLayoutAlgorithmSquarified;
         private DevExpress.XtraBars.BarButtonItem barButtonItemLayoutAlgorithmStriped;
+        private DevExpress.XtraBars.BarSubItem barSubItemDirection;
         private DevExpress.XtraBars.BarButtonItem barButtonItemDirectionBottomLeftToTopRight;
         private DevExpress.XtraBars.BarButtonItem barButtonItemDirectionBottomRightToTopLeft;
         private DevExpress.XtraBars.BarButtonItem barButtonItemDirectionTopLeftToBottomRight;
         private DevExpress.XtraBars.BarButtonItem barButtonItemDirectionTopRightToBottomLeft;
-        private Modules.AnalysisModule analysisModule;
+        private DevExpress.XtraBars.BarCheckItem barCheckItemMapBySize;
+        private DevExpress.XtraBars.BarCheckItem barCheckItemMapByFilesCount;
+        private DevExpress.XtraBars.BarCheckItem barCheckItemShowProperties;
+        private DevExpress.XtraBars.BarCheckItem barCheckItemShowChart;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageMain;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupMain;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSkins;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupPrint;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupResults;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupFiles;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupMap;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupAnalysis;
     }
 }

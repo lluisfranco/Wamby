@@ -105,7 +105,7 @@ namespace Wamby.Client
             if (ViewModel.CurrentModule is Interfaces.IModulePrintAndExport) ribbonPageGroupPrint.Visible = true;
             if (ViewModel.CurrentModule is Interfaces.IModuleResults) ribbonPageGroupResults.Visible = true;
             if (ViewModel.CurrentModule is Interfaces.IModuleMap) ribbonPageGroupMap.Visible = true;
-            if (ViewModel.CurrentModule is Interfaces.IAnalysisMap) ribbonPageGroupMap.Visible = true;
+            if (ViewModel.CurrentModule is Interfaces.IModuleAnalysis) ribbonPageGroupMap.Visible = true;
         }
 
         private void BarButtonItemPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

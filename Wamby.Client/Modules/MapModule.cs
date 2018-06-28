@@ -12,12 +12,13 @@ using DevExpress.XtraEditors;
 namespace Wamby.Client.Modules
 {
     public partial class MapModule : DevExpress.XtraEditors.XtraUserControl, 
-        Interfaces.IModule, Interfaces.IModulePrintAndExport, Interfaces.IModuleMap
+        Interfaces.IModule, Interfaces.IModulePrintAndExport, Interfaces.IModuleMap, Interfaces.IModuleRibbon
     {
         [Browsable(false)]
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
         public Enums.MapValueDataMemberEnum MapValueDataMember { get; private set; }
+        public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
 
         public MapModule()
         {
@@ -33,9 +34,17 @@ namespace Wamby.Client.Modules
 
         private void setEventHandlers()
         {
-            
+            barCheckItemMapBySize.ItemClick += BarCheckItemMapBySize_ItemClick;
+            barCheckItemMapByFilesCount.ItemClick += BarCheckItemMapByFilesCount_ItemClick;
+            barButtonItemLayoutAlgorithmSliceAndDice.ItemClick += BarButtonItemLayoutAlgorithmSliceAndDice_ItemClick;
+            barButtonItemLayoutAlgorithmSquarified.ItemClick += BarButtonItemLayoutAlgorithmSquarified_ItemClick;
+            barButtonItemLayoutAlgorithmStriped.ItemClick += BarButtonItemLayoutAlgorithmStriped_ItemClick;
+            barButtonItemDirectionBottomLeftToTopRight.ItemClick += BarButtonItemDirectionBottomLeftToTopRight_ItemClick;
+            barButtonItemDirectionBottomRightToTopLeft.ItemClick += BarButtonItemDirectionBottomRightToTopLeft_ItemClick;
+            barButtonItemDirectionTopLeftToBottomRight.ItemClick += BarButtonItemDirectionTopLeftToBottomRight_ItemClick;
+            barButtonItemDirectionTopRightToBottomLeft.ItemClick += BarButtonItemDirectionTopRightToBottomLeft_ItemClick;
         }
-
+        
         public void RefreshModuleData()
         {
             var files = FileSystemScanService.ScanResult.WambyFolderInfo.AllFiles.
@@ -83,12 +92,50 @@ namespace Wamby.Client.Modules
                     DevExpress.XtraTreeMap.TreeMapLayoutAlgorithmBase).Direction = layoutAlgorithmDirection;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BarCheckItemMapBySize_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            //SetLayoutAlgorithm(Enums.MapLayoutAlgorithmEnum.Striped);
-            //SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.BottomRightToTopLeft);
+            SetMapByDataMember(Enums.MapValueDataMemberEnum.Size);
         }
 
+        private void BarCheckItemMapByFilesCount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SetMapByDataMember(Enums.MapValueDataMemberEnum.FilesCount);
+        }
+
+        private void BarButtonItemLayoutAlgorithmSliceAndDice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SetLayoutAlgorithm(Enums.MapLayoutAlgorithmEnum.SliceAndDice);
+        }
+
+        private void BarButtonItemLayoutAlgorithmSquarified_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SetLayoutAlgorithm(Enums.MapLayoutAlgorithmEnum.Squarified);
+        }
+
+        private void BarButtonItemLayoutAlgorithmStriped_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SetLayoutAlgorithm(Enums.MapLayoutAlgorithmEnum.Striped);
+        }
+
+        private void BarButtonItemDirectionBottomLeftToTopRight_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.BottomLeftToTopRight);
+        }
+
+        private void BarButtonItemDirectionBottomRightToTopLeft_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.BottomRightToTopLeft);
+        }
+
+        private void BarButtonItemDirectionTopLeftToBottomRight_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.TopLeftToBottomRight);
+        }
+
+        private void BarButtonItemDirectionTopRightToBottomLeft_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.TopRightToBottomLeft);
+        }
         public void Print()
         {
             treeMapControl.ShowRibbonPrintPreview();

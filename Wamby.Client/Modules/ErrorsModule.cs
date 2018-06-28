@@ -11,15 +11,14 @@ using DevExpress.XtraEditors;
 
 namespace Wamby.Client.Modules
 {
-    public partial class FilesModule : DevExpress.XtraEditors.XtraUserControl, 
-        Interfaces.IModule, Interfaces.IModulePrintAndExport, Interfaces.IModuleFiles, Interfaces.IModuleRibbon
+    public partial class ErrorsModule : DevExpress.XtraEditors.XtraUserControl, 
+        Interfaces.IModule, Interfaces.IModulePrintAndExport, Interfaces.IModuleErrors, Interfaces.IModuleRibbon
     {
         [Browsable(false)]
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
         public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
-
-        public FilesModule()
+        public ErrorsModule()
         {
             InitializeComponent();
         }
@@ -43,21 +42,21 @@ namespace Wamby.Client.Modules
 
         public void Print()
         {
-            gridControlFiles.ShowRibbonPrintPreview();
+            //gridControlFiles.ShowRibbonPrintPreview();
         }
 
         public void ExportToXls()
         {
-            var filename = FileSystemScanService.GetTempFileName("xlsx");
-            gridControlFiles.ExportToXlsx(filename);
-            System.Diagnostics.Process.Start(filename);
+            //var filename = FileSystemScanService.GetTempFileName("xlsx");
+            //gridControlFiles.ExportToXlsx(filename);
+            //System.Diagnostics.Process.Start(filename);
         }
 
         public void ExportToPdf()
         {
-            var filename = FileSystemScanService.GetTempFileName("pdf");
-            gridControlFiles.ExportToPdf(filename);
-            System.Diagnostics.Process.Start(filename);
+            //var filename = FileSystemScanService.GetTempFileName("pdf");
+            //gridControlFiles.ExportToPdf(filename);
+            //System.Diagnostics.Process.Start(filename);
         }
 
     }
