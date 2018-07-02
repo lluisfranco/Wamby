@@ -12,12 +12,17 @@ namespace Wamby.Client
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.XtraEditors.WindowsFormsSettings.ForceDirectXPaint();
-            Application.Run(new MainRibbonForm());
+            var mainform = new MainRibbonForm();
+            var path = String.Join(" ", args);
+            //MessageBox.Show(path);
+            if (System.IO.Directory.Exists(path))
+                mainform.ViewModel.InitialFolderPath = path;
+            Application.Run(mainform);
         }
     }
 }

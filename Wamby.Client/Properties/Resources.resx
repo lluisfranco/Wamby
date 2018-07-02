@@ -136,6 +136,9 @@
   <data name="Analyze" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Analyze.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="Files_Summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Files_Summary.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="Log_Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Log Folder.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
@@ -160,8 +163,11 @@
   <data name="Map_Layout" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Map_Layout.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="Files_Summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Files_Summary.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="Show_Footer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Show_Footer.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="Select_All" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Select_All.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="mainMapModule" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mainMapModule.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
@@ -190,9 +196,6 @@
   <data name="New_Scan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\New Scan.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="Select_All" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Select_All.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
-  </data>
   <data name="Tree_Expand_Level" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tree_Expand_Level.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
@@ -211,7 +214,7 @@
   <data name="Map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Map.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="Show_Footer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Show_Footer.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="GoTo_Folder_Explorer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GoTo_Folder_Explorer.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

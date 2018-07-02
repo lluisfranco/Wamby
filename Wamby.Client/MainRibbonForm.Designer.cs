@@ -87,18 +87,18 @@
             this.fluentDesignFormContainer1.Controls.Add(this.tabControl);
             this.fluentDesignFormContainer1.Controls.Add(this.ribbon);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 30);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 50);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1258, 727);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1258, 707);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // tabControl
             // 
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 31);
+            this.tabControl.Location = new System.Drawing.Point(0, 43);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedTabPage = this.tabPageNewScan;
-            this.tabControl.Size = new System.Drawing.Size(1258, 696);
+            this.tabControl.Size = new System.Drawing.Size(1258, 664);
             this.tabControl.TabIndex = 3;
             this.tabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabPageNewScan,
@@ -117,7 +117,7 @@
             this.tabPageNewScan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("tabPageNewScan.ImageOptions.SvgImage")));
             this.tabPageNewScan.Name = "tabPageNewScan";
             this.tabPageNewScan.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            this.tabPageNewScan.Size = new System.Drawing.Size(1256, 648);
+            this.tabPageNewScan.Size = new System.Drawing.Size(1256, 604);
             this.tabPageNewScan.Text = "New Scan";
             // 
             // newScanModule
@@ -125,7 +125,7 @@
             this.newScanModule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.newScanModule.Location = new System.Drawing.Point(0, 0);
             this.newScanModule.Name = "newScanModule";
-            this.newScanModule.Size = new System.Drawing.Size(1256, 648);
+            this.newScanModule.Size = new System.Drawing.Size(1256, 604);
             this.newScanModule.TabIndex = 0;
             // 
             // tabPageResults
@@ -150,15 +150,16 @@
             this.tabPageFiles.Controls.Add(this.filesModule);
             this.tabPageFiles.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("tabPageFiles.ImageOptions.SvgImage")));
             this.tabPageFiles.Name = "tabPageFiles";
+            this.tabPageFiles.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageFiles.Size = new System.Drawing.Size(1256, 648);
             this.tabPageFiles.Text = "Files";
             // 
             // filesModule
             // 
             this.filesModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filesModule.Location = new System.Drawing.Point(0, 0);
+            this.filesModule.Location = new System.Drawing.Point(3, 3);
             this.filesModule.Name = "filesModule";
-            this.filesModule.Size = new System.Drawing.Size(1256, 648);
+            this.filesModule.Size = new System.Drawing.Size(1250, 642);
             this.filesModule.TabIndex = 0;
             // 
             // tabPageMap
@@ -246,7 +247,7 @@
             this.ribbonPageMain});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
-            this.ribbon.Size = new System.Drawing.Size(1258, 31);
+            this.ribbon.Size = new System.Drawing.Size(1258, 43);
             // 
             // skinDropDownButtonItem1
             // 
@@ -325,11 +326,11 @@
             this.accordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElementFileSystem,
             this.accordionControlElementOptions});
-            this.accordionControl.Location = new System.Drawing.Point(0, 30);
+            this.accordionControl.Location = new System.Drawing.Point(0, 50);
             this.accordionControl.Name = "accordionControl";
             this.accordionControl.OptionsMinimizing.NormalWidth = 260;
             this.accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl.Size = new System.Drawing.Size(260, 727);
+            this.accordionControl.Size = new System.Drawing.Size(260, 707);
             this.accordionControl.TabIndex = 1;
             this.accordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -417,7 +418,7 @@
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1518, 30);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1518, 50);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
@@ -434,6 +435,7 @@
             this.Name = "MainRibbonForm";
             this.NavigationControl = this.accordionControl;
             this.Text = "xf";
+            this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(255)))));
             this.fluentDesignFormContainer1.ResumeLayout(false);
             this.fluentDesignFormContainer1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).EndInit();

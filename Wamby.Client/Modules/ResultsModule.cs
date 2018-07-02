@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using System.Diagnostics;
 
 namespace Wamby.Client.Modules
 {
@@ -42,6 +43,8 @@ namespace Wamby.Client.Modules
             barButtonItemExpandLevel4.ItemClick += BarButtonItemExpandLevel_ItemClick;
             barButtonItemExpandLevel5.ItemClick += BarButtonItemExpandLevel_ItemClick;
             resultsTreeList.GetStateImage += ResultsTreeList_GetStateImage;
+            barButtonItemOpenFolder.ItemClick += BarButtonItemOpenFolder_ItemClick;
+            barButtonItemOpenInNewWamby.ItemClick += BarButtonItemOpenInNewWamby_ItemClick;
         }
 
         private void BarButtonItemExpandTree_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -57,6 +60,21 @@ namespace Wamby.Client.Modules
         private void BarButtonItemExpandLevel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ExpandTreeToLevel(Convert.ToInt32(e.Item.Tag) - 1);
+        }
+
+        private void BarButtonItemOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var item = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
+            if (item == null) return;
+            if (System.IO.Directory.Exists(item)) Process.Start(item);
+        }
+
+        private void BarButtonItemOpenInNewWamby_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var item = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
+            if (item == null) return;
+            if (System.IO.Directory.Exists(item))
+                System.Diagnostics.Process.Start(Application.ExecutablePath, item);
         }
 
         private void ResultsTreeList_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)

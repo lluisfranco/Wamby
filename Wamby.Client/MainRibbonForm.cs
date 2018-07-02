@@ -38,9 +38,10 @@ namespace Wamby.Client
             newScanModule.GotoTabButtonClicked += NewScanModule_GotoTabButtonClicked;            
         }
 
-        private void MainForm_Shown(object sender, EventArgs e)
+        private async void MainForm_Shown(object sender, EventArgs e)
         {
             ViewModel.LoadDefaultSettings();
+            newScanModule.InitialFolderPath = ViewModel.InitialFolderPath;
             newScanModule.InitializeControl(ViewModel.FileSystemScanService);
             resultsModule.InitializeControl(ViewModel.FileSystemScanService);
             filesModule.InitializeControl(ViewModel.FileSystemScanService);
@@ -49,6 +50,7 @@ namespace Wamby.Client
             errorsModule.InitializeControl(ViewModel.FileSystemScanService);
             ViewModel.CurrentModule = newScanModule;
             ShowCurrentModuleToolbars();
+            if(ViewModel.InitialFolderPath != null) await newScanModule.DoScan();
         }
 
         private void NewScanModule_StartingScan(object sender, EventArgs e)

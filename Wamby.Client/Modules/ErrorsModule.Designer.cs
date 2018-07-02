@@ -31,6 +31,18 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErrorsModule));
+            this.gridControlErrors = new DevExpress.XtraGrid.GridControl();
+            this.errorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridViewErrors = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colSource = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colStackTrace = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTargetSite = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colInnerException = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHResult = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTypeName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFileFullPath = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMessage = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.newAppBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
@@ -60,25 +72,125 @@
             this.barCheckItemMapByFilesCount = new DevExpress.XtraBars.BarCheckItem();
             this.barCheckItemShowProperties = new DevExpress.XtraBars.BarCheckItem();
             this.barCheckItemShowChart = new DevExpress.XtraBars.BarCheckItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemShowColumnList = new DevExpress.XtraBars.BarButtonItem();
+            this.barCheckItemShowFooter = new DevExpress.XtraBars.BarCheckItem();
+            this.barButtonItemSearch = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroupErrors = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.gridControlErrors = new DevExpress.XtraGrid.GridControl();
-            this.errorsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridViewErrors = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colSource = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colStackTrace = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTargetSite = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colInnerException = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colHResult = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTypeName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFileFullPath = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMessage = new DevExpress.XtraGrid.Columns.GridColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
+            this.ribbonPageGroupFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlErrors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewErrors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
+            // 
+            // gridControlErrors
+            // 
+            this.gridControlErrors.DataSource = this.errorsBindingSource;
+            this.gridControlErrors.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlErrors.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.gridControlErrors.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gridControlErrors.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gridControlErrors.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.gridControlErrors.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.gridControlErrors.Location = new System.Drawing.Point(0, 31);
+            this.gridControlErrors.MainView = this.gridViewErrors;
+            this.gridControlErrors.Name = "gridControlErrors";
+            this.gridControlErrors.Size = new System.Drawing.Size(610, 365);
+            this.gridControlErrors.TabIndex = 1;
+            this.gridControlErrors.UseEmbeddedNavigator = true;
+            this.gridControlErrors.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewErrors});
+            // 
+            // errorsBindingSource
+            // 
+            this.errorsBindingSource.DataSource = typeof(Wamby.Core.Model.ScanException);
+            // 
+            // gridViewErrors
+            // 
+            this.gridViewErrors.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colSource,
+            this.colStackTrace,
+            this.colTargetSite,
+            this.colInnerException,
+            this.colHResult,
+            this.colTypeName,
+            this.colFileFullPath,
+            this.colMessage});
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleDataBar1.PredefinedName = "Mint";
+            gridFormatRule1.Rule = formatConditionRuleDataBar1;
+            this.gridViewErrors.FormatRules.Add(gridFormatRule1);
+            this.gridViewErrors.GridControl = this.gridControlErrors;
+            this.gridViewErrors.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Extension", null, "({0} items)")});
+            this.gridViewErrors.Name = "gridViewErrors";
+            this.gridViewErrors.OptionsBehavior.Editable = false;
+            this.gridViewErrors.OptionsMenu.ShowConditionalFormattingItem = true;
+            this.gridViewErrors.OptionsView.ShowFooter = true;
+            this.gridViewErrors.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewErrors.OptionsView.ShowIndicator = false;
+            // 
+            // colSource
+            // 
+            this.colSource.FieldName = "Source";
+            this.colSource.Name = "colSource";
+            this.colSource.OptionsColumn.ReadOnly = true;
+            this.colSource.Width = 76;
+            // 
+            // colStackTrace
+            // 
+            this.colStackTrace.FieldName = "StackTrace";
+            this.colStackTrace.Name = "colStackTrace";
+            this.colStackTrace.OptionsColumn.ReadOnly = true;
+            this.colStackTrace.Width = 76;
+            // 
+            // colTargetSite
+            // 
+            this.colTargetSite.FieldName = "TargetSite";
+            this.colTargetSite.Name = "colTargetSite";
+            this.colTargetSite.OptionsColumn.ReadOnly = true;
+            // 
+            // colInnerException
+            // 
+            this.colInnerException.FieldName = "InnerException";
+            this.colInnerException.Name = "colInnerException";
+            this.colInnerException.OptionsColumn.ReadOnly = true;
+            // 
+            // colHResult
+            // 
+            this.colHResult.FieldName = "HResult";
+            this.colHResult.Name = "colHResult";
+            this.colHResult.OptionsColumn.ReadOnly = true;
+            this.colHResult.Width = 83;
+            // 
+            // colTypeName
+            // 
+            this.colTypeName.Caption = "Type";
+            this.colTypeName.FieldName = "TypeName";
+            this.colTypeName.Name = "colTypeName";
+            this.colTypeName.OptionsColumn.ReadOnly = true;
+            this.colTypeName.Visible = true;
+            this.colTypeName.VisibleIndex = 2;
+            this.colTypeName.Width = 76;
+            // 
+            // colFileFullPath
+            // 
+            this.colFileFullPath.Caption = "Full path";
+            this.colFileFullPath.FieldName = "FileFullPath";
+            this.colFileFullPath.Name = "colFileFullPath";
+            this.colFileFullPath.Visible = true;
+            this.colFileFullPath.VisibleIndex = 0;
+            this.colFileFullPath.Width = 187;
+            // 
+            // colMessage
+            // 
+            this.colMessage.FieldName = "Message";
+            this.colMessage.Name = "colMessage";
+            this.colMessage.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "Message", "{0}")});
+            this.colMessage.Visible = true;
+            this.colMessage.VisibleIndex = 1;
+            this.colMessage.Width = 110;
             // 
             // ribbon
             // 
@@ -114,9 +226,11 @@
             this.barButtonItemDirectionTopRightToBottomLeft,
             this.barCheckItemShowProperties,
             this.barCheckItemShowChart,
-            this.barButtonItem1});
+            this.barButtonItemShowColumnList,
+            this.barCheckItemShowFooter,
+            this.barButtonItemSearch});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 33;
+            this.ribbon.MaxItemId = 35;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -335,131 +449,43 @@
             this.barCheckItemShowChart.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Chart;
             this.barCheckItemShowChart.Name = "barCheckItemShowChart";
             // 
-            // barButtonItem1
+            // barButtonItemShowColumnList
             // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 32;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItemShowColumnList.Caption = "Show columns list";
+            this.barButtonItemShowColumnList.Id = 32;
+            this.barButtonItemShowColumnList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemShowColumnList.ImageOptions.SvgImage")));
+            this.barButtonItemShowColumnList.Name = "barButtonItemShowColumnList";
+            // 
+            // barCheckItemShowFooter
+            // 
+            this.barCheckItemShowFooter.BindableChecked = true;
+            this.barCheckItemShowFooter.Caption = "Show footer";
+            this.barCheckItemShowFooter.Checked = true;
+            this.barCheckItemShowFooter.Id = 33;
+            this.barCheckItemShowFooter.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Show_Footer;
+            this.barCheckItemShowFooter.Name = "barCheckItemShowFooter";
+            // 
+            // barButtonItemSearch
+            // 
+            this.barButtonItemSearch.Caption = "Search";
+            this.barButtonItemSearch.Id = 34;
+            this.barButtonItemSearch.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSearch.ImageOptions.SvgImage")));
+            this.barButtonItemSearch.Name = "barButtonItemSearch";
             // 
             // ribbonPageMain
             // 
             this.ribbonPageMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroupErrors});
+            this.ribbonPageGroupFiles});
             this.ribbonPageMain.Name = "ribbonPageMain";
             this.ribbonPageMain.Text = "Main Page";
             // 
-            // ribbonPageGroupErrors
+            // ribbonPageGroupFiles
             // 
-            this.ribbonPageGroupErrors.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroupErrors.Name = "ribbonPageGroupErrors";
-            this.ribbonPageGroupErrors.Text = "Errors";
-            // 
-            // gridControlErrors
-            // 
-            this.gridControlErrors.DataSource = this.errorsBindingSource;
-            this.gridControlErrors.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlErrors.EmbeddedNavigator.Buttons.Append.Visible = false;
-            this.gridControlErrors.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
-            this.gridControlErrors.EmbeddedNavigator.Buttons.Edit.Visible = false;
-            this.gridControlErrors.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
-            this.gridControlErrors.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gridControlErrors.Location = new System.Drawing.Point(0, 31);
-            this.gridControlErrors.MainView = this.gridViewErrors;
-            this.gridControlErrors.Name = "gridControlErrors";
-            this.gridControlErrors.Size = new System.Drawing.Size(610, 365);
-            this.gridControlErrors.TabIndex = 1;
-            this.gridControlErrors.UseEmbeddedNavigator = true;
-            this.gridControlErrors.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewErrors});
-            // 
-            // errorsBindingSource
-            // 
-            this.errorsBindingSource.DataSource = typeof(Wamby.Core.Model.ScanException);
-            // 
-            // gridViewErrors
-            // 
-            this.gridViewErrors.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colSource,
-            this.colStackTrace,
-            this.colTargetSite,
-            this.colInnerException,
-            this.colHResult,
-            this.colTypeName,
-            this.colFileFullPath,
-            this.colMessage});
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleDataBar1.PredefinedName = "Mint";
-            gridFormatRule1.Rule = formatConditionRuleDataBar1;
-            this.gridViewErrors.FormatRules.Add(gridFormatRule1);
-            this.gridViewErrors.GridControl = this.gridControlErrors;
-            this.gridViewErrors.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Extension", null, "({0} items)")});
-            this.gridViewErrors.Name = "gridViewErrors";
-            this.gridViewErrors.OptionsBehavior.Editable = false;
-            this.gridViewErrors.OptionsMenu.ShowConditionalFormattingItem = true;
-            this.gridViewErrors.OptionsView.ShowFooter = true;
-            this.gridViewErrors.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
-            this.gridViewErrors.OptionsView.ShowIndicator = false;
-            // 
-            // colSource
-            // 
-            this.colSource.FieldName = "Source";
-            this.colSource.Name = "colSource";
-            this.colSource.OptionsColumn.ReadOnly = true;
-            this.colSource.Width = 76;
-            // 
-            // colStackTrace
-            // 
-            this.colStackTrace.FieldName = "StackTrace";
-            this.colStackTrace.Name = "colStackTrace";
-            this.colStackTrace.OptionsColumn.ReadOnly = true;
-            this.colStackTrace.Width = 76;
-            // 
-            // colTargetSite
-            // 
-            this.colTargetSite.FieldName = "TargetSite";
-            this.colTargetSite.Name = "colTargetSite";
-            this.colTargetSite.OptionsColumn.ReadOnly = true;
-            // 
-            // colInnerException
-            // 
-            this.colInnerException.FieldName = "InnerException";
-            this.colInnerException.Name = "colInnerException";
-            this.colInnerException.OptionsColumn.ReadOnly = true;
-            // 
-            // colHResult
-            // 
-            this.colHResult.FieldName = "HResult";
-            this.colHResult.Name = "colHResult";
-            this.colHResult.OptionsColumn.ReadOnly = true;
-            this.colHResult.Width = 83;
-            // 
-            // colTypeName
-            // 
-            this.colTypeName.Caption = "Type";
-            this.colTypeName.FieldName = "TypeName";
-            this.colTypeName.Name = "colTypeName";
-            this.colTypeName.OptionsColumn.ReadOnly = true;
-            this.colTypeName.Visible = true;
-            this.colTypeName.VisibleIndex = 2;
-            this.colTypeName.Width = 76;
-            // 
-            // colFileFullPath
-            // 
-            this.colFileFullPath.Caption = "Full path";
-            this.colFileFullPath.FieldName = "FileFullPath";
-            this.colFileFullPath.Name = "colFileFullPath";
-            this.colFileFullPath.Visible = true;
-            this.colFileFullPath.VisibleIndex = 0;
-            this.colFileFullPath.Width = 187;
-            // 
-            // colMessage
-            // 
-            this.colMessage.FieldName = "Message";
-            this.colMessage.Name = "colMessage";
-            this.colMessage.Visible = true;
-            this.colMessage.VisibleIndex = 1;
-            this.colMessage.Width = 110;
+            this.ribbonPageGroupFiles.ItemLinks.Add(this.barButtonItemShowColumnList);
+            this.ribbonPageGroupFiles.ItemLinks.Add(this.barButtonItemSearch);
+            this.ribbonPageGroupFiles.ItemLinks.Add(this.barCheckItemShowFooter);
+            this.ribbonPageGroupFiles.Name = "ribbonPageGroupFiles";
+            this.ribbonPageGroupFiles.Text = "Files Main";
             // 
             // ErrorsModule
             // 
@@ -469,16 +495,27 @@
             this.Controls.Add(this.ribbon);
             this.Name = "ErrorsModule";
             this.Size = new System.Drawing.Size(610, 396);
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlErrors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewErrors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+        private DevExpress.XtraGrid.GridControl gridControlErrors;
+        private System.Windows.Forms.BindingSource errorsBindingSource;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewErrors;
+        private DevExpress.XtraGrid.Columns.GridColumn colSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colStackTrace;
+        private DevExpress.XtraGrid.Columns.GridColumn colTargetSite;
+        private DevExpress.XtraGrid.Columns.GridColumn colInnerException;
+        private DevExpress.XtraGrid.Columns.GridColumn colHResult;
+        private DevExpress.XtraGrid.Columns.GridColumn colTypeName;
+        private DevExpress.XtraGrid.Columns.GridColumn colFileFullPath;
+        private DevExpress.XtraGrid.Columns.GridColumn colMessage;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
         private DevExpress.XtraBars.BarButtonItem newAppBarButtonItem;
@@ -508,19 +545,10 @@
         private DevExpress.XtraBars.BarCheckItem barCheckItemMapByFilesCount;
         private DevExpress.XtraBars.BarCheckItem barCheckItemShowProperties;
         private DevExpress.XtraBars.BarCheckItem barCheckItemShowChart;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemShowColumnList;
+        private DevExpress.XtraBars.BarCheckItem barCheckItemShowFooter;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemSearch;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageMain;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupErrors;
-        private DevExpress.XtraGrid.GridControl gridControlErrors;
-        private System.Windows.Forms.BindingSource errorsBindingSource;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridViewErrors;
-        private DevExpress.XtraGrid.Columns.GridColumn colSource;
-        private DevExpress.XtraGrid.Columns.GridColumn colStackTrace;
-        private DevExpress.XtraGrid.Columns.GridColumn colTargetSite;
-        private DevExpress.XtraGrid.Columns.GridColumn colInnerException;
-        private DevExpress.XtraGrid.Columns.GridColumn colHResult;
-        private DevExpress.XtraGrid.Columns.GridColumn colTypeName;
-        private DevExpress.XtraGrid.Columns.GridColumn colFileFullPath;
-        private DevExpress.XtraGrid.Columns.GridColumn colMessage;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupFiles;
     }
 }

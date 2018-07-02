@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Wamby.API.Services
+namespace Wamby.API.Args
 {
     public class WambyFileSystemInfoEventArgs : EventArgs
     {

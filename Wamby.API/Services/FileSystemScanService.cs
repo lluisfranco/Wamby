@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Wamby.Core.Extensions;
 
@@ -12,20 +8,17 @@ namespace Wamby.API.Services
 {
     public class FileSystemScanService
     {
-        public event EventHandler<WambyFolderEventArgs> ScanningFolder;
-        public event EventHandler<WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfo;
-        public event EventHandler CancelledByUser;
         public bool Cancelled { get; private set; }
         System.Threading.CancellationTokenSource CancellationToken;
         public Core.Model.ScanOptions ScanOptions { get; private set; }
         public Core.Model.ScanResult ScanResult { get; private set; }
         public DirectoryInfo BaseFolder { get; private set; }
-
-        private SynchronizationContext _context;
+        public IProgress<Args.WambyFolderEventArgs> ScanningFolderProgress { get; set; }
+        public IProgress<Args.WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress { get; set; }
+        public IProgress<string> CancelledByUserProgress { get; set; }
+        
         public FileSystemScanService()
         {
-            var existingContext = SynchronizationContext.Current;
-            _context = existingContext != null ? existingContext.CreateCopy() : new SynchronizationContext();
             ScanOptions = new Core.Model.ScanOptions();
             ScanResult = new Core.Model.ScanResult();
         }
@@ -71,10 +64,11 @@ namespace Wamby.API.Services
                 LastAccessTime = currentDirectoryInfo.LastAccessTime,
                 LastWriteTime = currentDirectoryInfo.LastWriteTime,
                 OwnerName = GetOwner(currentDirectoryInfo),
-                Level = currentDirectoryInfo.FullName.Replace(BaseFolder.FullName, string.Empty).Split('\\').Length - 1
+                Level = currentDirectoryInfo.FullName.Replace(
+                    BaseFolder.FullName, string.Empty).Split(Path.DirectorySeparatorChar).Length
             };
             if (Cancelled) return currentFolderInfo;
-            RaiseEventScanningFolder(currentFolderInfo);
+            UpdateProgressScanningFolder(currentFolderInfo);
             if (ScanOptions.IncludeSubFolders)
             {
                 try
@@ -91,8 +85,9 @@ namespace Wamby.API.Services
                 {
                     if (!existsExceptionInResult(ex, _CurrentFileSystemInfo))
                     {
+                        //if (_CurrentFileSystemInfo == null) _CurrentFileSystemInfo = currentDirectoryInfo;
                         AddExceptionToResult(ex, _CurrentFileSystemInfo);
-                        RaiseEventErrorReadingFileSystemInfo(_CurrentFileSystemInfo);
+                        UpdateProgressErrorReadingFileSystemInfo(_CurrentFileSystemInfo);
                     }
                 }
             }
@@ -134,7 +129,7 @@ namespace Wamby.API.Services
                 if (!existsExceptionInResult(ex, _CurrentFileSystemInfo))
                 {
                     AddExceptionToResult(ex, _CurrentFileSystemInfo);
-                    RaiseEventErrorReadingFileSystemInfo(_CurrentFileSystemInfo);
+                    UpdateProgressErrorReadingFileSystemInfo(_CurrentFileSystemInfo);
                 }
                 return currentFolderInfo;
             }
@@ -164,21 +159,22 @@ namespace Wamby.API.Services
 
         bool existsExceptionInResult(Exception ex, FileSystemInfo currentFileSystemInfo)
         {
+            if (currentFileSystemInfo == null) return false;
             return ScanResult.ScanExceptions.Any(p =>
                 p.Exception.Message == ex.Message &&
                 p.FileSystemInfo.FullName == currentFileSystemInfo.FullName);
         }
 
-        private void RaiseEventScanningFolder(Core.Model.WambyFolderInfo currentFolderInfo)
+        private void UpdateProgressScanningFolder(Core.Model.WambyFolderInfo currentFolderInfo)
         {
-            if(currentFolderInfo.Level < ScanOptions.ShowMinimumFolderLevelInLog)
-                ScanningFolder?.Invoke(this, new WambyFolderEventArgs() { WambyFolderInfo = currentFolderInfo });
+            if (currentFolderInfo.Level <= ScanOptions.ShowMinimumFolderLevelInLog && !Cancelled)
+                ScanningFolderProgress?.Report(new Args.WambyFolderEventArgs() { WambyFolderInfo = currentFolderInfo });
         }
 
-        private void RaiseEventErrorReadingFileSystemInfo(FileSystemInfo currentItem)
+        private void UpdateProgressErrorReadingFileSystemInfo(FileSystemInfo currentItem)
         {
-            ErrorReadingFileSystemInfo?.Invoke(this, new WambyFileSystemInfoEventArgs()
-                { WambyFileSystemItem = currentItem });
+            if (!Cancelled)
+                ErrorReadingFileSystemInfoProgress?.Report(new Args.WambyFileSystemInfoEventArgs() { WambyFileSystemItem = currentItem });
         }
 
         private bool CheckIfCancellationRequested()
@@ -186,7 +182,7 @@ namespace Wamby.API.Services
             if (CancellationToken.IsCancellationRequested && !Cancelled)
             {
                 Cancelled = true;
-                CancelledByUser?.Invoke(this, new EventArgs());
+                CancelledByUserProgress?.Report(System.Security.Principal.WindowsIdentity.GetCurrent().Name);
                 return true;
             }
             return false;

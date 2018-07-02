@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilesModule));
             this.colLengthInKB = new DevExpress.XtraGrid.Columns.GridColumn();
             this.filesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -134,11 +134,11 @@
             this.colLastAccessTime,
             this.colCreationTime,
             this.colOwnerName});
-            gridFormatRule1.Column = this.colLengthInKB;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleDataBar1.PredefinedName = "Mint";
-            gridFormatRule1.Rule = formatConditionRuleDataBar1;
-            this.gridViewFiles.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.Column = this.colLengthInKB;
+            gridFormatRule2.Name = "Format0";
+            formatConditionRuleDataBar2.PredefinedName = "Mint";
+            gridFormatRule2.Rule = formatConditionRuleDataBar2;
+            this.gridViewFiles.FormatRules.Add(gridFormatRule2);
             this.gridViewFiles.GridControl = this.gridControlFiles;
             this.gridViewFiles.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Extension", null, "({0} items)")});

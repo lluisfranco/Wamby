@@ -41,9 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\WambyFileSystemInfoEventArgs.cs" />
+    <Compile Include="Args\WambyFileSystemInfoEventArgs.cs" />
     <Compile Include="Services\FileSystemScanService.cs" />
-    <Compile Include="Services\WambyFolderEventArgs.cs" />
+    <Compile Include="Args\WambyFolderEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wamby.Core\Wamby.Core.csproj">
