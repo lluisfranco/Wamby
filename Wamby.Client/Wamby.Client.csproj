@@ -293,5 +293,11 @@
   <ItemGroup>
     <None Include="Resources\GoTo_Folder_Explorer.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Open.svg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

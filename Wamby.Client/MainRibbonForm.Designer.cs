@@ -52,6 +52,8 @@
             this.barButtonItemPrint = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemExportXls = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemExportPdf = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpen = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemSave = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupMain = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupSkins = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -87,18 +89,18 @@
             this.fluentDesignFormContainer1.Controls.Add(this.tabControl);
             this.fluentDesignFormContainer1.Controls.Add(this.ribbon);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 50);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 30);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1258, 707);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1258, 727);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // tabControl
             // 
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 43);
+            this.tabControl.Location = new System.Drawing.Point(0, 31);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedTabPage = this.tabPageNewScan;
-            this.tabControl.Size = new System.Drawing.Size(1258, 664);
+            this.tabControl.Size = new System.Drawing.Size(1258, 696);
             this.tabControl.TabIndex = 3;
             this.tabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabPageNewScan,
@@ -117,15 +119,16 @@
             this.tabPageNewScan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("tabPageNewScan.ImageOptions.SvgImage")));
             this.tabPageNewScan.Name = "tabPageNewScan";
             this.tabPageNewScan.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            this.tabPageNewScan.Size = new System.Drawing.Size(1256, 604);
+            this.tabPageNewScan.Size = new System.Drawing.Size(1256, 648);
             this.tabPageNewScan.Text = "New Scan";
             // 
             // newScanModule
             // 
             this.newScanModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.newScanModule.InitialFolderPath = null;
             this.newScanModule.Location = new System.Drawing.Point(0, 0);
             this.newScanModule.Name = "newScanModule";
-            this.newScanModule.Size = new System.Drawing.Size(1256, 604);
+            this.newScanModule.Size = new System.Drawing.Size(1256, 648);
             this.newScanModule.TabIndex = 0;
             // 
             // tabPageResults
@@ -238,16 +241,18 @@
             this.skinPaletteRibbonGalleryBarItem1,
             this.barButtonItemPrint,
             this.barButtonItemExportXls,
-            this.barButtonItemExportPdf});
+            this.barButtonItemExportPdf,
+            this.barButtonItemOpen,
+            this.barButtonItemSave});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 32;
+            this.ribbon.MaxItemId = 34;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageMain});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
-            this.ribbon.Size = new System.Drawing.Size(1258, 43);
+            this.ribbon.Size = new System.Drawing.Size(1258, 31);
             // 
             // skinDropDownButtonItem1
             // 
@@ -289,6 +294,20 @@
             this.barButtonItemExportPdf.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Export_To_Pdf;
             this.barButtonItemExportPdf.Name = "barButtonItemExportPdf";
             // 
+            // barButtonItemOpen
+            // 
+            this.barButtonItemOpen.Caption = "Open scan...";
+            this.barButtonItemOpen.Id = 32;
+            this.barButtonItemOpen.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Open;
+            this.barButtonItemOpen.Name = "barButtonItemOpen";
+            // 
+            // barButtonItemSave
+            // 
+            this.barButtonItemSave.Caption = "Save scan...";
+            this.barButtonItemSave.Id = 33;
+            this.barButtonItemSave.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Save;
+            this.barButtonItemSave.Name = "barButtonItemSave";
+            // 
             // ribbonPageMain
             // 
             this.ribbonPageMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -301,6 +320,8 @@
             // ribbonPageGroupMain
             // 
             this.ribbonPageGroupMain.ItemLinks.Add(this.newAppBarButtonItem);
+            this.ribbonPageGroupMain.ItemLinks.Add(this.barButtonItemOpen);
+            this.ribbonPageGroupMain.ItemLinks.Add(this.barButtonItemSave);
             this.ribbonPageGroupMain.Name = "ribbonPageGroupMain";
             this.ribbonPageGroupMain.Text = "Main";
             // 
@@ -326,11 +347,11 @@
             this.accordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElementFileSystem,
             this.accordionControlElementOptions});
-            this.accordionControl.Location = new System.Drawing.Point(0, 50);
+            this.accordionControl.Location = new System.Drawing.Point(0, 30);
             this.accordionControl.Name = "accordionControl";
             this.accordionControl.OptionsMinimizing.NormalWidth = 260;
             this.accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl.Size = new System.Drawing.Size(260, 707);
+            this.accordionControl.Size = new System.Drawing.Size(260, 727);
             this.accordionControl.TabIndex = 1;
             this.accordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -418,7 +439,7 @@
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1518, 50);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1518, 30);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
@@ -494,5 +515,7 @@
         private DevExpress.XtraTab.XtraTabPage tabPageFiles;
         private Modules.FilesModule filesModule;
         private Modules.ErrorsModule errorsModule;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpen;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemSave;
     }
 }

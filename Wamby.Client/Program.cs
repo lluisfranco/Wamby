@@ -19,7 +19,6 @@ namespace Wamby.Client
             DevExpress.XtraEditors.WindowsFormsSettings.ForceDirectXPaint();
             var mainform = new MainRibbonForm();
             var path = String.Join(" ", args);
-            //MessageBox.Show(path);
             if (System.IO.Directory.Exists(path))
                 mainform.ViewModel.InitialFolderPath = path;
             Application.Run(mainform);

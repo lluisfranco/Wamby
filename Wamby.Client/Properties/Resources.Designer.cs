@@ -283,6 +283,16 @@ namespace Wamby.Client.Properties {
         /// <summary>
         ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
         /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage Open {
+            get {
+                object obj = ResourceManager.GetObject("Open", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
         internal static DevExpress.Utils.Svg.SvgImage Print_Preview {
             get {
                 object obj = ResourceManager.GetObject("Print_Preview", resourceCulture);
@@ -296,6 +306,16 @@ namespace Wamby.Client.Properties {
         internal static DevExpress.Utils.Svg.SvgImage Results {
             get {
                 object obj = ResourceManager.GetObject("Results", resourceCulture);
+                return ((DevExpress.Utils.Svg.SvgImage)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type DevExpress.Utils.Svg.SvgImage.
+        /// </summary>
+        internal static DevExpress.Utils.Svg.SvgImage Save {
+            get {
+                object obj = ResourceManager.GetObject("Save", resourceCulture);
                 return ((DevExpress.Utils.Svg.SvgImage)(obj));
             }
         }

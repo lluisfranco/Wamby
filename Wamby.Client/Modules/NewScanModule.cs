@@ -233,7 +233,7 @@ namespace Wamby.Client.Modules
         {            
             resultsGroupControl.CustomHeaderButtons[0].Properties.Caption =
                 $"{FileSystemScanService.ScanResult.WambyFolderInfo.DeepLengthInKB.ToString("n0")} KB in " +
-                $"{FileSystemScanService.ScanResult.WambyFolderInfo.AllFolders.Count.ToString("n0")} folders and " +
+                $"{FileSystemScanService.ScanResult.AllFolders.Count.ToString("n0")} folders and " +
                 $"{FileSystemScanService.ScanResult.WambyFolderInfo.DeepFilesCount.ToString("n0")} files";
             resultsGroupControl.CustomHeaderButtons[3].Properties.Caption =
                 FileSystemScanService.ScanResult.ScanExceptions.Count == 0 ?

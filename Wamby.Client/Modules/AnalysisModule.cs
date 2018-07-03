@@ -99,7 +99,7 @@ namespace Wamby.Client.Modules
 
         public void RefreshModuleData()
         {
-            resultsBindingSource.DataSource = FileSystemScanService.ScanResult.WambyFolderInfo.AllFiles;
+            resultsBindingSource.DataSource = FileSystemScanService.ScanResult.AllFiles;
             AddColumnsToPropertiesList();
             SelectAll();
         }

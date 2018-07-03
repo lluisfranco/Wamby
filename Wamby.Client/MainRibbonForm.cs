@@ -13,7 +13,15 @@ namespace Wamby.Client
             tabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
             Text = Application.ProductName;
             Icon = Properties.Resources.Wamby_App_Icon;
-            ViewModel = new ViewModels.MainFormViewModel(new FileSystemScanService());
+            var scanService = new FileSystemScanService()
+            {
+                UserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name,
+                ComputerName = Environment.MachineName,
+                OSVersionName = Environment.OSVersion.ToString(),
+                ScanDate = DateTime.Now
+            };
+            var storageService = new FileSystemStorageService(scanService);
+            ViewModel = new ViewModels.MainFormViewModel(scanService, storageService);
             SetEventHandlers();
         }
 
@@ -35,22 +43,29 @@ namespace Wamby.Client
             barButtonItemPrint.ItemClick += BarButtonItemPrint_ItemClick;
             barButtonItemExportXls.ItemClick += BarButtonItemExportXls_ItemClick;
             barButtonItemExportPdf.ItemClick += BarButtonItemExportPdf_ItemClick;
-            newScanModule.GotoTabButtonClicked += NewScanModule_GotoTabButtonClicked;            
+            newScanModule.GotoTabButtonClicked += NewScanModule_GotoTabButtonClicked;
+            barButtonItemSave.ItemClick += BarButtonItemSave_ItemClick;
+            barButtonItemOpen.ItemClick += BarButtonItemOpen_ItemClick;
         }
 
         private async void MainForm_Shown(object sender, EventArgs e)
         {
             ViewModel.LoadDefaultSettings();
             newScanModule.InitialFolderPath = ViewModel.InitialFolderPath;
+            InitializeModules();
+            ViewModel.CurrentModule = newScanModule;
+            ShowCurrentModuleToolbars();
+            if (ViewModel.InitialFolderPath != null) await newScanModule.DoScan();
+        }
+
+        private void InitializeModules()
+        {
             newScanModule.InitializeControl(ViewModel.FileSystemScanService);
             resultsModule.InitializeControl(ViewModel.FileSystemScanService);
             filesModule.InitializeControl(ViewModel.FileSystemScanService);
             mapModule.InitializeControl(ViewModel.FileSystemScanService);
             analysisModule.InitializeControl(ViewModel.FileSystemScanService);
             errorsModule.InitializeControl(ViewModel.FileSystemScanService);
-            ViewModel.CurrentModule = newScanModule;
-            ShowCurrentModuleToolbars();
-            if(ViewModel.InitialFolderPath != null) await newScanModule.DoScan();
         }
 
         private void NewScanModule_StartingScan(object sender, EventArgs e)
@@ -61,6 +76,11 @@ namespace Wamby.Client
         private void NewScanModule_EndingScan(object sender, EventArgs e)
         {
             EnablePages(true);
+            RefreshModulesData();
+        }
+
+        private void RefreshModulesData()
+        {
             resultsModule.RefreshModuleData();
             filesModule.RefreshModuleData();
             mapModule.RefreshModuleData();
@@ -171,6 +191,52 @@ namespace Wamby.Client
         private void BarButtonItemExportPdf_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             (ViewModel.CurrentModule as Interfaces.IModulePrintAndExport)?.ExportToPdf();
+        }
+
+        private async void BarButtonItemSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var sd = new SaveFileDialog();
+            sd.Filter = "Text files (*.txt)|*.txt";
+            try
+            {
+                if (sd.ShowDialog() == DialogResult.OK)
+                {
+                    Cursor = Cursors.AppStarting;
+                    await ViewModel.SaveScan(sd.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        private async void BarButtonItemOpen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var sd = new OpenFileDialog();
+            sd.Filter = "Text files (*.txt)|*.txt";
+            try
+            {
+                if (sd.ShowDialog() == DialogResult.OK)
+                {
+                    Cursor = Cursors.AppStarting;
+                    await ViewModel.OpenScan(sd.FileName);
+                    InitializeModules();
+                    RefreshModulesData();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
         }
 
     }

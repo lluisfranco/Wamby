@@ -55,7 +55,7 @@ namespace Wamby.Client.Modules
 
         public void RefreshModuleData()
         {
-            filesBindingSource.DataSource = FileSystemScanService.ScanResult.WambyFolderInfo.AllFiles;
+            filesBindingSource.DataSource = FileSystemScanService.ScanResult.AllFiles;
         }
 
         public void Print()

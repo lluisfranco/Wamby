@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Wamby.Core.Model
 {
@@ -11,10 +12,12 @@ namespace Wamby.Core.Model
         public double DeepLength { get; set; }
         public double DeepFilesCount { get; set; }
         public double DeepLengthInKB { get { return DeepLength / 1024; } }
+
+        [JsonIgnore]
         public System.IO.DirectoryInfo DirectoryInfo { get; set; }
+        [JsonIgnore]
         public List<WambyFolderInfo> Folders { get; set; } = new List<WambyFolderInfo>();
+        [JsonIgnore]
         public List<WambyFileInfo> Files { get; set; } = new List<WambyFileInfo>();
-        public List<WambyFolderInfo> AllFolders { get; set; } = new List<WambyFolderInfo>();
-        public List<WambyFileInfo> AllFiles { get; set; } = new List<WambyFileInfo>();
     }
 }

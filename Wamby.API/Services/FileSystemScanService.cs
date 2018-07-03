@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,13 +9,22 @@ namespace Wamby.API.Services
 {
     public class FileSystemScanService
     {
+        [JsonIgnore]
         public bool Cancelled { get; private set; }
+        [JsonIgnore]
         System.Threading.CancellationTokenSource CancellationToken;
+        public string BaseFolder { get; private set; }
+        public string UserName { get; set; }
+        public string ComputerName { get; set; }
+        public string OSVersionName { get; set; }
+        public DateTime ScanDate { get; set; }
         public Core.Model.ScanOptions ScanOptions { get; private set; }
         public Core.Model.ScanResult ScanResult { get; private set; }
-        public DirectoryInfo BaseFolder { get; private set; }
+        [JsonIgnore]
         public IProgress<Args.WambyFolderEventArgs> ScanningFolderProgress { get; set; }
+        [JsonIgnore]
         public IProgress<Args.WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress { get; set; }
+        [JsonIgnore]
         public IProgress<string> CancelledByUserProgress { get; set; }
         
         public FileSystemScanService()
@@ -27,20 +37,21 @@ namespace Wamby.API.Services
         public async Task<Core.Model.ScanResult> DoScan()
         {
             ScanResult.ScanExceptions.Clear();
-            BaseFolder = CheckBaseFolder(ScanOptions.BaseFolderPath);
+            BaseFolder = ScanOptions.BaseFolderPath;
+            CheckBaseFolder(ScanOptions.BaseFolderPath);
             CancellationToken = new System.Threading.CancellationTokenSource();
             Cancelled = false;
             var clock = new System.Diagnostics.Stopwatch();
             clock.Restart();
             var f = await Task.Run(() => ScanFolder(BaseFolder));
             ScanResult.WambyFolderInfo = f;
-            ScanResult.WambyFolderInfo.AllFolders = ScanResult.WambyFolderInfo.Folders.
+            ScanResult.AllFolders = ScanResult.WambyFolderInfo.Folders.
                 Where(p => p.IsFolder).SelectManyRecursive(p => p.Folders).ToList();
-            ScanResult.WambyFolderInfo.AllFolders.Add(ScanResult.WambyFolderInfo);
+            ScanResult.AllFolders.Add(ScanResult.WambyFolderInfo);
             if (ScanResult.WambyFolderInfo.Files.Count > 0)
-                ScanResult.WambyFolderInfo.AllFolders.Add(AddCurrentFolderFileSummary(ScanResult.WambyFolderInfo));
-            var allfiles = ScanResult.WambyFolderInfo.AllFolders.SelectMany(p => p.Files);
-            ScanResult.WambyFolderInfo.AllFiles.AddRange(allfiles);
+                ScanResult.AllFolders.Add(AddCurrentFolderFileSummary(ScanResult.WambyFolderInfo));
+            var allfiles = ScanResult.AllFolders.SelectMany(p => p.Files);
+            ScanResult.AllFiles.AddRange(allfiles);
             clock.Stop();
             ScanResult.ElapsedTime = clock.Elapsed;
             return ScanResult;
@@ -51,8 +62,9 @@ namespace Wamby.API.Services
             CancellationToken.Cancel();
         }
         
-        private Core.Model.WambyFolderInfo ScanFolder(DirectoryInfo currentDirectoryInfo)
+        private Core.Model.WambyFolderInfo ScanFolder(string basefolderpath)
         {
+            var currentDirectoryInfo = new DirectoryInfo(basefolderpath);
             var currentFolderInfo = new Core.Model.WambyFolderInfo()
             {
                 DirectoryInfo = currentDirectoryInfo,
@@ -64,8 +76,10 @@ namespace Wamby.API.Services
                 LastAccessTime = currentDirectoryInfo.LastAccessTime,
                 LastWriteTime = currentDirectoryInfo.LastWriteTime,
                 OwnerName = GetOwner(currentDirectoryInfo),
-                Level = currentDirectoryInfo.FullName.Replace(
-                    BaseFolder.FullName, string.Empty).Split(Path.DirectorySeparatorChar).Length
+                Level = basefolderpath.Replace(
+                    BaseFolder, string.Empty).Split(Path.DirectorySeparatorChar).Length 
+                //Level = currentDirectoryInfo.Parent.FullName.Replace(
+                //    basefolderpath, string.Empty).Split(Path.DirectorySeparatorChar).Length
             };
             if (Cancelled) return currentFolderInfo;
             UpdateProgressScanningFolder(currentFolderInfo);
@@ -77,7 +91,7 @@ namespace Wamby.API.Services
                     {
                         _CurrentFileSystemInfo = folder;                        
                         if (CheckIfCancellationRequested()) return currentFolderInfo;
-                        var folderInfo = ScanFolder(folder);
+                        var folderInfo = ScanFolder(folder.FullName);
                         currentFolderInfo.Folders.Add(folderInfo);
                     }
                 }
@@ -144,7 +158,7 @@ namespace Wamby.API.Services
                 ParentFullName = currentFolderInfo.FullName,
                 Name = currentFolderInfo.Name,
                 IsFolder = false,
-                Level = currentFolderInfo.FullName.Replace(BaseFolder.FullName, string.Empty).Split('\\').Length - 1,
+                Level = currentFolderInfo.FullName.Replace(BaseFolder, string.Empty).Split('\\').Length - 1,
                 Length = currentFolderInfo.Files.Sum(p => p.Length),
                 FilesCount = currentFolderInfo.Files.Count,
                 DeepLength = currentFolderInfo.Files.Sum(p => p.Length),
@@ -197,7 +211,7 @@ namespace Wamby.API.Services
             });
         }
 
-        private DirectoryInfo CheckBaseFolder(string baseFolderPath)
+        private bool CheckBaseFolder(string baseFolderPath)
         {
             if (baseFolderPath == null) throw new ArgumentNullException(nameof(baseFolderPath));
             if (!Directory.Exists(baseFolderPath))
@@ -207,8 +221,8 @@ namespace Wamby.API.Services
             }
             try
             {
-                BaseFolder = new DirectoryInfo(baseFolderPath);
-                return BaseFolder;
+                var folder = new DirectoryInfo(baseFolderPath);
+                return true;
             }
             catch (Exception ex)
             {

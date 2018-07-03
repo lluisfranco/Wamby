@@ -109,7 +109,7 @@ namespace Wamby.Client.Modules
 
         public void RefreshModuleData()
         {
-            resultsBindingSource.DataSource = FileSystemScanService.ScanResult.WambyFolderInfo.AllFolders;
+            resultsBindingSource.DataSource = FileSystemScanService.ScanResult.AllFolders;
         }
 
         public void Print()
