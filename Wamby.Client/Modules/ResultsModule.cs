@@ -43,8 +43,32 @@ namespace Wamby.Client.Modules
             barButtonItemExpandLevel4.ItemClick += BarButtonItemExpandLevel_ItemClick;
             barButtonItemExpandLevel5.ItemClick += BarButtonItemExpandLevel_ItemClick;
             resultsTreeList.GetStateImage += ResultsTreeList_GetStateImage;
+            resultsTreeList.FocusedNodeChanged += ResultsTreeList_FocusedNodeChanged;
+            resultsTreeList.MouseDown += ResultsTreeList_MouseDown;
             barButtonItemOpenFolder.ItemClick += BarButtonItemOpenFolder_ItemClick;
             barButtonItemOpenInNewWamby.ItemClick += BarButtonItemOpenInNewWamby_ItemClick;
+        }
+
+        private void ResultsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        {
+            var item = resultsTreeList.GetRow(e.Node.Id) as Core.Model.WambyFileSystemItem;
+            if (item == null) return;
+            var exists = System.IO.Directory.Exists(item.FullName);
+            barButtonItemOpenFolder.Enabled = exists;
+            barButtonItemOpenInNewWamby.Enabled = exists;
+        }
+
+        private void ResultsTreeList_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var node = resultsTreeList.GetNodeAt(e.Location);
+                if (node == null) return;
+                var item = resultsTreeList.GetRow(node.Id) as Core.Model.WambyFileSystemItem;
+                if (item == null) return;
+                resultsTreeList.FocusedNode = node;
+                popupMenu.ShowPopup(MousePosition);
+            }
         }
 
         private void BarButtonItemExpandTree_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

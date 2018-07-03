@@ -47,14 +47,16 @@
             this.barButtonItemExpandLevel3 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemExpandLevel4 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemExpandLevel5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpenFolder = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpenInNewWamby = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupResults = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupOptions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItemOpenFolder = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemOpenInNewWamby = new DevExpress.XtraBars.BarButtonItem();
+            this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.resultsTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // colDeepLength
@@ -221,6 +223,20 @@
             this.barButtonItemExpandLevel5.Name = "barButtonItemExpandLevel5";
             this.barButtonItemExpandLevel5.Tag = 5;
             // 
+            // barButtonItemOpenFolder
+            // 
+            this.barButtonItemOpenFolder.Caption = "Open Folder (Explorer)";
+            this.barButtonItemOpenFolder.Id = 32;
+            this.barButtonItemOpenFolder.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Folder_Explorer;
+            this.barButtonItemOpenFolder.Name = "barButtonItemOpenFolder";
+            // 
+            // barButtonItemOpenInNewWamby
+            // 
+            this.barButtonItemOpenInNewWamby.Caption = "Scan in new Wamby";
+            this.barButtonItemOpenInNewWamby.Id = 33;
+            this.barButtonItemOpenInNewWamby.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.New;
+            this.barButtonItemOpenInNewWamby.Name = "barButtonItemOpenInNewWamby";
+            // 
             // ribbonPageMain
             // 
             this.ribbonPageMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -244,19 +260,12 @@
             this.ribbonPageGroupOptions.Name = "ribbonPageGroupOptions";
             this.ribbonPageGroupOptions.Text = "Options";
             // 
-            // barButtonItemOpenFolder
+            // popupMenu
             // 
-            this.barButtonItemOpenFolder.Caption = "Open Folder (Explorer)";
-            this.barButtonItemOpenFolder.Id = 32;
-            this.barButtonItemOpenFolder.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Folder_Explorer;
-            this.barButtonItemOpenFolder.Name = "barButtonItemOpenFolder";
-            // 
-            // barButtonItemOpenInNewWamby
-            // 
-            this.barButtonItemOpenInNewWamby.Caption = "Scan in new Wamby";
-            this.barButtonItemOpenInNewWamby.Id = 33;
-            this.barButtonItemOpenInNewWamby.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.New;
-            this.barButtonItemOpenInNewWamby.Name = "barButtonItemOpenInNewWamby";
+            this.popupMenu.ItemLinks.Add(this.barButtonItemOpenFolder);
+            this.popupMenu.ItemLinks.Add(this.barButtonItemOpenInNewWamby);
+            this.popupMenu.Name = "popupMenu";
+            this.popupMenu.Ribbon = this.ribbon;
             // 
             // ResultsModule
             // 
@@ -269,6 +278,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.resultsTreeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,5 +307,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupOptions;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenFolder;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenInNewWamby;
+        private DevExpress.XtraBars.PopupMenu popupMenu;
     }
 }
