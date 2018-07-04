@@ -146,13 +146,13 @@
             // 
             // colTargetSite
             // 
-            this.colTargetSite.FieldName = "TargetSite";
+            this.colTargetSite.FieldName = "TargetSiteName";
             this.colTargetSite.Name = "colTargetSite";
             this.colTargetSite.OptionsColumn.ReadOnly = true;
             // 
             // colInnerException
             // 
-            this.colInnerException.FieldName = "InnerException";
+            this.colInnerException.FieldName = "InnerExceptionMessage";
             this.colInnerException.Name = "colInnerException";
             this.colInnerException.OptionsColumn.ReadOnly = true;
             // 

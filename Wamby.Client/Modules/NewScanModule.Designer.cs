@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions6 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions3 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions4 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
-            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions5 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions7 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions8 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions9 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewScanModule));
             this.scanOptionsGroupControl = new DevExpress.XtraEditors.GroupControl();
             this.includeSubfoldersCheckEdit = new DevExpress.XtraEditors.CheckEdit();
@@ -52,7 +52,11 @@
             this.newScanPathButtonEdit = new DevExpress.XtraEditors.ButtonEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.scanLogGroupControl = new DevExpress.XtraEditors.GroupControl();
-            this.logListBoxControl = new DevExpress.XtraEditors.ImageListBoxControl();
+            this.gridControlLog = new DevExpress.XtraGrid.GridControl();
+            this.logLineBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridViewLog = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colLogLineType = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMessage = new DevExpress.XtraGrid.Columns.GridColumn();
             this.resultsGroupControl = new DevExpress.XtraEditors.GroupControl();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemScanNow = new DevExpress.XtraBars.BarButtonItem();
@@ -71,7 +75,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.newScanPathButtonEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.scanLogGroupControl)).BeginInit();
             this.scanLogGroupControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.logListBoxControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlLog)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logLineBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewLog)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsGroupControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl)).BeginInit();
@@ -96,7 +102,7 @@
             // 
             // includeSubfoldersCheckEdit
             // 
-            this.includeSubfoldersCheckEdit.Location = new System.Drawing.Point(423, 76);
+            this.includeSubfoldersCheckEdit.Location = new System.Drawing.Point(421, 71);
             this.includeSubfoldersCheckEdit.Name = "includeSubfoldersCheckEdit";
             this.includeSubfoldersCheckEdit.Properties.Caption = "Include subfolders";
             this.includeSubfoldersCheckEdit.Size = new System.Drawing.Size(159, 20);
@@ -105,7 +111,7 @@
             // searchPatternButtonEdit
             // 
             this.searchPatternButtonEdit.EditValue = "*";
-            this.searchPatternButtonEdit.Location = new System.Drawing.Point(94, 76);
+            this.searchPatternButtonEdit.Location = new System.Drawing.Point(92, 71);
             this.searchPatternButtonEdit.Name = "searchPatternButtonEdit";
             this.searchPatternButtonEdit.Size = new System.Drawing.Size(307, 20);
             this.searchPatternButtonEdit.TabIndex = 1;
@@ -113,7 +119,7 @@
             // labelControl2
             // 
             this.labelControl2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.labelControl2.Location = new System.Drawing.Point(14, 78);
+            this.labelControl2.Location = new System.Drawing.Point(14, 74);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(72, 13);
             this.labelControl2.TabIndex = 0;
@@ -125,13 +131,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.newScanPathButtonEdit.Location = new System.Drawing.Point(92, 36);
             this.newScanPathButtonEdit.Name = "newScanPathButtonEdit";
-            editorButtonImageOptions1.SvgImage = global::Wamby.Client.Properties.Resources.NewScan_Change_Folder;
-            editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
-            editorButtonImageOptions2.SvgImage = global::Wamby.Client.Properties.Resources.NewScan_ScanNow;
-            editorButtonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
+            editorButtonImageOptions3.SvgImage = global::Wamby.Client.Properties.Resources.NewScan_Change_Folder;
+            editorButtonImageOptions3.SvgImageSize = new System.Drawing.Size(16, 16);
+            editorButtonImageOptions4.SvgImage = global::Wamby.Client.Properties.Resources.NewScan_ScanNow;
+            editorButtonImageOptions4.SvgImageSize = new System.Drawing.Size(16, 16);
             this.newScanPathButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "Change folder", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "Scan now", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "Change folder", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "Scan now", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.newScanPathButtonEdit.Size = new System.Drawing.Size(647, 20);
             this.newScanPathButtonEdit.TabIndex = 1;
             // 
@@ -145,45 +151,93 @@
             // 
             // scanLogGroupControl
             // 
-            this.scanLogGroupControl.Controls.Add(this.logListBoxControl);
+            this.scanLogGroupControl.Controls.Add(this.gridControlLog);
             this.scanLogGroupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Cancel", true, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, null, -1)});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Cancel", true, buttonImageOptions6, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, null, -1)});
             this.scanLogGroupControl.CustomHeaderButtonsLocation = DevExpress.Utils.GroupElementLocation.AfterText;
             this.scanLogGroupControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scanLogGroupControl.GroupStyle = DevExpress.Utils.GroupStyle.Title;
             this.scanLogGroupControl.Location = new System.Drawing.Point(3, 119);
             this.scanLogGroupControl.Name = "scanLogGroupControl";
-            this.scanLogGroupControl.Size = new System.Drawing.Size(768, 127);
+            this.scanLogGroupControl.Size = new System.Drawing.Size(768, 183);
             this.scanLogGroupControl.TabIndex = 2;
             this.scanLogGroupControl.Text = "Scan log";
             // 
-            // logListBoxControl
+            // gridControlLog
             // 
-            this.logListBoxControl.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.logListBoxControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logListBoxControl.Location = new System.Drawing.Point(0, 26);
-            this.logListBoxControl.Name = "logListBoxControl";
-            this.logListBoxControl.ShowFocusRect = false;
-            this.logListBoxControl.Size = new System.Drawing.Size(768, 101);
-            this.logListBoxControl.TabIndex = 0;
+            this.gridControlLog.DataSource = this.logLineBindingSource;
+            this.gridControlLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControlLog.EmbeddedNavigator.Buttons.Append.Visible = false;
+            this.gridControlLog.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            this.gridControlLog.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            this.gridControlLog.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            this.gridControlLog.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            this.gridControlLog.Location = new System.Drawing.Point(0, 26);
+            this.gridControlLog.MainView = this.gridViewLog;
+            this.gridControlLog.Name = "gridControlLog";
+            this.gridControlLog.Size = new System.Drawing.Size(768, 157);
+            this.gridControlLog.TabIndex = 1;
+            this.gridControlLog.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridViewLog});
+            // 
+            // logLineBindingSource
+            // 
+            this.logLineBindingSource.DataSource = typeof(Wamby.Core.Model.LogLine);
+            // 
+            // gridViewLog
+            // 
+            this.gridViewLog.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridViewLog.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colLogLineType,
+            this.colMessage});
+            this.gridViewLog.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
+            this.gridViewLog.GridControl = this.gridControlLog;
+            this.gridViewLog.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Extension", null, "({0} items)")});
+            this.gridViewLog.Name = "gridViewLog";
+            this.gridViewLog.OptionsBehavior.Editable = false;
+            this.gridViewLog.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.gridViewLog.OptionsView.ShowColumnHeaders = false;
+            this.gridViewLog.OptionsView.ShowGroupPanel = false;
+            this.gridViewLog.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
+            this.gridViewLog.OptionsView.ShowIndicator = false;
+            this.gridViewLog.OptionsView.ShowVerticalLines = DevExpress.Utils.DefaultBoolean.False;
+            // 
+            // colLogLineType
+            // 
+            this.colLogLineType.FieldName = "LogLineType";
+            this.colLogLineType.Name = "colLogLineType";
+            this.colLogLineType.OptionsColumn.AllowSize = false;
+            this.colLogLineType.OptionsColumn.FixedWidth = true;
+            this.colLogLineType.Visible = true;
+            this.colLogLineType.VisibleIndex = 0;
+            this.colLogLineType.Width = 40;
+            // 
+            // colMessage
+            // 
+            this.colMessage.FieldName = "Message";
+            this.colMessage.Name = "colMessage";
+            this.colMessage.Visible = true;
+            this.colMessage.VisibleIndex = 1;
+            this.colMessage.Width = 218;
             // 
             // resultsGroupControl
             // 
-            buttonImageOptions2.SvgImage = global::Wamby.Client.Properties.Resources.mainResultsModule;
-            buttonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
-            buttonImageOptions3.SvgImage = global::Wamby.Client.Properties.Resources.mainMapModule;
-            buttonImageOptions3.SvgImageSize = new System.Drawing.Size(16, 16);
-            buttonImageOptions4.SvgImage = global::Wamby.Client.Properties.Resources.mainAnalysisModule;
-            buttonImageOptions4.SvgImageSize = new System.Drawing.Size(16, 16);
-            buttonImageOptions5.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions5.SvgImage")));
-            buttonImageOptions5.SvgImageSize = new System.Drawing.Size(16, 16);
+            buttonImageOptions1.SvgImage = global::Wamby.Client.Properties.Resources.mainResultsModule;
+            buttonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
+            buttonImageOptions7.SvgImage = global::Wamby.Client.Properties.Resources.mainMapModule;
+            buttonImageOptions7.SvgImageSize = new System.Drawing.Size(16, 16);
+            buttonImageOptions8.SvgImage = global::Wamby.Client.Properties.Resources.mainAnalysisModule;
+            buttonImageOptions8.SvgImageSize = new System.Drawing.Size(16, 16);
+            buttonImageOptions9.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("buttonImageOptions9.SvgImage")));
+            buttonImageOptions9.SvgImageSize = new System.Drawing.Size(16, 16);
             this.resultsGroupControl.CustomHeaderButtons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("", true, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, "tabPageResults", -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("See a map of the results", true, buttonImageOptions3, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, "tabPageMap", -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Analyze results in depth", true, buttonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, "tabPageAnalysis", -1),
-            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("No errors", true, buttonImageOptions5, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, "tabPageErrors", -1)});
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("", true, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, "tabPageResults", -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("See a map of the results", true, buttonImageOptions7, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, "tabPageMap", -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("Analyze results in depth", true, buttonImageOptions8, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, "tabPageAnalysis", -1),
+            new DevExpress.XtraEditors.ButtonsPanelControl.GroupBoxButton("No errors", true, buttonImageOptions9, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, false, "tabPageErrors", -1)});
             this.resultsGroupControl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.resultsGroupControl.Location = new System.Drawing.Point(0, 280);
+            this.resultsGroupControl.Location = new System.Drawing.Point(0, 336);
             this.resultsGroupControl.Name = "resultsGroupControl";
             this.resultsGroupControl.Size = new System.Drawing.Size(774, 27);
             this.resultsGroupControl.TabIndex = 3;
@@ -269,7 +323,7 @@
             this.panelControl.Location = new System.Drawing.Point(0, 31);
             this.panelControl.Name = "panelControl";
             this.panelControl.Padding = new System.Windows.Forms.Padding(3);
-            this.panelControl.Size = new System.Drawing.Size(774, 249);
+            this.panelControl.Size = new System.Drawing.Size(774, 305);
             this.panelControl.TabIndex = 4;
             // 
             // popupMenu
@@ -289,7 +343,7 @@
             this.Controls.Add(this.ribbon);
             this.Controls.Add(this.resultsGroupControl);
             this.Name = "NewScanModule";
-            this.Size = new System.Drawing.Size(774, 307);
+            this.Size = new System.Drawing.Size(774, 363);
             ((System.ComponentModel.ISupportInitialize)(this.scanOptionsGroupControl)).EndInit();
             this.scanOptionsGroupControl.ResumeLayout(false);
             this.scanOptionsGroupControl.PerformLayout();
@@ -298,7 +352,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.newScanPathButtonEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.scanLogGroupControl)).EndInit();
             this.scanLogGroupControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.logListBoxControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlLog)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logLineBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridViewLog)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsGroupControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl)).EndInit();
@@ -318,7 +374,6 @@
         private DevExpress.XtraEditors.ButtonEdit searchPatternButtonEdit;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.GroupControl scanLogGroupControl;
-        private DevExpress.XtraEditors.ImageListBoxControl logListBoxControl;
         private DevExpress.XtraEditors.GroupControl resultsGroupControl;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageMain;
@@ -330,5 +385,10 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenFolder;
         private DevExpress.XtraBars.PopupMenu popupMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenInNewWamby;
+        private DevExpress.XtraGrid.GridControl gridControlLog;
+        private System.Windows.Forms.BindingSource logLineBindingSource;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridViewLog;
+        private DevExpress.XtraGrid.Columns.GridColumn colLogLineType;
+        private DevExpress.XtraGrid.Columns.GridColumn colMessage;
     }
 }

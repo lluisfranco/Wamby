@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Wamby.Client.Model
 {
-
     public class FileMapInfo
     {
         public string Extension { get; set; }

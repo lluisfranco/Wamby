@@ -18,16 +18,43 @@ namespace Wamby.Client.Modules
         public bool Initialized { get; private set; }
         public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
         public string InitialFolderPath { get; set; } = null;
-
         public event EventHandler StartingScan;
         public event EventHandler EndingScan;
         public event EventHandler<Args.GotoTabButtonEventArgs> GotoTabButtonClicked;
+
+        Progress<Wamby.API.Args.WambyFolderEventArgs> ScanningFolderProgress;
+        Progress<Wamby.API.Args.WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress;
+        Progress<string> CancelledByUserProgress;
 
         Timer timer = new Timer();
         Stopwatch clock = new Stopwatch();
         public NewScanModule()
         {
             InitializeComponent();
+            SetProgressHandlers();
+        }
+
+        private void SetProgressHandlers()
+        {
+            ScanningFolderProgress = new Progress<API.Args.WambyFolderEventArgs>(args =>
+            {
+                RefreshModuleData();
+            });
+            ErrorReadingFileSystemInfoProgress = new Progress<Wamby.API.Args.WambyFileSystemInfoEventArgs>(args =>
+            {
+                RefreshModuleData();
+            });
+            CancelledByUserProgress = new Progress<string>(args =>
+            {
+                RefreshModuleData();
+            });
+        }
+
+        public void RefreshModuleData()
+        {
+            logLineBindingSource.DataSource = FileSystemScanService.LogLines;
+            gridControlLog.RefreshDataSource();
+            gridViewLog.FocusedRowHandle = gridViewLog.RowCount - 1;
         }
 
         public string GetSelectedPath()
@@ -40,29 +67,29 @@ namespace Wamby.Client.Modules
             FileSystemScanService = scanService;
             newScanPathButtonEdit.MaskBox.AutoCompleteMode = AutoCompleteMode.Suggest;
             newScanPathButtonEdit.MaskBox.AutoCompleteSource = AutoCompleteSource.FileSystemDirectories;
-            newScanPathButtonEdit.Text = InitialFolderPath ?? FileSystemScanService.ScanOptions.BaseFolderPath;
-            includeSubfoldersCheckEdit.Checked = FileSystemScanService.ScanOptions.IncludeSubFolders;
-            searchPatternButtonEdit.Text = FileSystemScanService.ScanOptions.SearchPattern;
-            FileSystemScanService.ScanningFolderProgress = new Progress<Wamby.API.Args.WambyFolderEventArgs>(args =>
-            {
-                AddMessageToLog($"Reading: {args.WambyFolderInfo?.FullName}",
-                    args.WambyFolderInfo?.FullName, Properties.Resources.Log_Folder);
-            });
-            FileSystemScanService.ErrorReadingFileSystemInfoProgress = new Progress<Wamby.API.Args.WambyFileSystemInfoEventArgs>(args =>
-           {
-               AddMessageToLog($"ERROR: {args.WambyFileSystemItem?.FullName}",
-                   args.WambyFileSystemItem?.FullName, Properties.Resources.Errors);
-           });
-            FileSystemScanService.CancelledByUserProgress = new Progress<string>(args =>
-            {
-                AddMessageToLog($"** Scan cancelled by user {args} **".ToUpper(),
-                    string.Empty, Properties.Resources.Errors);
-            });
+            RefreshScanOptionsControls();
+            FileSystemScanService.ScanningFolderProgress = ScanningFolderProgress;
+            FileSystemScanService.ErrorReadingFileSystemInfoProgress = ErrorReadingFileSystemInfoProgress;
+            FileSystemScanService.CancelledByUserProgress = CancelledByUserProgress;
             resultsGroupControl.CustomButtonClick += ResultsGroupControl_CustomButtonClick;
+            var logcombo = Helpers.UIHelper.GetLogTypesCombo();
+            logcombo.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
+            colLogLineType.ColumnEdit = logcombo;
             Initialized = true;
             setEventHandlers();
         }
-        
+
+        public void RefreshScanOptionsControls()
+        {
+            //todo user + machine + date
+            scanOptionsGroupControl.Text = $"Scan options - {FileSystemScanService.UserName} on " +
+                $"{FileSystemScanService.ComputerName} ({FileSystemScanService.OSVersionName} at " +
+                $"{FileSystemScanService.ScanDate.ToString()})";
+            newScanPathButtonEdit.Text = InitialFolderPath ?? FileSystemScanService.ScanOptions.BaseFolderPath;
+            includeSubfoldersCheckEdit.Checked = FileSystemScanService.ScanOptions.IncludeSubFolders;
+            searchPatternButtonEdit.Text = FileSystemScanService.ScanOptions.SearchPattern;
+        }
+
         private void ResultsGroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
             GotoTabButtonClicked?.Invoke(this, new Args.GotoTabButtonEventArgs()
@@ -78,41 +105,36 @@ namespace Wamby.Client.Modules
             barButtonItemScanNow.ItemClick += BarButtonItemScanNow_ItemClick;
             barButtonItemOpenFolder.ItemClick += BarButtonItemOpenFolder_ItemClick;
             barButtonItemOpenInNewWamby.ItemClick += BarButtonItemOpenInNewWamby_ItemClick;
-            logListBoxControl.SelectedIndexChanged += LogListBoxControl_SelectedIndexChanged;
-            logListBoxControl.MouseDown += LogListBoxControl_MouseDown;
+            gridViewLog.FocusedRowObjectChanged += GridViewLog_FocusedRowObjectChanged;
+            gridViewLog.MouseDown += GridViewLog_MouseDown;
             timer.Enabled = false;
             timer.Interval = 500;
             timer.Tick += Timer_Tick;
         }
 
-        private void LogListBoxControl_MouseDown(object sender, MouseEventArgs e)
+        private void GridViewLog_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Right)
-            {
-                int itemIndex = logListBoxControl.IndexFromPoint(e.Location);
-                logListBoxControl.SelectedIndex = itemIndex;
-                popupMenu.ShowPopup(MousePosition);
-            }
+            if (e.Button == MouseButtons.Right) popupMenu.ShowPopup(MousePosition);
         }
 
-        private void LogListBoxControl_SelectedIndexChanged(object sender, EventArgs e)
+        private void GridViewLog_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
         {
-            var item = (logListBoxControl.SelectedItem as DevExpress.XtraEditors.Controls.ListBoxItem)?.Value?.ToString();
-            barButtonItemOpenFolder.Enabled = System.IO.Directory.Exists(item);
-            barButtonItemOpenInNewWamby.Enabled = System.IO.Directory.Exists(item);
+            var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
+            barButtonItemOpenFolder.Enabled = System.IO.Directory.Exists(item.Value);
+            barButtonItemOpenInNewWamby.Enabled = System.IO.Directory.Exists(item.Value);
         }
 
         private void BarButtonItemOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var item = (logListBoxControl.SelectedItem as DevExpress.XtraEditors.Controls.ListBoxItem)?.Value?.ToString();
-            if(System.IO.Directory.Exists(item)) Process.Start(item);
+            var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
+            if (System.IO.Directory.Exists(item.Value)) Process.Start(item.Value);
         }
 
         private void BarButtonItemOpenInNewWamby_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var item = (logListBoxControl.SelectedItem as DevExpress.XtraEditors.Controls.ListBoxItem)?.Value?.ToString();
-            if (System.IO.Directory.Exists(item))
-                System.Diagnostics.Process.Start(Application.ExecutablePath, item);
+            var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
+            if (System.IO.Directory.Exists(item.Value))
+                System.Diagnostics.Process.Start(Application.ExecutablePath, item.Value);
         }
 
         private void ScanLogGroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
@@ -158,15 +180,20 @@ namespace Wamby.Client.Modules
             IOverlaySplashScreenHandle handle = null;
             if(newScanPathButtonEdit.Text.LastOrDefault() == System.IO.Path.DirectorySeparatorChar)
                 newScanPathButtonEdit.Text = newScanPathButtonEdit.Text.Remove(newScanPathButtonEdit.Text.Length - 1, 1);
+            FileSystemScanService.Clear();
             FileSystemScanService.ScanOptions.BaseFolderPath = newScanPathButtonEdit.Text;
             FileSystemScanService.ScanOptions.IncludeSubFolders = includeSubfoldersCheckEdit.Checked;
             FileSystemScanService.ScanOptions.SearchPattern = searchPatternButtonEdit.Text;
             FileSystemScanService.ScanOptions.ShowMinimumFolderLevelInLog = 
                 Properties.Settings.Default.ShowMinimumFolderLevelInLog;
+            FileSystemScanService.UserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            FileSystemScanService.ComputerName = Environment.MachineName;
+            FileSystemScanService.OSVersionName = Environment.OSVersion.ToString();
+            FileSystemScanService.ScanDate = DateTime.Now;
             try
             {
-                handle = OverlayFormExtensions.ShowProgressPanel(logListBoxControl);
-                StartScan();            
+                handle = OverlayFormExtensions.ShowProgressPanel(gridControlLog);
+                StartScan();
                 await FileSystemScanService.DoScan();
                 SaveScanOptions();
             }
@@ -183,20 +210,6 @@ namespace Wamby.Client.Modules
             return FileSystemScanService.ScanResult;
         }
 
-        private void AddMessageToLog(string message, string value, DevExpress.Utils.Svg.SvgImage image)
-        {
-            var newitem = new DevExpress.XtraEditors.Controls.ImageListBoxItem()
-            {
-                Description = message,
-                Value = value,
-            };
-            newitem.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
-            newitem.ImageOptions.SvgImage = image;
-            var newindex = logListBoxControl.Items.Add(newitem);
-            logListBoxControl.TopIndex = newindex;
-            logListBoxControl.Refresh();
-        }
-
         void SaveScanOptions()
         {
             Properties.Settings.Default.DefaultBaseFolderPath = FileSystemScanService.ScanOptions.BaseFolderPath;
@@ -209,10 +222,6 @@ namespace Wamby.Client.Modules
             clock.Restart();
             timer.Enabled = true;
             StartingScan?.Invoke(this, new EventArgs());
-            logListBoxControl.Items.Clear();
-            AddMessageToLog(
-                $"Started scan at {DateTime.Now.ToShortTimeString()}", 
-                string.Empty, Properties.Resources.Log_Info);
             ActivateUI(false);
             resultsGroupControl.CustomHeaderButtons[0].Properties.Visible = true;
         }
@@ -221,11 +230,9 @@ namespace Wamby.Client.Modules
         {
             clock.Stop();
             timer.Enabled = false;
-            AddMessageToLog(
-                $"Finished scan. Ellapsed time: " +
-                $"{FileSystemScanService.ScanResult.ElapsedTime.TotalSeconds.ToString("n2")} sec.", string.Empty, Properties.Resources.Log_Info);
             ActivateUI(true);
             UpdateResults();
+            RefreshScanOptionsControls();
             EndingScan?.Invoke(this, new EventArgs());
         }
 
@@ -262,11 +269,6 @@ namespace Wamby.Client.Modules
             var sec = (clock.ElapsedMilliseconds / 1000) + 1;
             resultsGroupControl.CustomHeaderButtons[0].Properties.Caption = $"Scanning...{sec} sec.";
             resultsGroupControl.Refresh();
-        }
-
-        public void RefreshModuleData()
-        {
-            UpdateResults();
         }
     }
 }

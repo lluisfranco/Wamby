@@ -20,7 +20,7 @@ namespace Wamby.Client
                 OSVersionName = Environment.OSVersion.ToString(),
                 ScanDate = DateTime.Now
             };
-            var storageService = new FileSystemStorageService(scanService);
+            var storageService = new FileSystemStorageService();
             ViewModel = new ViewModels.MainFormViewModel(scanService, storageService);
             SetEventHandlers();
         }
@@ -37,6 +37,8 @@ namespace Wamby.Client
             showScheduleModule.Click += ShowScheduleModule_Click;
             showSettingsModule.Click += ShowSettingsModule_Click;
             newAppBarButtonItem.ItemClick += NewAppBarButtonItem_ItemClick;
+            newScanModule.StartingScan -= NewScanModule_StartingScan;
+            newScanModule.EndingScan -= NewScanModule_EndingScan;
             newScanModule.StartingScan += NewScanModule_StartingScan;
             newScanModule.EndingScan += NewScanModule_EndingScan;
             tabControl.SelectedPageChanged += TabControl_SelectedPageChanged;
@@ -81,6 +83,7 @@ namespace Wamby.Client
 
         private void RefreshModulesData()
         {
+            newScanModule.RefreshModuleData();
             resultsModule.RefreshModuleData();
             filesModule.RefreshModuleData();
             mapModule.RefreshModuleData();
@@ -202,7 +205,7 @@ namespace Wamby.Client
                 if (sd.ShowDialog() == DialogResult.OK)
                 {
                     Cursor = Cursors.AppStarting;
-                    await ViewModel.SaveScan(sd.FileName);
+                    await ViewModel.SaveScan(sd.FileName, Properties.Settings.Default.SaveToFileReadableFormat);
                 }
             }
             catch (Exception ex)
@@ -225,7 +228,7 @@ namespace Wamby.Client
                 {
                     Cursor = Cursors.AppStarting;
                     await ViewModel.OpenScan(sd.FileName);
-                    InitializeModules();
+                    newScanModule.RefreshScanOptionsControls();
                     RefreshModulesData();
                 }
             }

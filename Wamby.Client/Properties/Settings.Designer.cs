@@ -73,7 +73,7 @@ namespace Wamby.Client.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
         public int ShowMinimumFolderLevelInLog {
             get {
                 return ((int)(this["ShowMinimumFolderLevelInLog"]));
@@ -104,6 +104,18 @@ namespace Wamby.Client.Properties {
             }
             set {
                 this["Layouts_LoadOnStart"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SaveToFileReadableFormat {
+            get {
+                return ((bool)(this["SaveToFileReadableFormat"]));
+            }
+            set {
+                this["SaveToFileReadableFormat"] = value;
             }
         }
     }

@@ -10,23 +10,21 @@ namespace Wamby.API.Services
 {
     public class FileSystemStorageService
     {
-        public FileSystemScanService ScanService { get; private set; }
-        public FileSystemStorageService(FileSystemScanService scanService)
+        public bool SaveReadableFormat { get; set; }
+        
+        public async Task SaveToFile(string filename, FileSystemScanService scanService)
         {
-            ScanService = scanService;
-        }
-
-        public async Task SaveToFile(string filename)
-        {
-            var jsonScanData = JsonConvert.SerializeObject(ScanService, Formatting.Indented);
+            var jsonScanData = JsonConvert.SerializeObject(scanService, 
+                SaveReadableFormat ? Formatting.Indented : Formatting.None);
             await Task.Run(() => File.WriteAllText(filename, jsonScanData));
         }
 
-        public async Task<FileSystemScanService> OpenFromFile(string filename)
+        public async Task<FileSystemScanService> OpenFromFile(string filename, FileSystemScanService scanService)
         {
             var jsonScanData = await Task.Run(() => File.ReadAllText(filename));
-            ScanService = JsonConvert.DeserializeObject<FileSystemScanService>(jsonScanData);
-            return ScanService;
+            var ss = JsonConvert.DeserializeObject<FileSystemScanService>(jsonScanData);
+            scanService.CopyProperties(ss);
+            return scanService;
         }
     }
 }

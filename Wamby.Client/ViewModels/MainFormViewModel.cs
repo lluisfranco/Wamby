@@ -11,7 +11,7 @@ namespace Wamby.Client.ViewModels
         public string InitialFolderPath { get; set; }
         public Interfaces.IModule CurrentModule { get; set; }
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
-        public API.Services.FileSystemStorageService FileSystemStorageService { get; }
+        public API.Services.FileSystemStorageService FileSystemStorageService { get; private set; }
         public MainFormViewModel(
             API.Services.FileSystemScanService scanService, 
             API.Services.FileSystemStorageService storageService)
@@ -33,14 +33,16 @@ namespace Wamby.Client.ViewModels
                 Properties.Settings.Default.DefaultSearchPattern;
         }
 
-        public async Task SaveScan(string filename)
+        public async Task SaveScan(string filename, bool readable)
         {
-            await FileSystemStorageService.SaveToFile(filename);
+            FileSystemStorageService.SaveReadableFormat = readable;
+            await FileSystemStorageService.SaveToFile(filename, FileSystemScanService);
         }
 
-        public async Task OpenScan(string filename)
+        public async Task<API.Services.FileSystemScanService> OpenScan(string filename)
         {
-            FileSystemScanService = await FileSystemStorageService.OpenFromFile(filename);
+            FileSystemScanService = await FileSystemStorageService.OpenFromFile(filename, FileSystemScanService);
+            return FileSystemScanService;
         }
     }
 }
