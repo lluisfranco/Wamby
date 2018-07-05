@@ -43,6 +43,23 @@
             this.fieldLengthInKB = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldParentFullName = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldOwnerName = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldAttributes = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsArchive = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsCompressed = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsDevice = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsDirectory = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsEncrypted = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsHidden = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsIntegrityStream = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsNormal = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsNoScrubData = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsNotContentIndexed = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsOffline = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsReadOnly = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsReparsePoint = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsSparseFile = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsSystem = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldIsTemporary = new DevExpress.XtraPivotGrid.PivotGridField();
             this.dockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.panelContainer1 = new DevExpress.XtraBars.Docking.DockPanel();
             this.dockPanelProperties = new DevExpress.XtraBars.Docking.DockPanel();
@@ -87,23 +104,6 @@
             this.barButtonItemShowFieldList = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalysis = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.fieldAttributes = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsArchive = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsCompressed = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsDevice = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsDirectory = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsEncrypted = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsHidden = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsIntegrityStream = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsNormal = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsNoScrubData = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsNotContentIndexed = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsOffline = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsReadOnly = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsReparsePoint = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsSparseFile = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsSystem = new DevExpress.XtraPivotGrid.PivotGridField();
-            this.fieldIsTemporary = new DevExpress.XtraPivotGrid.PivotGridField();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
@@ -250,6 +250,141 @@
             this.fieldOwnerName.Caption = "Owner";
             this.fieldOwnerName.FieldName = "OwnerName";
             this.fieldOwnerName.Name = "fieldOwnerName";
+            this.fieldOwnerName.Width = 141;
+            // 
+            // fieldAttributes
+            // 
+            this.fieldAttributes.AreaIndex = 0;
+            this.fieldAttributes.FieldName = "Attributes";
+            this.fieldAttributes.Name = "fieldAttributes";
+            // 
+            // fieldIsArchive
+            // 
+            this.fieldIsArchive.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsArchive.AreaIndex = 2;
+            this.fieldIsArchive.FieldName = "IsArchive";
+            this.fieldIsArchive.Name = "fieldIsArchive";
+            this.fieldIsArchive.Visible = false;
+            // 
+            // fieldIsCompressed
+            // 
+            this.fieldIsCompressed.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsCompressed.AreaIndex = 2;
+            this.fieldIsCompressed.FieldName = "IsCompressed";
+            this.fieldIsCompressed.Name = "fieldIsCompressed";
+            this.fieldIsCompressed.Visible = false;
+            // 
+            // fieldIsDevice
+            // 
+            this.fieldIsDevice.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsDevice.AreaIndex = 2;
+            this.fieldIsDevice.FieldName = "IsDevice";
+            this.fieldIsDevice.Name = "fieldIsDevice";
+            this.fieldIsDevice.Visible = false;
+            // 
+            // fieldIsDirectory
+            // 
+            this.fieldIsDirectory.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsDirectory.AreaIndex = 2;
+            this.fieldIsDirectory.FieldName = "IsDirectory";
+            this.fieldIsDirectory.Name = "fieldIsDirectory";
+            this.fieldIsDirectory.Visible = false;
+            // 
+            // fieldIsEncrypted
+            // 
+            this.fieldIsEncrypted.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsEncrypted.AreaIndex = 2;
+            this.fieldIsEncrypted.FieldName = "IsEncrypted";
+            this.fieldIsEncrypted.Name = "fieldIsEncrypted";
+            this.fieldIsEncrypted.Visible = false;
+            // 
+            // fieldIsHidden
+            // 
+            this.fieldIsHidden.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsHidden.AreaIndex = 2;
+            this.fieldIsHidden.FieldName = "IsHidden";
+            this.fieldIsHidden.Name = "fieldIsHidden";
+            this.fieldIsHidden.Visible = false;
+            // 
+            // fieldIsIntegrityStream
+            // 
+            this.fieldIsIntegrityStream.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsIntegrityStream.AreaIndex = 8;
+            this.fieldIsIntegrityStream.FieldName = "IsIntegrityStream";
+            this.fieldIsIntegrityStream.Name = "fieldIsIntegrityStream";
+            this.fieldIsIntegrityStream.Visible = false;
+            // 
+            // fieldIsNormal
+            // 
+            this.fieldIsNormal.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsNormal.AreaIndex = 2;
+            this.fieldIsNormal.FieldName = "IsNormal";
+            this.fieldIsNormal.Name = "fieldIsNormal";
+            this.fieldIsNormal.Visible = false;
+            // 
+            // fieldIsNoScrubData
+            // 
+            this.fieldIsNoScrubData.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsNoScrubData.AreaIndex = 9;
+            this.fieldIsNoScrubData.FieldName = "IsNoScrubData";
+            this.fieldIsNoScrubData.Name = "fieldIsNoScrubData";
+            this.fieldIsNoScrubData.Visible = false;
+            // 
+            // fieldIsNotContentIndexed
+            // 
+            this.fieldIsNotContentIndexed.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsNotContentIndexed.AreaIndex = 9;
+            this.fieldIsNotContentIndexed.FieldName = "IsNotContentIndexed";
+            this.fieldIsNotContentIndexed.Name = "fieldIsNotContentIndexed";
+            this.fieldIsNotContentIndexed.Visible = false;
+            // 
+            // fieldIsOffline
+            // 
+            this.fieldIsOffline.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsOffline.AreaIndex = 2;
+            this.fieldIsOffline.FieldName = "IsOffline";
+            this.fieldIsOffline.Name = "fieldIsOffline";
+            this.fieldIsOffline.Visible = false;
+            // 
+            // fieldIsReadOnly
+            // 
+            this.fieldIsReadOnly.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsReadOnly.AreaIndex = 2;
+            this.fieldIsReadOnly.FieldName = "IsReadOnly";
+            this.fieldIsReadOnly.Name = "fieldIsReadOnly";
+            this.fieldIsReadOnly.Visible = false;
+            // 
+            // fieldIsReparsePoint
+            // 
+            this.fieldIsReparsePoint.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsReparsePoint.AreaIndex = 11;
+            this.fieldIsReparsePoint.FieldName = "IsReparsePoint";
+            this.fieldIsReparsePoint.Name = "fieldIsReparsePoint";
+            this.fieldIsReparsePoint.Visible = false;
+            // 
+            // fieldIsSparseFile
+            // 
+            this.fieldIsSparseFile.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsSparseFile.AreaIndex = 11;
+            this.fieldIsSparseFile.FieldName = "IsSparseFile";
+            this.fieldIsSparseFile.Name = "fieldIsSparseFile";
+            this.fieldIsSparseFile.Visible = false;
+            // 
+            // fieldIsSystem
+            // 
+            this.fieldIsSystem.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsSystem.AreaIndex = 2;
+            this.fieldIsSystem.FieldName = "IsSystem";
+            this.fieldIsSystem.Name = "fieldIsSystem";
+            this.fieldIsSystem.Visible = false;
+            // 
+            // fieldIsTemporary
+            // 
+            this.fieldIsTemporary.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
+            this.fieldIsTemporary.AreaIndex = 2;
+            this.fieldIsTemporary.FieldName = "IsTemporary";
+            this.fieldIsTemporary.Name = "fieldIsTemporary";
+            this.fieldIsTemporary.Visible = false;
             // 
             // dockManager
             // 
@@ -362,6 +497,7 @@
             // 
             // chartControl
             // 
+            this.chartControl.CrosshairOptions.CrosshairLabelMode = DevExpress.XtraCharts.CrosshairLabelMode.ShowForNearestSeries;
             this.chartControl.DataSource = this.pivotGridControl;
             xyDiagram1.AxisX.Title.Text = "Extension";
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
@@ -379,6 +515,7 @@
             this.chartControl.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
             this.chartControl.SeriesTemplate.ArgumentDataMember = "Arguments";
             this.chartControl.SeriesTemplate.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Qualitative;
+            this.chartControl.SeriesTemplate.CrosshairLabelPattern = "{S} {A}: {V:n0}";
             this.chartControl.SeriesTemplate.SeriesDataMember = "Series";
             this.chartControl.SeriesTemplate.ValueDataMembersSerializable = "Values";
             sideBySideBarSeriesView1.ColorEach = true;
@@ -680,140 +817,6 @@
             this.ribbonPageGroupAnalysis.ItemLinks.Add(this.barCheckItemShowChart);
             this.ribbonPageGroupAnalysis.Name = "ribbonPageGroupAnalysis";
             this.ribbonPageGroupAnalysis.Text = "Analysis Main";
-            // 
-            // fieldAttributes
-            // 
-            this.fieldAttributes.AreaIndex = 0;
-            this.fieldAttributes.FieldName = "Attributes";
-            this.fieldAttributes.Name = "fieldAttributes";
-            // 
-            // fieldIsArchive
-            // 
-            this.fieldIsArchive.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsArchive.AreaIndex = 2;
-            this.fieldIsArchive.FieldName = "IsArchive";
-            this.fieldIsArchive.Name = "fieldIsArchive";
-            this.fieldIsArchive.Visible = false;
-            // 
-            // fieldIsCompressed
-            // 
-            this.fieldIsCompressed.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsCompressed.AreaIndex = 2;
-            this.fieldIsCompressed.FieldName = "IsCompressed";
-            this.fieldIsCompressed.Name = "fieldIsCompressed";
-            this.fieldIsCompressed.Visible = false;
-            // 
-            // fieldIsDevice
-            // 
-            this.fieldIsDevice.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsDevice.AreaIndex = 2;
-            this.fieldIsDevice.FieldName = "IsDevice";
-            this.fieldIsDevice.Name = "fieldIsDevice";
-            this.fieldIsDevice.Visible = false;
-            // 
-            // fieldIsDirectory
-            // 
-            this.fieldIsDirectory.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsDirectory.AreaIndex = 2;
-            this.fieldIsDirectory.FieldName = "IsDirectory";
-            this.fieldIsDirectory.Name = "fieldIsDirectory";
-            this.fieldIsDirectory.Visible = false;
-            // 
-            // fieldIsEncrypted
-            // 
-            this.fieldIsEncrypted.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsEncrypted.AreaIndex = 2;
-            this.fieldIsEncrypted.FieldName = "IsEncrypted";
-            this.fieldIsEncrypted.Name = "fieldIsEncrypted";
-            this.fieldIsEncrypted.Visible = false;
-            // 
-            // fieldIsHidden
-            // 
-            this.fieldIsHidden.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsHidden.AreaIndex = 2;
-            this.fieldIsHidden.FieldName = "IsHidden";
-            this.fieldIsHidden.Name = "fieldIsHidden";
-            this.fieldIsHidden.Visible = false;
-            // 
-            // fieldIsIntegrityStream
-            // 
-            this.fieldIsIntegrityStream.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsIntegrityStream.AreaIndex = 8;
-            this.fieldIsIntegrityStream.FieldName = "IsIntegrityStream";
-            this.fieldIsIntegrityStream.Name = "fieldIsIntegrityStream";
-            this.fieldIsIntegrityStream.Visible = false;
-            // 
-            // fieldIsNormal
-            // 
-            this.fieldIsNormal.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsNormal.AreaIndex = 2;
-            this.fieldIsNormal.FieldName = "IsNormal";
-            this.fieldIsNormal.Name = "fieldIsNormal";
-            this.fieldIsNormal.Visible = false;
-            // 
-            // fieldIsNoScrubData
-            // 
-            this.fieldIsNoScrubData.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsNoScrubData.AreaIndex = 9;
-            this.fieldIsNoScrubData.FieldName = "IsNoScrubData";
-            this.fieldIsNoScrubData.Name = "fieldIsNoScrubData";
-            this.fieldIsNoScrubData.Visible = false;
-            // 
-            // fieldIsNotContentIndexed
-            // 
-            this.fieldIsNotContentIndexed.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsNotContentIndexed.AreaIndex = 9;
-            this.fieldIsNotContentIndexed.FieldName = "IsNotContentIndexed";
-            this.fieldIsNotContentIndexed.Name = "fieldIsNotContentIndexed";
-            this.fieldIsNotContentIndexed.Visible = false;
-            // 
-            // fieldIsOffline
-            // 
-            this.fieldIsOffline.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsOffline.AreaIndex = 2;
-            this.fieldIsOffline.FieldName = "IsOffline";
-            this.fieldIsOffline.Name = "fieldIsOffline";
-            this.fieldIsOffline.Visible = false;
-            // 
-            // fieldIsReadOnly
-            // 
-            this.fieldIsReadOnly.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsReadOnly.AreaIndex = 2;
-            this.fieldIsReadOnly.FieldName = "IsReadOnly";
-            this.fieldIsReadOnly.Name = "fieldIsReadOnly";
-            this.fieldIsReadOnly.Visible = false;
-            // 
-            // fieldIsReparsePoint
-            // 
-            this.fieldIsReparsePoint.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsReparsePoint.AreaIndex = 11;
-            this.fieldIsReparsePoint.FieldName = "IsReparsePoint";
-            this.fieldIsReparsePoint.Name = "fieldIsReparsePoint";
-            this.fieldIsReparsePoint.Visible = false;
-            // 
-            // fieldIsSparseFile
-            // 
-            this.fieldIsSparseFile.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsSparseFile.AreaIndex = 11;
-            this.fieldIsSparseFile.FieldName = "IsSparseFile";
-            this.fieldIsSparseFile.Name = "fieldIsSparseFile";
-            this.fieldIsSparseFile.Visible = false;
-            // 
-            // fieldIsSystem
-            // 
-            this.fieldIsSystem.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsSystem.AreaIndex = 2;
-            this.fieldIsSystem.FieldName = "IsSystem";
-            this.fieldIsSystem.Name = "fieldIsSystem";
-            this.fieldIsSystem.Visible = false;
-            // 
-            // fieldIsTemporary
-            // 
-            this.fieldIsTemporary.Area = DevExpress.XtraPivotGrid.PivotArea.ColumnArea;
-            this.fieldIsTemporary.AreaIndex = 2;
-            this.fieldIsTemporary.FieldName = "IsTemporary";
-            this.fieldIsTemporary.Name = "fieldIsTemporary";
-            this.fieldIsTemporary.Visible = false;
             // 
             // AnalysisModule
             // 

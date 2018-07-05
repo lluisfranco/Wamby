@@ -267,6 +267,7 @@ namespace Wamby.Client.Modules
             newScanPathButtonEdit.Properties.Buttons[1].Enabled = activated;
             searchPatternButtonEdit.ReadOnly = !activated;
             includeSubfoldersCheckEdit.ReadOnly = !activated;
+            imageComboBoxEditType.ReadOnly = !activated;
             scanLogGroupControl.CustomHeaderButtons["Cancel"].Properties.Visible = !activated;
         }
 
