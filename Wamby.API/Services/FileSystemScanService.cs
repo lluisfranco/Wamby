@@ -86,6 +86,13 @@ namespace Wamby.API.Services
                 ScanResult.AllFolders.Add(AddCurrentFolderFileSummary(ScanResult.WambyFolderInfo));
             var allfiles = ScanResult.AllFolders.SelectMany(p => p.Files);
             ScanResult.AllFiles.AddRange(allfiles);
+            var totalDeepLenght = ScanResult.WambyFolderInfo.DeepLenght;
+            var totalDeepFilesCount = ScanResult.WambyFolderInfo.DeepFilesCount;
+            ScanResult.AllFolders.ForEach(p =>
+            {
+                p.DeepLenghtPercent = p.DeepLenght / totalDeepLenght;
+                p.DeepFilesCountPercent = p.DeepFilesCount / totalDeepFilesCount;
+            });
             clock.Stop();
             ScanResult.ElapsedTime = clock.Elapsed;
             LogLines.Add(new Core.Model.LogLine()
@@ -105,9 +112,10 @@ namespace Wamby.API.Services
         private Core.Model.WambyFolderInfo ScanFolder(string basefolderpath)
         {
             var currentDirectoryInfo = new DirectoryInfo(basefolderpath);
-            var currentFolderInfo = new Core.Model.WambyFolderInfo()
+            var wambyFolder = new Core.Model.WambyFolderInfo()
             {
                 DirectoryInfo = currentDirectoryInfo,
+                DisplayName = basefolderpath == BaseFolder ? currentDirectoryInfo.FullName : currentDirectoryInfo.Name,
                 FullName = currentDirectoryInfo.FullName,
                 Name = currentDirectoryInfo.Name,
                 ParentFullName = currentDirectoryInfo.Parent?.FullName,
@@ -116,11 +124,13 @@ namespace Wamby.API.Services
                 LastAccessTime = currentDirectoryInfo.LastAccessTime,
                 LastWriteTime = currentDirectoryInfo.LastWriteTime,
                 OwnerName = GetOwner(currentDirectoryInfo),
+                Attributes = GetAttributes(currentDirectoryInfo),
                 Level = basefolderpath.Replace(
                     BaseFolder, string.Empty).Split(Path.DirectorySeparatorChar).Length 
             };
-            if (Cancelled) return currentFolderInfo;
-            UpdateScanningFolderProgress(currentFolderInfo);
+            ApplyFileAttributes(wambyFolder);
+            if (Cancelled) return wambyFolder;
+            UpdateScanningFolderProgress(wambyFolder);
             if (ScanOptions.IncludeSubFolders)
             {
                 try
@@ -128,9 +138,9 @@ namespace Wamby.API.Services
                     foreach (var folder in currentDirectoryInfo.GetDirectories())
                     {
                         _CurrentFileSystemInfo = folder;                        
-                        if (CheckIfCancellationRequested()) return currentFolderInfo;
+                        if (CheckIfCancellationRequested()) return wambyFolder;
                         var folderInfo = ScanFolder(folder.FullName);
-                        currentFolderInfo.Folders.Add(folderInfo);
+                        wambyFolder.Folders.Add(folderInfo);
                     }
                 }
                 catch (Exception ex)
@@ -147,7 +157,7 @@ namespace Wamby.API.Services
                 foreach (var file in currentDirectoryInfo.GetFiles(ScanOptions.SearchPattern))
                 {
                     _CurrentFileSystemInfo = file;
-                    if (CheckIfCancellationRequested()) return currentFolderInfo;
+                    if (CheckIfCancellationRequested()) return wambyFolder;
                     var wambyfile = new Core.Model.WambyFileInfo()
                     {
                         FullName = file.FullName,
@@ -163,19 +173,19 @@ namespace Wamby.API.Services
                         Attributes = GetAttributes(file),
                     };
                     ApplyFileAttributes(wambyfile);
-                    currentFolderInfo.Files.Add(wambyfile);
-                    currentFolderInfo.Length = currentFolderInfo.Files.Sum(p => p.Length);
+                    wambyFolder.Files.Add(wambyfile);
+                    wambyFolder.Length = wambyFolder.Files.Sum(p => p.Length);
                     var on = GetOwner(file);
                 }
-                if (currentFolderInfo.Files.Count > 0)
-                    currentFolderInfo.Folders.Add(AddCurrentFolderFileSummary(currentFolderInfo));
-                currentFolderInfo.Length = currentFolderInfo.Files.Sum(p => p.Length);
-                currentFolderInfo.FilesCount = currentFolderInfo.Files.Count;
-                currentFolderInfo.DeepLength = currentFolderInfo.Length + 
-                    currentFolderInfo.Folders.Where(p => p.IsFolder).Sum(p => p.DeepLength);
-                currentFolderInfo.DeepFilesCount = currentFolderInfo.FilesCount + 
-                    currentFolderInfo.Folders.Where(p => p.IsFolder).Sum(p => p.DeepFilesCount);
-                return currentFolderInfo;
+                if (wambyFolder.Files.Count > 0)
+                    wambyFolder.Folders.Add(AddCurrentFolderFileSummary(wambyFolder));
+                wambyFolder.Length = wambyFolder.Files.Sum(p => p.Length);
+                wambyFolder.FilesCount = wambyFolder.Files.Count;
+                wambyFolder.DeepLenght = wambyFolder.Length + 
+                    wambyFolder.Folders.Where(p => p.IsFolder).Sum(p => p.DeepLenght);
+                wambyFolder.DeepFilesCount = wambyFolder.FilesCount + 
+                    wambyFolder.Folders.Where(p => p.IsFolder).Sum(p => p.DeepFilesCount);
+                return wambyFolder;
             }
             catch (Exception ex)
             {
@@ -184,29 +194,29 @@ namespace Wamby.API.Services
                     AddExceptionToResult(ex, _CurrentFileSystemInfo);
                     UpdateErrorReadingFileSystemInfoProgress(_CurrentFileSystemInfo);
                 }
-                return currentFolderInfo;
+                return wambyFolder;
             }
         }
 
-        private void ApplyFileAttributes(WambyFileInfo wambyfile)
+        private void ApplyFileAttributes(WambyFileSystemItem wambyFileSystemItem)
         {
             if (DetailType == Enums.ScanDetailTypeEnum.Fast) return;
-            wambyfile.IsArchive = (wambyfile.Attributes & FileAttributes.Archive) == FileAttributes.Archive;
-            wambyfile.IsCompressed = (wambyfile.Attributes & FileAttributes.Compressed) == FileAttributes.Compressed;
-            wambyfile.IsDevice = (wambyfile.Attributes & FileAttributes.Device) == FileAttributes.Device;
-            wambyfile.IsDirectory = (wambyfile.Attributes & FileAttributes.Directory) == FileAttributes.Directory;
-            wambyfile.IsEncrypted = (wambyfile.Attributes & FileAttributes.Encrypted) == FileAttributes.Encrypted;
-            wambyfile.IsHidden = (wambyfile.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden;
-            wambyfile.IsIntegrityStream = (wambyfile.Attributes & FileAttributes.IntegrityStream) == FileAttributes.IntegrityStream;
-            wambyfile.IsNormal = (wambyfile.Attributes & FileAttributes.Normal) == FileAttributes.Normal;
-            wambyfile.IsNoScrubData = (wambyfile.Attributes & FileAttributes.NoScrubData) == FileAttributes.NoScrubData;
-            wambyfile.IsNotContentIndexed = (wambyfile.Attributes & FileAttributes.NotContentIndexed) == FileAttributes.NotContentIndexed;
-            wambyfile.IsOffline = (wambyfile.Attributes & FileAttributes.Offline) == FileAttributes.Offline;
-            wambyfile.IsReadOnly = (wambyfile.Attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly;
-            wambyfile.IsReparsePoint = (wambyfile.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint;
-            wambyfile.IsSparseFile = (wambyfile.Attributes & FileAttributes.SparseFile) == FileAttributes.SparseFile;
-            wambyfile.IsSystem = (wambyfile.Attributes & FileAttributes.System) == FileAttributes.System;
-            wambyfile.IsTemporary = (wambyfile.Attributes & FileAttributes.Temporary) == FileAttributes.Temporary;
+            wambyFileSystemItem.IsArchive = (wambyFileSystemItem.Attributes & FileAttributes.Archive) == FileAttributes.Archive;
+            wambyFileSystemItem.IsCompressed = (wambyFileSystemItem.Attributes & FileAttributes.Compressed) == FileAttributes.Compressed;
+            wambyFileSystemItem.IsDevice = (wambyFileSystemItem.Attributes & FileAttributes.Device) == FileAttributes.Device;
+            wambyFileSystemItem.IsDirectory = (wambyFileSystemItem.Attributes & FileAttributes.Directory) == FileAttributes.Directory;
+            wambyFileSystemItem.IsEncrypted = (wambyFileSystemItem.Attributes & FileAttributes.Encrypted) == FileAttributes.Encrypted;
+            wambyFileSystemItem.IsHidden = (wambyFileSystemItem.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden;
+            wambyFileSystemItem.IsIntegrityStream = (wambyFileSystemItem.Attributes & FileAttributes.IntegrityStream) == FileAttributes.IntegrityStream;
+            wambyFileSystemItem.IsNormal = (wambyFileSystemItem.Attributes & FileAttributes.Normal) == FileAttributes.Normal;
+            wambyFileSystemItem.IsNoScrubData = (wambyFileSystemItem.Attributes & FileAttributes.NoScrubData) == FileAttributes.NoScrubData;
+            wambyFileSystemItem.IsNotContentIndexed = (wambyFileSystemItem.Attributes & FileAttributes.NotContentIndexed) == FileAttributes.NotContentIndexed;
+            wambyFileSystemItem.IsOffline = (wambyFileSystemItem.Attributes & FileAttributes.Offline) == FileAttributes.Offline;
+            wambyFileSystemItem.IsReadOnly = (wambyFileSystemItem.Attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly;
+            wambyFileSystemItem.IsReparsePoint = (wambyFileSystemItem.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint;
+            wambyFileSystemItem.IsSparseFile = (wambyFileSystemItem.Attributes & FileAttributes.SparseFile) == FileAttributes.SparseFile;
+            wambyFileSystemItem.IsSystem = (wambyFileSystemItem.Attributes & FileAttributes.System) == FileAttributes.System;
+            wambyFileSystemItem.IsTemporary = (wambyFileSystemItem.Attributes & FileAttributes.Temporary) == FileAttributes.Temporary;
         }
 
         private Core.Model.WambyFolderInfo AddCurrentFolderFileSummary(Core.Model.WambyFolderInfo currentFolderInfo)
@@ -215,18 +225,20 @@ namespace Wamby.API.Services
             {
                 DirectoryInfo = new DirectoryInfo(currentFolderInfo.FullName),
                 FullName = $"Files in: {currentFolderInfo.FullName}",
+                DisplayName = $"Files in: {currentFolderInfo.DisplayName}",
                 ParentFullName = currentFolderInfo.FullName,
                 Name = currentFolderInfo.Name,
                 IsFolder = false,
                 Level = currentFolderInfo.FullName.Replace(BaseFolder, string.Empty).Split('\\').Length - 1,
                 Length = currentFolderInfo.Files.Sum(p => p.Length),
                 FilesCount = currentFolderInfo.Files.Count,
-                DeepLength = currentFolderInfo.Files.Sum(p => p.Length),
+                DeepLenght = currentFolderInfo.Files.Sum(p => p.Length),
                 DeepFilesCount = currentFolderInfo.Files.Count,
                 CreationTime = currentFolderInfo.CreationTime,
                 LastAccessTime = currentFolderInfo.LastAccessTime,
                 LastWriteTime = currentFolderInfo.LastWriteTime,
                 OwnerName = GetOwner(currentFolderInfo.DirectoryInfo),
+                Attributes = FileAttributes.Normal
             };
             return currentFolderFilesSummaryInfo;           
         }
@@ -338,6 +350,20 @@ namespace Wamby.API.Services
             try
             {
                 var fa = File.GetAttributes(file.FullName);
+                return fa;
+            }
+            catch (Exception)
+            {
+                return FileAttributes.Normal;
+            }
+        }
+
+        private FileAttributes GetAttributes(DirectoryInfo folder)
+        {
+            if (DetailType == Enums.ScanDetailTypeEnum.Fast) return FileAttributes.Normal;
+            try
+            {
+                var fa = folder.Attributes;
                 return fa;
             }
             catch (Exception)

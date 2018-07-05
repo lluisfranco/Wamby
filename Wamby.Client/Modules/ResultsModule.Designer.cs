@@ -31,12 +31,36 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule1 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
             DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule2 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
             this.colDeepLength = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.resultsTreeList = new DevExpress.XtraTreeList.TreeList();
             this.colLevel = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colIsFolder = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colFullName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colDeepFilesCount = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colCreationTime = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colLastAccessTime = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colLastWriteTime = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colOwnerName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colAttributes = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsArchive = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsCompressed = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsDevice = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsDirectory = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsEncrypted = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsHidden = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsIntegrityStream = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsNormal = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsNoScrubData = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsNotContentIndexed = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsOffline = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsReadOnly = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsReparsePoint = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsSparseFile = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsSystem = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colIsTemporary = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colDeepPercent = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.resultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemExpandTree = new DevExpress.XtraBars.BarButtonItem();
@@ -53,6 +77,7 @@
             this.ribbonPageGroupResults = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupOptions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.colDeepFilesCountPercent = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             ((System.ComponentModel.ISupportInitialize)(this.resultsTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
@@ -67,8 +92,8 @@
             this.colDeepLength.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colDeepLength.Name = "colDeepLength";
             this.colDeepLength.Visible = true;
-            this.colDeepLength.VisibleIndex = 2;
-            this.colDeepLength.Width = 181;
+            this.colDeepLength.VisibleIndex = 1;
+            this.colDeepLength.Width = 99;
             // 
             // resultsTreeList
             // 
@@ -77,7 +102,30 @@
             this.colIsFolder,
             this.colFullName,
             this.colDeepLength,
-            this.colDeepFilesCount});
+            this.colDeepFilesCount,
+            this.colCreationTime,
+            this.colLastAccessTime,
+            this.colLastWriteTime,
+            this.colOwnerName,
+            this.colAttributes,
+            this.colIsArchive,
+            this.colIsCompressed,
+            this.colIsDevice,
+            this.colIsDirectory,
+            this.colIsEncrypted,
+            this.colIsHidden,
+            this.colIsIntegrityStream,
+            this.colIsNormal,
+            this.colIsNoScrubData,
+            this.colIsNotContentIndexed,
+            this.colIsOffline,
+            this.colIsReadOnly,
+            this.colIsReparsePoint,
+            this.colIsSparseFile,
+            this.colIsSystem,
+            this.colIsTemporary,
+            this.colDeepPercent,
+            this.colDeepFilesCountPercent});
             this.resultsTreeList.Cursor = System.Windows.Forms.Cursors.Default;
             this.resultsTreeList.DataSource = this.resultsBindingSource;
             this.resultsTreeList.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -85,7 +133,12 @@
             treeListFormatRule1.Name = "Format0";
             formatConditionRuleDataBar1.PredefinedName = "Mint";
             treeListFormatRule1.Rule = formatConditionRuleDataBar1;
+            treeListFormatRule2.Column = this.colDeepFilesCount;
+            treeListFormatRule2.Name = "Format1";
+            formatConditionRuleDataBar2.PredefinedName = "Violet";
+            treeListFormatRule2.Rule = formatConditionRuleDataBar2;
             this.resultsTreeList.FormatRules.Add(treeListFormatRule1);
+            this.resultsTreeList.FormatRules.Add(treeListFormatRule2);
             this.resultsTreeList.KeyFieldName = "FullName";
             this.resultsTreeList.Location = new System.Drawing.Point(0, 31);
             this.resultsTreeList.Name = "resultsTreeList";
@@ -94,7 +147,7 @@
             this.resultsTreeList.OptionsView.ShowHorzLines = false;
             this.resultsTreeList.OptionsView.ShowIndicator = false;
             this.resultsTreeList.ParentFieldName = "ParentFullName";
-            this.resultsTreeList.Size = new System.Drawing.Size(610, 365);
+            this.resultsTreeList.Size = new System.Drawing.Size(1012, 493);
             this.resultsTreeList.TabIndex = 0;
             // 
             // colLevel
@@ -112,11 +165,11 @@
             // colFullName
             // 
             this.colFullName.Caption = "Folder";
-            this.colFullName.FieldName = "FullName";
+            this.colFullName.FieldName = "DisplayName";
             this.colFullName.Name = "colFullName";
             this.colFullName.Visible = true;
             this.colFullName.VisibleIndex = 0;
-            this.colFullName.Width = 347;
+            this.colFullName.Width = 323;
             // 
             // colDeepFilesCount
             // 
@@ -126,8 +179,168 @@
             this.colDeepFilesCount.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colDeepFilesCount.Name = "colDeepFilesCount";
             this.colDeepFilesCount.Visible = true;
-            this.colDeepFilesCount.VisibleIndex = 1;
-            this.colDeepFilesCount.Width = 80;
+            this.colDeepFilesCount.VisibleIndex = 3;
+            this.colDeepFilesCount.Width = 54;
+            // 
+            // colCreationTime
+            // 
+            this.colCreationTime.FieldName = "CreationTime";
+            this.colCreationTime.Format.FormatString = "g";
+            this.colCreationTime.Format.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colCreationTime.Name = "colCreationTime";
+            this.colCreationTime.OptionsColumn.AllowEdit = false;
+            this.colCreationTime.OptionsColumn.AllowSize = false;
+            this.colCreationTime.OptionsColumn.FixedWidth = true;
+            this.colCreationTime.OptionsColumn.ReadOnly = true;
+            this.colCreationTime.ShowButtonMode = DevExpress.XtraTreeList.ShowButtonModeEnum.ShowOnlyInEditor;
+            this.colCreationTime.Visible = true;
+            this.colCreationTime.VisibleIndex = 5;
+            this.colCreationTime.Width = 100;
+            // 
+            // colLastAccessTime
+            // 
+            this.colLastAccessTime.FieldName = "LastAccessTime";
+            this.colLastAccessTime.Format.FormatString = "g";
+            this.colLastAccessTime.Format.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colLastAccessTime.Name = "colLastAccessTime";
+            this.colLastAccessTime.OptionsColumn.AllowEdit = false;
+            this.colLastAccessTime.OptionsColumn.AllowSize = false;
+            this.colLastAccessTime.OptionsColumn.FixedWidth = true;
+            this.colLastAccessTime.OptionsColumn.ReadOnly = true;
+            this.colLastAccessTime.ShowButtonMode = DevExpress.XtraTreeList.ShowButtonModeEnum.ShowOnlyInEditor;
+            this.colLastAccessTime.Visible = true;
+            this.colLastAccessTime.VisibleIndex = 6;
+            this.colLastAccessTime.Width = 100;
+            // 
+            // colLastWriteTime
+            // 
+            this.colLastWriteTime.FieldName = "LastWriteTime";
+            this.colLastWriteTime.Format.FormatString = "g";
+            this.colLastWriteTime.Format.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.colLastWriteTime.Name = "colLastWriteTime";
+            this.colLastWriteTime.OptionsColumn.AllowEdit = false;
+            this.colLastWriteTime.OptionsColumn.AllowSize = false;
+            this.colLastWriteTime.OptionsColumn.FixedWidth = true;
+            this.colLastWriteTime.OptionsColumn.ReadOnly = true;
+            this.colLastWriteTime.ShowButtonMode = DevExpress.XtraTreeList.ShowButtonModeEnum.ShowOnlyInEditor;
+            this.colLastWriteTime.Visible = true;
+            this.colLastWriteTime.VisibleIndex = 7;
+            this.colLastWriteTime.Width = 100;
+            // 
+            // colOwnerName
+            // 
+            this.colOwnerName.Caption = "Owner";
+            this.colOwnerName.FieldName = "OwnerName";
+            this.colOwnerName.Name = "colOwnerName";
+            this.colOwnerName.Visible = true;
+            this.colOwnerName.VisibleIndex = 8;
+            this.colOwnerName.Width = 46;
+            // 
+            // colAttributes
+            // 
+            this.colAttributes.AppearanceCell.Options.UseTextOptions = true;
+            this.colAttributes.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colAttributes.FieldName = "Attributes";
+            this.colAttributes.Name = "colAttributes";
+            this.colAttributes.OptionsColumn.AllowEdit = false;
+            this.colAttributes.OptionsColumn.ReadOnly = true;
+            this.colAttributes.ShowButtonMode = DevExpress.XtraTreeList.ShowButtonModeEnum.ShowOnlyInEditor;
+            this.colAttributes.Visible = true;
+            this.colAttributes.VisibleIndex = 9;
+            this.colAttributes.Width = 48;
+            // 
+            // colIsArchive
+            // 
+            this.colIsArchive.FieldName = "IsArchive";
+            this.colIsArchive.Name = "colIsArchive";
+            // 
+            // colIsCompressed
+            // 
+            this.colIsCompressed.FieldName = "IsCompressed";
+            this.colIsCompressed.Name = "colIsCompressed";
+            // 
+            // colIsDevice
+            // 
+            this.colIsDevice.FieldName = "IsDevice";
+            this.colIsDevice.Name = "colIsDevice";
+            // 
+            // colIsDirectory
+            // 
+            this.colIsDirectory.FieldName = "IsDirectory";
+            this.colIsDirectory.Name = "colIsDirectory";
+            // 
+            // colIsEncrypted
+            // 
+            this.colIsEncrypted.FieldName = "IsEncrypted";
+            this.colIsEncrypted.Name = "colIsEncrypted";
+            // 
+            // colIsHidden
+            // 
+            this.colIsHidden.FieldName = "IsHidden";
+            this.colIsHidden.Name = "colIsHidden";
+            // 
+            // colIsIntegrityStream
+            // 
+            this.colIsIntegrityStream.FieldName = "IsIntegrityStream";
+            this.colIsIntegrityStream.Name = "colIsIntegrityStream";
+            // 
+            // colIsNormal
+            // 
+            this.colIsNormal.FieldName = "IsNormal";
+            this.colIsNormal.Name = "colIsNormal";
+            // 
+            // colIsNoScrubData
+            // 
+            this.colIsNoScrubData.FieldName = "IsNoScrubData";
+            this.colIsNoScrubData.Name = "colIsNoScrubData";
+            // 
+            // colIsNotContentIndexed
+            // 
+            this.colIsNotContentIndexed.FieldName = "IsNotContentIndexed";
+            this.colIsNotContentIndexed.Name = "colIsNotContentIndexed";
+            // 
+            // colIsOffline
+            // 
+            this.colIsOffline.FieldName = "IsOffline";
+            this.colIsOffline.Name = "colIsOffline";
+            // 
+            // colIsReadOnly
+            // 
+            this.colIsReadOnly.FieldName = "IsReadOnly";
+            this.colIsReadOnly.Name = "colIsReadOnly";
+            // 
+            // colIsReparsePoint
+            // 
+            this.colIsReparsePoint.FieldName = "IsReparsePoint";
+            this.colIsReparsePoint.Name = "colIsReparsePoint";
+            // 
+            // colIsSparseFile
+            // 
+            this.colIsSparseFile.FieldName = "IsSparseFile";
+            this.colIsSparseFile.Name = "colIsSparseFile";
+            // 
+            // colIsSystem
+            // 
+            this.colIsSystem.FieldName = "IsSystem";
+            this.colIsSystem.Name = "colIsSystem";
+            // 
+            // colIsTemporary
+            // 
+            this.colIsTemporary.FieldName = "IsTemporary";
+            this.colIsTemporary.Name = "colIsTemporary";
+            // 
+            // colDeepPercent
+            // 
+            this.colDeepPercent.Caption = "Size (%)";
+            this.colDeepPercent.FieldName = "DeepLenghtPercent";
+            this.colDeepPercent.Format.FormatString = "p0";
+            this.colDeepPercent.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colDeepPercent.Name = "colDeepPercent";
+            this.colDeepPercent.OptionsColumn.AllowSize = false;
+            this.colDeepPercent.OptionsColumn.FixedWidth = true;
+            this.colDeepPercent.Visible = true;
+            this.colDeepPercent.VisibleIndex = 2;
+            this.colDeepPercent.Width = 70;
             // 
             // resultsBindingSource
             // 
@@ -157,7 +370,7 @@
             this.ribbonPageMain});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
-            this.ribbon.Size = new System.Drawing.Size(610, 31);
+            this.ribbon.Size = new System.Drawing.Size(1012, 31);
             // 
             // barButtonItemExpandTree
             // 
@@ -267,6 +480,19 @@
             this.popupMenu.Name = "popupMenu";
             this.popupMenu.Ribbon = this.ribbon;
             // 
+            // colDeepFilesCountPercent
+            // 
+            this.colDeepFilesCountPercent.Caption = "Files (%)";
+            this.colDeepFilesCountPercent.FieldName = "DeepFilesCountPercent";
+            this.colDeepFilesCountPercent.Format.FormatString = "p0";
+            this.colDeepFilesCountPercent.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colDeepFilesCountPercent.Name = "colDeepFilesCountPercent";
+            this.colDeepFilesCountPercent.OptionsColumn.AllowSize = false;
+            this.colDeepFilesCountPercent.OptionsColumn.FixedWidth = true;
+            this.colDeepFilesCountPercent.Visible = true;
+            this.colDeepFilesCountPercent.VisibleIndex = 4;
+            this.colDeepFilesCountPercent.Width = 70;
+            // 
             // ResultsModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,7 +500,7 @@
             this.Controls.Add(this.resultsTreeList);
             this.Controls.Add(this.ribbon);
             this.Name = "ResultsModule";
-            this.Size = new System.Drawing.Size(610, 396);
+            this.Size = new System.Drawing.Size(1012, 524);
             ((System.ComponentModel.ISupportInitialize)(this.resultsTreeList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
@@ -308,5 +534,28 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenFolder;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenInNewWamby;
         private DevExpress.XtraBars.PopupMenu popupMenu;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colCreationTime;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colLastAccessTime;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colLastWriteTime;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colOwnerName;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colAttributes;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsArchive;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsCompressed;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsDevice;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsDirectory;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsEncrypted;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsHidden;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsIntegrityStream;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsNormal;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsNoScrubData;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsNotContentIndexed;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsOffline;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsReadOnly;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsReparsePoint;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsSparseFile;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsSystem;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colIsTemporary;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colDeepPercent;
+        private DevExpress.XtraTreeList.Columns.TreeListColumn colDeepFilesCountPercent;
     }
 }
