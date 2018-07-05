@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\ScanDetailTypeEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Args\WambyFileSystemInfoEventArgs.cs" />
     <Compile Include="Services\FileSystemScanService.cs" />

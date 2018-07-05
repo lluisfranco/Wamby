@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilesModule));
             this.colLengthInKB = new DevExpress.XtraGrid.Columns.GridColumn();
             this.filesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -79,6 +79,23 @@
             this.barButtonItemSearch = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.colAttributes = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsArchive = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsCompressed = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsDevice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsDirectory = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsEncrypted = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsHidden = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsIntegrityStream = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsNormal = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsNoScrubData = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsNotContentIndexed = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsOffline = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsReadOnly = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsReparsePoint = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsSparseFile = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsSystem = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colIsTemporary = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.filesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFiles)).BeginInit();
@@ -133,12 +150,29 @@
             this.colLastWriteTime,
             this.colLastAccessTime,
             this.colCreationTime,
-            this.colOwnerName});
-            gridFormatRule2.Column = this.colLengthInKB;
-            gridFormatRule2.Name = "Format0";
-            formatConditionRuleDataBar2.PredefinedName = "Mint";
-            gridFormatRule2.Rule = formatConditionRuleDataBar2;
-            this.gridViewFiles.FormatRules.Add(gridFormatRule2);
+            this.colOwnerName,
+            this.colAttributes,
+            this.colIsArchive,
+            this.colIsCompressed,
+            this.colIsDevice,
+            this.colIsDirectory,
+            this.colIsEncrypted,
+            this.colIsHidden,
+            this.colIsIntegrityStream,
+            this.colIsNormal,
+            this.colIsNoScrubData,
+            this.colIsNotContentIndexed,
+            this.colIsOffline,
+            this.colIsReadOnly,
+            this.colIsReparsePoint,
+            this.colIsSparseFile,
+            this.colIsSystem,
+            this.colIsTemporary});
+            gridFormatRule1.Column = this.colLengthInKB;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleDataBar1.PredefinedName = "Mint";
+            gridFormatRule1.Rule = formatConditionRuleDataBar1;
+            this.gridViewFiles.FormatRules.Add(gridFormatRule1);
             this.gridViewFiles.GridControl = this.gridControlFiles;
             this.gridViewFiles.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Extension", null, "({0} items)")});
@@ -190,7 +224,7 @@
             this.colLastWriteTime.OptionsColumn.AllowSize = false;
             this.colLastWriteTime.OptionsColumn.FixedWidth = true;
             this.colLastWriteTime.Visible = true;
-            this.colLastWriteTime.VisibleIndex = 5;
+            this.colLastWriteTime.VisibleIndex = 4;
             this.colLastWriteTime.Width = 100;
             // 
             // colLastAccessTime
@@ -202,7 +236,7 @@
             this.colLastAccessTime.OptionsColumn.AllowSize = false;
             this.colLastAccessTime.OptionsColumn.FixedWidth = true;
             this.colLastAccessTime.Visible = true;
-            this.colLastAccessTime.VisibleIndex = 4;
+            this.colLastAccessTime.VisibleIndex = 3;
             this.colLastAccessTime.Width = 100;
             // 
             // colCreationTime
@@ -214,7 +248,7 @@
             this.colCreationTime.OptionsColumn.AllowSize = false;
             this.colCreationTime.OptionsColumn.FixedWidth = true;
             this.colCreationTime.Visible = true;
-            this.colCreationTime.VisibleIndex = 3;
+            this.colCreationTime.VisibleIndex = 2;
             this.colCreationTime.Width = 100;
             // 
             // colOwnerName
@@ -222,7 +256,7 @@
             this.colOwnerName.FieldName = "OwnerName";
             this.colOwnerName.Name = "colOwnerName";
             this.colOwnerName.Visible = true;
-            this.colOwnerName.VisibleIndex = 2;
+            this.colOwnerName.VisibleIndex = 5;
             this.colOwnerName.Width = 54;
             // 
             // ribbon
@@ -520,6 +554,93 @@
             this.ribbonPageGroupFiles.Name = "ribbonPageGroupFiles";
             this.ribbonPageGroupFiles.Text = "Files Main";
             // 
+            // colAttributes
+            // 
+            this.colAttributes.FieldName = "Attributes";
+            this.colAttributes.Name = "colAttributes";
+            this.colAttributes.Visible = true;
+            this.colAttributes.VisibleIndex = 6;
+            // 
+            // colIsArchive
+            // 
+            this.colIsArchive.FieldName = "IsArchive";
+            this.colIsArchive.Name = "colIsArchive";
+            // 
+            // colIsCompressed
+            // 
+            this.colIsCompressed.FieldName = "IsCompressed";
+            this.colIsCompressed.Name = "colIsCompressed";
+            // 
+            // colIsDevice
+            // 
+            this.colIsDevice.FieldName = "IsDevice";
+            this.colIsDevice.Name = "colIsDevice";
+            // 
+            // colIsDirectory
+            // 
+            this.colIsDirectory.FieldName = "IsDirectory";
+            this.colIsDirectory.Name = "colIsDirectory";
+            // 
+            // colIsEncrypted
+            // 
+            this.colIsEncrypted.FieldName = "IsEncrypted";
+            this.colIsEncrypted.Name = "colIsEncrypted";
+            // 
+            // colIsHidden
+            // 
+            this.colIsHidden.FieldName = "IsHidden";
+            this.colIsHidden.Name = "colIsHidden";
+            // 
+            // colIsIntegrityStream
+            // 
+            this.colIsIntegrityStream.FieldName = "IsIntegrityStream";
+            this.colIsIntegrityStream.Name = "colIsIntegrityStream";
+            // 
+            // colIsNormal
+            // 
+            this.colIsNormal.FieldName = "IsNormal";
+            this.colIsNormal.Name = "colIsNormal";
+            // 
+            // colIsNoScrubData
+            // 
+            this.colIsNoScrubData.FieldName = "IsNoScrubData";
+            this.colIsNoScrubData.Name = "colIsNoScrubData";
+            // 
+            // colIsNotContentIndexed
+            // 
+            this.colIsNotContentIndexed.FieldName = "IsNotContentIndexed";
+            this.colIsNotContentIndexed.Name = "colIsNotContentIndexed";
+            // 
+            // colIsOffline
+            // 
+            this.colIsOffline.FieldName = "IsOffline";
+            this.colIsOffline.Name = "colIsOffline";
+            // 
+            // colIsReadOnly
+            // 
+            this.colIsReadOnly.FieldName = "IsReadOnly";
+            this.colIsReadOnly.Name = "colIsReadOnly";
+            // 
+            // colIsReparsePoint
+            // 
+            this.colIsReparsePoint.FieldName = "IsReparsePoint";
+            this.colIsReparsePoint.Name = "colIsReparsePoint";
+            // 
+            // colIsSparseFile
+            // 
+            this.colIsSparseFile.FieldName = "IsSparseFile";
+            this.colIsSparseFile.Name = "colIsSparseFile";
+            // 
+            // colIsSystem
+            // 
+            this.colIsSystem.FieldName = "IsSystem";
+            this.colIsSystem.Name = "colIsSystem";
+            // 
+            // colIsTemporary
+            // 
+            this.colIsTemporary.FieldName = "IsTemporary";
+            this.colIsTemporary.Name = "colIsTemporary";
+            // 
             // FilesModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -585,5 +706,22 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupFiles;
         private DevExpress.XtraBars.BarCheckItem barCheckItemShowFooter;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSearch;
+        private DevExpress.XtraGrid.Columns.GridColumn colAttributes;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsArchive;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsCompressed;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsDevice;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsDirectory;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsEncrypted;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsHidden;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsIntegrityStream;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsNormal;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsNoScrubData;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsNotContentIndexed;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsOffline;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsReadOnly;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsReparsePoint;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsSparseFile;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsSystem;
+        private DevExpress.XtraGrid.Columns.GridColumn colIsTemporary;
     }
 }

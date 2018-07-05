@@ -95,6 +95,8 @@ namespace Wamby.Client
         {
             foreach (DevExpress.XtraTab.XtraTabPage tab in tabControl.TabPages)
                 if (tab.Text != "New Scan") tab.PageEnabled = enabled;
+            barButtonItemOpen.Enabled = enabled;
+            barButtonItemSave.Enabled = enabled;
         }
 
         private void NewAppBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -199,7 +201,7 @@ namespace Wamby.Client
         private async void BarButtonItemSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var sd = new SaveFileDialog();
-            sd.Filter = "Text files (*.txt)|*.txt";
+            sd.Filter = "Wamby results files (*.wamby)|*.wamby";
             try
             {
                 if (sd.ShowDialog() == DialogResult.OK)
@@ -221,7 +223,7 @@ namespace Wamby.Client
         private async void BarButtonItemOpen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var sd = new OpenFileDialog();
-            sd.Filter = "Text files (*.txt)|*.txt";
+            sd.Filter = "Wamby results files (*.wamby)|*.wamby";
             try
             {
                 if (sd.ShowDialog() == DialogResult.OK)

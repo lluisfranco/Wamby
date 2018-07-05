@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Wamby.Core.Extensions;
+using Wamby.Core.Model;
 
 namespace Wamby.API.Services
 {
@@ -18,6 +19,7 @@ namespace Wamby.API.Services
         public string UserName { get; set; }
         public string ComputerName { get; set; }
         public string OSVersionName { get; set; }
+        public Enums.ScanDetailTypeEnum DetailType { get; set; }
         public DateTime ScanDate { get; set; }
         public Core.Model.ScanOptions ScanOptions { get; private set; }
         public Core.Model.ScanResult ScanResult { get; private set; }
@@ -28,7 +30,6 @@ namespace Wamby.API.Services
         public IProgress<Args.WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress { get; set; }
         [JsonIgnore]
         public IProgress<string> CancelledByUserProgress { get; set; }
-        
         public FileSystemScanService()
         {
             ScanOptions = new Core.Model.ScanOptions();
@@ -52,6 +53,7 @@ namespace Wamby.API.Services
             ScanOptions.SearchPattern = fromScanService.ScanOptions.SearchPattern;
             ScanOptions.ShowMinimumFolderLevelInLog = fromScanService.ScanOptions.ShowMinimumFolderLevelInLog;
             UserName = fromScanService.UserName;
+            DetailType = fromScanService.DetailType;
             Clear();
             ScanResult.AllFolders.AddRange(fromScanService.ScanResult.AllFolders);
             ScanResult.AllFiles.AddRange(fromScanService.ScanResult.AllFiles);
@@ -118,7 +120,7 @@ namespace Wamby.API.Services
                     BaseFolder, string.Empty).Split(Path.DirectorySeparatorChar).Length 
             };
             if (Cancelled) return currentFolderInfo;
-            UpdateProgressScanningFolder(currentFolderInfo);
+            UpdateScanningFolderProgress(currentFolderInfo);
             if (ScanOptions.IncludeSubFolders)
             {
                 try
@@ -136,7 +138,7 @@ namespace Wamby.API.Services
                     if (!existsExceptionInResult(ex, _CurrentFileSystemInfo))
                     {
                         AddExceptionToResult(ex, _CurrentFileSystemInfo);
-                        UpdateProgressErrorReadingFileSystemInfo(_CurrentFileSystemInfo);
+                        UpdateErrorReadingFileSystemInfoProgress(_CurrentFileSystemInfo);
                     }
                 }
             }
@@ -157,8 +159,10 @@ namespace Wamby.API.Services
                         Extension = file.Extension.ToLower(),
                         ParentFullName = file.DirectoryName,
                         FileInfo = file,
-                        OwnerName = GetOwner(file)
+                        OwnerName = GetOwner(file),
+                        Attributes = GetAttributes(file),
                     };
+                    ApplyFileAttributes(wambyfile);
                     currentFolderInfo.Files.Add(wambyfile);
                     currentFolderInfo.Length = currentFolderInfo.Files.Sum(p => p.Length);
                     var on = GetOwner(file);
@@ -178,10 +182,31 @@ namespace Wamby.API.Services
                 if (!existsExceptionInResult(ex, _CurrentFileSystemInfo))
                 {
                     AddExceptionToResult(ex, _CurrentFileSystemInfo);
-                    UpdateProgressErrorReadingFileSystemInfo(_CurrentFileSystemInfo);
+                    UpdateErrorReadingFileSystemInfoProgress(_CurrentFileSystemInfo);
                 }
                 return currentFolderInfo;
             }
+        }
+
+        private void ApplyFileAttributes(WambyFileInfo wambyfile)
+        {
+            if (DetailType == Enums.ScanDetailTypeEnum.Fast) return;
+            wambyfile.IsArchive = (wambyfile.Attributes & FileAttributes.Archive) == FileAttributes.Archive;
+            wambyfile.IsCompressed = (wambyfile.Attributes & FileAttributes.Compressed) == FileAttributes.Compressed;
+            wambyfile.IsDevice = (wambyfile.Attributes & FileAttributes.Device) == FileAttributes.Device;
+            wambyfile.IsDirectory = (wambyfile.Attributes & FileAttributes.Directory) == FileAttributes.Directory;
+            wambyfile.IsEncrypted = (wambyfile.Attributes & FileAttributes.Encrypted) == FileAttributes.Encrypted;
+            wambyfile.IsHidden = (wambyfile.Attributes & FileAttributes.Hidden) == FileAttributes.Hidden;
+            wambyfile.IsIntegrityStream = (wambyfile.Attributes & FileAttributes.IntegrityStream) == FileAttributes.IntegrityStream;
+            wambyfile.IsNormal = (wambyfile.Attributes & FileAttributes.Normal) == FileAttributes.Normal;
+            wambyfile.IsNoScrubData = (wambyfile.Attributes & FileAttributes.NoScrubData) == FileAttributes.NoScrubData;
+            wambyfile.IsNotContentIndexed = (wambyfile.Attributes & FileAttributes.NotContentIndexed) == FileAttributes.NotContentIndexed;
+            wambyfile.IsOffline = (wambyfile.Attributes & FileAttributes.Offline) == FileAttributes.Offline;
+            wambyfile.IsReadOnly = (wambyfile.Attributes & FileAttributes.ReadOnly) == FileAttributes.ReadOnly;
+            wambyfile.IsReparsePoint = (wambyfile.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint;
+            wambyfile.IsSparseFile = (wambyfile.Attributes & FileAttributes.SparseFile) == FileAttributes.SparseFile;
+            wambyfile.IsSystem = (wambyfile.Attributes & FileAttributes.System) == FileAttributes.System;
+            wambyfile.IsTemporary = (wambyfile.Attributes & FileAttributes.Temporary) == FileAttributes.Temporary;
         }
 
         private Core.Model.WambyFolderInfo AddCurrentFolderFileSummary(Core.Model.WambyFolderInfo currentFolderInfo)
@@ -214,9 +239,23 @@ namespace Wamby.API.Services
                 p.FileFullPath == currentFileSystemInfo.FullName);
         }
 
-        private void UpdateProgressScanningFolder(Core.Model.WambyFolderInfo currentFolderInfo)
+        private void UpdateScanningFolderProgress(Core.Model.WambyFolderInfo currentFolderInfo)
         {
-            if (currentFolderInfo.Level <= ScanOptions.ShowMinimumFolderLevelInLog && !Cancelled)
+            if (Cancelled) return;
+            if (DetailType == Enums.ScanDetailTypeEnum.Detailed)
+            {
+                if (currentFolderInfo.Level <= ScanOptions.ShowMinimumFolderLevelInLog)
+                {
+                    LogLines.Add(new Core.Model.LogLine()
+                    {
+                        Message = $"Reading: {currentFolderInfo.FullName}",
+                        Value = currentFolderInfo.FullName,
+                        LogLineType = Core.Model.LogLineTypeEnum.ReadingFolder
+                    });
+                    ScanningFolderProgress?.Report(new Args.WambyFolderEventArgs() { WambyFolderInfo = currentFolderInfo });
+                }
+            }
+            else if(currentFolderInfo.Level <= 2)
             {
                 LogLines.Add(new Core.Model.LogLine()
                 {
@@ -228,18 +267,16 @@ namespace Wamby.API.Services
             }
         }
 
-        private void UpdateProgressErrorReadingFileSystemInfo(FileSystemInfo currentItem)
+        private void UpdateErrorReadingFileSystemInfoProgress(FileSystemInfo currentItem)
         {
-            if (!Cancelled)
+            if (Cancelled) return;
+            LogLines.Add(new Core.Model.LogLine()
             {
-                LogLines.Add(new Core.Model.LogLine()
-                {
-                    Message = $"ERROR: {currentItem.FullName}",
-                    Value = currentItem.FullName,
-                    LogLineType = Core.Model.LogLineTypeEnum.Error
-                });
-                ErrorReadingFileSystemInfoProgress?.Report(new Args.WambyFileSystemInfoEventArgs() { WambyFileSystemItem = currentItem });
-            }
+                Message = $"ERROR: {currentItem.FullName}",
+                Value = currentItem.FullName,
+                LogLineType = Core.Model.LogLineTypeEnum.Error
+            });
+            ErrorReadingFileSystemInfoProgress?.Report(new Args.WambyFileSystemInfoEventArgs() { WambyFileSystemItem = currentItem });
         }
 
         private void AddExceptionToResult(Exception ex, FileSystemInfo currentFileSystemInfo)
@@ -295,20 +332,50 @@ namespace Wamby.API.Services
             }
         }
 
+        private FileAttributes GetAttributes(FileInfo file)
+        {
+            if (DetailType == Enums.ScanDetailTypeEnum.Fast) return FileAttributes.Normal;
+            try
+            {
+                var fa = File.GetAttributes(file.FullName);
+                return fa;
+            }
+            catch (Exception)
+            {
+                return FileAttributes.Normal;
+            }
+        }
+
         public string GetOwner(FileInfo file)
         {
-            var fs = file.GetAccessControl();
-            var sid = fs.GetOwner(typeof(System.Security.Principal.SecurityIdentifier));
-            var ntAccount = sid.Translate(typeof(System.Security.Principal.NTAccount));
-            return ntAccount.ToString();
+            if (DetailType == Enums.ScanDetailTypeEnum.Fast) return "(Owner)";
+            try
+            {
+                var fs = file.GetAccessControl();
+                var sid = fs.GetOwner(typeof(System.Security.Principal.SecurityIdentifier));
+                var ntAccount = sid.Translate(typeof(System.Security.Principal.NTAccount));
+                return ntAccount.ToString();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public string GetOwner(DirectoryInfo folder)
         {
-            var fs = folder.GetAccessControl();
-            var sid = fs.GetOwner(typeof(System.Security.Principal.SecurityIdentifier));
-            var ntAccount = sid.Translate(typeof(System.Security.Principal.NTAccount));
-            return ntAccount.ToString();
+            if (DetailType == Enums.ScanDetailTypeEnum.Fast) return "(Owner)";
+            try
+            {
+                var fs = folder.GetAccessControl();
+                var sid = fs.GetOwner(typeof(System.Security.Principal.SecurityIdentifier));
+                var ntAccount = sid.Translate(typeof(System.Security.Principal.NTAccount));
+                return ntAccount.ToString();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public string GetTempFileName(string extension)

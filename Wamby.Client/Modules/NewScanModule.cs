@@ -75,19 +75,21 @@ namespace Wamby.Client.Modules
             var logcombo = Helpers.UIHelper.GetLogTypesCombo();
             logcombo.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
             colLogLineType.ColumnEdit = logcombo;
+            imageComboBoxEditType.Properties.Items.AddEnum(typeof(API.Enums.ScanDetailTypeEnum));
+            imageComboBoxEditType.EditValue = API.Enums.ScanDetailTypeEnum.Fast;
             Initialized = true;
             setEventHandlers();
         }
 
         public void RefreshScanOptionsControls()
         {
-            //todo user + machine + date
             scanOptionsGroupControl.Text = $"Scan options - {FileSystemScanService.UserName} on " +
-                $"{FileSystemScanService.ComputerName} ({FileSystemScanService.OSVersionName} at " +
-                $"{FileSystemScanService.ScanDate.ToString()})";
+                $"{FileSystemScanService.ComputerName} ({FileSystemScanService.OSVersionName}) at " +
+                $"{FileSystemScanService.ScanDate.ToString()}";
             newScanPathButtonEdit.Text = InitialFolderPath ?? FileSystemScanService.ScanOptions.BaseFolderPath;
             includeSubfoldersCheckEdit.Checked = FileSystemScanService.ScanOptions.IncludeSubFolders;
             searchPatternButtonEdit.Text = FileSystemScanService.ScanOptions.SearchPattern;
+            imageComboBoxEditType.EditValue = FileSystemScanService.DetailType;
         }
 
         private void ResultsGroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
@@ -178,9 +180,11 @@ namespace Wamby.Client.Modules
         public async Task<ScanResult> DoScan()
         {
             IOverlaySplashScreenHandle handle = null;
-            if(newScanPathButtonEdit.Text.LastOrDefault() == System.IO.Path.DirectorySeparatorChar)
+            if(newScanPathButtonEdit.Text.LastOrDefault() == System.IO.Path.DirectorySeparatorChar &&
+                newScanPathButtonEdit.Text.Split(System.IO.Path.DirectorySeparatorChar).Length > 2)
                 newScanPathButtonEdit.Text = newScanPathButtonEdit.Text.Remove(newScanPathButtonEdit.Text.Length - 1, 1);
             FileSystemScanService.Clear();
+            FileSystemScanService.DetailType = (API.Enums.ScanDetailTypeEnum)imageComboBoxEditType.EditValue;
             FileSystemScanService.ScanOptions.BaseFolderPath = newScanPathButtonEdit.Text;
             FileSystemScanService.ScanOptions.IncludeSubFolders = includeSubfoldersCheckEdit.Checked;
             FileSystemScanService.ScanOptions.SearchPattern = searchPatternButtonEdit.Text;
@@ -253,9 +257,11 @@ namespace Wamby.Client.Modules
         {
             resultsGroupControl.CustomHeaderButtons[1].Properties.Visible = activated;
             resultsGroupControl.CustomHeaderButtons[2].Properties.Visible = activated;
-            resultsGroupControl.CustomHeaderButtons[3].Properties.Visible = activated;
+            resultsGroupControl.CustomHeaderButtons[3].Properties.Visible = activated;            
             barButtonItemScanNow.Enabled = activated;
             barButtonItemChangeFolder.Enabled = activated;
+            barButtonItemOpenFolder.Enabled = activated;
+            barButtonItemOpenInNewWamby.Enabled = activated;
             newScanPathButtonEdit.ReadOnly = !activated;
             newScanPathButtonEdit.Properties.Buttons[0].Enabled = activated;
             newScanPathButtonEdit.Properties.Buttons[1].Enabled = activated;
@@ -270,5 +276,6 @@ namespace Wamby.Client.Modules
             resultsGroupControl.CustomHeaderButtons[0].Properties.Caption = $"Scanning...{sec} sec.";
             resultsGroupControl.Refresh();
         }
+
     }
 }
