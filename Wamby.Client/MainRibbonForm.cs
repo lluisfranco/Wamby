@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
 using Wamby.API.Services;
+using Wamby.Client.Extensions;
 
 namespace Wamby.Client
 {
     public partial class MainRibbonForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         public ViewModels.MainFormViewModel ViewModel { get; set; }
+        DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle handle = null;
         public MainRibbonForm()
         {
             InitializeComponent();
@@ -37,17 +39,19 @@ namespace Wamby.Client
             showScheduleModule.Click += ShowScheduleModule_Click;
             showSettingsModule.Click += ShowSettingsModule_Click;
             newAppBarButtonItem.ItemClick += NewAppBarButtonItem_ItemClick;
-            newScanModule.StartingScan -= NewScanModule_StartingScan;
-            newScanModule.EndingScan -= NewScanModule_EndingScan;
-            newScanModule.StartingScan += NewScanModule_StartingScan;
-            newScanModule.EndingScan += NewScanModule_EndingScan;
             tabControl.SelectedPageChanged += TabControl_SelectedPageChanged;
             barButtonItemPrint.ItemClick += BarButtonItemPrint_ItemClick;
             barButtonItemExportXls.ItemClick += BarButtonItemExportXls_ItemClick;
             barButtonItemExportPdf.ItemClick += BarButtonItemExportPdf_ItemClick;
-            newScanModule.GotoTabButtonClicked += NewScanModule_GotoTabButtonClicked;
             barButtonItemSave.ItemClick += BarButtonItemSave_ItemClick;
             barButtonItemOpen.ItemClick += BarButtonItemOpen_ItemClick;
+            barButtonItemDoScan.ItemClick += BarButtonItemDoScan_ItemClick;
+            barButtonItemCancelScan.ItemClick += BarButtonItemCancelScan_ItemClick;
+            newScanModule.StartingScan += NewScanModule_StartingScan;
+            newScanModule.EndingScan += NewScanModule_EndingScan;
+            newScanModule.GotoTabButtonClicked += NewScanModule_GotoTabButtonClicked;
+            newScanModule.RequestNewScan += NewScanModule_RequestNewScan;
+            resultsModule.RequestNewScan += ResultsModule_RequestNewScan;
         }
 
         private async void MainForm_Shown(object sender, EventArgs e)
@@ -70,15 +74,26 @@ namespace Wamby.Client
             errorsModule.InitializeControl(ViewModel.FileSystemScanService);
         }
 
+        private async void BarButtonItemDoScan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            await newScanModule.DoScan();
+        }
+
+        private void BarButtonItemCancelScan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            newScanModule.CancelScan();
+        }
         private void NewScanModule_StartingScan(object sender, EventArgs e)
         {
+            handle = OverlayFormExtensions.ShowProgressPanel(tabControl);
             EnablePages(false);
         }
 
         private void NewScanModule_EndingScan(object sender, EventArgs e)
         {
             EnablePages(true);
-            RefreshModulesData();
+            if (!ViewModel.FileSystemScanService.Cancelled) RefreshModulesData();
+            if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle);
         }
 
         private void RefreshModulesData()
@@ -93,10 +108,12 @@ namespace Wamby.Client
 
         private void EnablePages(bool enabled)
         {
-            foreach (DevExpress.XtraTab.XtraTabPage tab in tabControl.TabPages)
-                if (tab.Text != "New Scan") tab.PageEnabled = enabled;
             barButtonItemOpen.Enabled = enabled;
             barButtonItemSave.Enabled = enabled;
+            barButtonItemDoScan.Visibility = enabled ?
+                DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never;
+            barButtonItemCancelScan.Visibility = enabled ?
+                DevExpress.XtraBars.BarItemVisibility.Never : DevExpress.XtraBars.BarItemVisibility.Always;
         }
 
         private void NewAppBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -141,6 +158,16 @@ namespace Wamby.Client
             if (e.TabName == tabPageMap.Name) tabControl.SelectedTabPage = tabPageMap;
             if (e.TabName == tabPageAnalysis.Name) tabControl.SelectedTabPage = tabPageAnalysis;
             if (e.TabName == tabPageErrors.Name) tabControl.SelectedTabPage = tabPageErrors;
+        }
+
+        private async void NewScanModule_RequestNewScan(object sender, EventArgs e)
+        {
+            await newScanModule.DoScan();
+        }
+
+        private async void ResultsModule_RequestNewScan(object sender, EventArgs e)
+        {
+            await newScanModule.DoScan();
         }
 
         private void ShowNewScanModule_Click(object sender, EventArgs e)
@@ -212,7 +239,8 @@ namespace Wamby.Client
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, Application.ProductName, 
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             finally
             {
@@ -236,7 +264,8 @@ namespace Wamby.Client
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message, Application.ProductName, 
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             finally
             {

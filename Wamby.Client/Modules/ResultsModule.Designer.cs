@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule1 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
-            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule2 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule3 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar3 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule4 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar4 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
             this.colDeepLength = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colDeepFilesCount = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.resultsTreeList = new DevExpress.XtraTreeList.TreeList();
             this.colLevel = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colIsFolder = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colFullName = new DevExpress.XtraTreeList.Columns.TreeListColumn();
-            this.colDeepFilesCount = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colCreationTime = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colLastAccessTime = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colLastWriteTime = new DevExpress.XtraTreeList.Columns.TreeListColumn();
@@ -61,6 +61,7 @@
             this.colIsSystem = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colIsTemporary = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colDeepPercent = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.colDeepFilesCountPercent = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.resultsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.barButtonItemExpandTree = new DevExpress.XtraBars.BarButtonItem();
@@ -77,7 +78,10 @@
             this.ribbonPageGroupResults = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupOptions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.colDeepFilesCountPercent = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.barButtonItemOpenTerminal = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemCopyPath = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemShowProperties = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDelete = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.resultsTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
@@ -94,6 +98,17 @@
             this.colDeepLength.Visible = true;
             this.colDeepLength.VisibleIndex = 1;
             this.colDeepLength.Width = 99;
+            // 
+            // colDeepFilesCount
+            // 
+            this.colDeepFilesCount.Caption = "Files";
+            this.colDeepFilesCount.FieldName = "DeepFilesCount";
+            this.colDeepFilesCount.Format.FormatString = "n0";
+            this.colDeepFilesCount.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colDeepFilesCount.Name = "colDeepFilesCount";
+            this.colDeepFilesCount.Visible = true;
+            this.colDeepFilesCount.VisibleIndex = 3;
+            this.colDeepFilesCount.Width = 54;
             // 
             // resultsTreeList
             // 
@@ -129,16 +144,16 @@
             this.resultsTreeList.Cursor = System.Windows.Forms.Cursors.Default;
             this.resultsTreeList.DataSource = this.resultsBindingSource;
             this.resultsTreeList.Dock = System.Windows.Forms.DockStyle.Fill;
-            treeListFormatRule1.Column = this.colDeepLength;
-            treeListFormatRule1.Name = "Format0";
-            formatConditionRuleDataBar1.PredefinedName = "Mint";
-            treeListFormatRule1.Rule = formatConditionRuleDataBar1;
-            treeListFormatRule2.Column = this.colDeepFilesCount;
-            treeListFormatRule2.Name = "Format1";
-            formatConditionRuleDataBar2.PredefinedName = "Violet";
-            treeListFormatRule2.Rule = formatConditionRuleDataBar2;
-            this.resultsTreeList.FormatRules.Add(treeListFormatRule1);
-            this.resultsTreeList.FormatRules.Add(treeListFormatRule2);
+            treeListFormatRule3.Column = this.colDeepLength;
+            treeListFormatRule3.Name = "Format0";
+            formatConditionRuleDataBar3.PredefinedName = "Mint";
+            treeListFormatRule3.Rule = formatConditionRuleDataBar3;
+            treeListFormatRule4.Column = this.colDeepFilesCount;
+            treeListFormatRule4.Name = "Format1";
+            formatConditionRuleDataBar4.PredefinedName = "Violet";
+            treeListFormatRule4.Rule = formatConditionRuleDataBar4;
+            this.resultsTreeList.FormatRules.Add(treeListFormatRule3);
+            this.resultsTreeList.FormatRules.Add(treeListFormatRule4);
             this.resultsTreeList.KeyFieldName = "FullName";
             this.resultsTreeList.Location = new System.Drawing.Point(0, 31);
             this.resultsTreeList.Name = "resultsTreeList";
@@ -170,17 +185,6 @@
             this.colFullName.Visible = true;
             this.colFullName.VisibleIndex = 0;
             this.colFullName.Width = 323;
-            // 
-            // colDeepFilesCount
-            // 
-            this.colDeepFilesCount.Caption = "Files";
-            this.colDeepFilesCount.FieldName = "DeepFilesCount";
-            this.colDeepFilesCount.Format.FormatString = "n0";
-            this.colDeepFilesCount.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colDeepFilesCount.Name = "colDeepFilesCount";
-            this.colDeepFilesCount.Visible = true;
-            this.colDeepFilesCount.VisibleIndex = 3;
-            this.colDeepFilesCount.Width = 54;
             // 
             // colCreationTime
             // 
@@ -342,6 +346,19 @@
             this.colDeepPercent.VisibleIndex = 2;
             this.colDeepPercent.Width = 70;
             // 
+            // colDeepFilesCountPercent
+            // 
+            this.colDeepFilesCountPercent.Caption = "Files (%)";
+            this.colDeepFilesCountPercent.FieldName = "DeepFilesCountPercent";
+            this.colDeepFilesCountPercent.Format.FormatString = "p0";
+            this.colDeepFilesCountPercent.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colDeepFilesCountPercent.Name = "colDeepFilesCountPercent";
+            this.colDeepFilesCountPercent.OptionsColumn.AllowSize = false;
+            this.colDeepFilesCountPercent.OptionsColumn.FixedWidth = true;
+            this.colDeepFilesCountPercent.Visible = true;
+            this.colDeepFilesCountPercent.VisibleIndex = 4;
+            this.colDeepFilesCountPercent.Width = 70;
+            // 
             // resultsBindingSource
             // 
             this.resultsBindingSource.DataSource = typeof(Wamby.Core.Model.WambyFolderInfo);
@@ -361,9 +378,13 @@
             this.barButtonItemExpandLevel4,
             this.barButtonItemExpandLevel5,
             this.barButtonItemOpenFolder,
-            this.barButtonItemOpenInNewWamby});
+            this.barButtonItemOpenInNewWamby,
+            this.barButtonItemOpenTerminal,
+            this.barButtonItemCopyPath,
+            this.barButtonItemShowProperties,
+            this.barButtonItemDelete});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 34;
+            this.ribbon.MaxItemId = 38;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -438,9 +459,10 @@
             // 
             // barButtonItemOpenFolder
             // 
-            this.barButtonItemOpenFolder.Caption = "Open Folder (Explorer)";
+            this.barButtonItemOpenFolder.Caption = "Open folder (Explorer)";
             this.barButtonItemOpenFolder.Id = 32;
             this.barButtonItemOpenFolder.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Folder_Explorer;
+            this.barButtonItemOpenFolder.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E));
             this.barButtonItemOpenFolder.Name = "barButtonItemOpenFolder";
             // 
             // barButtonItemOpenInNewWamby
@@ -448,6 +470,7 @@
             this.barButtonItemOpenInNewWamby.Caption = "Scan in new Wamby";
             this.barButtonItemOpenInNewWamby.Id = 33;
             this.barButtonItemOpenInNewWamby.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.New;
+            this.barButtonItemOpenInNewWamby.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W));
             this.barButtonItemOpenInNewWamby.Name = "barButtonItemOpenInNewWamby";
             // 
             // ribbonPageMain
@@ -469,29 +492,59 @@
             // ribbonPageGroupOptions
             // 
             this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemOpenFolder);
+            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemOpenTerminal);
             this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemOpenInNewWamby);
+            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemCopyPath, true);
+            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemShowProperties);
+            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemDelete);
             this.ribbonPageGroupOptions.Name = "ribbonPageGroupOptions";
             this.ribbonPageGroupOptions.Text = "Options";
             // 
             // popupMenu
             // 
             this.popupMenu.ItemLinks.Add(this.barButtonItemOpenFolder);
+            this.popupMenu.ItemLinks.Add(this.barButtonItemOpenTerminal);
             this.popupMenu.ItemLinks.Add(this.barButtonItemOpenInNewWamby);
+            this.popupMenu.ItemLinks.Add(this.barButtonItemCopyPath, true);
+            this.popupMenu.ItemLinks.Add(this.barButtonItemShowProperties);
+            this.popupMenu.ItemLinks.Add(this.barButtonItemDelete);
             this.popupMenu.Name = "popupMenu";
             this.popupMenu.Ribbon = this.ribbon;
             // 
-            // colDeepFilesCountPercent
+            // barButtonItemOpenTerminal
             // 
-            this.colDeepFilesCountPercent.Caption = "Files (%)";
-            this.colDeepFilesCountPercent.FieldName = "DeepFilesCountPercent";
-            this.colDeepFilesCountPercent.Format.FormatString = "p0";
-            this.colDeepFilesCountPercent.Format.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colDeepFilesCountPercent.Name = "colDeepFilesCountPercent";
-            this.colDeepFilesCountPercent.OptionsColumn.AllowSize = false;
-            this.colDeepFilesCountPercent.OptionsColumn.FixedWidth = true;
-            this.colDeepFilesCountPercent.Visible = true;
-            this.colDeepFilesCountPercent.VisibleIndex = 4;
-            this.colDeepFilesCountPercent.Width = 70;
+            this.barButtonItemOpenTerminal.Caption = "Open folder (Terminal)";
+            this.barButtonItemOpenTerminal.Id = 34;
+            this.barButtonItemOpenTerminal.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Cmd;
+            this.barButtonItemOpenTerminal.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
+            this.barButtonItemOpenTerminal.Name = "barButtonItemOpenTerminal";
+            // 
+            // barButtonItemCopyPath
+            // 
+            this.barButtonItemCopyPath.Caption = "Copy path";
+            this.barButtonItemCopyPath.Id = 35;
+            this.barButtonItemCopyPath.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Copy_Url;
+            this.barButtonItemCopyPath.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C));
+            this.barButtonItemCopyPath.Name = "barButtonItemCopyPath";
+            this.barButtonItemCopyPath.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+            // 
+            // barButtonItemShowProperties
+            // 
+            this.barButtonItemShowProperties.Caption = "Show properties";
+            this.barButtonItemShowProperties.Id = 36;
+            this.barButtonItemShowProperties.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
+            this.barButtonItemShowProperties.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Enter));
+            this.barButtonItemShowProperties.Name = "barButtonItemShowProperties";
+            this.barButtonItemShowProperties.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+            // 
+            // barButtonItemDelete
+            // 
+            this.barButtonItemDelete.Caption = "Delete";
+            this.barButtonItemDelete.Id = 37;
+            this.barButtonItemDelete.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Delete;
+            this.barButtonItemDelete.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Delete);
+            this.barButtonItemDelete.Name = "barButtonItemDelete";
+            this.barButtonItemDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
             // 
             // ResultsModule
             // 
@@ -557,5 +610,9 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn colIsTemporary;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colDeepPercent;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colDeepFilesCountPercent;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenTerminal;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCopyPath;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemShowProperties;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDelete;
     }
 }

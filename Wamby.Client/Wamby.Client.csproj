@@ -196,6 +196,10 @@
       <Project>{abbf9aac-0b09-43c0-9064-b134d7cdb3e4}</Project>
       <Name>Wamby.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Wamby.SystemShell\Wamby.SystemShell.csproj">
+      <Project>{9906c836-b714-4b42-8c82-09b58ded3cdc}</Project>
+      <Name>Wamby.SystemShell</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\New Scan.svg" />
@@ -301,6 +305,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Open.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Select_Folder.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Browse.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GoTo_Cmd.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy_Url.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewScan_CancelScan.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

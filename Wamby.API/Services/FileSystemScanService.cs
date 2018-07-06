@@ -28,8 +28,11 @@ namespace Wamby.API.Services
         public IProgress<Args.WambyFolderEventArgs> ScanningFolderProgress { get; set; }
         [JsonIgnore]
         public IProgress<Args.WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress { get; set; }
-        [JsonIgnore]
-        public IProgress<string> CancelledByUserProgress { get; set; }
+        //[JsonIgnore]
+        //public IProgress<string> CancelledByUserProgress { get; set; }
+
+        public event EventHandler CancelledScan;
+
         public FileSystemScanService()
         {
             ScanOptions = new Core.Model.ScanOptions();
@@ -78,21 +81,24 @@ namespace Wamby.API.Services
             var clock = new System.Diagnostics.Stopwatch();
             clock.Restart();
             var f = await Task.Run(() => ScanFolder(BaseFolder));
-            ScanResult.WambyFolderInfo = f;
-            ScanResult.AllFolders = ScanResult.WambyFolderInfo.Folders.
-                Where(p => p.IsFolder).SelectManyRecursive(p => p.Folders).ToList();
-            ScanResult.AllFolders.Add(ScanResult.WambyFolderInfo);
-            if (ScanResult.WambyFolderInfo.Files.Count > 0)
-                ScanResult.AllFolders.Add(AddCurrentFolderFileSummary(ScanResult.WambyFolderInfo));
-            var allfiles = ScanResult.AllFolders.SelectMany(p => p.Files);
-            ScanResult.AllFiles.AddRange(allfiles);
-            var totalDeepLenght = ScanResult.WambyFolderInfo.DeepLenght;
-            var totalDeepFilesCount = ScanResult.WambyFolderInfo.DeepFilesCount;
-            ScanResult.AllFolders.ForEach(p =>
+            if (!Cancelled)
             {
-                p.DeepLenghtPercent = p.DeepLenght / totalDeepLenght;
-                p.DeepFilesCountPercent = p.DeepFilesCount / totalDeepFilesCount;
-            });
+                ScanResult.WambyFolderInfo = f;
+                ScanResult.AllFolders = ScanResult.WambyFolderInfo.Folders.
+                    Where(p => p.IsFolder).SelectManyRecursive(p => p.Folders).ToList();
+                ScanResult.AllFolders.Add(ScanResult.WambyFolderInfo);
+                if (ScanResult.WambyFolderInfo.Files.Count > 0)
+                    ScanResult.AllFolders.Add(AddCurrentFolderFileSummary(ScanResult.WambyFolderInfo));
+                var allfiles = ScanResult.AllFolders.SelectMany(p => p.Files);
+                ScanResult.AllFiles.AddRange(allfiles);
+                var totalDeepLenght = ScanResult.WambyFolderInfo.DeepLenght;
+                var totalDeepFilesCount = ScanResult.WambyFolderInfo.DeepFilesCount;
+                ScanResult.AllFolders.ForEach(p =>
+                {
+                    p.DeepLenghtPercent = p.DeepLenght / totalDeepLenght;
+                    p.DeepFilesCountPercent = p.DeepFilesCount / totalDeepFilesCount;
+                });
+            }
             clock.Stop();
             ScanResult.ElapsedTime = clock.Elapsed;
             LogLines.Add(new Core.Model.LogLine()
@@ -318,7 +324,8 @@ namespace Wamby.API.Services
                     Value = string.Empty,
                     LogLineType = Core.Model.LogLineTypeEnum.Error
                 });
-                CancelledByUserProgress?.Report(username);
+                //CancelledByUserProgress?.Report(username);
+                CancelledScan?.Invoke(this, new EventArgs());
                 return true;
             }
             return false;

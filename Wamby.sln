@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wamby.API", "Wamby.API\Wamb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wamby.Core", "Wamby.Core\Wamby.Core.csproj", "{ABBF9AAC-0B09-43C0-9064-B134D7CDB3E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wamby.SystemShell", "Wamby.SystemShell\Wamby.SystemShell.csproj", "{9906C836-B714-4B42-8C82-09B58DED3CDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{ABBF9AAC-0B09-43C0-9064-B134D7CDB3E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABBF9AAC-0B09-43C0-9064-B134D7CDB3E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ABBF9AAC-0B09-43C0-9064-B134D7CDB3E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9906C836-B714-4B42-8C82-09B58DED3CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9906C836-B714-4B42-8C82-09B58DED3CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9906C836-B714-4B42-8C82-09B58DED3CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9906C836-B714-4B42-8C82-09B58DED3CDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{27194A7C-ACE8-41EB-8324-7169C4DD7459} = {404A8BC3-0C51-4093-BEF9-C344F647FD31}
 		{A36E1252-162C-4BEE-AC77-5A13AB27B2B6} = {20CC4FCE-DAFD-4510-925B-14CA0BC52B3A}
 		{ABBF9AAC-0B09-43C0-9064-B134D7CDB3E4} = {20CC4FCE-DAFD-4510-925B-14CA0BC52B3A}
+		{9906C836-B714-4B42-8C82-09B58DED3CDC} = {404A8BC3-0C51-4093-BEF9-C344F647FD31}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {713D7176-AD87-489F-867A-8A86DCC7F7C1}

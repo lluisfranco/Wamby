@@ -54,6 +54,8 @@
             this.barButtonItemExportPdf = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemOpen = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemSave = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDoScan = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemCancelScan = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupMain = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupSkins = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -243,9 +245,11 @@
             this.barButtonItemExportXls,
             this.barButtonItemExportPdf,
             this.barButtonItemOpen,
-            this.barButtonItemSave});
+            this.barButtonItemSave,
+            this.barButtonItemDoScan,
+            this.barButtonItemCancelScan});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 34;
+            this.ribbon.MaxItemId = 36;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -308,6 +312,22 @@
             this.barButtonItemSave.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Save;
             this.barButtonItemSave.Name = "barButtonItemSave";
             // 
+            // barButtonItemDoScan
+            // 
+            this.barButtonItemDoScan.Caption = "Scan now";
+            this.barButtonItemDoScan.Id = 34;
+            this.barButtonItemDoScan.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.NewScan_ScanNow;
+            this.barButtonItemDoScan.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
+            this.barButtonItemDoScan.Name = "barButtonItemDoScan";
+            // 
+            // barButtonItemCancelScan
+            // 
+            this.barButtonItemCancelScan.Caption = "Cancel scan";
+            this.barButtonItemCancelScan.Id = 35;
+            this.barButtonItemCancelScan.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.NewScan_CancelScan;
+            this.barButtonItemCancelScan.Name = "barButtonItemCancelScan";
+            this.barButtonItemCancelScan.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
             // ribbonPageMain
             // 
             this.ribbonPageMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -322,6 +342,8 @@
             this.ribbonPageGroupMain.ItemLinks.Add(this.newAppBarButtonItem);
             this.ribbonPageGroupMain.ItemLinks.Add(this.barButtonItemOpen);
             this.ribbonPageGroupMain.ItemLinks.Add(this.barButtonItemSave);
+            this.ribbonPageGroupMain.ItemLinks.Add(this.barButtonItemDoScan, true);
+            this.ribbonPageGroupMain.ItemLinks.Add(this.barButtonItemCancelScan);
             this.ribbonPageGroupMain.Name = "ribbonPageGroupMain";
             this.ribbonPageGroupMain.Text = "Main";
             // 
@@ -517,5 +539,7 @@
         private Modules.ErrorsModule errorsModule;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpen;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSave;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDoScan;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCancelScan;
     }
 }

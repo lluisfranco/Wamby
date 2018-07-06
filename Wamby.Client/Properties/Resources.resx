@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Map_By_FilesCount" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Map_By_FilesCount.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="mainResultsModule" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mainResultsModule.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
@@ -133,6 +136,9 @@
   <data name="NewScan_Change_Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NewScan_Change_Folder.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="Browse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Browse.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="Settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Settings.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
@@ -142,8 +148,8 @@
   <data name="Log_Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Log Folder.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="NewScan_ScanNow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NewScan_ScanNow.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="Select_Folder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Select_Folder.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="Tree_Expand" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tree_Expand.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
@@ -154,11 +160,14 @@
   <data name="Results" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Results.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="NewScan_ScanNow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewScan_ScanNow.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="Map_By_Size" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Map_By_Size.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="Map_By_FilesCount" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Map_By_FilesCount.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="GoTo_Cmd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GoTo_Cmd.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="GoTo_Folder_Explorer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GoTo_Folder_Explorer.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
@@ -183,6 +192,12 @@
   </data>
   <data name="Schedule" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Schedule.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Delete.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
+  <data name="Copy_Url" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Copy_Url.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
   <data name="New" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\New.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
@@ -217,10 +232,13 @@
   <data name="Analysis_Show_Chart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Analysis_Show_Chart.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="Open" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Open.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="Map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Map.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="Open" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Open.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="NewScan_CancelScan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewScan_CancelScan.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

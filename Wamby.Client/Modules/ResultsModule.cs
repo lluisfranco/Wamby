@@ -13,12 +13,14 @@ using System.Diagnostics;
 namespace Wamby.Client.Modules
 {
     public partial class ResultsModule : DevExpress.XtraEditors.XtraUserControl, 
-        Interfaces.IModule, Interfaces.IModulePrintAndExport, Interfaces.IModuleResults, Interfaces.IModuleRibbon
+        Interfaces.IModule, Interfaces.IModulePrintAndExport, Interfaces.IModuleResults, 
+        Interfaces.IModuleRibbon, Interfaces.IModuleNewScanRequested
     {
         [Browsable(false)]
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
         public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
+        public event EventHandler RequestNewScan;
 
         public ResultsModule()
         {
@@ -46,16 +48,12 @@ namespace Wamby.Client.Modules
             resultsTreeList.FocusedNodeChanged += ResultsTreeList_FocusedNodeChanged;
             resultsTreeList.MouseDown += ResultsTreeList_MouseDown;
             barButtonItemOpenFolder.ItemClick += BarButtonItemOpenFolder_ItemClick;
+            barButtonItemOpenTerminal.ItemClick += BarButtonItemOpenTerminal_ItemClick;
             barButtonItemOpenInNewWamby.ItemClick += BarButtonItemOpenInNewWamby_ItemClick;
-        }
+            barButtonItemCopyPath.ItemClick += BarButtonItemCopyPath_ItemClick;
+            barButtonItemShowProperties.ItemClick += BarButtonItemShowProperties_ItemClick;
+            barButtonItemDelete.ItemClick += BarButtonItemDelete_ItemClick;
 
-        private void ResultsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
-        {
-            var item = resultsTreeList.GetRow(e.Node.Id) as Core.Model.WambyFileSystemItem;
-            if (item == null) return;
-            var exists = System.IO.Directory.Exists(item.FullName);
-            barButtonItemOpenFolder.Enabled = exists;
-            barButtonItemOpenInNewWamby.Enabled = exists;
         }
 
         private void ResultsTreeList_MouseDown(object sender, MouseEventArgs e)
@@ -84,22 +82,6 @@ namespace Wamby.Client.Modules
         private void BarButtonItemExpandLevel_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ExpandTreeToLevel(Convert.ToInt32(e.Item.Tag) - 1);
-        }
-
-        private void BarButtonItemOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
-            if (filename == null) return;
-            if (System.IO.Directory.Exists(filename))
-                Helpers.ShellHelper.Open(filename);
-        }
-
-        private void BarButtonItemOpenInNewWamby_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
-            if (filename == null) return;
-            if (System.IO.Directory.Exists(filename))
-                Helpers.ShellHelper.OpenWamby(filename);
         }
 
         private void ResultsTreeList_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
@@ -146,6 +128,82 @@ namespace Wamby.Client.Modules
         public void CollapseTree()
         {
             resultsTreeList.CollapseAll();
+        }
+
+        private void ResultsTreeList_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
+        {
+            var item = resultsTreeList.GetRow(e.Node.Id) as Core.Model.WambyFileSystemItem;
+            if (item == null) return;
+            var exists = System.IO.Directory.Exists(item.FullName);
+            barButtonItemOpenFolder.Enabled = exists;
+            barButtonItemOpenTerminal.Enabled = exists;
+            barButtonItemOpenInNewWamby.Enabled = exists;
+            barButtonItemCopyPath.Enabled = exists;
+            barButtonItemShowProperties.Enabled = exists;
+            barButtonItemDelete.Enabled = exists;
+        }
+
+        //private void BarButtonItemOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        //{
+        //    var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
+        //    if (filename == null) return;
+        //    if (System.IO.Directory.Exists(filename))
+        //        Helpers.ShellHelper.Open(filename);
+        //}
+
+        //private void BarButtonItemOpenInNewWamby_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        //{
+        //    var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
+        //    if (filename == null) return;
+        //    if (System.IO.Directory.Exists(filename))
+        //        Helpers.ShellHelper.OpenWamby(filename);
+        //}
+
+        private void BarButtonItemOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
+            if (filename == null) return;
+            if (System.IO.Directory.Exists(filename)) Helpers.ShellHelper.Open(filename);
+        }
+
+        private void BarButtonItemOpenTerminal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
+            if (filename == null) return;
+            if (System.IO.Directory.Exists(filename)) Helpers.ShellHelper.OpenTerminal(filename);
+        }
+
+        private void BarButtonItemOpenInNewWamby_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
+            if (filename == null) return;
+            if (System.IO.Directory.Exists(filename)) Helpers.ShellHelper.OpenWamby(filename);
+        }
+
+        private void BarButtonItemCopyPath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
+            if (filename == null) return;
+            Clipboard.SetText(filename);
+        }
+
+        private void BarButtonItemShowProperties_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
+            if (filename == null) return;
+            if (System.IO.Directory.Exists(filename))
+                Helpers.ShellHelper.ShowFileSystemItemProperties(filename);
+        }
+
+        private void BarButtonItemDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
+            if (filename == null) return;
+            if (System.IO.Directory.Exists(filename))
+            {
+                var deleted = Helpers.ShellHelper.DeleteFileSystemItemProperties(FindForm(), filename);
+                if (deleted) RequestNewScan?.Invoke(this, new EventArgs());
+            }
         }
     }
 }

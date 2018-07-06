@@ -79,7 +79,6 @@
             this.treeMapControl.LeafBorderVisible = DevExpress.Utils.DefaultBoolean.Default;
             this.treeMapControl.Location = new System.Drawing.Point(0, 31);
             this.treeMapControl.Name = "treeMapControl";
-            this.treeMapControl.Padding = new System.Windows.Forms.Padding(3);
             this.treeMapControl.Size = new System.Drawing.Size(610, 365);
             this.treeMapControl.TabIndex = 0;
             this.treeMapControl.ToolTipLeafPattern = "Extension {L}: {V:n2}";
