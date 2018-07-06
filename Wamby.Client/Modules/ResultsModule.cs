@@ -92,7 +92,9 @@ namespace Wamby.Client.Modules
 
         public void RefreshModuleData()
         {
+            var topindex = resultsTreeList.TopVisibleNodeIndex;
             resultsBindingSource.DataSource = FileSystemScanService.ScanResult.AllFolders;
+            resultsTreeList.TopVisibleNodeIndex = topindex;
         }
 
         public void Print()

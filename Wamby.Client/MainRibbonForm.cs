@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using Wamby.API.Services;
 using Wamby.Client.Extensions;
@@ -9,6 +10,7 @@ namespace Wamby.Client
     {
         public ViewModels.MainFormViewModel ViewModel { get; set; }
         DevExpress.XtraSplashScreen.IOverlaySplashScreenHandle handle = null;
+
         public MainRibbonForm()
         {
             InitializeComponent();
@@ -47,9 +49,10 @@ namespace Wamby.Client
             barButtonItemOpen.ItemClick += BarButtonItemOpen_ItemClick;
             barButtonItemDoScan.ItemClick += BarButtonItemDoScan_ItemClick;
             barButtonItemCancelScan.ItemClick += BarButtonItemCancelScan_ItemClick;
+            barButtonItemGoToResultsModule.ItemClick += BarButtonItemGoToResultsModule_ItemClick;
+            barButtonItemGoToErrorsModule.ItemClick += BarButtonItemGoToErrorsModule_ItemClick;
             newScanModule.StartingScan += NewScanModule_StartingScan;
             newScanModule.EndingScan += NewScanModule_EndingScan;
-            newScanModule.GotoTabButtonClicked += NewScanModule_GotoTabButtonClicked;
             newScanModule.RequestNewScan += NewScanModule_RequestNewScan;
             resultsModule.RequestNewScan += ResultsModule_RequestNewScan;
         }
@@ -83,9 +86,21 @@ namespace Wamby.Client
         {
             newScanModule.CancelScan();
         }
+
+        private void BarButtonItemGoToResultsModule_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GotoTab(tabPageResults.Name);
+        }
+
+        private void BarButtonItemGoToErrorsModule_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            GotoTab(tabPageErrors.Name);
+        }
+        
         private void NewScanModule_StartingScan(object sender, EventArgs e)
         {
             handle = OverlayFormExtensions.ShowProgressPanel(tabControl);
+            barStaticItemStatusMessage.Caption = "Scaning...";
             EnablePages(false);
         }
 
@@ -94,6 +109,27 @@ namespace Wamby.Client
             EnablePages(true);
             if (!ViewModel.FileSystemScanService.Cancelled) RefreshModulesData();
             if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle);
+            //clock.Stop();
+            //timer.Enabled = false;
+            barStaticItemStatusMessage.Caption = "Ready";
+            UpdateResults();
+        }
+
+        private void UpdateResults()
+        {
+            var resultsSummary =
+                $"{ViewModel.FileSystemScanService.ScanResult.WambyFolderInfo.DeepLengthInKB.ToString("n0")} KB in " +
+                $"{ViewModel.FileSystemScanService.ScanResult.AllFolders.Count.ToString("n0")} folders and " +
+                $"{ViewModel.FileSystemScanService.ScanResult.WambyFolderInfo.DeepFilesCount.ToString("n0")} files";
+            var errorsSummary =
+                ViewModel.FileSystemScanService.ScanResult.ScanExceptions.Count == 0 ?
+                "No errors" :
+                $"Check {ViewModel.FileSystemScanService.ScanResult.ScanExceptions.Count} errors";
+            barButtonItemGoToErrorsModule.Visibility = ViewModel.FileSystemScanService.ScanResult.ScanExceptions.Count != 0 ?
+                 DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never;
+            barButtonItemGoToResultsModule.Caption = resultsSummary;
+            barButtonItemGoToErrorsModule.Caption = errorsSummary;
+
         }
 
         private void RefreshModulesData()
@@ -114,6 +150,10 @@ namespace Wamby.Client
                 DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never;
             barButtonItemCancelScan.Visibility = enabled ?
                 DevExpress.XtraBars.BarItemVisibility.Never : DevExpress.XtraBars.BarItemVisibility.Always;
+            barButtonItemGoToResultsModule.Visibility = enabled ?
+                DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never;
+            barButtonItemGoToErrorsModule.Visibility = enabled ?
+                DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never;
         }
 
         private void NewAppBarButtonItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -151,13 +191,13 @@ namespace Wamby.Client
                 ribbon.MergeRibbon((ViewModel.CurrentModule as Interfaces.IModuleRibbon).Ribbon);
         }
 
-        private void NewScanModule_GotoTabButtonClicked(object sender, Args.GotoTabButtonEventArgs e)
+        private void GotoTab(string tabName)
         {
-            if (e.TabName == tabPageResults.Name) tabControl.SelectedTabPage = tabPageResults;
-            if (e.TabName == tabPageFiles.Name) tabControl.SelectedTabPage = tabPageFiles;
-            if (e.TabName == tabPageMap.Name) tabControl.SelectedTabPage = tabPageMap;
-            if (e.TabName == tabPageAnalysis.Name) tabControl.SelectedTabPage = tabPageAnalysis;
-            if (e.TabName == tabPageErrors.Name) tabControl.SelectedTabPage = tabPageErrors;
+            if (tabName == tabPageResults.Name) tabControl.SelectedTabPage = tabPageResults;
+            if (tabName == tabPageFiles.Name) tabControl.SelectedTabPage = tabPageFiles;
+            if (tabName == tabPageMap.Name) tabControl.SelectedTabPage = tabPageMap;
+            if (tabName == tabPageAnalysis.Name) tabControl.SelectedTabPage = tabPageAnalysis;
+            if (tabName == tabPageErrors.Name) tabControl.SelectedTabPage = tabPageErrors;
         }
 
         private async void NewScanModule_RequestNewScan(object sender, EventArgs e)
@@ -272,6 +312,5 @@ namespace Wamby.Client
                 Cursor = Cursors.Default;
             }
         }
-
     }
 }

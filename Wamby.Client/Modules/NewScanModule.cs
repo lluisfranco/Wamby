@@ -20,15 +20,11 @@ namespace Wamby.Client.Modules
         public string InitialFolderPath { get; set; } = null;
         public event EventHandler StartingScan;
         public event EventHandler EndingScan;
-        public event EventHandler<Args.GotoTabButtonEventArgs> GotoTabButtonClicked;
         public event EventHandler RequestNewScan;
 
         Progress<Wamby.API.Args.WambyFolderEventArgs> ScanningFolderProgress;
         Progress<Wamby.API.Args.WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress;
-        //Progress<string> CancelledByUserProgress;
 
-        Timer timer = new Timer();
-        Stopwatch clock = new Stopwatch();
         public NewScanModule()
         {
             InitializeComponent();
@@ -45,10 +41,6 @@ namespace Wamby.Client.Modules
             {
                 RefreshModuleData();
             });
-            //CancelledByUserProgress = new Progress<string>(args =>
-            //{
-            //    RefreshModuleData();
-            //});
         }
 
         public void RefreshModuleData()
@@ -73,7 +65,6 @@ namespace Wamby.Client.Modules
             FileSystemScanService.ErrorReadingFileSystemInfoProgress = ErrorReadingFileSystemInfoProgress;
             FileSystemScanService.CancelledScan -= FileSystemScanService_CancelledScan;
             FileSystemScanService.CancelledScan += FileSystemScanService_CancelledScan;
-            //FileSystemScanService.CancelledByUserProgress = CancelledByUserProgress;
             var logcombo = Helpers.UIHelper.GetLogTypesCombo();
             logcombo.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
             colLogLineType.ColumnEdit = logcombo;
@@ -81,9 +72,6 @@ namespace Wamby.Client.Modules
             imageComboBoxEditType.EditValue = API.Enums.ScanDetailTypeEnum.Fast;
             Initialized = true;
             setEventHandlers();
-            timer.Enabled = false;
-            timer.Interval = 500;
-            timer.Tick += Timer_Tick;
         }
 
         private void FileSystemScanService_CancelledScan(object sender, EventArgs e)
@@ -108,9 +96,6 @@ namespace Wamby.Client.Modules
             scanLogGroupControl.CustomButtonClick += ScanLogGroupControl_CustomButtonClick;
             newScanPathButtonEdit.KeyDown += NewScanPathButtonEdit_KeyDown;
             barButtonItemChangeFolder.ItemClick += BarButtonItemChangeFolder_ItemClick;
-            //barButtonItemScanNow.ItemClick += BarButtonItemScanNow_ItemClick;
-            barButtonItemGoToResultsModule.ItemClick += BarButtonItemGoToResultsModule_ItemClick;
-            barButtonItemGoToErrorsModule.ItemClick += BarButtonItemGoToErrorsModule_ItemClick;
             barButtonItemOpenFolder.ItemClick += BarButtonItemOpenFolder_ItemClick;
             barButtonItemOpenTerminal.ItemClick += BarButtonItemOpenTerminal_ItemClick;
             barButtonItemOpenInNewWamby.ItemClick += BarButtonItemOpenInNewWamby_ItemClick;
@@ -119,16 +104,6 @@ namespace Wamby.Client.Modules
             barButtonItemDelete.ItemClick += BarButtonItemDelete_ItemClick;
             gridViewLog.FocusedRowObjectChanged += GridViewLog_FocusedRowObjectChanged;
             gridViewLog.MouseDown += GridViewLog_MouseDown;
-        }
-
-        private void BarButtonItemGoToResultsModule_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            GotoTabButtonClicked?.Invoke(this, new Args.GotoTabButtonEventArgs() { TabName = "tabPageResults" });
-        }
-
-        private void BarButtonItemGoToErrorsModule_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            GotoTabButtonClicked?.Invoke(this, new Args.GotoTabButtonEventArgs() { TabName = "tabPageErrors" });
         }
 
         private void GridViewLog_MouseDown(object sender, MouseEventArgs e)
@@ -145,11 +120,6 @@ namespace Wamby.Client.Modules
         {
             showSelectPathDialog();
         }
-
-        //private async void BarButtonItemScanNow_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        //{
-        //    await DoScan();
-        //}
 
         private async void NewScanPathButtonEdit_KeyDown(object sender, KeyEventArgs e)
         {
@@ -227,45 +197,19 @@ namespace Wamby.Client.Modules
 
         void StartScan()
         {
-            clock.Restart();
-            timer.Enabled = true;
             StartingScan?.Invoke(this, new EventArgs());
             ActivateUI(false);
         }
 
         void EndScan()
         {
-            clock.Stop();
-            timer.Enabled = false;
             ActivateUI(true);
-            UpdateResults();
             RefreshScanOptionsControls();
             EndingScan?.Invoke(this, new EventArgs());
         }
 
-        private void UpdateResults()
-        {            
-            var resultsSummary =
-                $"{FileSystemScanService.ScanResult.WambyFolderInfo.DeepLengthInKB.ToString("n0")} KB in " +
-                $"{FileSystemScanService.ScanResult.AllFolders.Count.ToString("n0")} folders and " +
-                $"{FileSystemScanService.ScanResult.WambyFolderInfo.DeepFilesCount.ToString("n0")} files";
-            var errorsSummary =
-                FileSystemScanService.ScanResult.ScanExceptions.Count == 0 ?
-                "No errors" : 
-                $"Check {FileSystemScanService.ScanResult.ScanExceptions.Count} errors";
-            barButtonItemGoToErrorsModule.Visibility = FileSystemScanService.ScanResult.ScanExceptions.Count != 0 ?
-                 DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never;
-            barButtonItemGoToResultsModule.Caption = resultsSummary;
-            barButtonItemGoToErrorsModule.Caption = errorsSummary;
-            barStaticItemStatusMessage.Caption = "Ready";
-        }
-
         private void ActivateUI(bool activated)
         {
-            barButtonItemGoToResultsModule.Visibility = activated ? 
-                DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never;
-            barButtonItemGoToErrorsModule.Visibility = activated ?
-                DevExpress.XtraBars.BarItemVisibility.Always : DevExpress.XtraBars.BarItemVisibility.Never;
             barButtonItemChangeFolder.Enabled = activated;
             barButtonItemOpenFolder.Enabled = activated;
             barButtonItemOpenInNewWamby.Enabled = activated;
@@ -275,13 +219,6 @@ namespace Wamby.Client.Modules
             searchPatternButtonEdit.ReadOnly = !activated;
             includeSubfoldersCheckEdit.ReadOnly = !activated;
             imageComboBoxEditType.ReadOnly = !activated;
-            scanLogGroupControl.CustomHeaderButtons["Cancel"].Properties.Visible = !activated;
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            var sec = (clock.ElapsedMilliseconds / 1000) + 1;
-            barStaticItemStatusMessage.Caption = $"Scanning...{sec} sec.";
         }
 
         private void GridViewLog_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)

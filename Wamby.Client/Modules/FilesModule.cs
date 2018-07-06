@@ -55,7 +55,11 @@ namespace Wamby.Client.Modules
 
         public void RefreshModuleData()
         {
+            var topindex = gridViewFiles.TopRowIndex;
+            var rowindex = gridViewFiles.FocusedRowHandle;
             filesBindingSource.DataSource = FileSystemScanService.ScanResult.AllFiles;
+            gridViewFiles.TopRowIndex = topindex;
+            gridViewFiles.FocusedRowHandle = rowindex;
         }
 
         public void Print()

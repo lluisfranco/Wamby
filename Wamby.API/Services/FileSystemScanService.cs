@@ -28,8 +28,6 @@ namespace Wamby.API.Services
         public IProgress<Args.WambyFolderEventArgs> ScanningFolderProgress { get; set; }
         [JsonIgnore]
         public IProgress<Args.WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress { get; set; }
-        //[JsonIgnore]
-        //public IProgress<string> CancelledByUserProgress { get; set; }
 
         public event EventHandler CancelledScan;
 
@@ -70,7 +68,7 @@ namespace Wamby.API.Services
             Clear();
             LogLines.Add(new Core.Model.LogLine()
             {
-                Message = $"Started scan at {DateTime.Now.ToShortTimeString()}",
+                Message = $"Started scan at {DateTime.Now.ToLongTimeString()}",
                 Value = string.Empty,
                 LogLineType = Core.Model.LogLineTypeEnum.Info
             });
