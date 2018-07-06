@@ -129,14 +129,13 @@ namespace Wamby.Client.Modules
         private void BarButtonItemOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
-            if (System.IO.Directory.Exists(item.Value)) Process.Start(item.Value);
+            if (System.IO.Directory.Exists(item.Value)) Helpers.ShellHelper.Open(item.Value);
         }
 
         private void BarButtonItemOpenInNewWamby_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
-            if (System.IO.Directory.Exists(item.Value))
-                System.Diagnostics.Process.Start(Application.ExecutablePath, item.Value);
+            if (System.IO.Directory.Exists(item.Value)) Helpers.ShellHelper.OpenWamby(item.Value);
         }
 
         private void ScanLogGroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)

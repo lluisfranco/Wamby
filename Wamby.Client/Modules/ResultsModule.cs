@@ -88,17 +88,18 @@ namespace Wamby.Client.Modules
 
         private void BarButtonItemOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var item = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
-            if (item == null) return;
-            if (System.IO.Directory.Exists(item)) Process.Start(item);
+            var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
+            if (filename == null) return;
+            if (System.IO.Directory.Exists(filename))
+                Helpers.ShellHelper.Open(filename);
         }
 
         private void BarButtonItemOpenInNewWamby_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var item = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
-            if (item == null) return;
-            if (System.IO.Directory.Exists(item))
-                System.Diagnostics.Process.Start(Application.ExecutablePath, item);
+            var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
+            if (filename == null) return;
+            if (System.IO.Directory.Exists(filename))
+                Helpers.ShellHelper.OpenWamby(filename);
         }
 
         private void ResultsTreeList_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
@@ -121,14 +122,14 @@ namespace Wamby.Client.Modules
         {
             var filename = FileSystemScanService.GetTempFileName("xlsx");
             resultsTreeList.ExportToXlsx(filename);
-            System.Diagnostics.Process.Start(filename);
+            Helpers.ShellHelper.Open(filename);
         }
 
         public void ExportToPdf()
         {
             var filename = FileSystemScanService.GetTempFileName("pdf");
             resultsTreeList.ExportToPdf(filename);
-            System.Diagnostics.Process.Start(filename);
+            Helpers.ShellHelper.Open(filename);
         }
 
         public void ExpandTree()

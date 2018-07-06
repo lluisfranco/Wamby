@@ -106,7 +106,7 @@ namespace Wamby.Client
 
         private void OpenNewWamby()
         {
-            System.Diagnostics.Process.Start(Application.ExecutablePath);
+            Helpers.ShellHelper.OpenWamby(null);
         }
 
         private void TabControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)

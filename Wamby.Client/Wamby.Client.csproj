@@ -80,6 +80,7 @@
     <Compile Include="Enums\MapValueDataMemberEnum.cs" />
     <Compile Include="Extensions\OverlayFormExtensions.cs" />
     <Compile Include="Args\GotoTabButtonEventArgs.cs" />
+    <Compile Include="Helpers\ShellHelper.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Interfaces\IModuleAnalysis.cs" />
     <Compile Include="Interfaces\IFileSystemScanService.cs" />

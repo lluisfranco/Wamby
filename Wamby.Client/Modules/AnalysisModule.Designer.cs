@@ -104,6 +104,7 @@
             this.barButtonItemShowFieldList = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalysis = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.fieldLengthPercent = new DevExpress.XtraPivotGrid.PivotGridField();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
@@ -132,6 +133,7 @@
             this.fieldLastAccessTime,
             this.fieldLastWriteTime,
             this.fieldLengthInKB,
+            this.fieldLengthPercent,
             this.fieldParentFullName,
             this.fieldOwnerName,
             this.fieldAttributes,
@@ -154,6 +156,7 @@
             this.pivotGridControl.Location = new System.Drawing.Point(3, 34);
             this.pivotGridControl.Name = "pivotGridControl";
             this.pivotGridControl.OptionsCustomization.CustomizationFormStyle = DevExpress.XtraPivotGrid.Customization.CustomizationFormStyle.Excel2007;
+            this.pivotGridControl.OptionsMenu.EnableFormatRulesMenu = true;
             this.pivotGridControl.Size = new System.Drawing.Size(481, 570);
             this.pivotGridControl.TabIndex = 0;
             // 
@@ -250,7 +253,7 @@
             this.fieldOwnerName.Caption = "Owner";
             this.fieldOwnerName.FieldName = "OwnerName";
             this.fieldOwnerName.Name = "fieldOwnerName";
-            this.fieldOwnerName.Width = 141;
+            this.fieldOwnerName.Width = 131;
             // 
             // fieldAttributes
             // 
@@ -453,6 +456,7 @@
             // 
             // propertyGridControl
             // 
+            this.propertyGridControl.ActiveViewType = DevExpress.XtraVerticalGrid.PropertyGridView.Office;
             this.propertyGridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -818,6 +822,24 @@
             this.ribbonPageGroupAnalysis.Name = "ribbonPageGroupAnalysis";
             this.ribbonPageGroupAnalysis.Text = "Analysis Main";
             // 
+            // fieldLengthPercent
+            // 
+            this.fieldLengthPercent.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
+            this.fieldLengthPercent.AreaIndex = 1;
+            this.fieldLengthPercent.Caption = "Size (%)";
+            this.fieldLengthPercent.CellFormat.FormatString = "p0";
+            this.fieldLengthPercent.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldLengthPercent.FieldName = "LengthInKB";
+            this.fieldLengthPercent.GrandTotalCellFormat.FormatString = "p0";
+            this.fieldLengthPercent.GrandTotalCellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldLengthPercent.Name = "fieldLengthPercent";
+            this.fieldLengthPercent.SummaryDisplayType = DevExpress.Data.PivotGrid.PivotSummaryDisplayType.PercentOfColumn;
+            this.fieldLengthPercent.TotalCellFormat.FormatString = "p0";
+            this.fieldLengthPercent.TotalCellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldLengthPercent.TotalValueFormat.FormatString = "p0";
+            this.fieldLengthPercent.TotalValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldLengthPercent.Visible = false;
+            // 
             // AnalysisModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -921,5 +943,6 @@
         private DevExpress.XtraPivotGrid.PivotGridField fieldIsSparseFile;
         private DevExpress.XtraPivotGrid.PivotGridField fieldIsSystem;
         private DevExpress.XtraPivotGrid.PivotGridField fieldIsTemporary;
+        private DevExpress.XtraPivotGrid.PivotGridField fieldLengthPercent;
     }
 }

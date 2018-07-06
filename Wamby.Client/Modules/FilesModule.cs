@@ -67,14 +67,14 @@ namespace Wamby.Client.Modules
         {
             var filename = FileSystemScanService.GetTempFileName("xlsx");
             gridControlFiles.ExportToXlsx(filename);
-            System.Diagnostics.Process.Start(filename);
+            Helpers.ShellHelper.Open(filename);
         }
 
         public void ExportToPdf()
         {
             var filename = FileSystemScanService.GetTempFileName("pdf");
             gridControlFiles.ExportToPdf(filename);
-            System.Diagnostics.Process.Start(filename);
+            Helpers.ShellHelper.Open(filename);
         }
 
     }

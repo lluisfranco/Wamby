@@ -145,14 +145,14 @@ namespace Wamby.Client.Modules
         {
             var filename = FileSystemScanService.GetTempFileName("xlsx");
             treeMapControl.ExportToXlsx(filename);
-            System.Diagnostics.Process.Start(filename);
+            Helpers.ShellHelper.Open(filename);
         }
 
         public void ExportToPdf()
         {
             var filename = FileSystemScanService.GetTempFileName("pdf");
             treeMapControl.ExportToPdf(filename);
-            System.Diagnostics.Process.Start(filename);
+            Helpers.ShellHelper.Open(filename);
         }
 
     }
