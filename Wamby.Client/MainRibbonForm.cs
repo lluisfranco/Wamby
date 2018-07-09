@@ -180,6 +180,7 @@ namespace Wamby.Client
             if (moduleName == tabPageMap.Name) ViewModel.CurrentModule = mapModule;
             if (moduleName == tabPageAnalysis.Name) ViewModel.CurrentModule = analysisModule;
             if (moduleName == tabPageErrors.Name) ViewModel.CurrentModule = errorsModule;
+            (ViewModel.CurrentModule as Interfaces.IModule)?.SetFocus();
         }
 
         private void ShowCurrentModuleToolbars()

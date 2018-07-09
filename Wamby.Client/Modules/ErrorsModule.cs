@@ -30,6 +30,11 @@ namespace Wamby.Client.Modules
             setEventHandlers();
         }
 
+        public void SetFocus()
+        {
+            gridControlErrors.Focus();
+        }
+
         private void setEventHandlers()
         {
             barButtonItemShowColumnList.ItemClick += BarButtonItemShowColumnList_ItemClick;

@@ -74,6 +74,11 @@ namespace Wamby.Client.Modules
             setEventHandlers();
         }
 
+        public void SetFocus()
+        {
+            gridControlLog.Focus();
+        }
+
         private void FileSystemScanService_CancelledScan(object sender, EventArgs e)
         {
             RefreshModuleData();

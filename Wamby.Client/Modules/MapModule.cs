@@ -32,6 +32,11 @@ namespace Wamby.Client.Modules
             setEventHandlers();
         }
 
+        public void SetFocus()
+        {
+            treeMapControl.Focus();
+        }
+
         private void setEventHandlers()
         {
             barCheckItemMapBySize.ItemClick += BarCheckItemMapBySize_ItemClick;

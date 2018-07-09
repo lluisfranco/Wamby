@@ -11,10 +11,6 @@ namespace Wamby.Client.Interfaces
         bool Initialized { get; }
         void InitializeControl(API.Services.FileSystemScanService scanService);
         void RefreshModuleData();
-    }
-
-    public interface IModuleNewScanRequested
-    {
-        event EventHandler RequestNewScan;
+        void SetFocus();
     }
 }

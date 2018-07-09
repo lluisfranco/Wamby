@@ -33,6 +33,11 @@ namespace Wamby.Client.Modules
             setEventHandlers();
         }
 
+        public void SetFocus()
+        {
+            pivotGridControl.Focus();
+        }
+
         private void setEventHandlers()
         {
             barButtonItemSelectAll.ItemClick += BarButtonItemSelectAll_ItemClick;

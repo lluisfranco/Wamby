@@ -35,6 +35,11 @@ namespace Wamby.Client.Modules
             setEventHandlers();
         }
 
+        public void SetFocus()
+        {
+            resultsTreeList.Focus();
+        }
+
         private void setEventHandlers()
         {
             barButtonItemExpandTree.ItemClick += BarButtonItemExpandTree_ItemClick;

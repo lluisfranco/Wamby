@@ -87,6 +87,7 @@
     <Compile Include="Interfaces\IModuleErrors.cs" />
     <Compile Include="Interfaces\IModuleFiles.cs" />
     <Compile Include="Interfaces\IModuleMap.cs" />
+    <Compile Include="Interfaces\IModuleNewScanRequested.cs" />
     <Compile Include="Interfaces\IModulePrintAndExport.cs" />
     <Compile Include="Interfaces\IModuleResults.cs" />
     <Compile Include="Interfaces\IModuleRibbon.cs" />
