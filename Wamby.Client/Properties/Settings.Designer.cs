@@ -118,5 +118,23 @@ namespace Wamby.Client.Properties {
                 this["SaveToFileReadableFormat"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("|")]
+        public string AppArgumentsSeparator {
+            get {
+                return ((string)(this["AppArgumentsSeparator"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("=")]
+        public string AppArgumentPartsSeparator {
+            get {
+                return ((string)(this["AppArgumentPartsSeparator"]));
+            }
+        }
     }
 }

@@ -22,10 +22,16 @@ namespace Wamby.Client.Helpers
             }
         }
 
-        public static void OpenWamby(string arguments)
+        public static void OpenWamby(string initialfolder)
         {
+            string separator = Properties.Settings.Default.AppArgumentsSeparator;
+            string partsseparator = Properties.Settings.Default.AppArgumentPartsSeparator;
             try
             {
+                var arguments = initialfolder != null ?
+                    $"{Enums.AppArgumentsEnum.InitialFolder}{partsseparator}{initialfolder}" +
+                    $"{separator}" +
+                    $"{Enums.AppArgumentsEnum.AutoStartScan}{partsseparator}{true}" : null;
                 Process.Start(Application.ExecutablePath, arguments);
             }
             catch (Exception ex)

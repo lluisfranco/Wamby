@@ -26,5 +26,11 @@
     <Setting Name="SaveToFileReadableFormat" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="AppArgumentsSeparator" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">|</Value>
+    </Setting>
+    <Setting Name="AppArgumentPartsSeparator" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">=</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

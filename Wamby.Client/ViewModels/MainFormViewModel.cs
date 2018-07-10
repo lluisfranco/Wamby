@@ -9,6 +9,7 @@ namespace Wamby.Client.ViewModels
     public class MainFormViewModel : Interfaces.IFileSystemScanService
     {
         public string InitialFolderPath { get; set; }
+        public bool AutoStartScan { get; set; }
         public Interfaces.IModule CurrentModule { get; set; }
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public API.Services.FileSystemStorageService FileSystemStorageService { get; private set; }
@@ -43,6 +44,28 @@ namespace Wamby.Client.ViewModels
         {
             FileSystemScanService = await FileSystemStorageService.OpenFromFile(filename, FileSystemScanService);
             return FileSystemScanService;
+        }
+
+        public void ApplyAppArguments(string[] args)
+        {
+            try
+            {
+                var arguments = Helpers.AppArgumentHelper.ParseArguments(args);
+                if (arguments.Any(p => p.Argument == Enums.AppArgumentsEnum.InitialFolder))
+                {
+                    var initialfolder = arguments.First(p => p.Argument == Enums.AppArgumentsEnum.InitialFolder).Value;
+                    if (System.IO.Directory.Exists(initialfolder)) this.InitialFolderPath = initialfolder;
+                }
+                if (arguments.Any(p => p.Argument == Enums.AppArgumentsEnum.AutoStartScan))
+                {
+                    var autostart = Convert.ToBoolean(arguments.First(p => p.Argument == Enums.AppArgumentsEnum.AutoStartScan).Value);
+                    this.AutoStartScan = autostart;
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

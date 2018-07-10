@@ -65,7 +65,7 @@ namespace Wamby.Client
             InitializeModules();
             ViewModel.CurrentModule = newScanModule;
             ShowCurrentModuleToolbars();
-            if (ViewModel.InitialFolderPath != null) await newScanModule.DoScan();
+            if (ViewModel.AutoStartScan) await newScanModule.DoScan();
         }
 
         private void InitializeModules()
