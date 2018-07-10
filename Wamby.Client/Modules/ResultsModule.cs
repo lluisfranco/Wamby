@@ -58,7 +58,6 @@ namespace Wamby.Client.Modules
             barButtonItemCopyPath.ItemClick += BarButtonItemCopyPath_ItemClick;
             barButtonItemShowProperties.ItemClick += BarButtonItemShowProperties_ItemClick;
             barButtonItemDelete.ItemClick += BarButtonItemDelete_ItemClick;
-
         }
 
         private void ResultsTreeList_MouseDown(object sender, MouseEventArgs e)
@@ -149,22 +148,6 @@ namespace Wamby.Client.Modules
             barButtonItemShowProperties.Enabled = exists;
             barButtonItemDelete.Enabled = exists;
         }
-
-        //private void BarButtonItemOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        //{
-        //    var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
-        //    if (filename == null) return;
-        //    if (System.IO.Directory.Exists(filename))
-        //        Helpers.ShellHelper.Open(filename);
-        //}
-
-        //private void BarButtonItemOpenInNewWamby_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        //{
-        //    var filename = (resultsTreeList.GetFocusedRow() as Core.Model.WambyFileSystemItem)?.FullName;
-        //    if (filename == null) return;
-        //    if (System.IO.Directory.Exists(filename))
-        //        Helpers.ShellHelper.OpenWamby(filename);
-        //}
 
         private void BarButtonItemOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {

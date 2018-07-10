@@ -55,6 +55,7 @@ namespace Wamby.Client
             newScanModule.EndingScan += NewScanModule_EndingScan;
             newScanModule.RequestNewScan += NewScanModule_RequestNewScan;
             resultsModule.RequestNewScan += ResultsModule_RequestNewScan;
+            filesModule.RequestNewScan += FilesModule_RequestNewScan;
         }
 
         private async void MainForm_Shown(object sender, EventArgs e)
@@ -207,6 +208,11 @@ namespace Wamby.Client
         }
 
         private async void ResultsModule_RequestNewScan(object sender, EventArgs e)
+        {
+            await newScanModule.DoScan();
+        }
+
+        private async void FilesModule_RequestNewScan(object sender, EventArgs e)
         {
             await newScanModule.DoScan();
         }

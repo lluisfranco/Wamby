@@ -220,6 +220,9 @@
   <data name="Tree_Expand_Level" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Tree_Expand_Level.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
+  <data name="NewScan_CancelScan" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NewScan_CancelScan.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  </data>
   <data name="Map_Direction" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Map_Direction.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
@@ -238,7 +241,7 @@
   <data name="Map" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Map.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
-  <data name="NewScan_CancelScan" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\NewScan_CancelScan.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
+  <data name="Open_Run_File" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Open_Run_File.svg;DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a</value>
   </data>
 </root>

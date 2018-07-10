@@ -324,5 +324,8 @@
   <ItemGroup>
     <None Include="Resources\NewScan_CancelScan.svg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Open_Run_File.svg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

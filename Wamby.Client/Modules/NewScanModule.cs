@@ -180,6 +180,7 @@ namespace Wamby.Client.Modules
                 StartScan();
                 await FileSystemScanService.DoScan();
                 SaveScanOptions();
+                SetFocus();
             }
             catch (Exception ex)
             {

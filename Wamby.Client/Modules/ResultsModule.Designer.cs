@@ -74,14 +74,14 @@
             this.barButtonItemExpandLevel5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemOpenFolder = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemOpenInNewWamby = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroupResults = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroupOptions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barButtonItemOpenTerminal = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemCopyPath = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemShowProperties = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroupResults = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupOptions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.resultsTreeList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
@@ -384,7 +384,7 @@
             this.barButtonItemShowProperties,
             this.barButtonItemDelete});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 38;
+            this.ribbon.MaxItemId = 1;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbon.Name = "ribbon";
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -473,6 +473,41 @@
             this.barButtonItemOpenInNewWamby.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W));
             this.barButtonItemOpenInNewWamby.Name = "barButtonItemOpenInNewWamby";
             // 
+            // barButtonItemOpenTerminal
+            // 
+            this.barButtonItemOpenTerminal.Caption = "Open folder (Terminal)";
+            this.barButtonItemOpenTerminal.Id = 34;
+            this.barButtonItemOpenTerminal.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Cmd;
+            this.barButtonItemOpenTerminal.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
+            this.barButtonItemOpenTerminal.Name = "barButtonItemOpenTerminal";
+            // 
+            // barButtonItemCopyPath
+            // 
+            this.barButtonItemCopyPath.Caption = "Copy path";
+            this.barButtonItemCopyPath.Id = 35;
+            this.barButtonItemCopyPath.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Copy_Url;
+            this.barButtonItemCopyPath.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C));
+            this.barButtonItemCopyPath.Name = "barButtonItemCopyPath";
+            this.barButtonItemCopyPath.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+            // 
+            // barButtonItemShowProperties
+            // 
+            this.barButtonItemShowProperties.Caption = "Show properties";
+            this.barButtonItemShowProperties.Id = 36;
+            this.barButtonItemShowProperties.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
+            this.barButtonItemShowProperties.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Enter));
+            this.barButtonItemShowProperties.Name = "barButtonItemShowProperties";
+            this.barButtonItemShowProperties.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+            // 
+            // barButtonItemDelete
+            // 
+            this.barButtonItemDelete.Caption = "Delete";
+            this.barButtonItemDelete.Id = 37;
+            this.barButtonItemDelete.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Delete;
+            this.barButtonItemDelete.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Delete);
+            this.barButtonItemDelete.Name = "barButtonItemDelete";
+            this.barButtonItemDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+            // 
             // ribbonPageMain
             // 
             this.ribbonPageMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -510,41 +545,6 @@
             this.popupMenu.ItemLinks.Add(this.barButtonItemDelete);
             this.popupMenu.Name = "popupMenu";
             this.popupMenu.Ribbon = this.ribbon;
-            // 
-            // barButtonItemOpenTerminal
-            // 
-            this.barButtonItemOpenTerminal.Caption = "Open folder (Terminal)";
-            this.barButtonItemOpenTerminal.Id = 34;
-            this.barButtonItemOpenTerminal.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Cmd;
-            this.barButtonItemOpenTerminal.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
-            this.barButtonItemOpenTerminal.Name = "barButtonItemOpenTerminal";
-            // 
-            // barButtonItemCopyPath
-            // 
-            this.barButtonItemCopyPath.Caption = "Copy path";
-            this.barButtonItemCopyPath.Id = 35;
-            this.barButtonItemCopyPath.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Copy_Url;
-            this.barButtonItemCopyPath.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C));
-            this.barButtonItemCopyPath.Name = "barButtonItemCopyPath";
-            this.barButtonItemCopyPath.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            // 
-            // barButtonItemShowProperties
-            // 
-            this.barButtonItemShowProperties.Caption = "Show properties";
-            this.barButtonItemShowProperties.Id = 36;
-            this.barButtonItemShowProperties.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
-            this.barButtonItemShowProperties.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Enter));
-            this.barButtonItemShowProperties.Name = "barButtonItemShowProperties";
-            this.barButtonItemShowProperties.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            // 
-            // barButtonItemDelete
-            // 
-            this.barButtonItemDelete.Caption = "Delete";
-            this.barButtonItemDelete.Id = 37;
-            this.barButtonItemDelete.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Delete;
-            this.barButtonItemDelete.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Delete);
-            this.barButtonItemDelete.Name = "barButtonItemDelete";
-            this.barButtonItemDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
             // 
             // ResultsModule
             // 
@@ -586,6 +586,10 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupOptions;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenFolder;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenInNewWamby;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenTerminal;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCopyPath;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemShowProperties;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDelete;
         private DevExpress.XtraBars.PopupMenu popupMenu;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colCreationTime;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colLastAccessTime;
@@ -610,9 +614,5 @@
         private DevExpress.XtraTreeList.Columns.TreeListColumn colIsTemporary;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colDeepPercent;
         private DevExpress.XtraTreeList.Columns.TreeListColumn colDeepFilesCountPercent;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenTerminal;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemCopyPath;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemShowProperties;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemDelete;
     }
 }

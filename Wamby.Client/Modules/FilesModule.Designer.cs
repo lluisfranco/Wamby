@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilesModule));
             this.colLengthInKB = new DevExpress.XtraGrid.Columns.GridColumn();
             this.filesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -45,40 +45,6 @@
             this.colLastAccessTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCreationTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOwnerName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
-            this.newAppBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
-            this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
-            this.barButtonItemPrint = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemExportXls = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemExportPdf = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemExpandTree = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemCollapse = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItemExpandLevel = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItemExpandLevel1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemExpandLevel2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemExpandLevel3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemExpandLevel4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemExpandLevel5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItemLayoutAlgorithm = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItemLayoutAlgorithmSliceAndDice = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemLayoutAlgorithmSquarified = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemLayoutAlgorithmStriped = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItemDirection = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItemDirectionBottomLeftToTopRight = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemDirectionBottomRightToTopLeft = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemDirectionTopLeftToBottomRight = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemDirectionTopRightToBottomLeft = new DevExpress.XtraBars.BarButtonItem();
-            this.barCheckItemMapBySize = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItemMapByFilesCount = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItemShowProperties = new DevExpress.XtraBars.BarCheckItem();
-            this.barCheckItemShowChart = new DevExpress.XtraBars.BarCheckItem();
-            this.barButtonItemShowColumnList = new DevExpress.XtraBars.BarButtonItem();
-            this.barCheckItemShowFooter = new DevExpress.XtraBars.BarCheckItem();
-            this.barButtonItemSearch = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroupFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.colAttributes = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsArchive = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsCompressed = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -96,10 +62,26 @@
             this.colIsSparseFile = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsSystem = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colIsTemporary = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.barButtonItemShowColumnList = new DevExpress.XtraBars.BarButtonItem();
+            this.barCheckItemShowFooter = new DevExpress.XtraBars.BarCheckItem();
+            this.barButtonItemSearch = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpenFolder = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpenInNewWamby = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpenTerminal = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemCopyPath = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemShowProperties = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemOpenRunFile = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroupFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroupOptions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.filesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();
             this.SuspendLayout();
             // 
             // colLengthInKB
@@ -132,7 +114,7 @@
             this.gridControlFiles.Location = new System.Drawing.Point(0, 31);
             this.gridControlFiles.MainView = this.gridViewFiles;
             this.gridControlFiles.Name = "gridControlFiles";
-            this.gridControlFiles.Size = new System.Drawing.Size(610, 365);
+            this.gridControlFiles.Size = new System.Drawing.Size(919, 365);
             this.gridControlFiles.TabIndex = 0;
             this.gridControlFiles.UseEmbeddedNavigator = true;
             this.gridControlFiles.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -168,11 +150,11 @@
             this.colIsSparseFile,
             this.colIsSystem,
             this.colIsTemporary});
-            gridFormatRule1.Column = this.colLengthInKB;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleDataBar1.PredefinedName = "Mint";
-            gridFormatRule1.Rule = formatConditionRuleDataBar1;
-            this.gridViewFiles.FormatRules.Add(gridFormatRule1);
+            gridFormatRule2.Column = this.colLengthInKB;
+            gridFormatRule2.Name = "Format0";
+            formatConditionRuleDataBar2.PredefinedName = "Mint";
+            gridFormatRule2.Rule = formatConditionRuleDataBar2;
+            this.gridViewFiles.FormatRules.Add(gridFormatRule2);
             this.gridViewFiles.GridControl = this.gridControlFiles;
             this.gridViewFiles.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Extension", null, "({0} items)")});
@@ -258,301 +240,6 @@
             this.colOwnerName.Visible = true;
             this.colOwnerName.VisibleIndex = 5;
             this.colOwnerName.Width = 54;
-            // 
-            // ribbon
-            // 
-            this.ribbon.AllowMinimizeRibbon = false;
-            this.ribbon.ExpandCollapseItem.Id = 0;
-            this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbon.ExpandCollapseItem,
-            this.skinDropDownButtonItem1,
-            this.newAppBarButtonItem,
-            this.skinPaletteRibbonGalleryBarItem1,
-            this.barButtonItemPrint,
-            this.barButtonItemExportXls,
-            this.barButtonItemExportPdf,
-            this.barButtonItemExpandTree,
-            this.barButtonItemCollapse,
-            this.barSubItemExpandLevel,
-            this.barButtonItemExpandLevel1,
-            this.barButtonItemExpandLevel2,
-            this.barButtonItemExpandLevel3,
-            this.barButtonItemExpandLevel4,
-            this.barButtonItemExpandLevel5,
-            this.barButtonItem6,
-            this.barSubItemLayoutAlgorithm,
-            this.barSubItemDirection,
-            this.barCheckItemMapBySize,
-            this.barCheckItemMapByFilesCount,
-            this.barButtonItemLayoutAlgorithmSliceAndDice,
-            this.barButtonItemLayoutAlgorithmSquarified,
-            this.barButtonItemLayoutAlgorithmStriped,
-            this.barButtonItemDirectionBottomLeftToTopRight,
-            this.barButtonItemDirectionBottomRightToTopLeft,
-            this.barButtonItemDirectionTopLeftToBottomRight,
-            this.barButtonItemDirectionTopRightToBottomLeft,
-            this.barCheckItemShowProperties,
-            this.barCheckItemShowChart,
-            this.barButtonItemShowColumnList,
-            this.barCheckItemShowFooter,
-            this.barButtonItemSearch});
-            this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 35;
-            this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
-            this.ribbon.Name = "ribbon";
-            this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPageMain});
-            this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
-            this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
-            this.ribbon.Size = new System.Drawing.Size(610, 31);
-            // 
-            // skinDropDownButtonItem1
-            // 
-            this.skinDropDownButtonItem1.Id = 1;
-            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
-            // 
-            // newAppBarButtonItem
-            // 
-            this.newAppBarButtonItem.Caption = "New Wamby";
-            this.newAppBarButtonItem.Id = 2;
-            this.newAppBarButtonItem.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.New;
-            this.newAppBarButtonItem.Name = "newAppBarButtonItem";
-            // 
-            // skinPaletteRibbonGalleryBarItem1
-            // 
-            this.skinPaletteRibbonGalleryBarItem1.Caption = "Color Palette";
-            this.skinPaletteRibbonGalleryBarItem1.Id = 3;
-            this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
-            // 
-            // barButtonItemPrint
-            // 
-            this.barButtonItemPrint.Caption = "Print";
-            this.barButtonItemPrint.Id = 4;
-            this.barButtonItemPrint.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Print_Preview;
-            this.barButtonItemPrint.Name = "barButtonItemPrint";
-            // 
-            // barButtonItemExportXls
-            // 
-            this.barButtonItemExportXls.Caption = "Export Xls";
-            this.barButtonItemExportXls.Id = 5;
-            this.barButtonItemExportXls.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Export_To_Excel;
-            this.barButtonItemExportXls.Name = "barButtonItemExportXls";
-            // 
-            // barButtonItemExportPdf
-            // 
-            this.barButtonItemExportPdf.Caption = "Export Pdf";
-            this.barButtonItemExportPdf.Id = 6;
-            this.barButtonItemExportPdf.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Export_To_Pdf;
-            this.barButtonItemExportPdf.Name = "barButtonItemExportPdf";
-            // 
-            // barButtonItemExpandTree
-            // 
-            this.barButtonItemExpandTree.Caption = "Expand";
-            this.barButtonItemExpandTree.Id = 7;
-            this.barButtonItemExpandTree.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Tree_Expand;
-            this.barButtonItemExpandTree.Name = "barButtonItemExpandTree";
-            this.barButtonItemExpandTree.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            // 
-            // barButtonItemCollapse
-            // 
-            this.barButtonItemCollapse.Caption = "Collapse";
-            this.barButtonItemCollapse.Id = 8;
-            this.barButtonItemCollapse.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Tree_Compress;
-            this.barButtonItemCollapse.Name = "barButtonItemCollapse";
-            this.barButtonItemCollapse.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            // 
-            // barSubItemExpandLevel
-            // 
-            this.barSubItemExpandLevel.Caption = "Expand level";
-            this.barSubItemExpandLevel.Id = 10;
-            this.barSubItemExpandLevel.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Tree_Expand_Level;
-            this.barSubItemExpandLevel.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExpandLevel1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExpandLevel2),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExpandLevel3),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExpandLevel4),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExpandLevel5)});
-            this.barSubItemExpandLevel.Name = "barSubItemExpandLevel";
-            // 
-            // barButtonItemExpandLevel1
-            // 
-            this.barButtonItemExpandLevel1.Caption = "Level 1";
-            this.barButtonItemExpandLevel1.Id = 11;
-            this.barButtonItemExpandLevel1.Name = "barButtonItemExpandLevel1";
-            this.barButtonItemExpandLevel1.Tag = 1;
-            // 
-            // barButtonItemExpandLevel2
-            // 
-            this.barButtonItemExpandLevel2.Caption = "Level 2";
-            this.barButtonItemExpandLevel2.Id = 12;
-            this.barButtonItemExpandLevel2.Name = "barButtonItemExpandLevel2";
-            this.barButtonItemExpandLevel2.Tag = 2;
-            // 
-            // barButtonItemExpandLevel3
-            // 
-            this.barButtonItemExpandLevel3.Caption = "Level 3";
-            this.barButtonItemExpandLevel3.Id = 13;
-            this.barButtonItemExpandLevel3.Name = "barButtonItemExpandLevel3";
-            this.barButtonItemExpandLevel3.Tag = 3;
-            // 
-            // barButtonItemExpandLevel4
-            // 
-            this.barButtonItemExpandLevel4.Caption = "Level 4";
-            this.barButtonItemExpandLevel4.Id = 14;
-            this.barButtonItemExpandLevel4.Name = "barButtonItemExpandLevel4";
-            this.barButtonItemExpandLevel4.Tag = 4;
-            // 
-            // barButtonItemExpandLevel5
-            // 
-            this.barButtonItemExpandLevel5.Caption = "Level 5";
-            this.barButtonItemExpandLevel5.Id = 15;
-            this.barButtonItemExpandLevel5.Name = "barButtonItemExpandLevel5";
-            this.barButtonItemExpandLevel5.Tag = 5;
-            // 
-            // barButtonItem6
-            // 
-            this.barButtonItem6.Caption = "barButtonItem6";
-            this.barButtonItem6.Id = 16;
-            this.barButtonItem6.Name = "barButtonItem6";
-            // 
-            // barSubItemLayoutAlgorithm
-            // 
-            this.barSubItemLayoutAlgorithm.Caption = "Layout algorithm";
-            this.barSubItemLayoutAlgorithm.Id = 18;
-            this.barSubItemLayoutAlgorithm.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_Layout;
-            this.barSubItemLayoutAlgorithm.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemLayoutAlgorithmSliceAndDice),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemLayoutAlgorithmSquarified),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemLayoutAlgorithmStriped)});
-            this.barSubItemLayoutAlgorithm.Name = "barSubItemLayoutAlgorithm";
-            // 
-            // barButtonItemLayoutAlgorithmSliceAndDice
-            // 
-            this.barButtonItemLayoutAlgorithmSliceAndDice.Caption = "Slice And Dice";
-            this.barButtonItemLayoutAlgorithmSliceAndDice.Id = 23;
-            this.barButtonItemLayoutAlgorithmSliceAndDice.Name = "barButtonItemLayoutAlgorithmSliceAndDice";
-            // 
-            // barButtonItemLayoutAlgorithmSquarified
-            // 
-            this.barButtonItemLayoutAlgorithmSquarified.Caption = "Squarified";
-            this.barButtonItemLayoutAlgorithmSquarified.Id = 24;
-            this.barButtonItemLayoutAlgorithmSquarified.Name = "barButtonItemLayoutAlgorithmSquarified";
-            // 
-            // barButtonItemLayoutAlgorithmStriped
-            // 
-            this.barButtonItemLayoutAlgorithmStriped.Caption = "Striped";
-            this.barButtonItemLayoutAlgorithmStriped.Id = 25;
-            this.barButtonItemLayoutAlgorithmStriped.Name = "barButtonItemLayoutAlgorithmStriped";
-            // 
-            // barSubItemDirection
-            // 
-            this.barSubItemDirection.Caption = "Direction";
-            this.barSubItemDirection.Id = 19;
-            this.barSubItemDirection.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_Direction;
-            this.barSubItemDirection.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDirectionBottomLeftToTopRight),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDirectionBottomRightToTopLeft),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDirectionTopLeftToBottomRight),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDirectionTopRightToBottomLeft)});
-            this.barSubItemDirection.Name = "barSubItemDirection";
-            // 
-            // barButtonItemDirectionBottomLeftToTopRight
-            // 
-            this.barButtonItemDirectionBottomLeftToTopRight.Caption = "Bottom Left To Top Right";
-            this.barButtonItemDirectionBottomLeftToTopRight.Id = 26;
-            this.barButtonItemDirectionBottomLeftToTopRight.Name = "barButtonItemDirectionBottomLeftToTopRight";
-            // 
-            // barButtonItemDirectionBottomRightToTopLeft
-            // 
-            this.barButtonItemDirectionBottomRightToTopLeft.Caption = "Bottom Right To Top Left";
-            this.barButtonItemDirectionBottomRightToTopLeft.Id = 27;
-            this.barButtonItemDirectionBottomRightToTopLeft.Name = "barButtonItemDirectionBottomRightToTopLeft";
-            // 
-            // barButtonItemDirectionTopLeftToBottomRight
-            // 
-            this.barButtonItemDirectionTopLeftToBottomRight.Caption = "Top Left To Bottom Right";
-            this.barButtonItemDirectionTopLeftToBottomRight.Id = 28;
-            this.barButtonItemDirectionTopLeftToBottomRight.Name = "barButtonItemDirectionTopLeftToBottomRight";
-            // 
-            // barButtonItemDirectionTopRightToBottomLeft
-            // 
-            this.barButtonItemDirectionTopRightToBottomLeft.Caption = "Top Right To Bottom Left";
-            this.barButtonItemDirectionTopRightToBottomLeft.Id = 29;
-            this.barButtonItemDirectionTopRightToBottomLeft.Name = "barButtonItemDirectionTopRightToBottomLeft";
-            // 
-            // barCheckItemMapBySize
-            // 
-            this.barCheckItemMapBySize.BindableChecked = true;
-            this.barCheckItemMapBySize.Caption = "Size";
-            this.barCheckItemMapBySize.Checked = true;
-            this.barCheckItemMapBySize.GroupIndex = 1;
-            this.barCheckItemMapBySize.Id = 20;
-            this.barCheckItemMapBySize.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_By_Size;
-            this.barCheckItemMapBySize.Name = "barCheckItemMapBySize";
-            // 
-            // barCheckItemMapByFilesCount
-            // 
-            this.barCheckItemMapByFilesCount.Caption = "Files Count";
-            this.barCheckItemMapByFilesCount.GroupIndex = 1;
-            this.barCheckItemMapByFilesCount.Id = 21;
-            this.barCheckItemMapByFilesCount.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_By_FilesCount;
-            this.barCheckItemMapByFilesCount.Name = "barCheckItemMapByFilesCount";
-            // 
-            // barCheckItemShowProperties
-            // 
-            this.barCheckItemShowProperties.BindableChecked = true;
-            this.barCheckItemShowProperties.Caption = "Properties";
-            this.barCheckItemShowProperties.Checked = true;
-            this.barCheckItemShowProperties.Id = 30;
-            this.barCheckItemShowProperties.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
-            this.barCheckItemShowProperties.Name = "barCheckItemShowProperties";
-            // 
-            // barCheckItemShowChart
-            // 
-            this.barCheckItemShowChart.BindableChecked = true;
-            this.barCheckItemShowChart.Caption = "Chart";
-            this.barCheckItemShowChart.Checked = true;
-            this.barCheckItemShowChart.Id = 31;
-            this.barCheckItemShowChart.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Chart;
-            this.barCheckItemShowChart.Name = "barCheckItemShowChart";
-            // 
-            // barButtonItemShowColumnList
-            // 
-            this.barButtonItemShowColumnList.Caption = "Show columns list";
-            this.barButtonItemShowColumnList.Id = 32;
-            this.barButtonItemShowColumnList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemShowColumnList.ImageOptions.SvgImage")));
-            this.barButtonItemShowColumnList.Name = "barButtonItemShowColumnList";
-            // 
-            // barCheckItemShowFooter
-            // 
-            this.barCheckItemShowFooter.BindableChecked = true;
-            this.barCheckItemShowFooter.Caption = "Show footer";
-            this.barCheckItemShowFooter.Checked = true;
-            this.barCheckItemShowFooter.Id = 33;
-            this.barCheckItemShowFooter.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Show_Footer;
-            this.barCheckItemShowFooter.Name = "barCheckItemShowFooter";
-            // 
-            // barButtonItemSearch
-            // 
-            this.barButtonItemSearch.Caption = "Search";
-            this.barButtonItemSearch.Id = 34;
-            this.barButtonItemSearch.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSearch.ImageOptions.SvgImage")));
-            this.barButtonItemSearch.Name = "barButtonItemSearch";
-            // 
-            // ribbonPageMain
-            // 
-            this.ribbonPageMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroupFiles});
-            this.ribbonPageMain.Name = "ribbonPageMain";
-            this.ribbonPageMain.Text = "Main Page";
-            // 
-            // ribbonPageGroupFiles
-            // 
-            this.ribbonPageGroupFiles.ItemLinks.Add(this.barButtonItemShowColumnList);
-            this.ribbonPageGroupFiles.ItemLinks.Add(this.barButtonItemSearch);
-            this.ribbonPageGroupFiles.ItemLinks.Add(this.barCheckItemShowFooter);
-            this.ribbonPageGroupFiles.Name = "ribbonPageGroupFiles";
-            this.ribbonPageGroupFiles.Text = "Files Main";
             // 
             // colAttributes
             // 
@@ -641,6 +328,154 @@
             this.colIsTemporary.FieldName = "IsTemporary";
             this.colIsTemporary.Name = "colIsTemporary";
             // 
+            // ribbon
+            // 
+            this.ribbon.AllowMinimizeRibbon = false;
+            this.ribbon.ExpandCollapseItem.Id = 0;
+            this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ribbon.ExpandCollapseItem,
+            this.barButtonItemShowColumnList,
+            this.barCheckItemShowFooter,
+            this.barButtonItemSearch,
+            this.barButtonItemOpenFolder,
+            this.barButtonItemOpenInNewWamby,
+            this.barButtonItemOpenTerminal,
+            this.barButtonItemCopyPath,
+            this.barButtonItemShowProperties,
+            this.barButtonItemDelete,
+            this.barButtonItemOpenRunFile});
+            this.ribbon.Location = new System.Drawing.Point(0, 0);
+            this.ribbon.MaxItemId = 36;
+            this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
+            this.ribbon.Name = "ribbon";
+            this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPageMain});
+            this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
+            this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
+            this.ribbon.Size = new System.Drawing.Size(919, 31);
+            // 
+            // barButtonItemShowColumnList
+            // 
+            this.barButtonItemShowColumnList.Caption = "Show columns list";
+            this.barButtonItemShowColumnList.Id = 32;
+            this.barButtonItemShowColumnList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemShowColumnList.ImageOptions.SvgImage")));
+            this.barButtonItemShowColumnList.Name = "barButtonItemShowColumnList";
+            // 
+            // barCheckItemShowFooter
+            // 
+            this.barCheckItemShowFooter.BindableChecked = true;
+            this.barCheckItemShowFooter.Caption = "Show footer";
+            this.barCheckItemShowFooter.Checked = true;
+            this.barCheckItemShowFooter.Id = 33;
+            this.barCheckItemShowFooter.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Show_Footer;
+            this.barCheckItemShowFooter.Name = "barCheckItemShowFooter";
+            // 
+            // barButtonItemSearch
+            // 
+            this.barButtonItemSearch.Caption = "Search";
+            this.barButtonItemSearch.Id = 34;
+            this.barButtonItemSearch.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSearch.ImageOptions.SvgImage")));
+            this.barButtonItemSearch.Name = "barButtonItemSearch";
+            // 
+            // barButtonItemOpenFolder
+            // 
+            this.barButtonItemOpenFolder.Caption = "Open folder (Explorer)";
+            this.barButtonItemOpenFolder.Id = 32;
+            this.barButtonItemOpenFolder.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Folder_Explorer;
+            this.barButtonItemOpenFolder.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E));
+            this.barButtonItemOpenFolder.Name = "barButtonItemOpenFolder";
+            // 
+            // barButtonItemOpenInNewWamby
+            // 
+            this.barButtonItemOpenInNewWamby.Caption = "Scan in new Wamby";
+            this.barButtonItemOpenInNewWamby.Id = 33;
+            this.barButtonItemOpenInNewWamby.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.New;
+            this.barButtonItemOpenInNewWamby.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W));
+            this.barButtonItemOpenInNewWamby.Name = "barButtonItemOpenInNewWamby";
+            // 
+            // barButtonItemOpenTerminal
+            // 
+            this.barButtonItemOpenTerminal.Caption = "Open folder (Terminal)";
+            this.barButtonItemOpenTerminal.Id = 34;
+            this.barButtonItemOpenTerminal.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Cmd;
+            this.barButtonItemOpenTerminal.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
+            this.barButtonItemOpenTerminal.Name = "barButtonItemOpenTerminal";
+            // 
+            // barButtonItemCopyPath
+            // 
+            this.barButtonItemCopyPath.Caption = "Copy path";
+            this.barButtonItemCopyPath.Id = 35;
+            this.barButtonItemCopyPath.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Copy_Url;
+            this.barButtonItemCopyPath.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C));
+            this.barButtonItemCopyPath.Name = "barButtonItemCopyPath";
+            this.barButtonItemCopyPath.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+            // 
+            // barButtonItemShowProperties
+            // 
+            this.barButtonItemShowProperties.Caption = "Show properties";
+            this.barButtonItemShowProperties.Id = 36;
+            this.barButtonItemShowProperties.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
+            this.barButtonItemShowProperties.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Enter));
+            this.barButtonItemShowProperties.Name = "barButtonItemShowProperties";
+            this.barButtonItemShowProperties.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+            // 
+            // barButtonItemDelete
+            // 
+            this.barButtonItemDelete.Caption = "Delete";
+            this.barButtonItemDelete.Id = 37;
+            this.barButtonItemDelete.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Delete;
+            this.barButtonItemDelete.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Delete);
+            this.barButtonItemDelete.Name = "barButtonItemDelete";
+            this.barButtonItemDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+            // 
+            // barButtonItemOpenRunFile
+            // 
+            this.barButtonItemOpenRunFile.Caption = "Open/Run file";
+            this.barButtonItemOpenRunFile.Id = 35;
+            this.barButtonItemOpenRunFile.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Open_Run_File;
+            this.barButtonItemOpenRunFile.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R));
+            this.barButtonItemOpenRunFile.Name = "barButtonItemOpenRunFile";
+            // 
+            // ribbonPageMain
+            // 
+            this.ribbonPageMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroupFiles,
+            this.ribbonPageGroupOptions});
+            this.ribbonPageMain.Name = "ribbonPageMain";
+            this.ribbonPageMain.Text = "Main Page";
+            // 
+            // ribbonPageGroupFiles
+            // 
+            this.ribbonPageGroupFiles.ItemLinks.Add(this.barButtonItemShowColumnList);
+            this.ribbonPageGroupFiles.ItemLinks.Add(this.barButtonItemSearch);
+            this.ribbonPageGroupFiles.ItemLinks.Add(this.barCheckItemShowFooter);
+            this.ribbonPageGroupFiles.Name = "ribbonPageGroupFiles";
+            this.ribbonPageGroupFiles.Text = "Files Main";
+            // 
+            // ribbonPageGroupOptions
+            // 
+            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemOpenFolder);
+            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemOpenTerminal);
+            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemOpenInNewWamby);
+            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemOpenRunFile, true);
+            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemCopyPath);
+            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemShowProperties);
+            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemDelete);
+            this.ribbonPageGroupOptions.Name = "ribbonPageGroupOptions";
+            this.ribbonPageGroupOptions.Text = "Options";
+            // 
+            // popupMenu
+            // 
+            this.popupMenu.ItemLinks.Add(this.barButtonItemOpenFolder);
+            this.popupMenu.ItemLinks.Add(this.barButtonItemOpenTerminal);
+            this.popupMenu.ItemLinks.Add(this.barButtonItemOpenInNewWamby);
+            this.popupMenu.ItemLinks.Add(this.barButtonItemOpenRunFile, true);
+            this.popupMenu.ItemLinks.Add(this.barButtonItemCopyPath);
+            this.popupMenu.ItemLinks.Add(this.barButtonItemShowProperties);
+            this.popupMenu.ItemLinks.Add(this.barButtonItemDelete);
+            this.popupMenu.Name = "popupMenu";
+            this.popupMenu.Ribbon = this.ribbon;
+            // 
             // FilesModule
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -648,11 +483,12 @@
             this.Controls.Add(this.gridControlFiles);
             this.Controls.Add(this.ribbon);
             this.Name = "FilesModule";
-            this.Size = new System.Drawing.Size(610, 396);
+            this.Size = new System.Drawing.Size(919, 396);
             ((System.ComponentModel.ISupportInitialize)(this.filesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControlFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridViewFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -673,37 +509,17 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCreationTime;
         private DevExpress.XtraGrid.Columns.GridColumn colOwnerName;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
-        private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem newAppBarButtonItem;
-        private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemPrint;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemExportXls;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemExportPdf;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemExpandTree;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemCollapse;
-        private DevExpress.XtraBars.BarSubItem barSubItemExpandLevel;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemExpandLevel1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemExpandLevel2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemExpandLevel3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemExpandLevel4;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemExpandLevel5;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
-        private DevExpress.XtraBars.BarSubItem barSubItemLayoutAlgorithm;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemLayoutAlgorithmSliceAndDice;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemLayoutAlgorithmSquarified;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemLayoutAlgorithmStriped;
-        private DevExpress.XtraBars.BarSubItem barSubItemDirection;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemDirectionBottomLeftToTopRight;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemDirectionBottomRightToTopLeft;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemDirectionTopLeftToBottomRight;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemDirectionTopRightToBottomLeft;
-        private DevExpress.XtraBars.BarCheckItem barCheckItemMapBySize;
-        private DevExpress.XtraBars.BarCheckItem barCheckItemMapByFilesCount;
-        private DevExpress.XtraBars.BarCheckItem barCheckItemShowProperties;
-        private DevExpress.XtraBars.BarCheckItem barCheckItemShowChart;
         private DevExpress.XtraBars.BarButtonItem barButtonItemShowColumnList;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageMain;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupFiles;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupOptions;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenFolder;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenInNewWamby;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenTerminal;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCopyPath;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemShowProperties;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemDelete;
+        private DevExpress.XtraBars.PopupMenu popupMenu;
         private DevExpress.XtraBars.BarCheckItem barCheckItemShowFooter;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSearch;
         private DevExpress.XtraGrid.Columns.GridColumn colAttributes;
@@ -723,5 +539,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colIsSparseFile;
         private DevExpress.XtraGrid.Columns.GridColumn colIsSystem;
         private DevExpress.XtraGrid.Columns.GridColumn colIsTemporary;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenRunFile;
     }
 }
