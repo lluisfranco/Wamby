@@ -132,7 +132,7 @@
             // newScanModule
             // 
             this.newScanModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newScanModule.InitialFolderPath = null;
+            //this.newScanModule.InitialFolderPath = null;
             this.newScanModule.Location = new System.Drawing.Point(0, 0);
             this.newScanModule.Name = "newScanModule";
             this.newScanModule.Size = new System.Drawing.Size(1256, 622);

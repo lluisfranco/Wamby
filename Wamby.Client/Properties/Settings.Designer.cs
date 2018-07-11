@@ -136,5 +136,17 @@ namespace Wamby.Client.Properties {
                 return ((string)(this["AppArgumentPartsSeparator"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Fast")]
+        public global::Wamby.API.Enums.ScanDetailTypeEnum DefaultDetailedScanType {
+            get {
+                return ((global::Wamby.API.Enums.ScanDetailTypeEnum)(this["DefaultDetailedScanType"]));
+            }
+            set {
+                this["DefaultDetailedScanType"] = value;
+            }
+        }
     }
 }

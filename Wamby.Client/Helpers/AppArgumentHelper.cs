@@ -31,9 +31,14 @@ namespace Wamby.Client.Helpers
             return argumentsList;
         }
 
-        static Enums.AppArgumentsEnum GetEnum(string enumName)
+        public static Enums.AppArgumentsEnum GetEnum(string enumName)
         {
             return (Enums.AppArgumentsEnum)System.Enum.Parse(typeof(Enums.AppArgumentsEnum), enumName); ;
+        }
+
+        public static T GetEnum<T>(string enumName)
+        {
+            return (T)System.Enum.Parse(typeof(T), enumName); ;
         }
     }
 }

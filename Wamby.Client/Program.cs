@@ -18,6 +18,7 @@ namespace Wamby.Client
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.XtraEditors.WindowsFormsSettings.ForceDirectXPaint();
             var mainform = new MainRibbonForm();
+            mainform.ViewModel.LoadDefaultSettings();
             mainform.ViewModel.ApplyAppArguments(args);
             Application.Run(mainform);
         }

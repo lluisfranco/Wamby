@@ -9,6 +9,11 @@ namespace Wamby.Client.Enums
     public enum AppArgumentsEnum
     {
         InitialFolder,
-        AutoStartScan
+        ScanDetailType,
+        AutoStartScan,
+        SaveToFile,
+        SaveFolderPath,
+        SaveFileName,
+        CloseOnFinish
     }
 }

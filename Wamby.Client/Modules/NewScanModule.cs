@@ -17,7 +17,7 @@ namespace Wamby.Client.Modules
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
         public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
-        public string InitialFolderPath { get; set; } = null;
+        //public string InitialFolderPath { get; set; } = null;
         public event EventHandler StartingScan;
         public event EventHandler EndingScan;
         public event EventHandler RequestNewScan;
@@ -29,6 +29,8 @@ namespace Wamby.Client.Modules
         {
             InitializeComponent();
             SetProgressHandlers();
+            imageComboBoxEditType.Properties.Items.AddEnum(typeof(API.Enums.ScanDetailTypeEnum));
+            imageComboBoxEditType.EditValue = API.Enums.ScanDetailTypeEnum.Fast;
         }
 
         private void SetProgressHandlers()
@@ -68,8 +70,6 @@ namespace Wamby.Client.Modules
             var logcombo = Helpers.UIHelper.GetLogTypesCombo();
             logcombo.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
             colLogLineType.ColumnEdit = logcombo;
-            imageComboBoxEditType.Properties.Items.AddEnum(typeof(API.Enums.ScanDetailTypeEnum));
-            imageComboBoxEditType.EditValue = API.Enums.ScanDetailTypeEnum.Fast;
             Initialized = true;
             setEventHandlers();
         }
@@ -89,7 +89,7 @@ namespace Wamby.Client.Modules
             scanOptionsGroupControl.Text = $"Scan options - {FileSystemScanService.UserName} on " +
                 $"{FileSystemScanService.ComputerName} ({FileSystemScanService.OSVersionName}) at " +
                 $"{FileSystemScanService.ScanDate.ToString()}";
-            newScanPathButtonEdit.Text = InitialFolderPath ?? FileSystemScanService.ScanOptions.BaseFolderPath;
+            newScanPathButtonEdit.Text = FileSystemScanService.ScanOptions.BaseFolderPath;
             includeSubfoldersCheckEdit.Checked = FileSystemScanService.ScanOptions.IncludeSubFolders;
             searchPatternButtonEdit.Text = FileSystemScanService.ScanOptions.SearchPattern;
             imageComboBoxEditType.EditValue = FileSystemScanService.DetailType;
@@ -198,6 +198,8 @@ namespace Wamby.Client.Modules
         {
             Properties.Settings.Default.DefaultBaseFolderPath = FileSystemScanService.ScanOptions.BaseFolderPath;
             Properties.Settings.Default.DefaultIncludeSubFolders = FileSystemScanService.ScanOptions.IncludeSubFolders;
+            Properties.Settings.Default.DefaultSearchPattern = FileSystemScanService.ScanOptions.SearchPattern;
+            Properties.Settings.Default.DefaultDetailedScanType = FileSystemScanService.DetailType;
             Properties.Settings.Default.Save();
         }
 

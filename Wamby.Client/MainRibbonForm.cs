@@ -60,8 +60,7 @@ namespace Wamby.Client
 
         private async void MainForm_Shown(object sender, EventArgs e)
         {
-            ViewModel.LoadDefaultSettings();
-            newScanModule.InitialFolderPath = ViewModel.InitialFolderPath;
+            //ViewModel.LoadDefaultSettings();
             InitializeModules();
             ViewModel.CurrentModule = newScanModule;
             ShowCurrentModuleToolbars();
@@ -105,15 +104,15 @@ namespace Wamby.Client
             EnablePages(false);
         }
 
-        private void NewScanModule_EndingScan(object sender, EventArgs e)
+        private async void NewScanModule_EndingScan(object sender, EventArgs e)
         {
             EnablePages(true);
             if (!ViewModel.FileSystemScanService.Cancelled) RefreshModulesData();
-            if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle);
-            //clock.Stop();
-            //timer.Enabled = false;
+            if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle);            
             barStaticItemStatusMessage.Caption = "Ready";
             UpdateResults();
+            if (ViewModel.SaveToFile) await ViewModel.SaveScanToFile();
+            if (ViewModel.CloseOnFinish) this.Close();
         }
 
         private void UpdateResults()

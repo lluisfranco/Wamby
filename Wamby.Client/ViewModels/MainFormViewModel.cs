@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Wamby.Client.ViewModels
 {
     public class MainFormViewModel : Interfaces.IFileSystemScanService
     {
-        public string InitialFolderPath { get; set; }
+        public List<Model.AppArgument> Arguments { get; set; }
         public bool AutoStartScan { get; set; }
+        public bool SaveToFile { get; set; }
+        public string SaveFolderPath { get; set; }
+        public string SaveFileName { get; set; }
+        public bool CloseOnFinish { get; set; }
         public Interfaces.IModule CurrentModule { get; set; }
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public API.Services.FileSystemStorageService FileSystemStorageService { get; private set; }
@@ -50,22 +55,62 @@ namespace Wamby.Client.ViewModels
         {
             try
             {
-                var arguments = Helpers.AppArgumentHelper.ParseArguments(args);
-                if (arguments.Any(p => p.Argument == Enums.AppArgumentsEnum.InitialFolder))
+                this.Arguments = Helpers.AppArgumentHelper.ParseArguments(args);
+                if (this.Arguments.Any(p => p.Argument == Enums.AppArgumentsEnum.InitialFolder))
                 {
-                    var initialfolder = arguments.First(p => p.Argument == Enums.AppArgumentsEnum.InitialFolder).Value;
-                    if (System.IO.Directory.Exists(initialfolder)) this.InitialFolderPath = initialfolder;
+                    var value = this.Arguments.First(p => p.Argument == Enums.AppArgumentsEnum.InitialFolder).Value;
+                    if (System.IO.Directory.Exists(value)) FileSystemScanService.ScanOptions.BaseFolderPath = value;
                 }
-                if (arguments.Any(p => p.Argument == Enums.AppArgumentsEnum.AutoStartScan))
+                if (this.Arguments.Any(p => p.Argument == Enums.AppArgumentsEnum.AutoStartScan))
                 {
-                    var autostart = Convert.ToBoolean(arguments.First(p => p.Argument == Enums.AppArgumentsEnum.AutoStartScan).Value);
-                    this.AutoStartScan = autostart;
+                    var value = Convert.ToBoolean(this.Arguments.First(p => p.Argument == Enums.AppArgumentsEnum.AutoStartScan).Value);
+                    this.AutoStartScan = value;
+                }
+                if (this.Arguments.Any(p => p.Argument == Enums.AppArgumentsEnum.SaveToFile))
+                {
+                    var value = Convert.ToBoolean(this.Arguments.First(p => p.Argument == Enums.AppArgumentsEnum.SaveToFile).Value);
+                    this.SaveToFile = value;
+                }
+                if (this.Arguments.Any(p => p.Argument == Enums.AppArgumentsEnum.SaveFolderPath))
+                {
+                    var value = this.Arguments.First(p => p.Argument == Enums.AppArgumentsEnum.SaveFolderPath).Value;
+                    if (System.IO.Directory.Exists(value)) this.SaveFolderPath = value;
+                }
+                if (this.Arguments.Any(p => p.Argument == Enums.AppArgumentsEnum.SaveFileName))
+                {
+                    var value = this.Arguments.First(p => p.Argument == Enums.AppArgumentsEnum.SaveFileName).Value;
+                    this.SaveFileName = value;
+                }
+                if (this.Arguments.Any(p => p.Argument == Enums.AppArgumentsEnum.CloseOnFinish))
+                {
+                    var value = Convert.ToBoolean(this.Arguments.First(p => p.Argument == Enums.AppArgumentsEnum.CloseOnFinish).Value);
+                    this.CloseOnFinish = value;
+                }
+                if (this.Arguments.Any(p => p.Argument == Enums.AppArgumentsEnum.ScanDetailType))
+                {
+                    var value = Helpers.AppArgumentHelper.GetEnum<API.Enums.ScanDetailTypeEnum>(
+                        this.Arguments.First(p => p.Argument == Enums.AppArgumentsEnum.ScanDetailType).Value);
+                    FileSystemScanService.DetailType = value;
                 }
             }
             catch
             {
 
             }
+        }
+
+        public async Task SaveScanToFile()
+        {
+            var foldername = this.SaveFolderPath;
+            if (!System.IO.Directory.Exists(foldername))
+                foldername = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var scanfilename = 
+                $"Scan_{FileSystemScanService.ScanResult.WambyFolderInfo.Name}_" +
+                $"{FileSystemScanService.ComputerName}_" +
+                $"{FileSystemScanService.ScanDate.ToString("dd-MM-yyyy-HH-mm")}.wamby";
+            var filename = this.SaveFileName ?? scanfilename;
+            var filenamepath = System.IO.Path.Combine(foldername, filename);
+            await this.SaveScan(filenamepath, Properties.Settings.Default.SaveToFileReadableFormat);
         }
     }
 }
