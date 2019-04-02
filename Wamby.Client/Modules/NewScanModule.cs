@@ -17,7 +17,6 @@ namespace Wamby.Client.Modules
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
         public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
-        //public string InitialFolderPath { get; set; } = null;
         public event EventHandler StartingScan;
         public event EventHandler EndingScan;
         public event EventHandler RequestNewScan;
@@ -164,6 +163,12 @@ namespace Wamby.Client.Modules
             if(newScanPathButtonEdit.Text.LastOrDefault() == System.IO.Path.DirectorySeparatorChar &&
                 newScanPathButtonEdit.Text.Split(System.IO.Path.DirectorySeparatorChar).Length > 2)
                 newScanPathButtonEdit.Text = newScanPathButtonEdit.Text.Remove(newScanPathButtonEdit.Text.Length - 1, 1);
+            if (!System.IO.Directory.Exists(newScanPathButtonEdit.Text))
+            {
+                MessageBox.Show($"Folder: '{newScanPathButtonEdit.Text}' doesn't exists.",
+                    Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
             FileSystemScanService.Clear();
             FileSystemScanService.DetailType = (API.Enums.ScanDetailTypeEnum)imageComboBoxEditType.EditValue;
             FileSystemScanService.ScanOptions.BaseFolderPath = newScanPathButtonEdit.Text;
