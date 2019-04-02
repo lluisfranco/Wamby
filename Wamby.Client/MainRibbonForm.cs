@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DevExpress.LookAndFeel;
+using DevExpress.Skins;
+using DevExpress.XtraEditors;
+using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 using Wamby.API.Services;
@@ -14,6 +17,7 @@ namespace Wamby.Client
         public MainRibbonForm()
         {
             InitializeComponent();
+            LoadSkin();
             tabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
             Text = Application.ProductName;
             Icon = Properties.Resources.Wamby_App_Icon;
@@ -32,6 +36,7 @@ namespace Wamby.Client
         private void SetEventHandlers()
         {
             Shown += MainForm_Shown;
+            FormClosed += MainRibbonForm_FormClosed;
             showNewScanModule.Click += ShowNewScanModule_Click;
             showResultsModule.Click += ShowResultsModule_Click;
             showFilesModule.Click += ShowFilesModule_Click;
@@ -56,6 +61,31 @@ namespace Wamby.Client
             newScanModule.RequestNewScan += NewScanModule_RequestNewScan;
             resultsModule.RequestNewScan += ResultsModule_RequestNewScan;
             filesModule.RequestNewScan += FilesModule_RequestNewScan;
+        }
+
+        private void MainRibbonForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SaveSkin();
+        }
+
+        private void LoadSkin()
+        {
+            WindowsFormsSettings.DefaultLookAndFeel.SkinName = Properties.Settings.Default.SkinName;
+            var paletteName = Properties.Settings.Default.SkinPalette;
+            if (!string.IsNullOrWhiteSpace(paletteName))
+            {
+                var skin = CommonSkins.GetSkin(UserLookAndFeel.Default);
+                DevExpress.Utils.Svg.SvgPalette palette = skin.CustomSvgPalettes[paletteName];
+                skin.SvgPalettes[Skin.DefaultSkinPaletteName].SetCustomPalette(palette);
+                LookAndFeelHelper.ForceDefaultLookAndFeelChanged();
+            }
+        }
+
+        private void SaveSkin()
+        {
+            Properties.Settings.Default.SkinName = WindowsFormsSettings.DefaultLookAndFeel.SkinName;
+            Properties.Settings.Default.SkinPalette = WindowsFormsSettings.DefaultLookAndFeel.ActiveSvgPaletteName;
+            Properties.Settings.Default.Save();
         }
 
         private async void MainForm_Shown(object sender, EventArgs e)

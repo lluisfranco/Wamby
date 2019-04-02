@@ -96,9 +96,9 @@
             this.fluentDesignFormContainer1.Controls.Add(this.ribbonStatusBar);
             this.fluentDesignFormContainer1.Controls.Add(this.ribbon);
             this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 30);
+            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 31);
             this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1258, 727);
+            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1256, 725);
             this.fluentDesignFormContainer1.TabIndex = 0;
             // 
             // tabControl
@@ -107,7 +107,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 31);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedTabPage = this.tabPageNewScan;
-            this.tabControl.Size = new System.Drawing.Size(1258, 670);
+            this.tabControl.Size = new System.Drawing.Size(1256, 668);
             this.tabControl.TabIndex = 3;
             this.tabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabPageNewScan,
@@ -125,7 +125,7 @@
             this.tabPageNewScan.Controls.Add(this.newScanModule);
             this.tabPageNewScan.Name = "tabPageNewScan";
             this.tabPageNewScan.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            this.tabPageNewScan.Size = new System.Drawing.Size(1256, 641);
+            this.tabPageNewScan.Size = new System.Drawing.Size(1254, 645);
             this.tabPageNewScan.Text = "New Scan";
             // 
             // newScanModule
@@ -133,14 +133,14 @@
             this.newScanModule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.newScanModule.Location = new System.Drawing.Point(0, 0);
             this.newScanModule.Name = "newScanModule";
-            this.newScanModule.Size = new System.Drawing.Size(1256, 641);
+            this.newScanModule.Size = new System.Drawing.Size(1254, 645);
             this.newScanModule.TabIndex = 0;
             // 
             // tabPageResults
             // 
             this.tabPageResults.Controls.Add(this.resultsModule);
             this.tabPageResults.Name = "tabPageResults";
-            this.tabPageResults.Size = new System.Drawing.Size(1256, 622);
+            this.tabPageResults.Size = new System.Drawing.Size(1256, 641);
             this.tabPageResults.Text = "Results";
             // 
             // resultsModule
@@ -149,7 +149,7 @@
             this.resultsModule.Location = new System.Drawing.Point(0, 0);
             this.resultsModule.Name = "resultsModule";
             this.resultsModule.Padding = new System.Windows.Forms.Padding(3);
-            this.resultsModule.Size = new System.Drawing.Size(1256, 622);
+            this.resultsModule.Size = new System.Drawing.Size(1256, 641);
             this.resultsModule.TabIndex = 0;
             // 
             // tabPageFiles
@@ -157,7 +157,7 @@
             this.tabPageFiles.Controls.Add(this.filesModule);
             this.tabPageFiles.Name = "tabPageFiles";
             this.tabPageFiles.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFiles.Size = new System.Drawing.Size(1256, 622);
+            this.tabPageFiles.Size = new System.Drawing.Size(1256, 641);
             this.tabPageFiles.Text = "Files";
             // 
             // filesModule
@@ -165,14 +165,14 @@
             this.filesModule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filesModule.Location = new System.Drawing.Point(3, 3);
             this.filesModule.Name = "filesModule";
-            this.filesModule.Size = new System.Drawing.Size(1250, 616);
+            this.filesModule.Size = new System.Drawing.Size(1250, 635);
             this.filesModule.TabIndex = 0;
             // 
             // tabPageMap
             // 
             this.tabPageMap.Controls.Add(this.mapModule);
             this.tabPageMap.Name = "tabPageMap";
-            this.tabPageMap.Size = new System.Drawing.Size(1256, 622);
+            this.tabPageMap.Size = new System.Drawing.Size(1256, 641);
             this.tabPageMap.Text = "Map";
             // 
             // mapModule
@@ -181,14 +181,14 @@
             this.mapModule.Location = new System.Drawing.Point(0, 0);
             this.mapModule.Name = "mapModule";
             this.mapModule.Padding = new System.Windows.Forms.Padding(3);
-            this.mapModule.Size = new System.Drawing.Size(1256, 622);
+            this.mapModule.Size = new System.Drawing.Size(1256, 641);
             this.mapModule.TabIndex = 0;
             // 
             // tabPageAnalysis
             // 
             this.tabPageAnalysis.Controls.Add(this.analysisModule);
             this.tabPageAnalysis.Name = "tabPageAnalysis";
-            this.tabPageAnalysis.Size = new System.Drawing.Size(1256, 622);
+            this.tabPageAnalysis.Size = new System.Drawing.Size(1256, 641);
             this.tabPageAnalysis.Text = "Analyze";
             // 
             // analysisModule
@@ -197,7 +197,7 @@
             this.analysisModule.Location = new System.Drawing.Point(0, 0);
             this.analysisModule.Name = "analysisModule";
             this.analysisModule.Padding = new System.Windows.Forms.Padding(3);
-            this.analysisModule.Size = new System.Drawing.Size(1256, 622);
+            this.analysisModule.Size = new System.Drawing.Size(1256, 641);
             this.analysisModule.TabIndex = 0;
             // 
             // tabPageErrors
@@ -205,7 +205,7 @@
             this.tabPageErrors.Controls.Add(this.errorsModule);
             this.tabPageErrors.Name = "tabPageErrors";
             this.tabPageErrors.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageErrors.Size = new System.Drawing.Size(1256, 622);
+            this.tabPageErrors.Size = new System.Drawing.Size(1256, 641);
             this.tabPageErrors.Text = "Errors";
             // 
             // errorsModule
@@ -213,19 +213,19 @@
             this.errorsModule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.errorsModule.Location = new System.Drawing.Point(3, 3);
             this.errorsModule.Name = "errorsModule";
-            this.errorsModule.Size = new System.Drawing.Size(1250, 616);
+            this.errorsModule.Size = new System.Drawing.Size(1250, 635);
             this.errorsModule.TabIndex = 0;
             // 
             // tabPageSchedule
             // 
             this.tabPageSchedule.Name = "tabPageSchedule";
-            this.tabPageSchedule.Size = new System.Drawing.Size(1256, 622);
+            this.tabPageSchedule.Size = new System.Drawing.Size(1256, 641);
             this.tabPageSchedule.Text = "Schedule";
             // 
             // tabPageSettings
             // 
             this.tabPageSettings.Name = "tabPageSettings";
-            this.tabPageSettings.Size = new System.Drawing.Size(1256, 622);
+            this.tabPageSettings.Size = new System.Drawing.Size(1256, 641);
             this.tabPageSettings.Text = "Settings";
             // 
             // ribbonStatusBar
@@ -233,10 +233,10 @@
             this.ribbonStatusBar.ItemLinks.Add(this.barStaticItemStatusMessage, true);
             this.ribbonStatusBar.ItemLinks.Add(this.barButtonItemGoToResultsModule);
             this.ribbonStatusBar.ItemLinks.Add(this.barButtonItemGoToErrorsModule);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 701);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 699);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1258, 26);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1256, 26);
             // 
             // barStaticItemStatusMessage
             // 
@@ -244,6 +244,7 @@
             this.barStaticItemStatusMessage.Id = 39;
             this.barStaticItemStatusMessage.Name = "barStaticItemStatusMessage";
             this.barStaticItemStatusMessage.Size = new System.Drawing.Size(100, 0);
+            this.barStaticItemStatusMessage.Width = 100;
             // 
             // barButtonItemGoToResultsModule
             // 
@@ -284,14 +285,13 @@
             this.ribbonPageMain});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
-            this.ribbon.Size = new System.Drawing.Size(1258, 31);
+            this.ribbon.Size = new System.Drawing.Size(1256, 31);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // skinDropDownButtonItem1
             // 
             this.skinDropDownButtonItem1.Id = 1;
             this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
-            this.skinDropDownButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // newAppBarButtonItem
             // 
@@ -398,11 +398,11 @@
             this.accordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlElementFileSystem,
             this.accordionControlElementOptions});
-            this.accordionControl.Location = new System.Drawing.Point(0, 30);
+            this.accordionControl.Location = new System.Drawing.Point(0, 31);
             this.accordionControl.Name = "accordionControl";
             this.accordionControl.OptionsMinimizing.NormalWidth = 260;
             this.accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl.Size = new System.Drawing.Size(260, 727);
+            this.accordionControl.Size = new System.Drawing.Size(260, 725);
             this.accordionControl.TabIndex = 1;
             this.accordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -491,7 +491,7 @@
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
             this.fluentDesignFormControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1518, 30);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1516, 31);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             // 
@@ -499,7 +499,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1518, 757);
+            this.ClientSize = new System.Drawing.Size(1516, 756);
             this.ControlContainer = this.fluentDesignFormContainer1;
             this.Controls.Add(this.fluentDesignFormContainer1);
             this.Controls.Add(this.accordionControl);
