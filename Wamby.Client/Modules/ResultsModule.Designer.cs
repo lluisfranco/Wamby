@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule3 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar3 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
-            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule4 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar4 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule1 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule2 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ResultsModule));
             this.colDeepLength = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.colDeepFilesCount = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             this.resultsTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -144,16 +145,16 @@
             this.resultsTreeList.Cursor = System.Windows.Forms.Cursors.Default;
             this.resultsTreeList.DataSource = this.resultsBindingSource;
             this.resultsTreeList.Dock = System.Windows.Forms.DockStyle.Fill;
-            treeListFormatRule3.Column = this.colDeepLength;
-            treeListFormatRule3.Name = "Format0";
-            formatConditionRuleDataBar3.PredefinedName = "Mint";
-            treeListFormatRule3.Rule = formatConditionRuleDataBar3;
-            treeListFormatRule4.Column = this.colDeepFilesCount;
-            treeListFormatRule4.Name = "Format1";
-            formatConditionRuleDataBar4.PredefinedName = "Violet";
-            treeListFormatRule4.Rule = formatConditionRuleDataBar4;
-            this.resultsTreeList.FormatRules.Add(treeListFormatRule3);
-            this.resultsTreeList.FormatRules.Add(treeListFormatRule4);
+            treeListFormatRule1.Column = this.colDeepLength;
+            treeListFormatRule1.Name = "Format0";
+            formatConditionRuleDataBar1.PredefinedName = "Mint";
+            treeListFormatRule1.Rule = formatConditionRuleDataBar1;
+            treeListFormatRule2.Column = this.colDeepFilesCount;
+            treeListFormatRule2.Name = "Format1";
+            formatConditionRuleDataBar2.PredefinedName = "Violet";
+            treeListFormatRule2.Rule = formatConditionRuleDataBar2;
+            this.resultsTreeList.FormatRules.Add(treeListFormatRule1);
+            this.resultsTreeList.FormatRules.Add(treeListFormatRule2);
             this.resultsTreeList.KeyFieldName = "FullName";
             this.resultsTreeList.Location = new System.Drawing.Point(0, 31);
             this.resultsTreeList.Name = "resultsTreeList";
@@ -397,7 +398,7 @@
             // 
             this.barButtonItemExpandTree.Caption = "Expand";
             this.barButtonItemExpandTree.Id = 7;
-            this.barButtonItemExpandTree.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Tree_Expand;
+            this.barButtonItemExpandTree.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemExpandTree.ImageOptions.SvgImage")));
             this.barButtonItemExpandTree.Name = "barButtonItemExpandTree";
             this.barButtonItemExpandTree.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
             // 
@@ -405,7 +406,7 @@
             // 
             this.barButtonItemCollapse.Caption = "Collapse";
             this.barButtonItemCollapse.Id = 8;
-            this.barButtonItemCollapse.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Tree_Compress;
+            this.barButtonItemCollapse.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCollapse.ImageOptions.SvgImage")));
             this.barButtonItemCollapse.Name = "barButtonItemCollapse";
             this.barButtonItemCollapse.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
             // 
@@ -413,7 +414,7 @@
             // 
             this.barSubItemExpandLevel.Caption = "Expand level";
             this.barSubItemExpandLevel.Id = 10;
-            this.barSubItemExpandLevel.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Tree_Expand_Level;
+            this.barSubItemExpandLevel.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSubItemExpandLevel.ImageOptions.SvgImage")));
             this.barSubItemExpandLevel.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExpandLevel1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExpandLevel2),
@@ -461,7 +462,7 @@
             // 
             this.barButtonItemOpenFolder.Caption = "Open folder (Explorer)";
             this.barButtonItemOpenFolder.Id = 32;
-            this.barButtonItemOpenFolder.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Folder_Explorer;
+            this.barButtonItemOpenFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenFolder.ImageOptions.SvgImage")));
             this.barButtonItemOpenFolder.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E));
             this.barButtonItemOpenFolder.Name = "barButtonItemOpenFolder";
             // 
@@ -469,7 +470,7 @@
             // 
             this.barButtonItemOpenInNewWamby.Caption = "Scan in new Wamby";
             this.barButtonItemOpenInNewWamby.Id = 33;
-            this.barButtonItemOpenInNewWamby.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.New;
+            this.barButtonItemOpenInNewWamby.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenInNewWamby.ImageOptions.SvgImage")));
             this.barButtonItemOpenInNewWamby.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W));
             this.barButtonItemOpenInNewWamby.Name = "barButtonItemOpenInNewWamby";
             // 
@@ -477,7 +478,7 @@
             // 
             this.barButtonItemOpenTerminal.Caption = "Open folder (Terminal)";
             this.barButtonItemOpenTerminal.Id = 34;
-            this.barButtonItemOpenTerminal.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Cmd;
+            this.barButtonItemOpenTerminal.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenTerminal.ImageOptions.SvgImage")));
             this.barButtonItemOpenTerminal.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
             this.barButtonItemOpenTerminal.Name = "barButtonItemOpenTerminal";
             // 
@@ -485,7 +486,7 @@
             // 
             this.barButtonItemCopyPath.Caption = "Copy path";
             this.barButtonItemCopyPath.Id = 35;
-            this.barButtonItemCopyPath.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Copy_Url;
+            this.barButtonItemCopyPath.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCopyPath.ImageOptions.SvgImage")));
             this.barButtonItemCopyPath.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C));
             this.barButtonItemCopyPath.Name = "barButtonItemCopyPath";
             this.barButtonItemCopyPath.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
@@ -494,7 +495,7 @@
             // 
             this.barButtonItemShowProperties.Caption = "Show properties";
             this.barButtonItemShowProperties.Id = 36;
-            this.barButtonItemShowProperties.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
+            this.barButtonItemShowProperties.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemShowProperties.ImageOptions.SvgImage")));
             this.barButtonItemShowProperties.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Enter));
             this.barButtonItemShowProperties.Name = "barButtonItemShowProperties";
             this.barButtonItemShowProperties.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
@@ -503,7 +504,7 @@
             // 
             this.barButtonItemDelete.Caption = "Delete";
             this.barButtonItemDelete.Id = 37;
-            this.barButtonItemDelete.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Delete;
+            this.barButtonItemDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemDelete.ImageOptions.SvgImage")));
             this.barButtonItemDelete.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Delete);
             this.barButtonItemDelete.Name = "barButtonItemDelete";
             this.barButtonItemDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;

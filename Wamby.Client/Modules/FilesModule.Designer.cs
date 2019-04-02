@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilesModule));
             this.colLengthInKB = new DevExpress.XtraGrid.Columns.GridColumn();
             this.filesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -150,11 +150,11 @@
             this.colIsSparseFile,
             this.colIsSystem,
             this.colIsTemporary});
-            gridFormatRule2.Column = this.colLengthInKB;
-            gridFormatRule2.Name = "Format0";
-            formatConditionRuleDataBar2.PredefinedName = "Mint";
-            gridFormatRule2.Rule = formatConditionRuleDataBar2;
-            this.gridViewFiles.FormatRules.Add(gridFormatRule2);
+            gridFormatRule1.Column = this.colLengthInKB;
+            gridFormatRule1.Name = "Format0";
+            formatConditionRuleDataBar1.PredefinedName = "Mint";
+            gridFormatRule1.Rule = formatConditionRuleDataBar1;
+            this.gridViewFiles.FormatRules.Add(gridFormatRule1);
             this.gridViewFiles.GridControl = this.gridControlFiles;
             this.gridViewFiles.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Extension", null, "({0} items)")});
@@ -367,7 +367,7 @@
             this.barCheckItemShowFooter.Caption = "Show footer";
             this.barCheckItemShowFooter.Checked = true;
             this.barCheckItemShowFooter.Id = 33;
-            this.barCheckItemShowFooter.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Show_Footer;
+            this.barCheckItemShowFooter.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barCheckItemShowFooter.ImageOptions.SvgImage")));
             this.barCheckItemShowFooter.Name = "barCheckItemShowFooter";
             // 
             // barButtonItemSearch
@@ -381,7 +381,7 @@
             // 
             this.barButtonItemOpenFolder.Caption = "Open folder (Explorer)";
             this.barButtonItemOpenFolder.Id = 32;
-            this.barButtonItemOpenFolder.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Folder_Explorer;
+            this.barButtonItemOpenFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenFolder.ImageOptions.SvgImage")));
             this.barButtonItemOpenFolder.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E));
             this.barButtonItemOpenFolder.Name = "barButtonItemOpenFolder";
             // 
@@ -389,7 +389,7 @@
             // 
             this.barButtonItemOpenInNewWamby.Caption = "Scan in new Wamby";
             this.barButtonItemOpenInNewWamby.Id = 33;
-            this.barButtonItemOpenInNewWamby.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.New;
+            this.barButtonItemOpenInNewWamby.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenInNewWamby.ImageOptions.SvgImage")));
             this.barButtonItemOpenInNewWamby.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W));
             this.barButtonItemOpenInNewWamby.Name = "barButtonItemOpenInNewWamby";
             // 
@@ -397,7 +397,7 @@
             // 
             this.barButtonItemOpenTerminal.Caption = "Open folder (Terminal)";
             this.barButtonItemOpenTerminal.Id = 34;
-            this.barButtonItemOpenTerminal.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Cmd;
+            this.barButtonItemOpenTerminal.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenTerminal.ImageOptions.SvgImage")));
             this.barButtonItemOpenTerminal.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
             this.barButtonItemOpenTerminal.Name = "barButtonItemOpenTerminal";
             // 
@@ -405,7 +405,7 @@
             // 
             this.barButtonItemCopyPath.Caption = "Copy path";
             this.barButtonItemCopyPath.Id = 35;
-            this.barButtonItemCopyPath.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Copy_Url;
+            this.barButtonItemCopyPath.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCopyPath.ImageOptions.SvgImage")));
             this.barButtonItemCopyPath.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C));
             this.barButtonItemCopyPath.Name = "barButtonItemCopyPath";
             this.barButtonItemCopyPath.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
@@ -414,7 +414,7 @@
             // 
             this.barButtonItemShowProperties.Caption = "Show properties";
             this.barButtonItemShowProperties.Id = 36;
-            this.barButtonItemShowProperties.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
+            this.barButtonItemShowProperties.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemShowProperties.ImageOptions.SvgImage")));
             this.barButtonItemShowProperties.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Enter));
             this.barButtonItemShowProperties.Name = "barButtonItemShowProperties";
             this.barButtonItemShowProperties.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
@@ -423,7 +423,7 @@
             // 
             this.barButtonItemDelete.Caption = "Delete";
             this.barButtonItemDelete.Id = 37;
-            this.barButtonItemDelete.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Delete;
+            this.barButtonItemDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemDelete.ImageOptions.SvgImage")));
             this.barButtonItemDelete.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Delete);
             this.barButtonItemDelete.Name = "barButtonItemDelete";
             this.barButtonItemDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
@@ -432,7 +432,7 @@
             // 
             this.barButtonItemOpenRunFile.Caption = "Open/Run file";
             this.barButtonItemOpenRunFile.Id = 35;
-            this.barButtonItemOpenRunFile.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Open_Run_File;
+            this.barButtonItemOpenRunFile.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenRunFile.ImageOptions.SvgImage")));
             this.barButtonItemOpenRunFile.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R));
             this.barButtonItemOpenRunFile.Name = "barButtonItemOpenRunFile";
             // 

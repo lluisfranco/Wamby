@@ -41,6 +41,7 @@
             this.fieldLastAccessTime = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldLastWriteTime = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldLengthInKB = new DevExpress.XtraPivotGrid.PivotGridField();
+            this.fieldLengthPercent = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldParentFullName = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldOwnerName = new DevExpress.XtraPivotGrid.PivotGridField();
             this.fieldAttributes = new DevExpress.XtraPivotGrid.PivotGridField();
@@ -104,7 +105,6 @@
             this.barButtonItemShowFieldList = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupAnalysis = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.fieldLengthPercent = new DevExpress.XtraPivotGrid.PivotGridField();
             ((System.ComponentModel.ISupportInitialize)(this.pivotGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resultsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
@@ -236,6 +236,24 @@
             this.fieldLengthInKB.TotalCellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.fieldLengthInKB.TotalValueFormat.FormatString = "n0";
             this.fieldLengthInKB.TotalValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            // 
+            // fieldLengthPercent
+            // 
+            this.fieldLengthPercent.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
+            this.fieldLengthPercent.AreaIndex = 1;
+            this.fieldLengthPercent.Caption = "Size (%)";
+            this.fieldLengthPercent.CellFormat.FormatString = "p0";
+            this.fieldLengthPercent.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldLengthPercent.FieldName = "LengthInKB";
+            this.fieldLengthPercent.GrandTotalCellFormat.FormatString = "p0";
+            this.fieldLengthPercent.GrandTotalCellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldLengthPercent.Name = "fieldLengthPercent";
+            this.fieldLengthPercent.SummaryDisplayType = DevExpress.Data.PivotGrid.PivotSummaryDisplayType.PercentOfColumn;
+            this.fieldLengthPercent.TotalCellFormat.FormatString = "p0";
+            this.fieldLengthPercent.TotalCellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldLengthPercent.TotalValueFormat.FormatString = "p0";
+            this.fieldLengthPercent.TotalValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.fieldLengthPercent.Visible = false;
             // 
             // fieldParentFullName
             // 
@@ -413,12 +431,10 @@
             this.panelContainer1.Controls.Add(this.dockPanelChart);
             this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.panelContainer1.ID = new System.Guid("8003839f-fdac-4597-8a08-fa0a6b503af9");
-            this.panelContainer1.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
             this.panelContainer1.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
             this.panelContainer1.Location = new System.Drawing.Point(484, 34);
             this.panelContainer1.Name = "panelContainer1";
             this.panelContainer1.OriginalSize = new System.Drawing.Size(326, 200);
-            this.panelContainer1.SavedSizeFactor = 0D;
             this.panelContainer1.Size = new System.Drawing.Size(326, 570);
             this.panelContainer1.Text = "panelContainer1";
             // 
@@ -427,12 +443,10 @@
             this.dockPanelProperties.Controls.Add(this.dockPanel1_Container);
             this.dockPanelProperties.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.dockPanelProperties.ID = new System.Guid("ba124332-6873-43a0-9ecf-9af27e846de7");
-            this.dockPanelProperties.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
             this.dockPanelProperties.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
             this.dockPanelProperties.Location = new System.Drawing.Point(0, 0);
             this.dockPanelProperties.Name = "dockPanelProperties";
             this.dockPanelProperties.OriginalSize = new System.Drawing.Size(326, 180);
-            this.dockPanelProperties.SavedSizeFactor = 0D;
             this.dockPanelProperties.Size = new System.Drawing.Size(326, 286);
             this.dockPanelProperties.Text = "Properties";
             // 
@@ -482,12 +496,10 @@
             this.dockPanelChart.Controls.Add(this.controlContainer1);
             this.dockPanelChart.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.dockPanelChart.ID = new System.Guid("9d55de3c-abe2-4307-a83d-da77e613c498");
-            this.dockPanelChart.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Chart;
             this.dockPanelChart.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
             this.dockPanelChart.Location = new System.Drawing.Point(0, 286);
             this.dockPanelChart.Name = "dockPanelChart";
             this.dockPanelChart.OriginalSize = new System.Drawing.Size(326, 179);
-            this.dockPanelChart.SavedSizeFactor = 0D;
             this.dockPanelChart.Size = new System.Drawing.Size(326, 284);
             this.dockPanelChart.Text = "Chart";
             // 
@@ -583,7 +595,6 @@
             // 
             this.newAppBarButtonItem.Caption = "New Wamby";
             this.newAppBarButtonItem.Id = 2;
-            this.newAppBarButtonItem.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.New;
             this.newAppBarButtonItem.Name = "newAppBarButtonItem";
             // 
             // skinPaletteRibbonGalleryBarItem1
@@ -596,28 +607,24 @@
             // 
             this.barButtonItemPrint.Caption = "Print";
             this.barButtonItemPrint.Id = 4;
-            this.barButtonItemPrint.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Print_Preview;
             this.barButtonItemPrint.Name = "barButtonItemPrint";
             // 
             // barButtonItemExportXls
             // 
             this.barButtonItemExportXls.Caption = "Export Xls";
             this.barButtonItemExportXls.Id = 5;
-            this.barButtonItemExportXls.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Export_To_Excel;
             this.barButtonItemExportXls.Name = "barButtonItemExportXls";
             // 
             // barButtonItemExportPdf
             // 
             this.barButtonItemExportPdf.Caption = "Export Pdf";
             this.barButtonItemExportPdf.Id = 6;
-            this.barButtonItemExportPdf.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Export_To_Pdf;
             this.barButtonItemExportPdf.Name = "barButtonItemExportPdf";
             // 
             // barButtonItemExpandTree
             // 
             this.barButtonItemExpandTree.Caption = "Expand";
             this.barButtonItemExpandTree.Id = 7;
-            this.barButtonItemExpandTree.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Tree_Expand;
             this.barButtonItemExpandTree.Name = "barButtonItemExpandTree";
             this.barButtonItemExpandTree.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
             // 
@@ -625,7 +632,6 @@
             // 
             this.barButtonItemCollapse.Caption = "Collapse";
             this.barButtonItemCollapse.Id = 8;
-            this.barButtonItemCollapse.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Tree_Compress;
             this.barButtonItemCollapse.Name = "barButtonItemCollapse";
             this.barButtonItemCollapse.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
             // 
@@ -633,7 +639,6 @@
             // 
             this.barSubItemExpandLevel.Caption = "Expand level";
             this.barSubItemExpandLevel.Id = 10;
-            this.barSubItemExpandLevel.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Tree_Expand_Level;
             this.barSubItemExpandLevel.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExpandLevel1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExpandLevel2),
@@ -687,7 +692,6 @@
             // 
             this.barSubItemLayoutAlgorithm.Caption = "Layout algorithm";
             this.barSubItemLayoutAlgorithm.Id = 18;
-            this.barSubItemLayoutAlgorithm.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_Layout;
             this.barSubItemLayoutAlgorithm.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemLayoutAlgorithmSliceAndDice),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemLayoutAlgorithmSquarified),
@@ -716,7 +720,6 @@
             // 
             this.barSubItemDirection.Caption = "Direction";
             this.barSubItemDirection.Id = 19;
-            this.barSubItemDirection.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_Direction;
             this.barSubItemDirection.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDirectionBottomLeftToTopRight),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDirectionBottomRightToTopLeft),
@@ -755,7 +758,6 @@
             this.barCheckItemMapBySize.Checked = true;
             this.barCheckItemMapBySize.GroupIndex = 1;
             this.barCheckItemMapBySize.Id = 20;
-            this.barCheckItemMapBySize.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_By_Size;
             this.barCheckItemMapBySize.Name = "barCheckItemMapBySize";
             // 
             // barCheckItemMapByFilesCount
@@ -763,7 +765,6 @@
             this.barCheckItemMapByFilesCount.Caption = "Files Count";
             this.barCheckItemMapByFilesCount.GroupIndex = 1;
             this.barCheckItemMapByFilesCount.Id = 21;
-            this.barCheckItemMapByFilesCount.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_By_FilesCount;
             this.barCheckItemMapByFilesCount.Name = "barCheckItemMapByFilesCount";
             // 
             // barCheckItemShowProperties
@@ -772,7 +773,7 @@
             this.barCheckItemShowProperties.Caption = "Properties";
             this.barCheckItemShowProperties.Checked = true;
             this.barCheckItemShowProperties.Id = 30;
-            this.barCheckItemShowProperties.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
+            this.barCheckItemShowProperties.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barCheckItemShowProperties.ImageOptions.SvgImage")));
             this.barCheckItemShowProperties.Name = "barCheckItemShowProperties";
             // 
             // barCheckItemShowChart
@@ -781,21 +782,21 @@
             this.barCheckItemShowChart.Caption = "Chart";
             this.barCheckItemShowChart.Checked = true;
             this.barCheckItemShowChart.Id = 31;
-            this.barCheckItemShowChart.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Chart;
+            this.barCheckItemShowChart.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barCheckItemShowChart.ImageOptions.SvgImage")));
             this.barCheckItemShowChart.Name = "barCheckItemShowChart";
             // 
             // barButtonItemSelectAll
             // 
             this.barButtonItemSelectAll.Caption = "Select all";
             this.barButtonItemSelectAll.Id = 32;
-            this.barButtonItemSelectAll.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Select_All;
+            this.barButtonItemSelectAll.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSelectAll.ImageOptions.SvgImage")));
             this.barButtonItemSelectAll.Name = "barButtonItemSelectAll";
             // 
             // barButtonItemSelectNone
             // 
             this.barButtonItemSelectNone.Caption = "Select none";
             this.barButtonItemSelectNone.Id = 33;
-            this.barButtonItemSelectNone.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Select_None;
+            this.barButtonItemSelectNone.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSelectNone.ImageOptions.SvgImage")));
             this.barButtonItemSelectNone.Name = "barButtonItemSelectNone";
             // 
             // barButtonItemShowFieldList
@@ -821,24 +822,6 @@
             this.ribbonPageGroupAnalysis.ItemLinks.Add(this.barCheckItemShowChart);
             this.ribbonPageGroupAnalysis.Name = "ribbonPageGroupAnalysis";
             this.ribbonPageGroupAnalysis.Text = "Analysis Main";
-            // 
-            // fieldLengthPercent
-            // 
-            this.fieldLengthPercent.Area = DevExpress.XtraPivotGrid.PivotArea.DataArea;
-            this.fieldLengthPercent.AreaIndex = 1;
-            this.fieldLengthPercent.Caption = "Size (%)";
-            this.fieldLengthPercent.CellFormat.FormatString = "p0";
-            this.fieldLengthPercent.CellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.fieldLengthPercent.FieldName = "LengthInKB";
-            this.fieldLengthPercent.GrandTotalCellFormat.FormatString = "p0";
-            this.fieldLengthPercent.GrandTotalCellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.fieldLengthPercent.Name = "fieldLengthPercent";
-            this.fieldLengthPercent.SummaryDisplayType = DevExpress.Data.PivotGrid.PivotSummaryDisplayType.PercentOfColumn;
-            this.fieldLengthPercent.TotalCellFormat.FormatString = "p0";
-            this.fieldLengthPercent.TotalCellFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.fieldLengthPercent.TotalValueFormat.FormatString = "p0";
-            this.fieldLengthPercent.TotalValueFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.fieldLengthPercent.Visible = false;
             // 
             // AnalysisModule
             // 

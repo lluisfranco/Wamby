@@ -248,7 +248,6 @@
             // 
             this.newAppBarButtonItem.Caption = "New Wamby";
             this.newAppBarButtonItem.Id = 2;
-            this.newAppBarButtonItem.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.New;
             this.newAppBarButtonItem.Name = "newAppBarButtonItem";
             // 
             // skinPaletteRibbonGalleryBarItem1
@@ -261,28 +260,24 @@
             // 
             this.barButtonItemPrint.Caption = "Print";
             this.barButtonItemPrint.Id = 4;
-            this.barButtonItemPrint.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Print_Preview;
             this.barButtonItemPrint.Name = "barButtonItemPrint";
             // 
             // barButtonItemExportXls
             // 
             this.barButtonItemExportXls.Caption = "Export Xls";
             this.barButtonItemExportXls.Id = 5;
-            this.barButtonItemExportXls.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Export_To_Excel;
             this.barButtonItemExportXls.Name = "barButtonItemExportXls";
             // 
             // barButtonItemExportPdf
             // 
             this.barButtonItemExportPdf.Caption = "Export Pdf";
             this.barButtonItemExportPdf.Id = 6;
-            this.barButtonItemExportPdf.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Export_To_Pdf;
             this.barButtonItemExportPdf.Name = "barButtonItemExportPdf";
             // 
             // barButtonItemExpandTree
             // 
             this.barButtonItemExpandTree.Caption = "Expand";
             this.barButtonItemExpandTree.Id = 7;
-            this.barButtonItemExpandTree.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Tree_Expand;
             this.barButtonItemExpandTree.Name = "barButtonItemExpandTree";
             this.barButtonItemExpandTree.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
             // 
@@ -290,7 +285,6 @@
             // 
             this.barButtonItemCollapse.Caption = "Collapse";
             this.barButtonItemCollapse.Id = 8;
-            this.barButtonItemCollapse.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Tree_Compress;
             this.barButtonItemCollapse.Name = "barButtonItemCollapse";
             this.barButtonItemCollapse.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
             // 
@@ -298,7 +292,6 @@
             // 
             this.barSubItemExpandLevel.Caption = "Expand level";
             this.barSubItemExpandLevel.Id = 10;
-            this.barSubItemExpandLevel.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Tree_Expand_Level;
             this.barSubItemExpandLevel.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExpandLevel1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExpandLevel2),
@@ -352,7 +345,6 @@
             // 
             this.barSubItemLayoutAlgorithm.Caption = "Layout algorithm";
             this.barSubItemLayoutAlgorithm.Id = 18;
-            this.barSubItemLayoutAlgorithm.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_Layout;
             this.barSubItemLayoutAlgorithm.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemLayoutAlgorithmSliceAndDice),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemLayoutAlgorithmSquarified),
@@ -381,7 +373,6 @@
             // 
             this.barSubItemDirection.Caption = "Direction";
             this.barSubItemDirection.Id = 19;
-            this.barSubItemDirection.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_Direction;
             this.barSubItemDirection.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDirectionBottomLeftToTopRight),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemDirectionBottomRightToTopLeft),
@@ -420,7 +411,6 @@
             this.barCheckItemMapBySize.Checked = true;
             this.barCheckItemMapBySize.GroupIndex = 1;
             this.barCheckItemMapBySize.Id = 20;
-            this.barCheckItemMapBySize.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_By_Size;
             this.barCheckItemMapBySize.Name = "barCheckItemMapBySize";
             // 
             // barCheckItemMapByFilesCount
@@ -428,7 +418,6 @@
             this.barCheckItemMapByFilesCount.Caption = "Files Count";
             this.barCheckItemMapByFilesCount.GroupIndex = 1;
             this.barCheckItemMapByFilesCount.Id = 21;
-            this.barCheckItemMapByFilesCount.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Map_By_FilesCount;
             this.barCheckItemMapByFilesCount.Name = "barCheckItemMapByFilesCount";
             // 
             // barCheckItemShowProperties
@@ -437,7 +426,6 @@
             this.barCheckItemShowProperties.Caption = "Properties";
             this.barCheckItemShowProperties.Checked = true;
             this.barCheckItemShowProperties.Id = 30;
-            this.barCheckItemShowProperties.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
             this.barCheckItemShowProperties.Name = "barCheckItemShowProperties";
             // 
             // barCheckItemShowChart
@@ -446,7 +434,6 @@
             this.barCheckItemShowChart.Caption = "Chart";
             this.barCheckItemShowChart.Checked = true;
             this.barCheckItemShowChart.Id = 31;
-            this.barCheckItemShowChart.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Chart;
             this.barCheckItemShowChart.Name = "barCheckItemShowChart";
             // 
             // barButtonItemShowColumnList
@@ -462,7 +449,7 @@
             this.barCheckItemShowFooter.Caption = "Show footer";
             this.barCheckItemShowFooter.Checked = true;
             this.barCheckItemShowFooter.Id = 33;
-            this.barCheckItemShowFooter.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Show_Footer;
+            this.barCheckItemShowFooter.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barCheckItemShowFooter.ImageOptions.SvgImage")));
             this.barCheckItemShowFooter.Name = "barCheckItemShowFooter";
             // 
             // barButtonItemSearch

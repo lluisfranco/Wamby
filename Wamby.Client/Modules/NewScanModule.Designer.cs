@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewScanModule));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
             this.scanOptionsGroupControl = new DevExpress.XtraEditors.GroupControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.imageComboBoxEditType = new DevExpress.XtraEditors.ImageComboBoxEdit();
@@ -155,7 +156,7 @@
             // 
             this.barButtonItemChangeFolder.Caption = "Change folder...";
             this.barButtonItemChangeFolder.Id = 33;
-            this.barButtonItemChangeFolder.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Browse;
+            this.barButtonItemChangeFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemChangeFolder.ImageOptions.SvgImage")));
             this.barButtonItemChangeFolder.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B));
             this.barButtonItemChangeFolder.Name = "barButtonItemChangeFolder";
             // 
@@ -164,7 +165,7 @@
             this.barButtonItemOpenFolder.Caption = "Open folder (Explorer)";
             this.barButtonItemOpenFolder.Enabled = false;
             this.barButtonItemOpenFolder.Id = 34;
-            this.barButtonItemOpenFolder.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Folder_Explorer;
+            this.barButtonItemOpenFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenFolder.ImageOptions.SvgImage")));
             this.barButtonItemOpenFolder.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E));
             this.barButtonItemOpenFolder.Name = "barButtonItemOpenFolder";
             // 
@@ -173,7 +174,7 @@
             this.barButtonItemOpenInNewWamby.Caption = "Scan in new Wamby";
             this.barButtonItemOpenInNewWamby.Enabled = false;
             this.barButtonItemOpenInNewWamby.Id = 36;
-            this.barButtonItemOpenInNewWamby.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.New;
+            this.barButtonItemOpenInNewWamby.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenInNewWamby.ImageOptions.SvgImage")));
             this.barButtonItemOpenInNewWamby.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W));
             this.barButtonItemOpenInNewWamby.Name = "barButtonItemOpenInNewWamby";
             // 
@@ -182,7 +183,6 @@
             this.barButtonItemCopyPath.Caption = "Copy path";
             this.barButtonItemCopyPath.Enabled = false;
             this.barButtonItemCopyPath.Id = 37;
-            this.barButtonItemCopyPath.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Copy_Url;
             this.barButtonItemCopyPath.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C));
             this.barButtonItemCopyPath.Name = "barButtonItemCopyPath";
             this.barButtonItemCopyPath.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
@@ -192,7 +192,7 @@
             this.barButtonItemOpenTerminal.Caption = "Open folder (Terminal)";
             this.barButtonItemOpenTerminal.Enabled = false;
             this.barButtonItemOpenTerminal.Id = 38;
-            this.barButtonItemOpenTerminal.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.GoTo_Cmd;
+            this.barButtonItemOpenTerminal.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenTerminal.ImageOptions.SvgImage")));
             this.barButtonItemOpenTerminal.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
             this.barButtonItemOpenTerminal.Name = "barButtonItemOpenTerminal";
             // 
@@ -201,7 +201,6 @@
             this.barButtonItemShowProperties.Caption = "Show properties";
             this.barButtonItemShowProperties.Enabled = false;
             this.barButtonItemShowProperties.Id = 48;
-            this.barButtonItemShowProperties.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Analysis_Show_Properties;
             this.barButtonItemShowProperties.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Enter));
             this.barButtonItemShowProperties.Name = "barButtonItemShowProperties";
             this.barButtonItemShowProperties.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
@@ -211,7 +210,6 @@
             this.barButtonItemDelete.Caption = "Delete";
             this.barButtonItemDelete.Enabled = false;
             this.barButtonItemDelete.Id = 49;
-            this.barButtonItemDelete.ImageOptions.SvgImage = global::Wamby.Client.Properties.Resources.Delete;
             this.barButtonItemDelete.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Delete);
             this.barButtonItemDelete.Name = "barButtonItemDelete";
             this.barButtonItemDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
@@ -281,13 +279,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.newScanPathButtonEdit.Location = new System.Drawing.Point(92, 36);
             this.newScanPathButtonEdit.Name = "newScanPathButtonEdit";
-            editorButtonImageOptions1.SvgImage = global::Wamby.Client.Properties.Resources.Browse;
-            editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
-            editorButtonImageOptions2.SvgImage = global::Wamby.Client.Properties.Resources.NewScan_ScanNow;
-            editorButtonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
+            editorButtonImageOptions3.SvgImageSize = new System.Drawing.Size(16, 16);
+            editorButtonImageOptions4.SvgImageSize = new System.Drawing.Size(16, 16);
             this.newScanPathButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "Change folder", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "Scan now", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "Change folder", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "Scan now", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.newScanPathButtonEdit.Size = new System.Drawing.Size(657, 20);
             this.newScanPathButtonEdit.TabIndex = 1;
             // 
