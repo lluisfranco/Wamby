@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Wamby App Icon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Wamby.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v18.2.Core, Version=18.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -330,6 +330,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Open_Run_File.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Wamby.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
