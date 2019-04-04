@@ -10,28 +10,16 @@ namespace Wamby.Client.Helpers
 {
     public class UIHelper
     {
-       public static DevExpress.Utils.SvgImageCollection GetLogImageCollection()
+        public static DevExpress.Utils.SvgImageCollection GetLogImageCollection()
         {
             var imgscol = new DevExpress.Utils.SvgImageCollection();
             var keys = DevExpress.Images.ImageResourceCache.Default.GetAllResourceKeys();
-            imgscol.Add("Log_Info",
-                GetSvgImageFromLibrary("svgimages/outlook%20inspired/about.svg"));
-            imgscol.Add("Log_Folder",
-                GetSvgImageFromLibrary("svgimages/icon%20builder/actions_folderclose.svg"));
-            imgscol.Add("Errors",
-                GetSvgImageFromLibrary("svgimages/icon%20builder/actions_deletecircled.svg"));
+            imgscol.Add("Log_Info", "image://svgimages/outlook%20inspired/about.svg");
+            imgscol.Add("Log_Folder", "image://svgimages/icon%20builder/actions_folderclose.svg");
+            imgscol.Add("Errors", "image://svgimages/icon%20builder/actions_deletecircled.svg");
             return imgscol;
         }
-
-        private static DevExpress.Utils.Svg.SvgImage GetSvgImageFromLibrary(string key)
-        {
-            var stream = DevExpress.Images.ImageResourceCache.Default.GetResource(key);
-            using (stream)
-            {
-                return stream != null ? SvgImage.FromStream(stream) : null;
-            }
-        }
-
+        
         public static RepositoryItemImageComboBox GetLogTypesCombo()
         {
             var imgscol = GetLogImageCollection();
@@ -60,10 +48,8 @@ namespace Wamby.Client.Helpers
         public static DevExpress.Utils.SvgImageCollection GetResultsItemTypeImageCollection()
         {
             var imgscol = new DevExpress.Utils.SvgImageCollection();
-            imgscol.Add("Log_Folder",
-                GetSvgImageFromLibrary("svgimages/business%20objects/bo_folder.svg"));
-            imgscol.Add("Log_Folder",
-                GetSvgImageFromLibrary("svgimages/spreadsheet/multipledocuments.svg"));
+            imgscol.Add("Log_Folder", "image://svgimages/icon%20builder/actions_folderclose.svg");
+            imgscol.Add("Log_File", "image://svgimages/spreadsheet/multipledocuments.svg");
             return imgscol;
         }
     }
