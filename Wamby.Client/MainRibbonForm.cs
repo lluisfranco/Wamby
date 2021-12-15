@@ -26,7 +26,8 @@ namespace Wamby.Client
                 UserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name,
                 ComputerName = Environment.MachineName,
                 OSVersionName = Environment.OSVersion.ToString(),
-                ScanDate = DateTime.Now
+                ScanDate = DateTime.Now,
+                DetailType = API.Enums.ScanDetailTypeEnum.Fast
             };
             var storageService = new FileSystemStorageService();
             ViewModel = new ViewModels.MainFormViewModel(scanService, storageService);
