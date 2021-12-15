@@ -20,7 +20,7 @@ namespace Wamby.Client
             LoadSkin();
             tabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
             Text = Application.ProductName;
-            Icon = Properties.Resources.Wamby;
+            //Icon = Properties.Resources.app;
             var scanService = new FileSystemScanService()
             {
                 UserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name,

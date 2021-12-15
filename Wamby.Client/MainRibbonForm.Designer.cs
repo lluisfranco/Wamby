@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainRibbonForm));
             this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
             this.tabControl = new DevExpress.XtraTab.XtraTabControl();
@@ -107,7 +108,7 @@
             this.tabControl.Location = new System.Drawing.Point(0, 31);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedTabPage = this.tabPageNewScan;
-            this.tabControl.Size = new System.Drawing.Size(1256, 668);
+            this.tabControl.Size = new System.Drawing.Size(1256, 667);
             this.tabControl.TabIndex = 3;
             this.tabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.tabPageNewScan,
@@ -125,7 +126,7 @@
             this.tabPageNewScan.Controls.Add(this.newScanModule);
             this.tabPageNewScan.Name = "tabPageNewScan";
             this.tabPageNewScan.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            this.tabPageNewScan.Size = new System.Drawing.Size(1254, 645);
+            this.tabPageNewScan.Size = new System.Drawing.Size(1254, 642);
             this.tabPageNewScan.Text = "New Scan";
             // 
             // newScanModule
@@ -133,14 +134,14 @@
             this.newScanModule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.newScanModule.Location = new System.Drawing.Point(0, 0);
             this.newScanModule.Name = "newScanModule";
-            this.newScanModule.Size = new System.Drawing.Size(1254, 645);
+            this.newScanModule.Size = new System.Drawing.Size(1254, 642);
             this.newScanModule.TabIndex = 0;
             // 
             // tabPageResults
             // 
             this.tabPageResults.Controls.Add(this.resultsModule);
             this.tabPageResults.Name = "tabPageResults";
-            this.tabPageResults.Size = new System.Drawing.Size(1256, 641);
+            this.tabPageResults.Size = new System.Drawing.Size(1254, 642);
             this.tabPageResults.Text = "Results";
             // 
             // resultsModule
@@ -149,7 +150,7 @@
             this.resultsModule.Location = new System.Drawing.Point(0, 0);
             this.resultsModule.Name = "resultsModule";
             this.resultsModule.Padding = new System.Windows.Forms.Padding(3);
-            this.resultsModule.Size = new System.Drawing.Size(1256, 641);
+            this.resultsModule.Size = new System.Drawing.Size(1254, 642);
             this.resultsModule.TabIndex = 0;
             // 
             // tabPageFiles
@@ -157,7 +158,7 @@
             this.tabPageFiles.Controls.Add(this.filesModule);
             this.tabPageFiles.Name = "tabPageFiles";
             this.tabPageFiles.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFiles.Size = new System.Drawing.Size(1256, 641);
+            this.tabPageFiles.Size = new System.Drawing.Size(1254, 642);
             this.tabPageFiles.Text = "Files";
             // 
             // filesModule
@@ -165,14 +166,14 @@
             this.filesModule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.filesModule.Location = new System.Drawing.Point(3, 3);
             this.filesModule.Name = "filesModule";
-            this.filesModule.Size = new System.Drawing.Size(1250, 635);
+            this.filesModule.Size = new System.Drawing.Size(1248, 636);
             this.filesModule.TabIndex = 0;
             // 
             // tabPageMap
             // 
             this.tabPageMap.Controls.Add(this.mapModule);
             this.tabPageMap.Name = "tabPageMap";
-            this.tabPageMap.Size = new System.Drawing.Size(1256, 641);
+            this.tabPageMap.Size = new System.Drawing.Size(1254, 642);
             this.tabPageMap.Text = "Map";
             // 
             // mapModule
@@ -181,14 +182,14 @@
             this.mapModule.Location = new System.Drawing.Point(0, 0);
             this.mapModule.Name = "mapModule";
             this.mapModule.Padding = new System.Windows.Forms.Padding(3);
-            this.mapModule.Size = new System.Drawing.Size(1256, 641);
+            this.mapModule.Size = new System.Drawing.Size(1254, 642);
             this.mapModule.TabIndex = 0;
             // 
             // tabPageAnalysis
             // 
             this.tabPageAnalysis.Controls.Add(this.analysisModule);
             this.tabPageAnalysis.Name = "tabPageAnalysis";
-            this.tabPageAnalysis.Size = new System.Drawing.Size(1256, 641);
+            this.tabPageAnalysis.Size = new System.Drawing.Size(1254, 642);
             this.tabPageAnalysis.Text = "Analyze";
             // 
             // analysisModule
@@ -197,7 +198,7 @@
             this.analysisModule.Location = new System.Drawing.Point(0, 0);
             this.analysisModule.Name = "analysisModule";
             this.analysisModule.Padding = new System.Windows.Forms.Padding(3);
-            this.analysisModule.Size = new System.Drawing.Size(1256, 641);
+            this.analysisModule.Size = new System.Drawing.Size(1254, 642);
             this.analysisModule.TabIndex = 0;
             // 
             // tabPageErrors
@@ -205,7 +206,7 @@
             this.tabPageErrors.Controls.Add(this.errorsModule);
             this.tabPageErrors.Name = "tabPageErrors";
             this.tabPageErrors.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageErrors.Size = new System.Drawing.Size(1256, 641);
+            this.tabPageErrors.Size = new System.Drawing.Size(1254, 642);
             this.tabPageErrors.Text = "Errors";
             // 
             // errorsModule
@@ -213,19 +214,19 @@
             this.errorsModule.Dock = System.Windows.Forms.DockStyle.Fill;
             this.errorsModule.Location = new System.Drawing.Point(3, 3);
             this.errorsModule.Name = "errorsModule";
-            this.errorsModule.Size = new System.Drawing.Size(1250, 635);
+            this.errorsModule.Size = new System.Drawing.Size(1248, 636);
             this.errorsModule.TabIndex = 0;
             // 
             // tabPageSchedule
             // 
             this.tabPageSchedule.Name = "tabPageSchedule";
-            this.tabPageSchedule.Size = new System.Drawing.Size(1256, 641);
+            this.tabPageSchedule.Size = new System.Drawing.Size(1254, 642);
             this.tabPageSchedule.Text = "Schedule";
             // 
             // tabPageSettings
             // 
             this.tabPageSettings.Name = "tabPageSettings";
-            this.tabPageSettings.Size = new System.Drawing.Size(1256, 641);
+            this.tabPageSettings.Size = new System.Drawing.Size(1254, 642);
             this.tabPageSettings.Text = "Settings";
             // 
             // ribbonStatusBar
@@ -233,10 +234,10 @@
             this.ribbonStatusBar.ItemLinks.Add(this.barStaticItemStatusMessage, true);
             this.ribbonStatusBar.ItemLinks.Add(this.barButtonItemGoToResultsModule);
             this.ribbonStatusBar.ItemLinks.Add(this.barButtonItemGoToErrorsModule);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 699);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 698);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1256, 26);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1256, 27);
             // 
             // barStaticItemStatusMessage
             // 
@@ -276,7 +277,8 @@
             this.barButtonItemOpen,
             this.barButtonItemSave,
             this.barButtonItemDoScan,
-            this.barButtonItemCancelScan});
+            this.barButtonItemCancelScan,
+            this.ribbon.SearchEditItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.MaxItemId = 37;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
@@ -290,6 +292,8 @@
             // 
             // skinDropDownButtonItem1
             // 
+            this.skinDropDownButtonItem1.ActAsDropDown = true;
+            this.skinDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.skinDropDownButtonItem1.Id = 1;
             this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
             // 
@@ -486,11 +490,9 @@
             // 
             // fluentDesignFormControl1
             // 
-            this.fluentDesignFormControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.fluentDesignFormControl1.Size = new System.Drawing.Size(1516, 31);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
@@ -505,6 +507,7 @@
             this.Controls.Add(this.accordionControl);
             this.Controls.Add(this.fluentDesignFormControl1);
             this.FluentDesignFormControl = this.fluentDesignFormControl1;
+            this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("MainRibbonForm.IconOptions.SvgImage")));
             this.Name = "MainRibbonForm";
             this.NavigationControl = this.accordionControl;
             this.Text = "xf";

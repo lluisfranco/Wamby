@@ -9,7 +9,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Wamby.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\AppIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Modules\AnalysisModule.cs">
@@ -49,5 +49,8 @@
     <Compile Remove="MainForm.cs" />
     <Compile Remove="MainForm.Designer.cs" />
     <EmbeddedResource Remove="MainForm.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\AppIcon.ico" />
   </ItemGroup>
 </Project>
