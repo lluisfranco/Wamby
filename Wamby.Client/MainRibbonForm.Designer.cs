@@ -268,6 +268,7 @@
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
+            this.ribbon.SearchEditItem,
             this.skinDropDownButtonItem1,
             this.newAppBarButtonItem,
             this.skinPaletteRibbonGalleryBarItem1,
@@ -277,8 +278,7 @@
             this.barButtonItemOpen,
             this.barButtonItemSave,
             this.barButtonItemDoScan,
-            this.barButtonItemCancelScan,
-            this.ribbon.SearchEditItem});
+            this.barButtonItemCancelScan});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.MaxItemId = 37;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;

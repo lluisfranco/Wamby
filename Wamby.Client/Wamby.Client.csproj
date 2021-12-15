@@ -51,6 +51,6 @@
     <EmbeddedResource Remove="MainForm.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\AppIcon.ico" />
+    <EmbeddedResource Include="Resources\AppIcon.ico" />
   </ItemGroup>
 </Project>
