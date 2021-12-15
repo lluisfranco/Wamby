@@ -5,6 +5,7 @@ namespace Wamby.Core.Model
     public class WambyFileSystemItem
     {
         public string FullName { get; set; }
+        //public string ParentFullName { get; set; }
         public string Name { get; set; }
         public double Length { get; set; }
         public double LengthInKB { get { return Length / 1024; } }

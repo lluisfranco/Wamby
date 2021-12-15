@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using Wamby.SystemShell;
 
@@ -13,7 +11,8 @@ namespace Wamby.Client.Helpers
         {
             try
             {
-                Process.Start(filename);
+                var psi = new ProcessStartInfo() { FileName = filename, UseShellExecute = true };
+                Process.Start(psi);
             }
             catch (Exception ex)
             {

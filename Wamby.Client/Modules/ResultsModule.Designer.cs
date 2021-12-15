@@ -160,6 +160,7 @@
             this.resultsTreeList.Name = "resultsTreeList";
             this.resultsTreeList.OptionsBehavior.Editable = false;
             this.resultsTreeList.OptionsMenu.ShowConditionalFormattingItem = true;
+            this.resultsTreeList.OptionsSelection.SelectNodesOnRightClick = true;
             this.resultsTreeList.OptionsView.ShowHorzLines = false;
             this.resultsTreeList.OptionsView.ShowIndicator = false;
             this.resultsTreeList.ParentFieldName = "ParentFullName";
@@ -383,7 +384,8 @@
             this.barButtonItemOpenTerminal,
             this.barButtonItemCopyPath,
             this.barButtonItemShowProperties,
-            this.barButtonItemDelete});
+            this.barButtonItemDelete,
+            this.ribbon.SearchEditItem});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.MaxItemId = 1;
             this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
