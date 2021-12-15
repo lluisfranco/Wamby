@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Wamby.Client
@@ -14,6 +11,8 @@ namespace Wamby.Client
         [STAThread]
         static void Main(string[] args)
         {
+            var asm = typeof(DevExpress.UserSkins.WinterJoy).Assembly;
+            DevExpress.Skins.SkinManager.Default.RegisterAssembly(asm);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.XtraEditors.WindowsFormsSettings.ForceDirectXPaint();

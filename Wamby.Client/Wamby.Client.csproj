@@ -38,6 +38,7 @@
     <ProjectReference Include="..\Wamby.SystemShell\Wamby.SystemShell.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DevExpress.Win.WinterJoySkin" Version="1.0.1" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="6.0.0-preview.4.21253.7" />
     <PackageReference Include="System.Data.DataSetExtensions" Version="4.6.0-preview3.19128.7" />
