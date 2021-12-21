@@ -16,6 +16,7 @@ namespace Wamby.Client
 
         public MainRibbonForm()
         {
+            //holi
             InitializeComponent();
             LoadSkin();
             tabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
