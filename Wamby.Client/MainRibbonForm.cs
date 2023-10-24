@@ -2,7 +2,7 @@
 using DevExpress.Skins;
 using DevExpress.XtraEditors;
 using System;
-using System.Diagnostics;
+using System.Reflection;
 using System.Windows.Forms;
 using Wamby.API.Services;
 using Wamby.Client.Extensions;
@@ -16,11 +16,10 @@ namespace Wamby.Client
 
         public MainRibbonForm()
         {
-            //holi
             InitializeComponent();
-            LoadSkin();
             tabControl.ShowTabHeader = DevExpress.Utils.DefaultBoolean.False;
-            Text = Application.ProductName;
+            Text = string.Format($"{Application.ProductName} - " +
+                $"{Assembly.GetExecutingAssembly().GetName().Version}");
             var scanService = new FileSystemScanService()
             {
                 UserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name,
@@ -32,6 +31,7 @@ namespace Wamby.Client
             var storageService = new FileSystemStorageService();
             ViewModel = new ViewModels.MainFormViewModel(scanService, storageService);
             SetEventHandlers();
+            LoadSkin();
         }
 
         private void SetEventHandlers()
@@ -91,21 +91,28 @@ namespace Wamby.Client
 
         private async void MainForm_Shown(object sender, EventArgs e)
         {
-            //ViewModel.LoadDefaultSettings();
-            InitializeModules();
-            ViewModel.CurrentModule = newScanModule;
-            ShowCurrentModuleToolbars();
-            if (ViewModel.AutoStartScan) await newScanModule.DoScan();
+            try
+            {
+                InitializeModules();
+                ViewModel.CurrentModule = newScanModule;
+                ShowCurrentModuleToolbars();
+                if (ViewModel.AutoStartScan) await newScanModule.DoScan();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                    Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void InitializeModules()
         {
-            newScanModule.InitializeControl(ViewModel.FileSystemScanService);
-            resultsModule.InitializeControl(ViewModel.FileSystemScanService);
-            filesModule.InitializeControl(ViewModel.FileSystemScanService);
-            mapModule.InitializeControl(ViewModel.FileSystemScanService);
-            analysisModule.InitializeControl(ViewModel.FileSystemScanService);
-            errorsModule.InitializeControl(ViewModel.FileSystemScanService);
+            newScanModule?.InitializeControl(ViewModel.FileSystemScanService);
+            resultsModule?.InitializeControl(ViewModel.FileSystemScanService);
+            filesModule?.InitializeControl(ViewModel.FileSystemScanService);
+            mapModule?.InitializeControl(ViewModel.FileSystemScanService);
+            analysisModule?.InitializeControl(ViewModel.FileSystemScanService);
+            errorsModule?.InitializeControl(ViewModel.FileSystemScanService);
         }
 
         private async void BarButtonItemDoScan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -127,7 +134,7 @@ namespace Wamby.Client
         {
             GotoTab(tabPageErrors.Name);
         }
-        
+
         private void NewScanModule_StartingScan(object sender, EventArgs e)
         {
             handle = OverlayFormExtensions.ShowProgressPanel(tabControl);
@@ -139,7 +146,7 @@ namespace Wamby.Client
         {
             EnablePages(true);
             if (!ViewModel.FileSystemScanService.Cancelled) RefreshModulesData();
-            if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle);            
+            if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle);
             barStaticItemStatusMessage.Caption = "Ready";
             UpdateResults();
             if (ViewModel.SaveToFile) await ViewModel.SaveScanToFile();
@@ -316,7 +323,7 @@ namespace Wamby.Client
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Application.ProductName, 
+                MessageBox.Show(ex.Message, Application.ProductName,
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             finally
@@ -341,7 +348,7 @@ namespace Wamby.Client
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Application.ProductName, 
+                MessageBox.Show(ex.Message, Application.ProductName,
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             finally

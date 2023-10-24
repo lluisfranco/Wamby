@@ -58,19 +58,28 @@ namespace Wamby.Client.Modules
 
         public void InitializeControl(API.Services.FileSystemScanService scanService)
         {
-            FileSystemScanService = scanService;
-            newScanPathButtonEdit.MaskBox.AutoCompleteMode = AutoCompleteMode.Suggest;
-            newScanPathButtonEdit.MaskBox.AutoCompleteSource = AutoCompleteSource.FileSystemDirectories;
-            RefreshScanOptionsControls();
-            FileSystemScanService.ScanningFolderProgress = ScanningFolderProgress;
-            FileSystemScanService.ErrorReadingFileSystemInfoProgress = ErrorReadingFileSystemInfoProgress;
-            FileSystemScanService.CancelledScan -= FileSystemScanService_CancelledScan;
-            FileSystemScanService.CancelledScan += FileSystemScanService_CancelledScan;
-            var logcombo = Helpers.UIHelper.GetLogTypesCombo();
-            logcombo.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
-            colLogLineType.ColumnEdit = logcombo;
-            Initialized = true;
-            setEventHandlers();
+            try
+            {
+                FileSystemScanService = scanService;
+                if (newScanPathButtonEdit.MaskBox != null)
+                {
+                    newScanPathButtonEdit.MaskBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+                    newScanPathButtonEdit.MaskBox.AutoCompleteSource = AutoCompleteSource.FileSystemDirectories;
+                }
+                RefreshScanOptionsControls();
+                FileSystemScanService.ScanningFolderProgress = ScanningFolderProgress;
+                FileSystemScanService.ErrorReadingFileSystemInfoProgress = ErrorReadingFileSystemInfoProgress;                
+                FileSystemScanService.CancelledScan += (s, e) => RefreshModuleData();
+                var logcombo = Helpers.UIHelper.GetLogTypesCombo();
+                logcombo.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
+                colLogLineType.ColumnEdit = logcombo;
+                Initialized = true;
+                SetEventHandlers();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void SetFocus()
@@ -94,7 +103,7 @@ namespace Wamby.Client.Modules
             imageComboBoxEditType.EditValue = FileSystemScanService.DetailType;
         }
 
-        private void setEventHandlers()
+        private void SetEventHandlers()
         {
             newScanPathButtonEdit.ButtonClick += NewScanPathButtonEdit_ButtonClick;
             scanLogGroupControl.CustomButtonClick += ScanLogGroupControl_CustomButtonClick;
@@ -122,7 +131,7 @@ namespace Wamby.Client.Modules
 
         private void BarButtonItemChangeFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            showSelectPathDialog();
+            ShowSelectPathDialog();
         }
 
         private async void NewScanPathButtonEdit_KeyDown(object sender, KeyEventArgs e)
@@ -132,7 +141,7 @@ namespace Wamby.Client.Modules
         
         private async void NewScanPathButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (e.Button.Index == 0) showSelectPathDialog();
+            if (e.Button.Index == 0) ShowSelectPathDialog();
             if (e.Button.Index == 1) await DoScan();
         }
 
@@ -141,7 +150,7 @@ namespace Wamby.Client.Modules
             RequestNewScan?.Invoke(this, new EventArgs());
         }
 
-        private async void showSelectPathDialog()
+        private async void ShowSelectPathDialog()
         {
             var fd = new FolderBrowserDialog();
             fd.SelectedPath = newScanPathButtonEdit.Text;

@@ -28,505 +28,470 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainRibbonForm));
-            this.fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
-            this.tabControl = new DevExpress.XtraTab.XtraTabControl();
-            this.tabPageNewScan = new DevExpress.XtraTab.XtraTabPage();
-            this.newScanModule = new Wamby.Client.Modules.NewScanModule();
-            this.tabPageResults = new DevExpress.XtraTab.XtraTabPage();
-            this.resultsModule = new Wamby.Client.Modules.ResultsModule();
-            this.tabPageFiles = new DevExpress.XtraTab.XtraTabPage();
-            this.filesModule = new Wamby.Client.Modules.FilesModule();
-            this.tabPageMap = new DevExpress.XtraTab.XtraTabPage();
-            this.mapModule = new Wamby.Client.Modules.MapModule();
-            this.tabPageAnalysis = new DevExpress.XtraTab.XtraTabPage();
-            this.analysisModule = new Wamby.Client.Modules.AnalysisModule();
-            this.tabPageErrors = new DevExpress.XtraTab.XtraTabPage();
-            this.errorsModule = new Wamby.Client.Modules.ErrorsModule();
-            this.tabPageSchedule = new DevExpress.XtraTab.XtraTabPage();
-            this.tabPageSettings = new DevExpress.XtraTab.XtraTabPage();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            this.barStaticItemStatusMessage = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItemGoToResultsModule = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemGoToErrorsModule = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
-            this.newAppBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
-            this.skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
-            this.barButtonItemPrint = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemExportXls = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemExportPdf = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemOpen = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemSave = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemDoScan = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemCancelScan = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroupMain = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroupSkins = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroupPrint = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.accordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
-            this.accordionControlElementFileSystem = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.showNewScanModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.showResultsModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.showFilesModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.showMapModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.showAnalyzeModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.showErrorsModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.accordionControlElementOptions = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.showScheduleModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.showSettingsModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
-            this.fluentDesignFormContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tabControl)).BeginInit();
-            this.tabControl.SuspendLayout();
-            this.tabPageNewScan.SuspendLayout();
-            this.tabPageResults.SuspendLayout();
-            this.tabPageFiles.SuspendLayout();
-            this.tabPageMap.SuspendLayout();
-            this.tabPageAnalysis.SuspendLayout();
-            this.tabPageErrors.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
-            this.SuspendLayout();
+            fluentDesignFormContainer1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormContainer();
+            tabControl = new DevExpress.XtraTab.XtraTabControl();
+            tabPageNewScan = new DevExpress.XtraTab.XtraTabPage();
+            newScanModule = new Modules.NewScanModule();
+            tabPageResults = new DevExpress.XtraTab.XtraTabPage();
+            resultsModule = new Modules.ResultsModule();
+            tabPageFiles = new DevExpress.XtraTab.XtraTabPage();
+            filesModule = new Modules.FilesModule();
+            tabPageMap = new DevExpress.XtraTab.XtraTabPage();
+            mapModule = new Modules.MapModule();
+            tabPageAnalysis = new DevExpress.XtraTab.XtraTabPage();
+            analysisModule = new Modules.AnalysisModule();
+            tabPageErrors = new DevExpress.XtraTab.XtraTabPage();
+            errorsModule = new Modules.ErrorsModule();
+            tabPageSchedule = new DevExpress.XtraTab.XtraTabPage();
+            tabPageSettings = new DevExpress.XtraTab.XtraTabPage();
+            ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            barStaticItemStatusMessage = new DevExpress.XtraBars.BarStaticItem();
+            barButtonItemGoToResultsModule = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemGoToErrorsModule = new DevExpress.XtraBars.BarButtonItem();
+            ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            skinDropDownButtonItem1 = new DevExpress.XtraBars.SkinDropDownButtonItem();
+            newAppBarButtonItem = new DevExpress.XtraBars.BarButtonItem();
+            skinPaletteRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem();
+            barButtonItemPrint = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemExportXls = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemExportPdf = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemOpen = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemSave = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemDoScan = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemCancelScan = new DevExpress.XtraBars.BarButtonItem();
+            ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            ribbonPageGroupMain = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroupSkins = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            ribbonPageGroupPrint = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            accordionControl = new DevExpress.XtraBars.Navigation.AccordionControl();
+            accordionControlElementFileSystem = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            showNewScanModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            showResultsModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            showFilesModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            showMapModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            showAnalyzeModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            showErrorsModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            accordionControlElementOptions = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            showScheduleModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            showSettingsModule = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
+            fluentDesignFormContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)tabControl).BeginInit();
+            tabControl.SuspendLayout();
+            tabPageNewScan.SuspendLayout();
+            tabPageResults.SuspendLayout();
+            tabPageFiles.SuspendLayout();
+            tabPageMap.SuspendLayout();
+            tabPageAnalysis.SuspendLayout();
+            tabPageErrors.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ribbon).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)accordionControl).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fluentDesignFormControl1).BeginInit();
+            SuspendLayout();
             // 
             // fluentDesignFormContainer1
             // 
-            this.fluentDesignFormContainer1.Controls.Add(this.tabControl);
-            this.fluentDesignFormContainer1.Controls.Add(this.ribbonStatusBar);
-            this.fluentDesignFormContainer1.Controls.Add(this.ribbon);
-            this.fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 31);
-            this.fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            this.fluentDesignFormContainer1.Size = new System.Drawing.Size(1256, 725);
-            this.fluentDesignFormContainer1.TabIndex = 0;
+            fluentDesignFormContainer1.Controls.Add(tabControl);
+            fluentDesignFormContainer1.Controls.Add(ribbonStatusBar);
+            fluentDesignFormContainer1.Controls.Add(ribbon);
+            fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 33);
+            fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
+            fluentDesignFormContainer1.Size = new System.Drawing.Size(1254, 722);
+            fluentDesignFormContainer1.TabIndex = 0;
             // 
             // tabControl
             // 
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 31);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedTabPage = this.tabPageNewScan;
-            this.tabControl.Size = new System.Drawing.Size(1256, 667);
-            this.tabControl.TabIndex = 3;
-            this.tabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.tabPageNewScan,
-            this.tabPageResults,
-            this.tabPageFiles,
-            this.tabPageMap,
-            this.tabPageAnalysis,
-            this.tabPageErrors,
-            this.tabPageSchedule,
-            this.tabPageSettings});
-            this.tabControl.TabPageWidth = 90;
+            tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            tabControl.Location = new System.Drawing.Point(0, 38);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedTabPage = tabPageNewScan;
+            tabControl.Size = new System.Drawing.Size(1254, 647);
+            tabControl.TabIndex = 3;
+            tabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] { tabPageNewScan, tabPageResults, tabPageFiles, tabPageMap, tabPageAnalysis, tabPageErrors, tabPageSchedule, tabPageSettings });
+            tabControl.TabPageWidth = 90;
             // 
             // tabPageNewScan
             // 
-            this.tabPageNewScan.Controls.Add(this.newScanModule);
-            this.tabPageNewScan.Name = "tabPageNewScan";
-            this.tabPageNewScan.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            this.tabPageNewScan.Size = new System.Drawing.Size(1254, 642);
-            this.tabPageNewScan.Text = "New Scan";
+            tabPageNewScan.Controls.Add(newScanModule);
+            tabPageNewScan.Name = "tabPageNewScan";
+            tabPageNewScan.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
+            tabPageNewScan.Size = new System.Drawing.Size(1252, 616);
+            tabPageNewScan.Text = "New Scan";
             // 
             // newScanModule
             // 
-            this.newScanModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newScanModule.Location = new System.Drawing.Point(0, 0);
-            this.newScanModule.Name = "newScanModule";
-            this.newScanModule.Size = new System.Drawing.Size(1254, 642);
-            this.newScanModule.TabIndex = 0;
+            newScanModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            newScanModule.Location = new System.Drawing.Point(0, 0);
+            newScanModule.Name = "newScanModule";
+            newScanModule.Size = new System.Drawing.Size(1252, 616);
+            newScanModule.TabIndex = 0;
             // 
             // tabPageResults
             // 
-            this.tabPageResults.Controls.Add(this.resultsModule);
-            this.tabPageResults.Name = "tabPageResults";
-            this.tabPageResults.Size = new System.Drawing.Size(1254, 642);
-            this.tabPageResults.Text = "Results";
+            tabPageResults.Controls.Add(resultsModule);
+            tabPageResults.Name = "tabPageResults";
+            tabPageResults.Size = new System.Drawing.Size(1252, 616);
+            tabPageResults.Text = "Results";
             // 
             // resultsModule
             // 
-            this.resultsModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resultsModule.Location = new System.Drawing.Point(0, 0);
-            this.resultsModule.Name = "resultsModule";
-            this.resultsModule.Padding = new System.Windows.Forms.Padding(3);
-            this.resultsModule.Size = new System.Drawing.Size(1254, 642);
-            this.resultsModule.TabIndex = 0;
+            resultsModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            resultsModule.Location = new System.Drawing.Point(0, 0);
+            resultsModule.Name = "resultsModule";
+            resultsModule.Padding = new System.Windows.Forms.Padding(3);
+            resultsModule.Size = new System.Drawing.Size(1252, 616);
+            resultsModule.TabIndex = 0;
             // 
             // tabPageFiles
             // 
-            this.tabPageFiles.Controls.Add(this.filesModule);
-            this.tabPageFiles.Name = "tabPageFiles";
-            this.tabPageFiles.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageFiles.Size = new System.Drawing.Size(1254, 642);
-            this.tabPageFiles.Text = "Files";
+            tabPageFiles.Controls.Add(filesModule);
+            tabPageFiles.Name = "tabPageFiles";
+            tabPageFiles.Padding = new System.Windows.Forms.Padding(3);
+            tabPageFiles.Size = new System.Drawing.Size(1252, 639);
+            tabPageFiles.Text = "Files";
             // 
             // filesModule
             // 
-            this.filesModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.filesModule.Location = new System.Drawing.Point(3, 3);
-            this.filesModule.Name = "filesModule";
-            this.filesModule.Size = new System.Drawing.Size(1248, 636);
-            this.filesModule.TabIndex = 0;
+            filesModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            filesModule.Location = new System.Drawing.Point(3, 3);
+            filesModule.Name = "filesModule";
+            filesModule.Size = new System.Drawing.Size(1246, 633);
+            filesModule.TabIndex = 0;
             // 
             // tabPageMap
             // 
-            this.tabPageMap.Controls.Add(this.mapModule);
-            this.tabPageMap.Name = "tabPageMap";
-            this.tabPageMap.Size = new System.Drawing.Size(1254, 642);
-            this.tabPageMap.Text = "Map";
+            tabPageMap.Controls.Add(mapModule);
+            tabPageMap.Name = "tabPageMap";
+            tabPageMap.Size = new System.Drawing.Size(1252, 639);
+            tabPageMap.Text = "Map";
             // 
             // mapModule
             // 
-            this.mapModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mapModule.Location = new System.Drawing.Point(0, 0);
-            this.mapModule.Name = "mapModule";
-            this.mapModule.Padding = new System.Windows.Forms.Padding(3);
-            this.mapModule.Size = new System.Drawing.Size(1254, 642);
-            this.mapModule.TabIndex = 0;
+            mapModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            mapModule.Location = new System.Drawing.Point(0, 0);
+            mapModule.Name = "mapModule";
+            mapModule.Padding = new System.Windows.Forms.Padding(3);
+            mapModule.Size = new System.Drawing.Size(1252, 639);
+            mapModule.TabIndex = 0;
             // 
             // tabPageAnalysis
             // 
-            this.tabPageAnalysis.Controls.Add(this.analysisModule);
-            this.tabPageAnalysis.Name = "tabPageAnalysis";
-            this.tabPageAnalysis.Size = new System.Drawing.Size(1254, 642);
-            this.tabPageAnalysis.Text = "Analyze";
+            tabPageAnalysis.Controls.Add(analysisModule);
+            tabPageAnalysis.Name = "tabPageAnalysis";
+            tabPageAnalysis.Size = new System.Drawing.Size(1252, 639);
+            tabPageAnalysis.Text = "Analyze";
             // 
             // analysisModule
             // 
-            this.analysisModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.analysisModule.Location = new System.Drawing.Point(0, 0);
-            this.analysisModule.Name = "analysisModule";
-            this.analysisModule.Padding = new System.Windows.Forms.Padding(3);
-            this.analysisModule.Size = new System.Drawing.Size(1254, 642);
-            this.analysisModule.TabIndex = 0;
+            analysisModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            analysisModule.Location = new System.Drawing.Point(0, 0);
+            analysisModule.Name = "analysisModule";
+            analysisModule.Padding = new System.Windows.Forms.Padding(3);
+            analysisModule.Size = new System.Drawing.Size(1252, 639);
+            analysisModule.TabIndex = 0;
             // 
             // tabPageErrors
             // 
-            this.tabPageErrors.Controls.Add(this.errorsModule);
-            this.tabPageErrors.Name = "tabPageErrors";
-            this.tabPageErrors.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageErrors.Size = new System.Drawing.Size(1254, 642);
-            this.tabPageErrors.Text = "Errors";
+            tabPageErrors.Controls.Add(errorsModule);
+            tabPageErrors.Name = "tabPageErrors";
+            tabPageErrors.Padding = new System.Windows.Forms.Padding(3);
+            tabPageErrors.Size = new System.Drawing.Size(1252, 639);
+            tabPageErrors.Text = "Errors";
             // 
             // errorsModule
             // 
-            this.errorsModule.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.errorsModule.Location = new System.Drawing.Point(3, 3);
-            this.errorsModule.Name = "errorsModule";
-            this.errorsModule.Size = new System.Drawing.Size(1248, 636);
-            this.errorsModule.TabIndex = 0;
+            errorsModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            errorsModule.Location = new System.Drawing.Point(3, 3);
+            errorsModule.Name = "errorsModule";
+            errorsModule.Size = new System.Drawing.Size(1246, 633);
+            errorsModule.TabIndex = 0;
             // 
             // tabPageSchedule
             // 
-            this.tabPageSchedule.Name = "tabPageSchedule";
-            this.tabPageSchedule.Size = new System.Drawing.Size(1254, 642);
-            this.tabPageSchedule.Text = "Schedule";
+            tabPageSchedule.Name = "tabPageSchedule";
+            tabPageSchedule.Size = new System.Drawing.Size(1252, 639);
+            tabPageSchedule.Text = "Schedule";
             // 
             // tabPageSettings
             // 
-            this.tabPageSettings.Name = "tabPageSettings";
-            this.tabPageSettings.Size = new System.Drawing.Size(1254, 642);
-            this.tabPageSettings.Text = "Settings";
+            tabPageSettings.Name = "tabPageSettings";
+            tabPageSettings.Size = new System.Drawing.Size(1252, 639);
+            tabPageSettings.Text = "Settings";
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.ItemLinks.Add(this.barStaticItemStatusMessage, true);
-            this.ribbonStatusBar.ItemLinks.Add(this.barButtonItemGoToResultsModule);
-            this.ribbonStatusBar.ItemLinks.Add(this.barButtonItemGoToErrorsModule);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 698);
-            this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1256, 27);
+            ribbonStatusBar.ItemLinks.Add(barStaticItemStatusMessage, true);
+            ribbonStatusBar.ItemLinks.Add(barButtonItemGoToResultsModule);
+            ribbonStatusBar.ItemLinks.Add(barButtonItemGoToErrorsModule);
+            ribbonStatusBar.Location = new System.Drawing.Point(0, 685);
+            ribbonStatusBar.Name = "ribbonStatusBar";
+            ribbonStatusBar.Ribbon = ribbon;
+            ribbonStatusBar.Size = new System.Drawing.Size(1254, 37);
             // 
             // barStaticItemStatusMessage
             // 
-            this.barStaticItemStatusMessage.Caption = "Ready";
-            this.barStaticItemStatusMessage.Id = 39;
-            this.barStaticItemStatusMessage.Name = "barStaticItemStatusMessage";
-            this.barStaticItemStatusMessage.Size = new System.Drawing.Size(100, 0);
-            this.barStaticItemStatusMessage.Width = 100;
+            barStaticItemStatusMessage.Caption = "Ready";
+            barStaticItemStatusMessage.Id = 39;
+            barStaticItemStatusMessage.Name = "barStaticItemStatusMessage";
+            barStaticItemStatusMessage.Size = new System.Drawing.Size(100, 0);
+            barStaticItemStatusMessage.Width = 100;
             // 
             // barButtonItemGoToResultsModule
             // 
-            this.barButtonItemGoToResultsModule.Caption = "View Results";
-            this.barButtonItemGoToResultsModule.Id = 42;
-            this.barButtonItemGoToResultsModule.Name = "barButtonItemGoToResultsModule";
-            this.barButtonItemGoToResultsModule.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            barButtonItemGoToResultsModule.Caption = "View Results";
+            barButtonItemGoToResultsModule.Id = 42;
+            barButtonItemGoToResultsModule.Name = "barButtonItemGoToResultsModule";
+            barButtonItemGoToResultsModule.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // barButtonItemGoToErrorsModule
             // 
-            this.barButtonItemGoToErrorsModule.Caption = "Check errors";
-            this.barButtonItemGoToErrorsModule.Id = 46;
-            this.barButtonItemGoToErrorsModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemGoToErrorsModule.ImageOptions.SvgImage")));
-            this.barButtonItemGoToErrorsModule.Name = "barButtonItemGoToErrorsModule";
-            this.barButtonItemGoToErrorsModule.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            barButtonItemGoToErrorsModule.Caption = "Check errors";
+            barButtonItemGoToErrorsModule.Id = 46;
+            barButtonItemGoToErrorsModule.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemGoToErrorsModule.ImageOptions.SvgImage");
+            barButtonItemGoToErrorsModule.Name = "barButtonItemGoToErrorsModule";
+            barButtonItemGoToErrorsModule.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // ribbon
             // 
-            this.ribbon.AllowMinimizeRibbon = false;
-            this.ribbon.ExpandCollapseItem.Id = 0;
-            this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbon.ExpandCollapseItem,
-            this.ribbon.SearchEditItem,
-            this.skinDropDownButtonItem1,
-            this.newAppBarButtonItem,
-            this.skinPaletteRibbonGalleryBarItem1,
-            this.barButtonItemPrint,
-            this.barButtonItemExportXls,
-            this.barButtonItemExportPdf,
-            this.barButtonItemOpen,
-            this.barButtonItemSave,
-            this.barButtonItemDoScan,
-            this.barButtonItemCancelScan});
-            this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 37;
-            this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
-            this.ribbon.Name = "ribbon";
-            this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPageMain});
-            this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
-            this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
-            this.ribbon.Size = new System.Drawing.Size(1256, 31);
-            this.ribbon.StatusBar = this.ribbonStatusBar;
+            ribbon.AllowMinimizeRibbon = false;
+            ribbon.ExpandCollapseItem.Id = 0;
+            ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] { ribbon.ExpandCollapseItem, skinDropDownButtonItem1, newAppBarButtonItem, skinPaletteRibbonGalleryBarItem1, barButtonItemPrint, barButtonItemExportXls, barButtonItemExportPdf, barButtonItemOpen, barButtonItemSave, barButtonItemDoScan, barButtonItemCancelScan });
+            ribbon.Location = new System.Drawing.Point(0, 0);
+            ribbon.MaxItemId = 37;
+            ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
+            ribbon.Name = "ribbon";
+            ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPageMain });
+            ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
+            ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
+            ribbon.Size = new System.Drawing.Size(1254, 38);
+            ribbon.StatusBar = ribbonStatusBar;
             // 
             // skinDropDownButtonItem1
             // 
-            this.skinDropDownButtonItem1.ActAsDropDown = true;
-            this.skinDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
-            this.skinDropDownButtonItem1.Id = 1;
-            this.skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
+            skinDropDownButtonItem1.ActAsDropDown = true;
+            skinDropDownButtonItem1.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            skinDropDownButtonItem1.Id = 1;
+            skinDropDownButtonItem1.Name = "skinDropDownButtonItem1";
             // 
             // newAppBarButtonItem
             // 
-            this.newAppBarButtonItem.Caption = "New Wamby";
-            this.newAppBarButtonItem.Id = 2;
-            this.newAppBarButtonItem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("newAppBarButtonItem.ImageOptions.SvgImage")));
-            this.newAppBarButtonItem.Name = "newAppBarButtonItem";
+            newAppBarButtonItem.Caption = "New Wamby";
+            newAppBarButtonItem.Id = 2;
+            newAppBarButtonItem.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("newAppBarButtonItem.ImageOptions.SvgImage");
+            newAppBarButtonItem.Name = "newAppBarButtonItem";
             // 
             // skinPaletteRibbonGalleryBarItem1
             // 
-            this.skinPaletteRibbonGalleryBarItem1.Caption = "Color Palette";
-            this.skinPaletteRibbonGalleryBarItem1.Id = 3;
-            this.skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
+            skinPaletteRibbonGalleryBarItem1.Caption = "Color Palette";
+            skinPaletteRibbonGalleryBarItem1.Id = 3;
+            skinPaletteRibbonGalleryBarItem1.Name = "skinPaletteRibbonGalleryBarItem1";
             // 
             // barButtonItemPrint
             // 
-            this.barButtonItemPrint.Caption = "Print";
-            this.barButtonItemPrint.Id = 4;
-            this.barButtonItemPrint.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemPrint.ImageOptions.SvgImage")));
-            this.barButtonItemPrint.Name = "barButtonItemPrint";
+            barButtonItemPrint.Caption = "Print";
+            barButtonItemPrint.Id = 4;
+            barButtonItemPrint.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemPrint.ImageOptions.SvgImage");
+            barButtonItemPrint.Name = "barButtonItemPrint";
             // 
             // barButtonItemExportXls
             // 
-            this.barButtonItemExportXls.Caption = "Export Xls";
-            this.barButtonItemExportXls.Id = 5;
-            this.barButtonItemExportXls.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemExportXls.ImageOptions.SvgImage")));
-            this.barButtonItemExportXls.Name = "barButtonItemExportXls";
+            barButtonItemExportXls.Caption = "Export Xls";
+            barButtonItemExportXls.Id = 5;
+            barButtonItemExportXls.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemExportXls.ImageOptions.SvgImage");
+            barButtonItemExportXls.Name = "barButtonItemExportXls";
             // 
             // barButtonItemExportPdf
             // 
-            this.barButtonItemExportPdf.Caption = "Export Pdf";
-            this.barButtonItemExportPdf.Id = 6;
-            this.barButtonItemExportPdf.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemExportPdf.ImageOptions.SvgImage")));
-            this.barButtonItemExportPdf.Name = "barButtonItemExportPdf";
+            barButtonItemExportPdf.Caption = "Export Pdf";
+            barButtonItemExportPdf.Id = 6;
+            barButtonItemExportPdf.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemExportPdf.ImageOptions.SvgImage");
+            barButtonItemExportPdf.Name = "barButtonItemExportPdf";
             // 
             // barButtonItemOpen
             // 
-            this.barButtonItemOpen.Caption = "Open scan...";
-            this.barButtonItemOpen.Id = 32;
-            this.barButtonItemOpen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpen.ImageOptions.SvgImage")));
-            this.barButtonItemOpen.Name = "barButtonItemOpen";
+            barButtonItemOpen.Caption = "Open scan...";
+            barButtonItemOpen.Id = 32;
+            barButtonItemOpen.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemOpen.ImageOptions.SvgImage");
+            barButtonItemOpen.Name = "barButtonItemOpen";
             // 
             // barButtonItemSave
             // 
-            this.barButtonItemSave.Caption = "Save scan...";
-            this.barButtonItemSave.Id = 33;
-            this.barButtonItemSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSave.ImageOptions.SvgImage")));
-            this.barButtonItemSave.Name = "barButtonItemSave";
+            barButtonItemSave.Caption = "Save scan...";
+            barButtonItemSave.Id = 33;
+            barButtonItemSave.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemSave.ImageOptions.SvgImage");
+            barButtonItemSave.Name = "barButtonItemSave";
             // 
             // barButtonItemDoScan
             // 
-            this.barButtonItemDoScan.Caption = "Scan now";
-            this.barButtonItemDoScan.Id = 34;
-            this.barButtonItemDoScan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemDoScan.ImageOptions.SvgImage")));
-            this.barButtonItemDoScan.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
-            this.barButtonItemDoScan.Name = "barButtonItemDoScan";
+            barButtonItemDoScan.Caption = "Scan now";
+            barButtonItemDoScan.Id = 34;
+            barButtonItemDoScan.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemDoScan.ImageOptions.SvgImage");
+            barButtonItemDoScan.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
+            barButtonItemDoScan.Name = "barButtonItemDoScan";
             // 
             // barButtonItemCancelScan
             // 
-            this.barButtonItemCancelScan.Caption = "Cancel scan";
-            this.barButtonItemCancelScan.Id = 35;
-            this.barButtonItemCancelScan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCancelScan.ImageOptions.SvgImage")));
-            this.barButtonItemCancelScan.Name = "barButtonItemCancelScan";
-            this.barButtonItemCancelScan.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            barButtonItemCancelScan.Caption = "Cancel scan";
+            barButtonItemCancelScan.Id = 35;
+            barButtonItemCancelScan.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemCancelScan.ImageOptions.SvgImage");
+            barButtonItemCancelScan.Name = "barButtonItemCancelScan";
+            barButtonItemCancelScan.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // ribbonPageMain
             // 
-            this.ribbonPageMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroupMain,
-            this.ribbonPageGroupSkins,
-            this.ribbonPageGroupPrint});
-            this.ribbonPageMain.Name = "ribbonPageMain";
-            this.ribbonPageMain.Text = "Main Page";
+            ribbonPageMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] { ribbonPageGroupMain, ribbonPageGroupSkins, ribbonPageGroupPrint });
+            ribbonPageMain.Name = "ribbonPageMain";
+            ribbonPageMain.Text = "Main Page";
             // 
             // ribbonPageGroupMain
             // 
-            this.ribbonPageGroupMain.ItemLinks.Add(this.newAppBarButtonItem);
-            this.ribbonPageGroupMain.ItemLinks.Add(this.barButtonItemOpen);
-            this.ribbonPageGroupMain.ItemLinks.Add(this.barButtonItemSave);
-            this.ribbonPageGroupMain.ItemLinks.Add(this.barButtonItemDoScan, true);
-            this.ribbonPageGroupMain.ItemLinks.Add(this.barButtonItemCancelScan);
-            this.ribbonPageGroupMain.Name = "ribbonPageGroupMain";
-            this.ribbonPageGroupMain.Text = "Main";
+            ribbonPageGroupMain.ItemLinks.Add(newAppBarButtonItem);
+            ribbonPageGroupMain.ItemLinks.Add(barButtonItemOpen);
+            ribbonPageGroupMain.ItemLinks.Add(barButtonItemSave);
+            ribbonPageGroupMain.ItemLinks.Add(barButtonItemDoScan, true);
+            ribbonPageGroupMain.ItemLinks.Add(barButtonItemCancelScan);
+            ribbonPageGroupMain.Name = "ribbonPageGroupMain";
+            ribbonPageGroupMain.Text = "Main";
             // 
             // ribbonPageGroupSkins
             // 
-            this.ribbonPageGroupSkins.ItemLinks.Add(this.skinDropDownButtonItem1);
-            this.ribbonPageGroupSkins.ItemLinks.Add(this.skinPaletteRibbonGalleryBarItem1);
-            this.ribbonPageGroupSkins.Name = "ribbonPageGroupSkins";
-            this.ribbonPageGroupSkins.Text = "Skins";
+            ribbonPageGroupSkins.ItemLinks.Add(skinDropDownButtonItem1);
+            ribbonPageGroupSkins.ItemLinks.Add(skinPaletteRibbonGalleryBarItem1);
+            ribbonPageGroupSkins.Name = "ribbonPageGroupSkins";
+            ribbonPageGroupSkins.Text = "Skins";
             // 
             // ribbonPageGroupPrint
             // 
-            this.ribbonPageGroupPrint.ItemLinks.Add(this.barButtonItemPrint);
-            this.ribbonPageGroupPrint.ItemLinks.Add(this.barButtonItemExportXls);
-            this.ribbonPageGroupPrint.ItemLinks.Add(this.barButtonItemExportPdf);
-            this.ribbonPageGroupPrint.Name = "ribbonPageGroupPrint";
-            this.ribbonPageGroupPrint.Text = "Print Main";
-            this.ribbonPageGroupPrint.Visible = false;
+            ribbonPageGroupPrint.ItemLinks.Add(barButtonItemPrint);
+            ribbonPageGroupPrint.ItemLinks.Add(barButtonItemExportXls);
+            ribbonPageGroupPrint.ItemLinks.Add(barButtonItemExportPdf);
+            ribbonPageGroupPrint.Name = "ribbonPageGroupPrint";
+            ribbonPageGroupPrint.Text = "Print Main";
+            ribbonPageGroupPrint.Visible = false;
             // 
             // accordionControl
             // 
-            this.accordionControl.Dock = System.Windows.Forms.DockStyle.Left;
-            this.accordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.accordionControlElementFileSystem,
-            this.accordionControlElementOptions});
-            this.accordionControl.Location = new System.Drawing.Point(0, 31);
-            this.accordionControl.Name = "accordionControl";
-            this.accordionControl.OptionsMinimizing.NormalWidth = 260;
-            this.accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl.Size = new System.Drawing.Size(260, 725);
-            this.accordionControl.TabIndex = 1;
-            this.accordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
+            accordionControl.Dock = System.Windows.Forms.DockStyle.Left;
+            accordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { accordionControlElementFileSystem, accordionControlElementOptions });
+            accordionControl.Location = new System.Drawing.Point(0, 33);
+            accordionControl.Name = "accordionControl";
+            accordionControl.OptionsMinimizing.NormalWidth = 260;
+            accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
+            accordionControl.Size = new System.Drawing.Size(260, 722);
+            accordionControl.TabIndex = 1;
+            accordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
             // accordionControlElementFileSystem
             // 
-            this.accordionControlElementFileSystem.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.showNewScanModule,
-            this.showResultsModule,
-            this.showFilesModule,
-            this.showMapModule,
-            this.showAnalyzeModule,
-            this.showErrorsModule});
-            this.accordionControlElementFileSystem.Expanded = true;
-            this.accordionControlElementFileSystem.Name = "accordionControlElementFileSystem";
-            this.accordionControlElementFileSystem.Text = "File System";
+            accordionControlElementFileSystem.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { showNewScanModule, showResultsModule, showFilesModule, showMapModule, showAnalyzeModule, showErrorsModule });
+            accordionControlElementFileSystem.Expanded = true;
+            accordionControlElementFileSystem.Name = "accordionControlElementFileSystem";
+            accordionControlElementFileSystem.Text = "File System";
             // 
             // showNewScanModule
             // 
-            this.showNewScanModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("showNewScanModule.ImageOptions.SvgImage")));
-            this.showNewScanModule.Name = "showNewScanModule";
-            this.showNewScanModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.showNewScanModule.Text = "New Scan";
+            showNewScanModule.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("showNewScanModule.ImageOptions.SvgImage");
+            showNewScanModule.Name = "showNewScanModule";
+            showNewScanModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            showNewScanModule.Text = "New Scan";
             // 
             // showResultsModule
             // 
-            this.showResultsModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("showResultsModule.ImageOptions.SvgImage")));
-            this.showResultsModule.Name = "showResultsModule";
-            this.showResultsModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.showResultsModule.Text = "Results";
+            showResultsModule.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("showResultsModule.ImageOptions.SvgImage");
+            showResultsModule.Name = "showResultsModule";
+            showResultsModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            showResultsModule.Text = "Results";
             // 
             // showFilesModule
             // 
-            this.showFilesModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("showFilesModule.ImageOptions.SvgImage")));
-            this.showFilesModule.Name = "showFilesModule";
-            this.showFilesModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.showFilesModule.Text = "Files";
+            showFilesModule.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("showFilesModule.ImageOptions.SvgImage");
+            showFilesModule.Name = "showFilesModule";
+            showFilesModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            showFilesModule.Text = "Files";
             // 
             // showMapModule
             // 
-            this.showMapModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("showMapModule.ImageOptions.SvgImage")));
-            this.showMapModule.Name = "showMapModule";
-            this.showMapModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.showMapModule.Text = "Map";
+            showMapModule.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("showMapModule.ImageOptions.SvgImage");
+            showMapModule.Name = "showMapModule";
+            showMapModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            showMapModule.Text = "Map";
             // 
             // showAnalyzeModule
             // 
-            this.showAnalyzeModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("showAnalyzeModule.ImageOptions.SvgImage")));
-            this.showAnalyzeModule.Name = "showAnalyzeModule";
-            this.showAnalyzeModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.showAnalyzeModule.Text = "Analyze";
+            showAnalyzeModule.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("showAnalyzeModule.ImageOptions.SvgImage");
+            showAnalyzeModule.Name = "showAnalyzeModule";
+            showAnalyzeModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            showAnalyzeModule.Text = "Analyze";
             // 
             // showErrorsModule
             // 
-            this.showErrorsModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("showErrorsModule.ImageOptions.SvgImage")));
-            this.showErrorsModule.Name = "showErrorsModule";
-            this.showErrorsModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.showErrorsModule.Text = "Errors";
+            showErrorsModule.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("showErrorsModule.ImageOptions.SvgImage");
+            showErrorsModule.Name = "showErrorsModule";
+            showErrorsModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            showErrorsModule.Text = "Errors";
             // 
             // accordionControlElementOptions
             // 
-            this.accordionControlElementOptions.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.showScheduleModule,
-            this.showSettingsModule});
-            this.accordionControlElementOptions.Expanded = true;
-            this.accordionControlElementOptions.Name = "accordionControlElementOptions";
-            this.accordionControlElementOptions.Text = "Options";
+            accordionControlElementOptions.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { showScheduleModule, showSettingsModule });
+            accordionControlElementOptions.Expanded = true;
+            accordionControlElementOptions.Name = "accordionControlElementOptions";
+            accordionControlElementOptions.Text = "Options";
             // 
             // showScheduleModule
             // 
-            this.showScheduleModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("showScheduleModule.ImageOptions.SvgImage")));
-            this.showScheduleModule.Name = "showScheduleModule";
-            this.showScheduleModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.showScheduleModule.Text = "Schedule";
+            showScheduleModule.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("showScheduleModule.ImageOptions.SvgImage");
+            showScheduleModule.Name = "showScheduleModule";
+            showScheduleModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            showScheduleModule.Text = "Schedule";
             // 
             // showSettingsModule
             // 
-            this.showSettingsModule.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("showSettingsModule.ImageOptions.SvgImage")));
-            this.showSettingsModule.Name = "showSettingsModule";
-            this.showSettingsModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.showSettingsModule.Text = "Settings";
+            showSettingsModule.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("showSettingsModule.ImageOptions.SvgImage");
+            showSettingsModule.Name = "showSettingsModule";
+            showSettingsModule.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            showSettingsModule.Text = "Settings";
             // 
             // fluentDesignFormControl1
             // 
-            this.fluentDesignFormControl1.FluentDesignForm = this;
-            this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
-            this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(1516, 31);
-            this.fluentDesignFormControl1.TabIndex = 2;
-            this.fluentDesignFormControl1.TabStop = false;
+            fluentDesignFormControl1.FluentDesignForm = this;
+            fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
+            fluentDesignFormControl1.Name = "fluentDesignFormControl1";
+            fluentDesignFormControl1.Size = new System.Drawing.Size(1514, 33);
+            fluentDesignFormControl1.TabIndex = 2;
+            fluentDesignFormControl1.TabStop = false;
             // 
             // MainRibbonForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1516, 756);
-            this.ControlContainer = this.fluentDesignFormContainer1;
-            this.Controls.Add(this.fluentDesignFormContainer1);
-            this.Controls.Add(this.accordionControl);
-            this.Controls.Add(this.fluentDesignFormControl1);
-            this.FluentDesignFormControl = this.fluentDesignFormControl1;
-            this.IconOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("MainRibbonForm.IconOptions.SvgImage")));
-            this.Name = "MainRibbonForm";
-            this.NavigationControl = this.accordionControl;
-            this.Text = "xf";
-            this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(255)))));
-            this.fluentDesignFormContainer1.ResumeLayout(false);
-            this.fluentDesignFormContainer1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tabControl)).EndInit();
-            this.tabControl.ResumeLayout(false);
-            this.tabPageNewScan.ResumeLayout(false);
-            this.tabPageResults.ResumeLayout(false);
-            this.tabPageFiles.ResumeLayout(false);
-            this.tabPageMap.ResumeLayout(false);
-            this.tabPageAnalysis.ResumeLayout(false);
-            this.tabPageErrors.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.accordionControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(1514, 755);
+            ControlContainer = fluentDesignFormContainer1;
+            Controls.Add(fluentDesignFormContainer1);
+            Controls.Add(accordionControl);
+            Controls.Add(fluentDesignFormControl1);
+            FluentDesignFormControl = fluentDesignFormControl1;
+            IconOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("MainRibbonForm.IconOptions.SvgImage");
+            Name = "MainRibbonForm";
+            NavigationControl = accordionControl;
+            Text = "xf";
+            TransparencyKey = System.Drawing.Color.FromArgb(250, 250, 255);
+            fluentDesignFormContainer1.ResumeLayout(false);
+            fluentDesignFormContainer1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)tabControl).EndInit();
+            tabControl.ResumeLayout(false);
+            tabPageNewScan.ResumeLayout(false);
+            tabPageResults.ResumeLayout(false);
+            tabPageFiles.ResumeLayout(false);
+            tabPageMap.ResumeLayout(false);
+            tabPageAnalysis.ResumeLayout(false);
+            tabPageErrors.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)ribbon).EndInit();
+            ((System.ComponentModel.ISupportInitialize)accordionControl).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fluentDesignFormControl1).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

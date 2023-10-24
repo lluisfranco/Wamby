@@ -28,11 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "XtraForm1";
+            simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            SuspendLayout();
+            // 
+            // simpleButton1
+            // 
+            simpleButton1.Location = new System.Drawing.Point(109, 117);
+            simpleButton1.Name = "simpleButton1";
+            simpleButton1.Size = new System.Drawing.Size(75, 23);
+            simpleButton1.TabIndex = 0;
+            simpleButton1.Text = "simpleButton1";
+            // 
+            // XtraForm1
+            // 
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(298, 266);
+            Controls.Add(simpleButton1);
+            Name = "XtraForm1";
+            Text = "XtraForm1";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

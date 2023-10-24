@@ -10,6 +10,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\AppIcon.ico</ApplicationIcon>
+    <AssemblyVersion>2023.10.24.1</AssemblyVersion>
+    <FileVersion>2023.10.24.1</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Modules\AnalysisModule.cs">
@@ -30,7 +32,6 @@
     <Compile Update="Modules\ResultsModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wamby.API\Wamby.API.csproj" />
@@ -40,8 +41,8 @@
   <ItemGroup>
     <PackageReference Include="DevExpress.Win.WinterJoySkin" Version="1.0.2" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="DevExpress.Win.TreeMap" Version="22.2.3" />
-    <PackageReference Include="DevExpress.Win.Design" Version="22.2.3" />
+    <PackageReference Include="DevExpress.Win.TreeMap" Version="23.1.5" />
+    <PackageReference Include="DevExpress.Win.Design" Version="23.1.5" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MainForm.cs" />
