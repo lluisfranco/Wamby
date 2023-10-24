@@ -150,7 +150,7 @@
             tabPageFiles.Controls.Add(filesModule);
             tabPageFiles.Name = "tabPageFiles";
             tabPageFiles.Padding = new System.Windows.Forms.Padding(3);
-            tabPageFiles.Size = new System.Drawing.Size(1252, 639);
+            tabPageFiles.Size = new System.Drawing.Size(1252, 616);
             tabPageFiles.Text = "Files";
             // 
             // filesModule
@@ -158,14 +158,14 @@
             filesModule.Dock = System.Windows.Forms.DockStyle.Fill;
             filesModule.Location = new System.Drawing.Point(3, 3);
             filesModule.Name = "filesModule";
-            filesModule.Size = new System.Drawing.Size(1246, 633);
+            filesModule.Size = new System.Drawing.Size(1246, 610);
             filesModule.TabIndex = 0;
             // 
             // tabPageMap
             // 
             tabPageMap.Controls.Add(mapModule);
             tabPageMap.Name = "tabPageMap";
-            tabPageMap.Size = new System.Drawing.Size(1252, 639);
+            tabPageMap.Size = new System.Drawing.Size(1252, 616);
             tabPageMap.Text = "Map";
             // 
             // mapModule
@@ -174,14 +174,14 @@
             mapModule.Location = new System.Drawing.Point(0, 0);
             mapModule.Name = "mapModule";
             mapModule.Padding = new System.Windows.Forms.Padding(3);
-            mapModule.Size = new System.Drawing.Size(1252, 639);
+            mapModule.Size = new System.Drawing.Size(1252, 616);
             mapModule.TabIndex = 0;
             // 
             // tabPageAnalysis
             // 
             tabPageAnalysis.Controls.Add(analysisModule);
             tabPageAnalysis.Name = "tabPageAnalysis";
-            tabPageAnalysis.Size = new System.Drawing.Size(1252, 639);
+            tabPageAnalysis.Size = new System.Drawing.Size(1252, 616);
             tabPageAnalysis.Text = "Analyze";
             // 
             // analysisModule
@@ -190,7 +190,7 @@
             analysisModule.Location = new System.Drawing.Point(0, 0);
             analysisModule.Name = "analysisModule";
             analysisModule.Padding = new System.Windows.Forms.Padding(3);
-            analysisModule.Size = new System.Drawing.Size(1252, 639);
+            analysisModule.Size = new System.Drawing.Size(1252, 616);
             analysisModule.TabIndex = 0;
             // 
             // tabPageErrors
@@ -198,7 +198,7 @@
             tabPageErrors.Controls.Add(errorsModule);
             tabPageErrors.Name = "tabPageErrors";
             tabPageErrors.Padding = new System.Windows.Forms.Padding(3);
-            tabPageErrors.Size = new System.Drawing.Size(1252, 639);
+            tabPageErrors.Size = new System.Drawing.Size(1252, 616);
             tabPageErrors.Text = "Errors";
             // 
             // errorsModule
@@ -206,19 +206,19 @@
             errorsModule.Dock = System.Windows.Forms.DockStyle.Fill;
             errorsModule.Location = new System.Drawing.Point(3, 3);
             errorsModule.Name = "errorsModule";
-            errorsModule.Size = new System.Drawing.Size(1246, 633);
+            errorsModule.Size = new System.Drawing.Size(1246, 610);
             errorsModule.TabIndex = 0;
             // 
             // tabPageSchedule
             // 
             tabPageSchedule.Name = "tabPageSchedule";
-            tabPageSchedule.Size = new System.Drawing.Size(1252, 639);
+            tabPageSchedule.Size = new System.Drawing.Size(1252, 616);
             tabPageSchedule.Text = "Schedule";
             // 
             // tabPageSettings
             // 
             tabPageSettings.Name = "tabPageSettings";
-            tabPageSettings.Size = new System.Drawing.Size(1252, 639);
+            tabPageSettings.Size = new System.Drawing.Size(1252, 616);
             tabPageSettings.Text = "Settings";
             // 
             // ribbonStatusBar

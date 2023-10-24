@@ -10,7 +10,7 @@ using Wamby.Core.Model;
 
 namespace Wamby.Client.Modules
 {
-    public partial class NewScanModule : DevExpress.XtraEditors.XtraUserControl, 
+    public partial class NewScanModule : DevExpress.XtraEditors.XtraUserControl,
         Interfaces.IModule, Interfaces.IModuleRibbon, Interfaces.IModuleNewScanRequested
     {
         [Browsable(false)]
@@ -53,7 +53,7 @@ namespace Wamby.Client.Modules
 
         public string GetSelectedPath()
         {
-            return newScanPathButtonEdit.Text;   
+            return newScanPathButtonEdit.Text;
         }
 
         public void InitializeControl(API.Services.FileSystemScanService scanService)
@@ -68,7 +68,7 @@ namespace Wamby.Client.Modules
                 }
                 RefreshScanOptionsControls();
                 FileSystemScanService.ScanningFolderProgress = ScanningFolderProgress;
-                FileSystemScanService.ErrorReadingFileSystemInfoProgress = ErrorReadingFileSystemInfoProgress;                
+                FileSystemScanService.ErrorReadingFileSystemInfoProgress = ErrorReadingFileSystemInfoProgress;
                 FileSystemScanService.CancelledScan += (s, e) => RefreshModuleData();
                 var logcombo = Helpers.UIHelper.GetLogTypesCombo();
                 logcombo.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -123,7 +123,7 @@ namespace Wamby.Client.Modules
         {
             if (e.Button == MouseButtons.Right) popupMenu.ShowPopup(MousePosition);
         }
-        
+
         private void ScanLogGroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
         {
             if (e.Button.Properties.Caption == "Cancel") CancelScan();
@@ -138,7 +138,7 @@ namespace Wamby.Client.Modules
         {
             if (e.KeyCode == Keys.Enter) await DoScan();
         }
-        
+
         private async void NewScanPathButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if (e.Button.Index == 0) ShowSelectPathDialog();
@@ -155,7 +155,7 @@ namespace Wamby.Client.Modules
             var fd = new FolderBrowserDialog();
             fd.SelectedPath = newScanPathButtonEdit.Text;
             if (fd.ShowDialog() == DialogResult.OK)
-            {                
+            {
                 newScanPathButtonEdit.Text = fd.SelectedPath;
                 if (Properties.Settings.Default.DoScanAfterChangingBaseFolderPath)
                     await DoScan();
@@ -169,7 +169,7 @@ namespace Wamby.Client.Modules
 
         public async Task<ScanResult> DoScan()
         {
-            if(newScanPathButtonEdit.Text.LastOrDefault() == System.IO.Path.DirectorySeparatorChar &&
+            if (newScanPathButtonEdit.Text.LastOrDefault() == System.IO.Path.DirectorySeparatorChar &&
                 newScanPathButtonEdit.Text.Split(System.IO.Path.DirectorySeparatorChar).Length > 2)
                 newScanPathButtonEdit.Text = newScanPathButtonEdit.Text.Remove(newScanPathButtonEdit.Text.Length - 1, 1);
             if (!System.IO.Directory.Exists(newScanPathButtonEdit.Text))
@@ -183,7 +183,7 @@ namespace Wamby.Client.Modules
             FileSystemScanService.ScanOptions.BaseFolderPath = newScanPathButtonEdit.Text;
             FileSystemScanService.ScanOptions.IncludeSubFolders = includeSubfoldersCheckEdit.Checked;
             FileSystemScanService.ScanOptions.SearchPattern = searchPatternButtonEdit.Text;
-            FileSystemScanService.ScanOptions.ShowMinimumFolderLevelInLog = 
+            FileSystemScanService.ScanOptions.ShowMinimumFolderLevelInLog =
                 Properties.Settings.Default.ShowMinimumFolderLevelInLog;
             FileSystemScanService.UserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
             FileSystemScanService.ComputerName = Environment.MachineName;
