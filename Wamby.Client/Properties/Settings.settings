@@ -36,10 +36,25 @@
       <Value Profile="(Default)">Fast</Value>
     </Setting>
     <Setting Name="SkinName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Office 2019 Colorful</Value>
+      <Value Profile="(Default)">WXI</Value>
     </Setting>
     <Setting Name="SkinPalette" Type="System.String" Scope="User">
       <Value Profile="(Default)">Default</Value>
+    </Setting>
+    <Setting Name="SkinAdvancedUseWindowsAppMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SkinAdvancedSystemAccentColor" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SkinAdvancedCustomColor" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="SkinAdvancedCustomColor2" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UseCompactUI" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

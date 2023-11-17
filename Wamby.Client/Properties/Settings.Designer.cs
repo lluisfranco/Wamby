@@ -12,7 +12,7 @@ namespace Wamby.Client.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -151,7 +151,7 @@ namespace Wamby.Client.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Office 2019 Colorful")]
+        [global::System.Configuration.DefaultSettingValueAttribute("WXI")]
         public string SkinName {
             get {
                 return ((string)(this["SkinName"]));
@@ -170,6 +170,66 @@ namespace Wamby.Client.Properties {
             }
             set {
                 this["SkinPalette"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SkinAdvancedUseWindowsAppMode {
+            get {
+                return ((bool)(this["SkinAdvancedUseWindowsAppMode"]));
+            }
+            set {
+                this["SkinAdvancedUseWindowsAppMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SkinAdvancedSystemAccentColor {
+            get {
+                return ((bool)(this["SkinAdvancedSystemAccentColor"]));
+            }
+            set {
+                this["SkinAdvancedSystemAccentColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SkinAdvancedCustomColor {
+            get {
+                return ((string)(this["SkinAdvancedCustomColor"]));
+            }
+            set {
+                this["SkinAdvancedCustomColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SkinAdvancedCustomColor2 {
+            get {
+                return ((string)(this["SkinAdvancedCustomColor2"]));
+            }
+            set {
+                this["SkinAdvancedCustomColor2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseCompactUI {
+            get {
+                return ((bool)(this["UseCompactUI"]));
+            }
+            set {
+                this["UseCompactUI"] = value;
             }
         }
     }

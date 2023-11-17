@@ -19,7 +19,8 @@ namespace Wamby.Client
             var mainform = new MainRibbonForm();
             mainform.ViewModel.LoadDefaultSettings();
             mainform.ViewModel.ApplyAppArguments(args);
-            Application.Run(mainform);
+            //Application.Run(mainform);
+            Application.Run(new MainForm());
         }
     }
 }

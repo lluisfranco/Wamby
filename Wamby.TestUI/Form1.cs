@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Wamby.Client
+namespace Wamby.TestUI
 {
-    public partial class XtraForm1 : DevExpress.XtraEditors.XtraForm
+    public partial class Form1 : Form
     {
-        public XtraForm1()
+        public Form1()
         {
             InitializeComponent();
         }

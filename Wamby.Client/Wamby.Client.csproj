@@ -32,24 +32,32 @@
     <Compile Update="Modules\ResultsModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Wamby.API\Wamby.API.csproj" />
+    <ProjectReference Include="..\Wamby.Client.DevExpressSkins\Wamby.Client.DevExpressSkins.csproj" />
     <ProjectReference Include="..\Wamby.Core\Wamby.Core.csproj" />
+    <ProjectReference Include="..\Wamby.Resources\Wamby.Resources.csproj" />
     <ProjectReference Include="..\Wamby.SystemShell\Wamby.SystemShell.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DevExpress.Win.WinterJoySkin" Version="1.0.2" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="DevExpress.Win.TreeMap" Version="23.1.5" />
-    <PackageReference Include="DevExpress.Win.Design" Version="23.1.5" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="MainForm.cs" />
-    <Compile Remove="MainForm.Designer.cs" />
-    <EmbeddedResource Remove="MainForm.resx" />
+    <PackageReference Include="DevExpress.Win.TreeMap" Version="23.2.2-beta" />
+    <PackageReference Include="DevExpress.Win.Design" Version="23.2.2-beta" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 </Project>

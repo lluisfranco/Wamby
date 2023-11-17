@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+  <g id="main">
+    <clipPath id="clip_mask">
+      <path d="M16,31v-8v-1v-2c0,-1.1028,0.8972,-2,2,-2h4.3741c0.6945,0,1.3475,0.2705,1.8385,0.7615l1.0627,1.0628c0.1133,0.1133,0.264,0.1757,0.4242,0.1757H31c0.3645,0,0.7054,0.0996,1,0.2706V0H0v32h16.2706C16.0996,31.7054,16,31.3645,16,31z" fill-rule="evenodd"/>
+    </clipPath>
+    <g id="icon" clip-path="url(#clip_mask)">
+      <g id="transformed_icon" transform="translate(-1 -1)">
+        <path d="M3,6h1v2H3V6zM3,5h1V3H3V5zM9,4h2V3H9V4zM6,4h2V3H6V4zM3,4h2V3H3V4zM12,4h2V3h-2V4zM15,4h2V3h-2V4zM18,4h2V3h-2V4zM21,4h2V3h-2V4zM24,4h2V3h-2V4zM27,4h2V3h-2V4zM12,29h2v-1h-2V29zM9,29h2v-1H9V29zM7,29h1v-1H7V29zM15,29h2v-1h-2V29zM18,29h2v-1h-2V29zM21,29h2v-1h-2V29zM24,29h2v-1h-2V29zM27,29h2v-1h-2V29zM3,11h1V9H3V11zM3,14h1v-2H3V14zM28,6h1v2h-1V6zM28,5h1V3h-1V5zM28,11h1V9h-1V11zM28,14h1v-2h-1V14zM3,17h1v-2H3V17zM3,20h1v-2H3V20zM3,23h1v-2H3V23zM3,25h1v-1H3V25zM28,17h1v-2h-1V17zM28,20h1v-2h-1V20zM28,23h1v-2h-1V23zM28,26h1v-2h-1V26zM28,29h1v-2h-1V29z" fill="#58595B"/>
+        <rect x="1" y="26" width="5" height="5" fill="#58595B"/>
+      </g>
+    </g>
+    <g id="overlay">
+      <path d="M17,23h14.9963l0.0033,7.9996c0.0002,0.5524,-0.4476,1.0004,-1,1.0004H18c-0.5523,0,-1,-0.4477,-1,-1V23z" fill-rule="evenodd" fill="#E5BD67"/>
+      <path d="M32,22H17v-2c0,-0.5523,0.4477,-1,1,-1h4.3741c0.4243,0,0.8313,0.1686,1.1314,0.4686l1.0628,1.0627c0.3001,0.3001,0.707,0.4686,1.1314,0.4686H31C31.5523,21,32,21.4477,32,22L32,22z" fill-rule="evenodd" fill="#96762C"/>
+    </g>
+  </g>
+</svg>

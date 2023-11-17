@@ -1,6 +1,6 @@
-﻿namespace Wamby.Client
+﻿namespace Wamby.TestUI
 {
-    partial class XtraForm1
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,30 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            this.svgImageCollection1 = new DevExpress.Utils.SvgImageCollection(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).BeginInit();
+            this.SuspendLayout();
             // 
-            // simpleButton1
+            // Form1
             // 
-            simpleButton1.Location = new System.Drawing.Point(109, 117);
-            simpleButton1.Name = "simpleButton1";
-            simpleButton1.Size = new System.Drawing.Size(75, 23);
-            simpleButton1.TabIndex = 0;
-            simpleButton1.Text = "simpleButton1";
-            // 
-            // XtraForm1
-            // 
-            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(298, 266);
-            Controls.Add(simpleButton1);
-            Name = "XtraForm1";
-            Text = "XtraForm1";
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "Form1";
+            this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.svgImageCollection1)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.Utils.SvgImageCollection svgImageCollection1;
     }
 }
+

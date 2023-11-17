@@ -20,6 +20,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wamby.Resources", "Wamby.Resources\Wamby.Resources.csproj", "{19C4ACEA-8FB9-4241-BB23-2CCBB7F21BFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wamby.Client.DevExpressSkins", "Wamby.Client.DevExpressSkins\Wamby.Client.DevExpressSkins.csproj", "{CAC3CA71-CF25-4915-893D-64A52832DDA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,14 @@ Global
 		{9906C836-B714-4B42-8C82-09B58DED3CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9906C836-B714-4B42-8C82-09B58DED3CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9906C836-B714-4B42-8C82-09B58DED3CDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19C4ACEA-8FB9-4241-BB23-2CCBB7F21BFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19C4ACEA-8FB9-4241-BB23-2CCBB7F21BFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19C4ACEA-8FB9-4241-BB23-2CCBB7F21BFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19C4ACEA-8FB9-4241-BB23-2CCBB7F21BFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAC3CA71-CF25-4915-893D-64A52832DDA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAC3CA71-CF25-4915-893D-64A52832DDA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAC3CA71-CF25-4915-893D-64A52832DDA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAC3CA71-CF25-4915-893D-64A52832DDA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +63,8 @@ Global
 		{A36E1252-162C-4BEE-AC77-5A13AB27B2B6} = {20CC4FCE-DAFD-4510-925B-14CA0BC52B3A}
 		{ABBF9AAC-0B09-43C0-9064-B134D7CDB3E4} = {20CC4FCE-DAFD-4510-925B-14CA0BC52B3A}
 		{9906C836-B714-4B42-8C82-09B58DED3CDC} = {404A8BC3-0C51-4093-BEF9-C344F647FD31}
+		{19C4ACEA-8FB9-4241-BB23-2CCBB7F21BFE} = {404A8BC3-0C51-4093-BEF9-C344F647FD31}
+		{CAC3CA71-CF25-4915-893D-64A52832DDA8} = {404A8BC3-0C51-4093-BEF9-C344F647FD31}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {713D7176-AD87-489F-867A-8A86DCC7F7C1}
