@@ -2,6 +2,7 @@
 using DevExpress.XtraEditors;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Security.Principal;
 using System.Windows.Forms;
 using Wamby.API.Enums;
@@ -25,6 +26,11 @@ namespace Wamby.Client
                 ScanDate = DateTime.Now,
                 DetailType = ScanDetailTypeEnum.Fast
             };
+            if (Directory.Exists(Properties.Settings.Default.DefaultBaseFolderPath))
+                FileSystemScanService.ScanOptions.BaseFolderPath = Properties.Settings.Default.DefaultBaseFolderPath;
+            FileSystemScanService.ScanOptions.IncludeSubFolders = Properties.Settings.Default.DefaultIncludeSubFolders;
+            FileSystemScanService.ScanOptions.SearchPattern = Properties.Settings.Default.DefaultSearchPattern;
+            FileSystemScanService.DetailType = Properties.Settings.Default.DefaultDetailedScanType;
             FileSystemStorageService = new FileSystemStorageService();
         }
 
@@ -49,8 +55,10 @@ namespace Wamby.Client
         internal void NewScan()
         {
             Application.UseWaitCursor = true;
-            var f = new NewScanForm();
-            f.MdiParent = Form;
+            var f = new NewScanForm
+            {
+                MdiParent = Form
+            };
             f.InitializeModules(Form);
             f.InitializeControl(FileSystemScanService);
             f.Show();

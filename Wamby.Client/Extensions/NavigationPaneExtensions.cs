@@ -19,6 +19,10 @@ namespace Wamby.Client
         public static IEnumerable<IModule> GetModules(this NavigationPane navigationPane) =>
             navigationPane.Pages.Where(p => p.Controls.Count > 0 && p.Controls[0] is IModule).Select(p => p.Controls[0] as IModule);
 
+        public static IModule GetPageModule(this NavigationPage navigationPage) =>
+            navigationPage != null && navigationPage.Controls.Count > 0
+            ? navigationPage.Controls[0] as IModule : default;
+
         public static void InitializeModule(this NavigationPage navigationPage, 
             XtraUserControl module, IProgressMessage progress, string progressMessage, int progressValue)
         {
@@ -39,17 +43,6 @@ namespace Wamby.Client
             tabPane.PageProperties.ShowCollapseButton = false;
             tabPane.PageProperties.ShowExpandButton = false;
             tabPane.StateChanging += (s, e) => e.Cancel = true;
-            tabPane.SelectedPageChanged += (s, e) =>
-            {
-                var module = tabPane.GetCurrentModule();
-                if (tabPane.FindForm() is not IChildForm form ||
-                    tabPane.FindForm().ParentForm is not IChildForm parentForm) return;
-                if (module == null) return;
-                parentForm.Bar.UnMerge();
-                parentForm.Bar.Merge(form.Bar);
-                //if (autoRefresh || !module.Loaded) method?.Invoke();
-                if (autoRefresh) method?.Invoke();
-            };
             return tabPane;
         }
 

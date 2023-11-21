@@ -32,17 +32,23 @@ namespace Wamby.API.Services
         public event EventHandler BeginScan;
         public event EventHandler EndScan;
         public event EventHandler CancelledScan;
+        public void RaiseBeginScan() => BeginScan?.Invoke(this, new EventArgs());
+        public void RaiseEndScan() => EndScan?.Invoke(this, new EventArgs());
+        public void RaiseCancelledScan() => CancelledScan?.Invoke(this, new EventArgs());
 
         public FileSystemScanService()
         {
-            ScanOptions = new Core.Model.ScanOptions();
+            ScanOptions = new ScanOptions()
+            {
+                BaseFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),                
+            };
             Clear();
         }
 
         public void Clear()
         {
-            ScanResult = new Core.Model.ScanResult();
-            LogLines = new List<Core.Model.LogLine>();
+            ScanResult = new ScanResult();
+            LogLines = new List<LogLine>();
         }
 
         public void CopyProperties(FileSystemScanService fromScanService)
@@ -67,7 +73,7 @@ namespace Wamby.API.Services
         FileSystemInfo _CurrentFileSystemInfo;
         public async Task<Core.Model.ScanResult> DoScan()
         {
-            BeginScan?.Invoke(this, new EventArgs());
+            RaiseBeginScan();
             Clear();
             LogLines.Add(new Core.Model.LogLine()
             {
@@ -99,7 +105,6 @@ namespace Wamby.API.Services
                     p.DeepLenghtPercent = p.DeepLenght / totalDeepLenght;
                     p.DeepFilesCountPercent = p.DeepFilesCount / totalDeepFilesCount;
                 });
-                EndScan?.Invoke(this, new EventArgs());
             }
             clock.Stop();
             ScanResult.ElapsedTime = clock.Elapsed;
@@ -109,6 +114,7 @@ namespace Wamby.API.Services
                 Value = string.Empty,
                 LogLineType = Core.Model.LogLineTypeEnum.Info
             });
+            RaiseEndScan();
             return ScanResult;
         }
 
@@ -327,7 +333,7 @@ namespace Wamby.API.Services
                     LogLineType = Core.Model.LogLineTypeEnum.Error
                 });
                 //CancelledByUserProgress?.Report(username);
-                CancelledScan?.Invoke(this, new EventArgs());
+                RaiseCancelledScan();
                 return true;
             }
             return false;
