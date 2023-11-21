@@ -1,8 +1,6 @@
-﻿using DevExpress.Mvvm.Native;
-using DevExpress.XtraBars;
+﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
-using System.Linq;
 using System.Windows.Forms;
 using Wamby.API.Services;
 using Wamby.Client.Extensions;
@@ -16,6 +14,9 @@ namespace Wamby.Client
         public Bar Bar { get { return bar; } }
         public FileSystemScanService FileSystemScanService { get; private set; }
         IOverlaySplashScreenHandle handle = null;
+        public void ShowProgressPanel() => handle = OverlayFormExtensions.ShowProgressPanel(navigationPane);
+        public void HideProgressPanel() { if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle); }
+
         public NewScanForm()
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace Wamby.Client
         public void InitializeModules(MainForm mainform)
         {
             MainForm = mainform;
-            navigationPageScanFolder.InitializeModule(new NewScanModule(), MainForm, "New Scan", 15);
+            navigationPageScanFolder.InitializeModule(new NewScanModule(), MainForm, "New Scan", 15, true);
             navigationPageResults.InitializeModule(new ResultsModule(), MainForm, "Results", 30);
             navigationPageFiles.InitializeModule(new FilesModule(), MainForm, "Files", 45);
             navigationPageMap.InitializeModule(new MapModule(), MainForm, "Map", 60);
@@ -38,24 +39,18 @@ namespace Wamby.Client
         public void InitializeControl(FileSystemScanService fileSystemScanService)
         {
             FileSystemScanService = fileSystemScanService;
-            FileSystemScanService.BeginScan += (s, e) =>
-            {
-                handle = OverlayFormExtensions.ShowProgressPanel(navigationPane);
-            };
+            FileSystemScanService.BeginScan += (s, e) => ShowProgressPanel();
             FileSystemScanService.EndScan += (s, e) =>
             {
                 ShowScanResults();
-                if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle);
+                HideProgressPanel();
             };
-            navigationPane.Pages.ForEach(p => p.PageText = p.Caption.ToUpper());
-            navigationPane.Pages.Where(
-                p => p.PageText != navigationPane.Pages[0].PageText).ForEach(p => p.PageEnabled = false);
             var modules = navigationPane.GetModules();
             foreach (var module in modules)
             {
                 module.InitializeControl(MainForm, FileSystemScanService);
             }
-        }
+        }      
 
         private void ShowScanResults()
         {

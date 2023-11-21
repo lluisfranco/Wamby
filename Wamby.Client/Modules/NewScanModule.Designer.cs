@@ -174,14 +174,14 @@
             imageComboBoxEditType.Properties.AdvancedModeOptions.Label = "Scan Type";
             imageComboBoxEditType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo) });
             imageComboBoxEditType.Properties.UseAdvancedMode = DevExpress.Utils.DefaultBoolean.True;
-            imageComboBoxEditType.Size = new System.Drawing.Size(202, 34);
+            imageComboBoxEditType.Size = new System.Drawing.Size(228, 34);
             imageComboBoxEditType.StyleController = layoutControl;
             imageComboBoxEditType.TabIndex = 4;
             // 
             // includeSubfoldersCheckEdit
             // 
             includeSubfoldersCheckEdit.EditValue = true;
-            includeSubfoldersCheckEdit.Location = new System.Drawing.Point(429, 53);
+            includeSubfoldersCheckEdit.Location = new System.Drawing.Point(455, 53);
             includeSubfoldersCheckEdit.Name = "includeSubfoldersCheckEdit";
             includeSubfoldersCheckEdit.Properties.OffText = "Include Subfolders";
             includeSubfoldersCheckEdit.Properties.OnText = "Include Subfolders";
@@ -201,7 +201,7 @@
             editorButtonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
             newScanPathButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "Change folder", null, null, DevExpress.Utils.ToolTipAnchor.Default), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "Scan now", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
             newScanPathButtonEdit.Properties.UseAdvancedMode = DevExpress.Utils.DefaultBoolean.True;
-            newScanPathButtonEdit.Size = new System.Drawing.Size(393, 34);
+            newScanPathButtonEdit.Size = new System.Drawing.Size(419, 34);
             newScanPathButtonEdit.StyleController = layoutControl;
             newScanPathButtonEdit.TabIndex = 0;
             // 
@@ -227,7 +227,7 @@
             layoutControlItem1.Control = newScanPathButtonEdit;
             layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             layoutControlItem1.Name = "layoutControlItem1";
-            layoutControlItem1.Size = new System.Drawing.Size(397, 38);
+            layoutControlItem1.Size = new System.Drawing.Size(423, 38);
             layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             layoutControlItem1.TextVisible = false;
             // 
@@ -244,7 +244,7 @@
             // 
             layoutControlItem4.ContentVertAlignment = DevExpress.Utils.VertAlignment.Center;
             layoutControlItem4.Control = includeSubfoldersCheckEdit;
-            layoutControlItem4.Location = new System.Drawing.Point(397, 0);
+            layoutControlItem4.Location = new System.Drawing.Point(423, 0);
             layoutControlItem4.Name = "layoutControlItem4";
             layoutControlItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(10, 2, 2, 2);
             layoutControlItem4.Size = new System.Drawing.Size(154, 38);
@@ -256,14 +256,14 @@
             layoutControlItem3.Control = imageComboBoxEditType;
             layoutControlItem3.Location = new System.Drawing.Point(191, 38);
             layoutControlItem3.Name = "layoutControlItem3";
-            layoutControlItem3.Size = new System.Drawing.Size(206, 38);
+            layoutControlItem3.Size = new System.Drawing.Size(232, 38);
             layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             layoutControlItem3.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             emptySpaceItem1.AllowHotTrack = false;
-            emptySpaceItem1.Location = new System.Drawing.Point(397, 38);
+            emptySpaceItem1.Location = new System.Drawing.Point(423, 38);
             emptySpaceItem1.Name = "emptySpaceItem1";
             emptySpaceItem1.Size = new System.Drawing.Size(154, 38);
             emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -271,9 +271,9 @@
             // emptySpaceItem2
             // 
             emptySpaceItem2.AllowHotTrack = false;
-            emptySpaceItem2.Location = new System.Drawing.Point(551, 0);
+            emptySpaceItem2.Location = new System.Drawing.Point(577, 0);
             emptySpaceItem2.Name = "emptySpaceItem2";
-            emptySpaceItem2.Size = new System.Drawing.Size(83, 76);
+            emptySpaceItem2.Size = new System.Drawing.Size(57, 76);
             emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlGroup2
