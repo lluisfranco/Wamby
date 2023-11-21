@@ -20,7 +20,7 @@ namespace Wamby.Client.Modules
         //public Bar Bar { get { return bar; } }
 
         [Browsable(false)]
-        public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
+        public FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
         //public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
         public event EventHandler StartingScan;

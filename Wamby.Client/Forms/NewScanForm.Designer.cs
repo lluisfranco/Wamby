@@ -365,9 +365,9 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemChangeFolder;
         private DevExpress.Utils.SvgImageCollection svgImageCollectionForm;
         private DevExpress.XtraBars.Navigation.NavigationPane navigationPane;
+        private DevExpress.Utils.SvgImageCollection svgImageCollectionNavigation;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageScanFolder;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageResults;
-        private DevExpress.Utils.SvgImageCollection svgImageCollectionNavigation;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageFiles;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageMap;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageAnalysis;
