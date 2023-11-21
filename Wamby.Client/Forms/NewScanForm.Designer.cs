@@ -29,103 +29,356 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            toolbarFormControl1 = new DevExpress.XtraBars.ToolbarForm.ToolbarFormControl();
-            toolbarFormManager1 = new DevExpress.XtraBars.ToolbarForm.ToolbarFormManager(components);
+            barManager = new DevExpress.XtraBars.BarManager(components);
+            bar = new DevExpress.XtraBars.Bar();
+            barButtonItemNewScan = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemCancelScan = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemChangeFolder = new DevExpress.XtraBars.BarButtonItem();
             barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            ((System.ComponentModel.ISupportInitialize)toolbarFormControl1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)toolbarFormManager1).BeginInit();
+            svgImageCollection16 = new DevExpress.Utils.SvgImageCollection(components);
+            svgImageCollection32 = new DevExpress.Utils.SvgImageCollection(components);
+            svgImageCollectionForm = new DevExpress.Utils.SvgImageCollection(components);
+            navigationPane = new DevExpress.XtraBars.Navigation.NavigationPane();
+            navigationPageScanFolder = new DevExpress.XtraBars.Navigation.NavigationPage();
+            newScanModule = new Modules.NewScanModule();
+            navigationPageResults = new DevExpress.XtraBars.Navigation.NavigationPage();
+            resultsModule = new Modules.ResultsModule();
+            navigationPageFiles = new DevExpress.XtraBars.Navigation.NavigationPage();
+            filesModule = new Modules.FilesModule();
+            navigationPageMap = new DevExpress.XtraBars.Navigation.NavigationPage();
+            mapModule = new Modules.MapModule();
+            navigationPageAnalysis = new DevExpress.XtraBars.Navigation.NavigationPage();
+            analysisModule = new Modules.AnalysisModule();
+            navigationPageErrors = new DevExpress.XtraBars.Navigation.NavigationPage();
+            errorsModule = new Modules.ErrorsModule();
+            navigationPageSchedule = new DevExpress.XtraBars.Navigation.NavigationPage();
+            navigationPageSettings = new DevExpress.XtraBars.Navigation.NavigationPage();
+            svgImageCollectionNavigation = new DevExpress.Utils.SvgImageCollection(components);
+            ((System.ComponentModel.ISupportInitialize)barManager).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection16).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection32).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollectionForm).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)navigationPane).BeginInit();
+            navigationPane.SuspendLayout();
+            navigationPageScanFolder.SuspendLayout();
+            navigationPageResults.SuspendLayout();
+            navigationPageFiles.SuspendLayout();
+            navigationPageMap.SuspendLayout();
+            navigationPageAnalysis.SuspendLayout();
+            navigationPageErrors.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollectionNavigation).BeginInit();
             SuspendLayout();
             // 
-            // toolbarFormControl1
+            // barManager
             // 
-            toolbarFormControl1.Location = new System.Drawing.Point(0, 0);
-            toolbarFormControl1.Manager = toolbarFormManager1;
-            toolbarFormControl1.Name = "toolbarFormControl1";
-            toolbarFormControl1.Size = new System.Drawing.Size(764, 31);
-            toolbarFormControl1.TabIndex = 0;
-            toolbarFormControl1.TabStop = false;
-            toolbarFormControl1.TitleItemLinks.Add(barButtonItem1);
-            toolbarFormControl1.ToolbarForm = this;
+            barManager.Bars.AddRange(new DevExpress.XtraBars.Bar[] { bar });
+            barManager.DockControls.Add(barDockControlTop);
+            barManager.DockControls.Add(barDockControlBottom);
+            barManager.DockControls.Add(barDockControlLeft);
+            barManager.DockControls.Add(barDockControlRight);
+            barManager.Form = this;
+            barManager.Images = svgImageCollection16;
+            barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemNewScan, barButtonItemCancelScan, barButtonItemChangeFolder });
+            barManager.LargeImages = svgImageCollection16;
+            barManager.MaxItemId = 3;
             // 
-            // toolbarFormManager1
+            // bar
             // 
-            toolbarFormManager1.DockControls.Add(barDockControlTop);
-            toolbarFormManager1.DockControls.Add(barDockControlBottom);
-            toolbarFormManager1.DockControls.Add(barDockControlLeft);
-            toolbarFormManager1.DockControls.Add(barDockControlRight);
-            toolbarFormManager1.Form = this;
-            toolbarFormManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItem1 });
-            toolbarFormManager1.MaxItemId = 1;
+            bar.BarName = "Tools";
+            bar.DockCol = 0;
+            bar.DockRow = 0;
+            bar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            bar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(barButtonItemNewScan), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemCancelScan), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemChangeFolder, true) });
+            bar.Text = "Tools";
+            // 
+            // barButtonItemNewScan
+            // 
+            barButtonItemNewScan.Caption = "Scan";
+            barButtonItemNewScan.Id = 0;
+            barButtonItemNewScan.ImageOptions.ImageIndex = 2;
+            barButtonItemNewScan.ImageOptions.LargeImageIndex = 2;
+            barButtonItemNewScan.Name = "barButtonItemNewScan";
+            // 
+            // barButtonItemCancelScan
+            // 
+            barButtonItemCancelScan.Caption = "Cancel";
+            barButtonItemCancelScan.Id = 1;
+            barButtonItemCancelScan.ImageOptions.ImageIndex = 0;
+            barButtonItemCancelScan.ImageOptions.LargeImageIndex = 0;
+            barButtonItemCancelScan.Name = "barButtonItemCancelScan";
+            barButtonItemCancelScan.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // barButtonItemChangeFolder
+            // 
+            barButtonItemChangeFolder.Caption = "Change Folder...";
+            barButtonItemChangeFolder.Id = 2;
+            barButtonItemChangeFolder.ImageOptions.ImageIndex = 1;
+            barButtonItemChangeFolder.ImageOptions.LargeImageIndex = 1;
+            barButtonItemChangeFolder.Name = "barButtonItemChangeFolder";
             // 
             // barDockControlTop
             // 
             barDockControlTop.CausesValidation = false;
             barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            barDockControlTop.Location = new System.Drawing.Point(0, 31);
-            barDockControlTop.Manager = toolbarFormManager1;
-            barDockControlTop.Size = new System.Drawing.Size(764, 0);
+            barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            barDockControlTop.Manager = barManager;
+            barDockControlTop.Size = new System.Drawing.Size(764, 24);
             // 
             // barDockControlBottom
             // 
             barDockControlBottom.CausesValidation = false;
             barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             barDockControlBottom.Location = new System.Drawing.Point(0, 528);
-            barDockControlBottom.Manager = toolbarFormManager1;
+            barDockControlBottom.Manager = barManager;
             barDockControlBottom.Size = new System.Drawing.Size(764, 0);
             // 
             // barDockControlLeft
             // 
             barDockControlLeft.CausesValidation = false;
             barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            barDockControlLeft.Location = new System.Drawing.Point(0, 31);
-            barDockControlLeft.Manager = toolbarFormManager1;
-            barDockControlLeft.Size = new System.Drawing.Size(0, 497);
+            barDockControlLeft.Location = new System.Drawing.Point(0, 24);
+            barDockControlLeft.Manager = barManager;
+            barDockControlLeft.Size = new System.Drawing.Size(0, 504);
             // 
             // barDockControlRight
             // 
             barDockControlRight.CausesValidation = false;
             barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            barDockControlRight.Location = new System.Drawing.Point(764, 31);
-            barDockControlRight.Manager = toolbarFormManager1;
-            barDockControlRight.Size = new System.Drawing.Size(0, 497);
+            barDockControlRight.Location = new System.Drawing.Point(764, 24);
+            barDockControlRight.Manager = barManager;
+            barDockControlRight.Size = new System.Drawing.Size(0, 504);
             // 
-            // barButtonItem1
+            // svgImageCollection16
             // 
-            barButtonItem1.Caption = "barButtonItem1";
-            barButtonItem1.Id = 0;
-            barButtonItem1.Name = "barButtonItem1";
+            svgImageCollection16.Add("NewScan_CancelScan", "Wamby.Resources.Images.NewScan_CancelScan.svg", "Wamby.Resources");
+            svgImageCollection16.Add("NewScan_Change_Folder", "Wamby.Resources.Images.NewScan_Change_Folder.svg", "Wamby.Resources");
+            svgImageCollection16.Add("NewScan_ScanNow", "Wamby.Resources.Images.NewScan_ScanNow.svg", "Wamby.Resources");
+            // 
+            // svgImageCollection32
+            // 
+            svgImageCollection32.ImageSize = new System.Drawing.Size(32, 32);
+            svgImageCollection32.Add("NewScan_CancelScan", "Wamby.Resources.Images.NewScan_CancelScan.svg", "Wamby.Resources");
+            svgImageCollection32.Add("NewScan_Change_Folder", "Wamby.Resources.Images.NewScan_Change_Folder.svg", "Wamby.Resources");
+            svgImageCollection32.Add("NewScan_ScanNow", "Wamby.Resources.Images.NewScan_ScanNow.svg", "Wamby.Resources");
+            // 
+            // svgImageCollectionForm
+            // 
+            svgImageCollectionForm.Add("Browse", "Wamby.Resources.Images.Browse.svg", "Wamby.Resources");
+            // 
+            // navigationPane
+            // 
+            navigationPane.Controls.Add(navigationPageScanFolder);
+            navigationPane.Controls.Add(navigationPageResults);
+            navigationPane.Controls.Add(navigationPageFiles);
+            navigationPane.Controls.Add(navigationPageMap);
+            navigationPane.Controls.Add(navigationPageAnalysis);
+            navigationPane.Controls.Add(navigationPageErrors);
+            navigationPane.Controls.Add(navigationPageSchedule);
+            navigationPane.Controls.Add(navigationPageSettings);
+            navigationPane.Dock = System.Windows.Forms.DockStyle.Fill;
+            navigationPane.Images = svgImageCollectionNavigation;
+            navigationPane.Location = new System.Drawing.Point(0, 24);
+            navigationPane.Name = "navigationPane";
+            navigationPane.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] { navigationPageScanFolder, navigationPageResults, navigationPageFiles, navigationPageMap, navigationPageAnalysis, navigationPageErrors, navigationPageSchedule, navigationPageSettings });
+            navigationPane.RegularSize = new System.Drawing.Size(764, 504);
+            navigationPane.RibbonAndBarsMergeStyle = DevExpress.XtraBars.Docking2010.Views.RibbonAndBarsMergeStyle.Always;
+            navigationPane.SelectedPage = navigationPageScanFolder;
+            navigationPane.Size = new System.Drawing.Size(764, 504);
+            navigationPane.TabIndex = 4;
+            navigationPane.Text = "navigationPane1";
+            // 
+            // navigationPageScanFolder
+            // 
+            navigationPageScanFolder.Caption = "Scan Folder";
+            navigationPageScanFolder.Controls.Add(newScanModule);
+            navigationPageScanFolder.ImageOptions.ImageIndex = 0;
+            navigationPageScanFolder.Name = "navigationPageScanFolder";
+            navigationPageScanFolder.Size = new System.Drawing.Size(677, 431);
+            navigationPageScanFolder.ToolTip = "Scan Folder";
+            // 
+            // newScanModule
+            // 
+            newScanModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            newScanModule.Location = new System.Drawing.Point(0, 0);
+            newScanModule.Name = "newScanModule";
+            newScanModule.Size = new System.Drawing.Size(677, 431);
+            newScanModule.TabIndex = 8;
+            // 
+            // navigationPageResults
+            // 
+            navigationPageResults.Caption = "Results";
+            navigationPageResults.Controls.Add(resultsModule);
+            navigationPageResults.ImageOptions.ImageIndex = 1;
+            navigationPageResults.Name = "navigationPageResults";
+            navigationPageResults.Size = new System.Drawing.Size(677, 440);
+            navigationPageResults.ToolTip = "Results";
+            // 
+            // resultsModule
+            // 
+            resultsModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            resultsModule.Location = new System.Drawing.Point(0, 0);
+            resultsModule.Name = "resultsModule";
+            resultsModule.Size = new System.Drawing.Size(677, 440);
+            resultsModule.TabIndex = 0;
+            // 
+            // navigationPageFiles
+            // 
+            navigationPageFiles.Caption = "Files";
+            navigationPageFiles.Controls.Add(filesModule);
+            navigationPageFiles.ImageOptions.ImageIndex = 2;
+            navigationPageFiles.Name = "navigationPageFiles";
+            navigationPageFiles.Size = new System.Drawing.Size(677, 440);
+            navigationPageFiles.ToolTip = "Files";
+            // 
+            // filesModule
+            // 
+            filesModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            filesModule.Location = new System.Drawing.Point(0, 0);
+            filesModule.Name = "filesModule";
+            filesModule.Size = new System.Drawing.Size(677, 440);
+            filesModule.TabIndex = 0;
+            // 
+            // navigationPageMap
+            // 
+            navigationPageMap.Caption = "Map";
+            navigationPageMap.Controls.Add(mapModule);
+            navigationPageMap.ImageOptions.ImageIndex = 3;
+            navigationPageMap.Name = "navigationPageMap";
+            navigationPageMap.Size = new System.Drawing.Size(677, 440);
+            navigationPageMap.ToolTip = "Map";
+            // 
+            // mapModule
+            // 
+            mapModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            mapModule.Location = new System.Drawing.Point(0, 0);
+            mapModule.Name = "mapModule";
+            mapModule.Size = new System.Drawing.Size(677, 440);
+            mapModule.TabIndex = 0;
+            // 
+            // navigationPageAnalysis
+            // 
+            navigationPageAnalysis.Caption = "Analysis";
+            navigationPageAnalysis.Controls.Add(analysisModule);
+            navigationPageAnalysis.ImageOptions.ImageIndex = 4;
+            navigationPageAnalysis.Name = "navigationPageAnalysis";
+            navigationPageAnalysis.Size = new System.Drawing.Size(677, 440);
+            navigationPageAnalysis.ToolTip = "Analysis";
+            // 
+            // analysisModule
+            // 
+            analysisModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            analysisModule.Location = new System.Drawing.Point(0, 0);
+            analysisModule.Name = "analysisModule";
+            analysisModule.Padding = new System.Windows.Forms.Padding(3);
+            analysisModule.Size = new System.Drawing.Size(677, 440);
+            analysisModule.TabIndex = 0;
+            // 
+            // navigationPageErrors
+            // 
+            navigationPageErrors.Caption = "Errors";
+            navigationPageErrors.Controls.Add(errorsModule);
+            navigationPageErrors.ImageOptions.ImageIndex = 5;
+            navigationPageErrors.Name = "navigationPageErrors";
+            navigationPageErrors.Size = new System.Drawing.Size(677, 440);
+            navigationPageErrors.ToolTip = "Errors";
+            // 
+            // errorsModule
+            // 
+            errorsModule.Dock = System.Windows.Forms.DockStyle.Fill;
+            errorsModule.Location = new System.Drawing.Point(0, 0);
+            errorsModule.Name = "errorsModule";
+            errorsModule.Size = new System.Drawing.Size(677, 440);
+            errorsModule.TabIndex = 0;
+            // 
+            // navigationPageSchedule
+            // 
+            navigationPageSchedule.Caption = "Schedule";
+            navigationPageSchedule.ImageOptions.ImageIndex = 6;
+            navigationPageSchedule.Name = "navigationPageSchedule";
+            navigationPageSchedule.Size = new System.Drawing.Size(764, 504);
+            navigationPageSchedule.ToolTip = "Schedule";
+            // 
+            // navigationPageSettings
+            // 
+            navigationPageSettings.Caption = "Settings";
+            navigationPageSettings.ImageOptions.ImageIndex = 7;
+            navigationPageSettings.Name = "navigationPageSettings";
+            navigationPageSettings.Size = new System.Drawing.Size(764, 504);
+            navigationPageSettings.ToolTip = "Settings";
+            // 
+            // svgImageCollectionNavigation
+            // 
+            svgImageCollectionNavigation.ImageSize = new System.Drawing.Size(32, 32);
+            svgImageCollectionNavigation.Add("Scan", "Wamby.Resources.Images.Menu.Scan.svg", "Wamby.Resources");
+            svgImageCollectionNavigation.Add("Results", "Wamby.Resources.Images.Menu.Results.svg", "Wamby.Resources");
+            svgImageCollectionNavigation.Add("Files", "Wamby.Resources.Images.Menu.Files.svg", "Wamby.Resources");
+            svgImageCollectionNavigation.Add("Map", "Wamby.Resources.Images.Menu.Map.svg", "Wamby.Resources");
+            svgImageCollectionNavigation.Add("Analysis", "Wamby.Resources.Images.Menu.Analysis.svg", "Wamby.Resources");
+            svgImageCollectionNavigation.Add("Errors", "Wamby.Resources.Images.Menu.Errors.svg", "Wamby.Resources");
+            svgImageCollectionNavigation.Add("Schedule", "Wamby.Resources.Images.Menu.Schedule.svg", "Wamby.Resources");
+            svgImageCollectionNavigation.Add("Settings", "Wamby.Resources.Images.Menu.Settings.svg", "Wamby.Resources");
             // 
             // NewScanForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(764, 528);
+            Controls.Add(navigationPane);
             Controls.Add(barDockControlLeft);
             Controls.Add(barDockControlRight);
             Controls.Add(barDockControlBottom);
             Controls.Add(barDockControlTop);
-            Controls.Add(toolbarFormControl1);
             Name = "NewScanForm";
             Text = "NewScanForm";
-            ToolbarFormControl = toolbarFormControl1;
-            ((System.ComponentModel.ISupportInitialize)toolbarFormControl1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)toolbarFormManager1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)barManager).EndInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection16).EndInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection32).EndInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollectionForm).EndInit();
+            ((System.ComponentModel.ISupportInitialize)navigationPane).EndInit();
+            navigationPane.ResumeLayout(false);
+            navigationPageScanFolder.ResumeLayout(false);
+            navigationPageResults.ResumeLayout(false);
+            navigationPageFiles.ResumeLayout(false);
+            navigationPageMap.ResumeLayout(false);
+            navigationPageAnalysis.ResumeLayout(false);
+            navigationPageErrors.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)svgImageCollectionNavigation).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private DevExpress.XtraBars.ToolbarForm.ToolbarFormControl toolbarFormControl1;
-        private DevExpress.XtraBars.ToolbarForm.ToolbarFormManager toolbarFormManager1;
+        private DevExpress.XtraBars.BarManager barManager;
+        private DevExpress.XtraBars.Bar bar;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemNewScan;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCancelScan;
+        private DevExpress.Utils.SvgImageCollection svgImageCollection16;
+        private DevExpress.Utils.SvgImageCollection svgImageCollection32;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemChangeFolder;
+        private DevExpress.Utils.SvgImageCollection svgImageCollectionForm;
+        private DevExpress.XtraBars.Navigation.NavigationPane navigationPane;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPageScanFolder;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPageResults;
+        private DevExpress.Utils.SvgImageCollection svgImageCollectionNavigation;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPageFiles;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPageMap;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPageAnalysis;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPageErrors;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPageSchedule;
+        private DevExpress.XtraBars.Navigation.NavigationPage navigationPageSettings;
+        private Modules.NewScanModule newScanModule;
+        private Modules.ResultsModule resultsModule;
+        private Modules.FilesModule filesModule;
+        private Modules.MapModule mapModule;
+        private Modules.AnalysisModule analysisModule;
+        private Modules.ErrorsModule errorsModule;
     }
 }

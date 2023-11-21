@@ -26,7 +26,7 @@ namespace Wamby.Client.Modules
             InitializeComponent();
         }
 
-        public void InitializeControl(API.Services.FileSystemScanService scanService)
+        public void InitializeControl(MainForm mainform, API.Services.FileSystemScanService scanService)
         {
             FileSystemScanService = scanService;
             Initialized = true;

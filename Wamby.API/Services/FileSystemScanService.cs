@@ -29,6 +29,8 @@ namespace Wamby.API.Services
         [JsonIgnore]
         public IProgress<Args.WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress { get; set; }
 
+        public event EventHandler BeginScan;
+        public event EventHandler EndScan;
         public event EventHandler CancelledScan;
 
         public FileSystemScanService()
@@ -65,6 +67,7 @@ namespace Wamby.API.Services
         FileSystemInfo _CurrentFileSystemInfo;
         public async Task<Core.Model.ScanResult> DoScan()
         {
+            BeginScan?.Invoke(this, new EventArgs());
             Clear();
             LogLines.Add(new Core.Model.LogLine()
             {
@@ -96,6 +99,7 @@ namespace Wamby.API.Services
                     p.DeepLenghtPercent = p.DeepLenght / totalDeepLenght;
                     p.DeepFilesCountPercent = p.DeepFilesCount / totalDeepFilesCount;
                 });
+                EndScan?.Invoke(this, new EventArgs());
             }
             clock.Stop();
             ScanResult.ElapsedTime = clock.Elapsed;
