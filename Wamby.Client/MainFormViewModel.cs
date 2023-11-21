@@ -48,10 +48,13 @@ namespace Wamby.Client
 
         internal void NewScan()
         {
+            Application.UseWaitCursor = true;
             var f = new NewScanForm();
-            f.MdiParent = Form as Form;
-            f.InitializeControl(Form, FileSystemScanService);
+            f.MdiParent = Form;
+            f.InitializeModules(Form);
+            f.InitializeControl(FileSystemScanService);
             f.Show();
+            Application.UseWaitCursor = false;
         }
     }
 }
