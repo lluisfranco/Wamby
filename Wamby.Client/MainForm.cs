@@ -1,16 +1,30 @@
 ﻿using DevExpress.Utils;
+using DevExpress.XtraBars;
 using DevExpress.XtraBars.ToolbarForm;
 using DevExpress.XtraEditors;
 using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 using Wamby.Client.DevExpressSkins;
+using Wamby.Client.Interfaces;
 
 namespace Wamby.Client
 {
-    public partial class MainForm : ToolbarForm
+    public partial class MainForm : ToolbarForm, IProgressMessage
     {
         public MainFormViewModel ViewModel { get; set; }
+        public IProgressMessage SetMessage(string message) {
+            barStaticItemMessage.Caption = message; return this; }
+        public IProgressMessage ClearMessage() {
+            barStaticItemMessage.Caption = "Ready"; return this; }
+        public IProgressMessage SetMessageLastScan(string message) {
+            barStaticItemMessageLastScan.Caption = message; return this; }        
+        public IProgressMessage ClearMessageLastScan() {
+            barStaticItemMessageLastScan.Caption = "Ready"; return this; }
+        public IProgressMessage SetProgress(int value) { 
+            barEditItemProgress.EditValue = value; barEditItemProgress.Visibility = BarItemVisibility.Always; return this; }
+        public IProgressMessage ClearProgress() { 
+            barEditItemProgress.EditValue = 0; barEditItemProgress.Visibility = BarItemVisibility.Never; return this; }
         public MainForm()
         {
             InitializeComponent();
