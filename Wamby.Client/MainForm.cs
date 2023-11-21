@@ -66,7 +66,9 @@ namespace Wamby.Client
             tabbedView.DocumentAdded += (s, e) => e.Document.ImageOptions.SvgImageSize = new Size(16, 16);
             barButtonItemNewScan.ItemClick += (s, e) =>
             {
+                documentManager.BeginUpdate();
                 ViewModel.NewScan();
+                documentManager.EndUpdate();
             };
         }
     }

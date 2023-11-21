@@ -57,8 +57,8 @@ namespace Wamby.Client
             barButtonItemCancelScan.ItemClick += BarButtonItemCancelScan_ItemClick;
             barButtonItemGoToResultsModule.ItemClick += BarButtonItemGoToResultsModule_ItemClick;
             barButtonItemGoToErrorsModule.ItemClick += BarButtonItemGoToErrorsModule_ItemClick;
-            newScanModule.StartingScan += NewScanModule_StartingScan;
-            newScanModule.EndingScan += NewScanModule_EndingScan;
+            //newScanModule.StartingScan += NewScanModule_StartingScan;
+            //newScanModule.EndingScan += NewScanModule_EndingScan;
             newScanModule.RequestNewScan += NewScanModule_RequestNewScan;
             resultsModule.RequestNewScan += ResultsModule_RequestNewScan;
             filesModule.RequestNewScan += FilesModule_RequestNewScan;

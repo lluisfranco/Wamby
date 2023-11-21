@@ -180,6 +180,7 @@
             // 
             // includeSubfoldersCheckEdit
             // 
+            includeSubfoldersCheckEdit.EditValue = true;
             includeSubfoldersCheckEdit.Location = new System.Drawing.Point(429, 53);
             includeSubfoldersCheckEdit.Name = "includeSubfoldersCheckEdit";
             includeSubfoldersCheckEdit.Properties.OffText = "Include Subfolders";

@@ -1,8 +1,8 @@
-﻿using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wamby.API.Args;
@@ -17,23 +17,26 @@ namespace Wamby.Client.Modules
         IModule, IModuleNewScanRequested
     {
         public MainForm MainForm { get; private set; }
-        //public Bar Bar { get { return bar; } }
 
         [Browsable(false)]
         public FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
-        //public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
-        public event EventHandler StartingScan;
-        public event EventHandler EndingScan;
+        //public event EventHandler StartingScan;
+        //public event EventHandler EndingScan;
         public event EventHandler RequestNewScan;
 
         Progress<WambyFolderEventArgs> ScanningFolderProgress;
-        Progress<Wamby.API.Args.WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress;
+        Progress<WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress;
 
         public NewScanModule()
         {
             InitializeComponent();
             SetProgressHandlers();
+            SetDefaultValues();
+        }
+
+        private void SetDefaultValues()
+        {
             imageComboBoxEditType.Properties.Items.AddEnum(typeof(ScanDetailTypeEnum));
             imageComboBoxEditType.EditValue = ScanDetailTypeEnum.Fast;
         }
@@ -67,11 +70,8 @@ namespace Wamby.Client.Modules
             try
             {
                 FileSystemScanService = scanService;
-                if (newScanPathButtonEdit.MaskBox != null)
-                {
-                    newScanPathButtonEdit.MaskBox.AutoCompleteMode = AutoCompleteMode.Suggest;
-                    newScanPathButtonEdit.MaskBox.AutoCompleteSource = AutoCompleteSource.FileSystemDirectories;
-                }
+                newScanPathButtonEdit.Properties.AdvancedModeOptions.AutoCompleteMode = TextEditAutoCompleteMode.SuggestAppend;
+                newScanPathButtonEdit.Properties.AdvancedModeOptions.AutoCompleteSource = AutoCompleteSource.FileSystemDirectories;
                 RefreshScanOptionsControls();
                 FileSystemScanService.ScanningFolderProgress = ScanningFolderProgress;
                 FileSystemScanService.ErrorReadingFileSystemInfoProgress = ErrorReadingFileSystemInfoProgress;
@@ -178,6 +178,7 @@ namespace Wamby.Client.Modules
             if (newScanPathButtonEdit.Text.LastOrDefault() == System.IO.Path.DirectorySeparatorChar &&
                 newScanPathButtonEdit.Text.Split(System.IO.Path.DirectorySeparatorChar).Length > 2)
                 newScanPathButtonEdit.Text = newScanPathButtonEdit.Text.Remove(newScanPathButtonEdit.Text.Length - 1, 1);
+            //TODO - validation control
             if (!System.IO.Directory.Exists(newScanPathButtonEdit.Text))
             {
                 MessageBox.Show($"Folder: '{newScanPathButtonEdit.Text}' doesn't exists.",
@@ -185,13 +186,13 @@ namespace Wamby.Client.Modules
                 return null;
             }
             FileSystemScanService.Clear();
-            FileSystemScanService.DetailType = (API.Enums.ScanDetailTypeEnum)imageComboBoxEditType.EditValue;
+            FileSystemScanService.DetailType = (ScanDetailTypeEnum)imageComboBoxEditType.EditValue;
             FileSystemScanService.ScanOptions.BaseFolderPath = newScanPathButtonEdit.Text;
             FileSystemScanService.ScanOptions.IncludeSubFolders = includeSubfoldersCheckEdit.IsOn;
             FileSystemScanService.ScanOptions.SearchPattern = searchPatternButtonEdit.Text;
             FileSystemScanService.ScanOptions.ShowMinimumFolderLevelInLog =
                 Properties.Settings.Default.ShowMinimumFolderLevelInLog;
-            FileSystemScanService.UserName = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+            FileSystemScanService.UserName = WindowsIdentity.GetCurrent().Name;
             FileSystemScanService.ComputerName = Environment.MachineName;
             FileSystemScanService.OSVersionName = Environment.OSVersion.ToString();
             FileSystemScanService.ScanDate = DateTime.Now;
@@ -225,7 +226,7 @@ namespace Wamby.Client.Modules
 
         void StartScan()
         {
-            StartingScan?.Invoke(this, new EventArgs());
+
             ActivateUI(false);
         }
 
@@ -233,7 +234,7 @@ namespace Wamby.Client.Modules
         {
             ActivateUI(true);
             RefreshScanOptionsControls();
-            EndingScan?.Invoke(this, new EventArgs());
+            FileSystemScanService?.RaiseEndScan();
         }
 
         private void ActivateUI(bool activated)
