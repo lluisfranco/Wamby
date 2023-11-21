@@ -59,9 +59,12 @@ namespace Wamby.Client
             {
                 MdiParent = Form
             };
+            f.Show();
+            Application.DoEvents();
+            f.ShowProgressPanel();
             f.InitializeModules(Form);
             f.InitializeControl(FileSystemScanService);
-            f.Show();
+            f.HideProgressPanel();
             Application.UseWaitCursor = false;
         }
     }

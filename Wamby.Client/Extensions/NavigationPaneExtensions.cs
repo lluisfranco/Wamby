@@ -23,8 +23,8 @@ namespace Wamby.Client
             navigationPage != null && navigationPage.Controls.Count > 0
             ? navigationPage.Controls[0] as IModule : default;
 
-        public static void InitializeModule(this NavigationPage navigationPage, 
-            XtraUserControl module, IProgressMessage progress, string progressMessage, int progressValue)
+        public static IModule InitializeModule(this NavigationPage navigationPage,
+            XtraUserControl module, IProgressMessage progress, string progressMessage, int progressValue, bool enabled = false)
         {
             progress?.SetMessage($"Loading {progressMessage} module").SetProgress(progressValue);
             Application.DoEvents();
@@ -33,6 +33,8 @@ namespace Wamby.Client
             module.Name = "newScanModule";
             navigationPage.Controls.Add(module);
             navigationPage.ResumeLayout();
+            navigationPage.PageEnabled = enabled;
+            return module as IModule;
         }
 
         public static NavigationPane AddTabMergeModulesRibbonSupport(
