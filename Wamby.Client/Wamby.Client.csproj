@@ -20,9 +20,7 @@
     <Compile Update="Modules\ErrorsModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="Modules\NewScanModule.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Update="Modules\NewScanModule.cs" />
     <Compile Update="Modules\MapModule.cs">
       <SubType>UserControl</SubType>
     </Compile>

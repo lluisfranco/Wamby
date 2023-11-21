@@ -1,44 +1,50 @@
-﻿using DevExpress.XtraSplashScreen;
+﻿using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 using System;
-using System.Linq;
 using System.ComponentModel;
-using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Wamby.Client.Extensions;
+using Wamby.API.Args;
+using Wamby.API.Enums;
+using Wamby.API.Services;
+using Wamby.Client.Interfaces;
 using Wamby.Core.Model;
 
 namespace Wamby.Client.Modules
 {
-    public partial class NewScanModule : DevExpress.XtraEditors.XtraUserControl,
-        Interfaces.IModule, Interfaces.IModuleRibbon, Interfaces.IModuleNewScanRequested
+    public partial class NewScanModule : XtraUserControl,
+        IModule, IModuleNewScanRequested
     {
+        public MainForm MainForm { get; private set; }
+        //public Bar Bar { get { return bar; } }
+
         [Browsable(false)]
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
-        public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
+        //public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
         public event EventHandler StartingScan;
         public event EventHandler EndingScan;
         public event EventHandler RequestNewScan;
 
-        Progress<Wamby.API.Args.WambyFolderEventArgs> ScanningFolderProgress;
+        Progress<WambyFolderEventArgs> ScanningFolderProgress;
         Progress<Wamby.API.Args.WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress;
 
         public NewScanModule()
         {
             InitializeComponent();
             SetProgressHandlers();
-            imageComboBoxEditType.Properties.Items.AddEnum(typeof(API.Enums.ScanDetailTypeEnum));
-            imageComboBoxEditType.EditValue = API.Enums.ScanDetailTypeEnum.Fast;
+            imageComboBoxEditType.Properties.Items.AddEnum(typeof(ScanDetailTypeEnum));
+            imageComboBoxEditType.EditValue = ScanDetailTypeEnum.Fast;
         }
 
         private void SetProgressHandlers()
         {
-            ScanningFolderProgress = new Progress<API.Args.WambyFolderEventArgs>(args =>
+            ScanningFolderProgress = new Progress<WambyFolderEventArgs>(args =>
             {
                 RefreshModuleData();
             });
-            ErrorReadingFileSystemInfoProgress = new Progress<Wamby.API.Args.WambyFileSystemInfoEventArgs>(args =>
+            ErrorReadingFileSystemInfoProgress = new Progress<WambyFileSystemInfoEventArgs>(args =>
             {
                 RefreshModuleData();
             });
@@ -56,7 +62,7 @@ namespace Wamby.Client.Modules
             return newScanPathButtonEdit.Text;
         }
 
-        public void InitializeControl(API.Services.FileSystemScanService scanService)
+        public void InitializeControl(MainForm mainform, FileSystemScanService scanService)
         {
             try
             {
@@ -94,11 +100,11 @@ namespace Wamby.Client.Modules
 
         public void RefreshScanOptionsControls()
         {
-            scanOptionsGroupControl.Text = $"Scan options - {FileSystemScanService.UserName} on " +
-                $"{FileSystemScanService.ComputerName} ({FileSystemScanService.OSVersionName}) at " +
-                $"{FileSystemScanService.ScanDate.ToString()}";
+            //scanOptionsGroupControl.Text = $"Scan options - {FileSystemScanService.UserName} on " +
+            //    $"{FileSystemScanService.ComputerName} ({FileSystemScanService.OSVersionName}) at " +
+            //    $"{FileSystemScanService.ScanDate.ToString()}";
             newScanPathButtonEdit.Text = FileSystemScanService.ScanOptions.BaseFolderPath;
-            includeSubfoldersCheckEdit.Checked = FileSystemScanService.ScanOptions.IncludeSubFolders;
+            includeSubfoldersCheckEdit.IsOn = FileSystemScanService.ScanOptions.IncludeSubFolders;
             searchPatternButtonEdit.Text = FileSystemScanService.ScanOptions.SearchPattern;
             imageComboBoxEditType.EditValue = FileSystemScanService.DetailType;
         }
@@ -106,15 +112,15 @@ namespace Wamby.Client.Modules
         private void SetEventHandlers()
         {
             newScanPathButtonEdit.ButtonClick += NewScanPathButtonEdit_ButtonClick;
-            scanLogGroupControl.CustomButtonClick += ScanLogGroupControl_CustomButtonClick;
+            //scanLogGroupControl.CustomButtonClick += ScanLogGroupControl_CustomButtonClick;
             newScanPathButtonEdit.KeyDown += NewScanPathButtonEdit_KeyDown;
-            barButtonItemChangeFolder.ItemClick += BarButtonItemChangeFolder_ItemClick;
-            barButtonItemOpenFolder.ItemClick += BarButtonItemOpenFolder_ItemClick;
-            barButtonItemOpenTerminal.ItemClick += BarButtonItemOpenTerminal_ItemClick;
-            barButtonItemOpenInNewWamby.ItemClick += BarButtonItemOpenInNewWamby_ItemClick;
-            barButtonItemCopyPath.ItemClick += BarButtonItemCopyPath_ItemClick;
-            barButtonItemShowProperties.ItemClick += BarButtonItemShowProperties_ItemClick;
-            barButtonItemDelete.ItemClick += BarButtonItemDelete_ItemClick;
+            //barButtonItemChangeFolder.ItemClick += BarButtonItemChangeFolder_ItemClick;
+            //barButtonItemOpenFolder.ItemClick += BarButtonItemOpenFolder_ItemClick;
+            //barButtonItemOpenTerminal.ItemClick += BarButtonItemOpenTerminal_ItemClick;
+            //barButtonItemOpenInNewWamby.ItemClick += BarButtonItemOpenInNewWamby_ItemClick;
+            //barButtonItemCopyPath.ItemClick += BarButtonItemCopyPath_ItemClick;
+            //barButtonItemShowProperties.ItemClick += BarButtonItemShowProperties_ItemClick;
+            //barButtonItemDelete.ItemClick += BarButtonItemDelete_ItemClick;
             gridViewLog.FocusedRowObjectChanged += GridViewLog_FocusedRowObjectChanged;
             gridViewLog.MouseDown += GridViewLog_MouseDown;
         }
@@ -181,7 +187,7 @@ namespace Wamby.Client.Modules
             FileSystemScanService.Clear();
             FileSystemScanService.DetailType = (API.Enums.ScanDetailTypeEnum)imageComboBoxEditType.EditValue;
             FileSystemScanService.ScanOptions.BaseFolderPath = newScanPathButtonEdit.Text;
-            FileSystemScanService.ScanOptions.IncludeSubFolders = includeSubfoldersCheckEdit.Checked;
+            FileSystemScanService.ScanOptions.IncludeSubFolders = includeSubfoldersCheckEdit.IsOn;
             FileSystemScanService.ScanOptions.SearchPattern = searchPatternButtonEdit.Text;
             FileSystemScanService.ScanOptions.ShowMinimumFolderLevelInLog =
                 Properties.Settings.Default.ShowMinimumFolderLevelInLog;
@@ -232,9 +238,9 @@ namespace Wamby.Client.Modules
 
         private void ActivateUI(bool activated)
         {
-            barButtonItemChangeFolder.Enabled = activated;
-            barButtonItemOpenFolder.Enabled = activated;
-            barButtonItemOpenInNewWamby.Enabled = activated;
+            //barButtonItemChangeFolder.Enabled = activated;
+            //barButtonItemOpenFolder.Enabled = activated;
+            //barButtonItemOpenInNewWamby.Enabled = activated;
             newScanPathButtonEdit.ReadOnly = !activated;
             newScanPathButtonEdit.Properties.Buttons[0].Enabled = activated;
             newScanPathButtonEdit.Properties.Buttons[1].Enabled = activated;
@@ -247,12 +253,12 @@ namespace Wamby.Client.Modules
         {
             var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
             var exists = System.IO.Directory.Exists(item.Value);
-            barButtonItemOpenFolder.Enabled = exists;
-            barButtonItemOpenTerminal.Enabled = exists;
-            barButtonItemOpenInNewWamby.Enabled = exists;
-            barButtonItemCopyPath.Enabled = exists;
-            barButtonItemShowProperties.Enabled = exists;
-            barButtonItemDelete.Enabled = exists;
+            //barButtonItemOpenFolder.Enabled = exists;
+            //barButtonItemOpenTerminal.Enabled = exists;
+            //barButtonItemOpenInNewWamby.Enabled = exists;
+            //barButtonItemCopyPath.Enabled = exists;
+            //barButtonItemShowProperties.Enabled = exists;
+            //barButtonItemDelete.Enabled = exists;
         }
 
         private void BarButtonItemOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

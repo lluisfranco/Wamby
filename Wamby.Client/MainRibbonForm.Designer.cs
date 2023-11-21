@@ -97,18 +97,18 @@
             fluentDesignFormContainer1.Controls.Add(ribbonStatusBar);
             fluentDesignFormContainer1.Controls.Add(ribbon);
             fluentDesignFormContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 33);
+            fluentDesignFormContainer1.Location = new System.Drawing.Point(260, 31);
             fluentDesignFormContainer1.Name = "fluentDesignFormContainer1";
-            fluentDesignFormContainer1.Size = new System.Drawing.Size(1254, 722);
+            fluentDesignFormContainer1.Size = new System.Drawing.Size(1254, 724);
             fluentDesignFormContainer1.TabIndex = 0;
             // 
             // tabControl
             // 
             tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            tabControl.Location = new System.Drawing.Point(0, 38);
+            tabControl.Location = new System.Drawing.Point(0, 31);
             tabControl.Name = "tabControl";
             tabControl.SelectedTabPage = tabPageNewScan;
-            tabControl.Size = new System.Drawing.Size(1254, 647);
+            tabControl.Size = new System.Drawing.Size(1254, 666);
             tabControl.TabIndex = 3;
             tabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] { tabPageNewScan, tabPageResults, tabPageFiles, tabPageMap, tabPageAnalysis, tabPageErrors, tabPageSchedule, tabPageSettings });
             tabControl.TabPageWidth = 90;
@@ -118,7 +118,7 @@
             tabPageNewScan.Controls.Add(newScanModule);
             tabPageNewScan.Name = "tabPageNewScan";
             tabPageNewScan.ShowCloseButton = DevExpress.Utils.DefaultBoolean.True;
-            tabPageNewScan.Size = new System.Drawing.Size(1252, 616);
+            tabPageNewScan.Size = new System.Drawing.Size(1252, 641);
             tabPageNewScan.Text = "New Scan";
             // 
             // newScanModule
@@ -126,14 +126,14 @@
             newScanModule.Dock = System.Windows.Forms.DockStyle.Fill;
             newScanModule.Location = new System.Drawing.Point(0, 0);
             newScanModule.Name = "newScanModule";
-            newScanModule.Size = new System.Drawing.Size(1252, 616);
+            newScanModule.Size = new System.Drawing.Size(1252, 641);
             newScanModule.TabIndex = 0;
             // 
             // tabPageResults
             // 
             tabPageResults.Controls.Add(resultsModule);
             tabPageResults.Name = "tabPageResults";
-            tabPageResults.Size = new System.Drawing.Size(1252, 616);
+            tabPageResults.Size = new System.Drawing.Size(1252, 641);
             tabPageResults.Text = "Results";
             // 
             // resultsModule
@@ -142,7 +142,7 @@
             resultsModule.Location = new System.Drawing.Point(0, 0);
             resultsModule.Name = "resultsModule";
             resultsModule.Padding = new System.Windows.Forms.Padding(3);
-            resultsModule.Size = new System.Drawing.Size(1252, 616);
+            resultsModule.Size = new System.Drawing.Size(1252, 641);
             resultsModule.TabIndex = 0;
             // 
             // tabPageFiles
@@ -150,7 +150,7 @@
             tabPageFiles.Controls.Add(filesModule);
             tabPageFiles.Name = "tabPageFiles";
             tabPageFiles.Padding = new System.Windows.Forms.Padding(3);
-            tabPageFiles.Size = new System.Drawing.Size(1252, 616);
+            tabPageFiles.Size = new System.Drawing.Size(1252, 639);
             tabPageFiles.Text = "Files";
             // 
             // filesModule
@@ -158,14 +158,14 @@
             filesModule.Dock = System.Windows.Forms.DockStyle.Fill;
             filesModule.Location = new System.Drawing.Point(3, 3);
             filesModule.Name = "filesModule";
-            filesModule.Size = new System.Drawing.Size(1246, 610);
+            filesModule.Size = new System.Drawing.Size(1246, 633);
             filesModule.TabIndex = 0;
             // 
             // tabPageMap
             // 
             tabPageMap.Controls.Add(mapModule);
             tabPageMap.Name = "tabPageMap";
-            tabPageMap.Size = new System.Drawing.Size(1252, 616);
+            tabPageMap.Size = new System.Drawing.Size(1252, 639);
             tabPageMap.Text = "Map";
             // 
             // mapModule
@@ -174,14 +174,14 @@
             mapModule.Location = new System.Drawing.Point(0, 0);
             mapModule.Name = "mapModule";
             mapModule.Padding = new System.Windows.Forms.Padding(3);
-            mapModule.Size = new System.Drawing.Size(1252, 616);
+            mapModule.Size = new System.Drawing.Size(1252, 639);
             mapModule.TabIndex = 0;
             // 
             // tabPageAnalysis
             // 
             tabPageAnalysis.Controls.Add(analysisModule);
             tabPageAnalysis.Name = "tabPageAnalysis";
-            tabPageAnalysis.Size = new System.Drawing.Size(1252, 616);
+            tabPageAnalysis.Size = new System.Drawing.Size(1252, 639);
             tabPageAnalysis.Text = "Analyze";
             // 
             // analysisModule
@@ -190,7 +190,7 @@
             analysisModule.Location = new System.Drawing.Point(0, 0);
             analysisModule.Name = "analysisModule";
             analysisModule.Padding = new System.Windows.Forms.Padding(3);
-            analysisModule.Size = new System.Drawing.Size(1252, 616);
+            analysisModule.Size = new System.Drawing.Size(1252, 639);
             analysisModule.TabIndex = 0;
             // 
             // tabPageErrors
@@ -198,7 +198,7 @@
             tabPageErrors.Controls.Add(errorsModule);
             tabPageErrors.Name = "tabPageErrors";
             tabPageErrors.Padding = new System.Windows.Forms.Padding(3);
-            tabPageErrors.Size = new System.Drawing.Size(1252, 616);
+            tabPageErrors.Size = new System.Drawing.Size(1252, 639);
             tabPageErrors.Text = "Errors";
             // 
             // errorsModule
@@ -206,19 +206,19 @@
             errorsModule.Dock = System.Windows.Forms.DockStyle.Fill;
             errorsModule.Location = new System.Drawing.Point(3, 3);
             errorsModule.Name = "errorsModule";
-            errorsModule.Size = new System.Drawing.Size(1246, 610);
+            errorsModule.Size = new System.Drawing.Size(1246, 633);
             errorsModule.TabIndex = 0;
             // 
             // tabPageSchedule
             // 
             tabPageSchedule.Name = "tabPageSchedule";
-            tabPageSchedule.Size = new System.Drawing.Size(1252, 616);
+            tabPageSchedule.Size = new System.Drawing.Size(1252, 639);
             tabPageSchedule.Text = "Schedule";
             // 
             // tabPageSettings
             // 
             tabPageSettings.Name = "tabPageSettings";
-            tabPageSettings.Size = new System.Drawing.Size(1252, 616);
+            tabPageSettings.Size = new System.Drawing.Size(1252, 639);
             tabPageSettings.Text = "Settings";
             // 
             // ribbonStatusBar
@@ -226,10 +226,10 @@
             ribbonStatusBar.ItemLinks.Add(barStaticItemStatusMessage, true);
             ribbonStatusBar.ItemLinks.Add(barButtonItemGoToResultsModule);
             ribbonStatusBar.ItemLinks.Add(barButtonItemGoToErrorsModule);
-            ribbonStatusBar.Location = new System.Drawing.Point(0, 685);
+            ribbonStatusBar.Location = new System.Drawing.Point(0, 697);
             ribbonStatusBar.Name = "ribbonStatusBar";
             ribbonStatusBar.Ribbon = ribbon;
-            ribbonStatusBar.Size = new System.Drawing.Size(1254, 37);
+            ribbonStatusBar.Size = new System.Drawing.Size(1254, 27);
             // 
             // barStaticItemStatusMessage
             // 
@@ -266,7 +266,7 @@
             ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] { ribbonPageMain });
             ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
             ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
-            ribbon.Size = new System.Drawing.Size(1254, 38);
+            ribbon.Size = new System.Drawing.Size(1254, 31);
             ribbon.StatusBar = ribbonStatusBar;
             // 
             // skinDropDownButtonItem1
@@ -376,11 +376,11 @@
             // 
             accordionControl.Dock = System.Windows.Forms.DockStyle.Left;
             accordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] { accordionControlElementFileSystem, accordionControlElementOptions });
-            accordionControl.Location = new System.Drawing.Point(0, 33);
+            accordionControl.Location = new System.Drawing.Point(0, 31);
             accordionControl.Name = "accordionControl";
             accordionControl.OptionsMinimizing.NormalWidth = 260;
             accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            accordionControl.Size = new System.Drawing.Size(260, 722);
+            accordionControl.Size = new System.Drawing.Size(260, 724);
             accordionControl.TabIndex = 1;
             accordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -459,7 +459,7 @@
             fluentDesignFormControl1.FluentDesignForm = this;
             fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            fluentDesignFormControl1.Size = new System.Drawing.Size(1514, 33);
+            fluentDesignFormControl1.Size = new System.Drawing.Size(1514, 31);
             fluentDesignFormControl1.TabIndex = 2;
             fluentDesignFormControl1.TabStop = false;
             // 

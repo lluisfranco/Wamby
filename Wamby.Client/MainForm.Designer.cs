@@ -45,13 +45,21 @@
             barButtonItemSaveScan = new DevExpress.XtraBars.BarButtonItem();
             svgImageCollection32 = new DevExpress.Utils.SvgImageCollection(components);
             documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(components);
-            tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(components);
+            tabbedView = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(components);
+            svgImageCollectionForm = new DevExpress.Utils.SvgImageCollection(components);
+            bar1 = new DevExpress.XtraBars.Bar();
+            barEditItemProgress = new DevExpress.XtraBars.BarEditItem();
+            repositoryItemProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemProgressBar();
+            barStaticItemMessage = new DevExpress.XtraBars.BarStaticItem();
+            barStaticItemMessageLastScan = new DevExpress.XtraBars.BarStaticItem();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection16).BeginInit();
             ((System.ComponentModel.ISupportInitialize)toolbarFormControl).BeginInit();
             ((System.ComponentModel.ISupportInitialize)toolbarFormManager).BeginInit();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection32).BeginInit();
             ((System.ComponentModel.ISupportInitialize)documentManager).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)tabbedView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tabbedView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollectionForm).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemProgressBar1).BeginInit();
             SuspendLayout();
             // 
             // toolbarFormControl
@@ -72,15 +80,18 @@
             // 
             // toolbarFormManager
             // 
+            toolbarFormManager.Bars.AddRange(new DevExpress.XtraBars.Bar[] { bar1 });
             toolbarFormManager.DockControls.Add(barDockControlTop);
             toolbarFormManager.DockControls.Add(barDockControlBottom);
             toolbarFormManager.DockControls.Add(barDockControlLeft);
             toolbarFormManager.DockControls.Add(barDockControlRight);
             toolbarFormManager.Form = this;
             toolbarFormManager.Images = svgImageCollection16;
-            toolbarFormManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemNewScan, skinDropDownButtonItem, skinPaletteDropDownButtonItem, barCheckItemCompactUI, barButtonItemOpenScan, barButtonItemSaveScan });
+            toolbarFormManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemNewScan, skinDropDownButtonItem, skinPaletteDropDownButtonItem, barCheckItemCompactUI, barButtonItemOpenScan, barButtonItemSaveScan, barEditItemProgress, barStaticItemMessage, barStaticItemMessageLastScan });
             toolbarFormManager.LargeImages = svgImageCollection32;
-            toolbarFormManager.MaxItemId = 7;
+            toolbarFormManager.MaxItemId = 10;
+            toolbarFormManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemProgressBar1 });
+            toolbarFormManager.StatusBar = bar1;
             // 
             // barDockControlTop
             // 
@@ -94,9 +105,9 @@
             // 
             barDockControlBottom.CausesValidation = false;
             barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            barDockControlBottom.Location = new System.Drawing.Point(0, 745);
+            barDockControlBottom.Location = new System.Drawing.Point(0, 720);
             barDockControlBottom.Manager = toolbarFormManager;
-            barDockControlBottom.Size = new System.Drawing.Size(1095, 0);
+            barDockControlBottom.Size = new System.Drawing.Size(1095, 25);
             // 
             // barDockControlLeft
             // 
@@ -104,7 +115,7 @@
             barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             barDockControlLeft.Location = new System.Drawing.Point(0, 31);
             barDockControlLeft.Manager = toolbarFormManager;
-            barDockControlLeft.Size = new System.Drawing.Size(0, 714);
+            barDockControlLeft.Size = new System.Drawing.Size(0, 689);
             // 
             // barDockControlRight
             // 
@@ -112,7 +123,7 @@
             barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             barDockControlRight.Location = new System.Drawing.Point(1095, 31);
             barDockControlRight.Manager = toolbarFormManager;
-            barDockControlRight.Size = new System.Drawing.Size(0, 714);
+            barDockControlRight.Size = new System.Drawing.Size(0, 689);
             // 
             // barButtonItemNewScan
             // 
@@ -172,8 +183,55 @@
             // 
             documentManager.MdiParent = this;
             documentManager.MenuManager = toolbarFormManager;
-            documentManager.View = tabbedView1;
-            documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { tabbedView1 });
+            documentManager.View = tabbedView;
+            documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] { tabbedView });
+            // 
+            // tabbedView
+            // 
+            tabbedView.DocumentProperties.AllowPin = true;
+            tabbedView.DocumentProperties.UseFormIconAsDocumentImage = true;
+            // 
+            // svgImageCollectionForm
+            // 
+            svgImageCollectionForm.Add("AppIcon", "Wamby.Resources.Images.AppIcon.svg", "Wamby.Resources");
+            // 
+            // bar1
+            // 
+            bar1.BarName = "Custom 2";
+            bar1.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            bar1.DockCol = 0;
+            bar1.DockRow = 0;
+            bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, barEditItemProgress, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph), new DevExpress.XtraBars.LinkPersistInfo(barStaticItemMessage), new DevExpress.XtraBars.LinkPersistInfo(barStaticItemMessageLastScan) });
+            bar1.OptionsBar.AllowQuickCustomization = false;
+            bar1.OptionsBar.DrawDragBorder = false;
+            bar1.OptionsBar.UseWholeRow = true;
+            bar1.Text = "Custom 2";
+            // 
+            // barEditItemProgress
+            // 
+            barEditItemProgress.Edit = repositoryItemProgressBar1;
+            barEditItemProgress.EditWidth = 150;
+            barEditItemProgress.Id = 7;
+            barEditItemProgress.Name = "barEditItemProgress";
+            // 
+            // repositoryItemProgressBar1
+            // 
+            repositoryItemProgressBar1.Name = "repositoryItemProgressBar1";
+            // 
+            // barStaticItemMessage
+            // 
+            barStaticItemMessage.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring;
+            barStaticItemMessage.Caption = "Ready";
+            barStaticItemMessage.Id = 8;
+            barStaticItemMessage.Name = "barStaticItemMessage";
+            // 
+            // barStaticItemMessageLastScan
+            // 
+            barStaticItemMessageLastScan.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            barStaticItemMessageLastScan.Caption = "No scan data";
+            barStaticItemMessageLastScan.Id = 9;
+            barStaticItemMessageLastScan.Name = "barStaticItemMessageLastScan";
             // 
             // MainForm
             // 
@@ -194,7 +252,9 @@
             ((System.ComponentModel.ISupportInitialize)toolbarFormManager).EndInit();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection32).EndInit();
             ((System.ComponentModel.ISupportInitialize)documentManager).EndInit();
-            ((System.ComponentModel.ISupportInitialize)tabbedView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tabbedView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollectionForm).EndInit();
+            ((System.ComponentModel.ISupportInitialize)repositoryItemProgressBar1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -214,9 +274,15 @@
         private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem;
         private DevExpress.XtraBars.SkinPaletteDropDownButtonItem skinPaletteDropDownButtonItem;
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager;
-        private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
+        private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView;
         private DevExpress.XtraBars.BarCheckItem barCheckItemCompactUI;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenScan;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSaveScan;
+        private DevExpress.Utils.SvgImageCollection svgImageCollectionForm;
+        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.BarEditItem barEditItemProgress;
+        private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
+        private DevExpress.XtraBars.BarStaticItem barStaticItemMessage;
+        private DevExpress.XtraBars.BarStaticItem barStaticItemMessageLastScan;
     }
 }

@@ -1,23 +1,21 @@
 ﻿using DevExpress.Utils;
-using DevExpress.XtraBars;
-using DevExpress.XtraBars.Helpers;
-using DevExpress.XtraBars.Ribbon.Gallery;
 using DevExpress.XtraBars.ToolbarForm;
 using DevExpress.XtraEditors;
+using System.Drawing;
 using System.Reflection;
-using System.Windows.Controls.Ribbon;
 using System.Windows.Forms;
 using Wamby.Client.DevExpressSkins;
-using Wamby.Client.ViewModels;
 
 namespace Wamby.Client
 {
     public partial class MainForm : ToolbarForm
     {
-        public MainFormViewModel ViewModel { get; set; } = new MainFormViewModel();
+        public MainFormViewModel ViewModel { get; set; }
         public MainForm()
         {
             InitializeComponent();
+            ViewModel = new MainFormViewModel(this);
+            IconOptions.SvgImage = svgImageCollectionForm[0];
             Text = string.Format($"{Application.ProductName} - " +
                 $"{Assembly.GetExecutingAssembly().GetName().Version}");
             Shown += (s, e) =>
@@ -42,19 +40,20 @@ namespace Wamby.Client
             };
             toolbarFormManager.Merge += (s, e) =>
             {
-                
+                var form = e.ChildManager.Form as IChildForm;
+                var bar = form?.Bar;
+                var items = bar?.ItemLinks;
+                toolbarFormControl.TitleItemLinks.Merge(items);
             };
+            toolbarFormManager.UnMerge += (s, e) =>
+            {
+                toolbarFormControl.TitleItemLinks.UnMerge();
+            };
+            tabbedView.DocumentAdded += (s, e) => e.Document.ImageOptions.SvgImageSize = new Size(16, 16);
             barButtonItemNewScan.ItemClick += (s, e) =>
             {
-                var f = new NewScanForm();
-                f.MdiParent = this;
-                f.Show();
+                ViewModel.NewScan();
             };
-        }
-
-        public void MergeTB(ToolbarFormControl c)
-        {
-            toolbarFormControl.MergeToolbar(c);
         }
     }
 }

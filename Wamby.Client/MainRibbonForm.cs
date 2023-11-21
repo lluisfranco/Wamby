@@ -107,12 +107,12 @@ namespace Wamby.Client
 
         private void InitializeModules()
         {
-            newScanModule?.InitializeControl(ViewModel.FileSystemScanService);
-            resultsModule?.InitializeControl(ViewModel.FileSystemScanService);
-            filesModule?.InitializeControl(ViewModel.FileSystemScanService);
-            mapModule?.InitializeControl(ViewModel.FileSystemScanService);
-            analysisModule?.InitializeControl(ViewModel.FileSystemScanService);
-            errorsModule?.InitializeControl(ViewModel.FileSystemScanService);
+            //newScanModule?.InitializeControl(ViewModel.FileSystemScanService);
+            //resultsModule?.InitializeControl(ViewModel.FileSystemScanService);
+            //filesModule?.InitializeControl(ViewModel.FileSystemScanService);
+            //mapModule?.InitializeControl(ViewModel.FileSystemScanService);
+            //analysisModule?.InitializeControl(ViewModel.FileSystemScanService);
+            //errorsModule?.InitializeControl(ViewModel.FileSystemScanService);
         }
 
         private async void BarButtonItemDoScan_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

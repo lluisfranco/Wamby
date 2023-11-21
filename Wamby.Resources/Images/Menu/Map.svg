@@ -1,0 +1,36 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg viewBox="-2 -2.0775 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Layer_1" transform="translate(-0.9333, -1.089)">
+    <g transform="matrix(0.9333, 0, 0, 0.9333, 0, 0)">
+      <g transform="matrix(1.0715, 0, 0, 1.0715, 0, 0)">
+        <g transform="matrix(0.9333, 0, 0, 0.9333, 0, 0)">
+          <g id="icon">
+            <path d="M2.8495, 4.8079L10.9979, 2.1068C11.2529, 2.0215 11.5286, 2.0215 11.7836, 2.1068L20.3153, 4.9606C20.5703, 5.0459 20.846, 5.0459 21.101, 4.9606L28.3648, 2.5224C29.1693, 2.2533 30, 2.8542 30, 3.7051L30, 26.0098C30, 26.5464 29.6578, 27.0228 29.1505, 27.1925L21.101, 29.8936C20.846, 29.9789 20.5703, 29.9789 20.3153, 29.8936L11.7836, 27.0398C11.5286, 26.9545 11.2529, 26.9545 10.9979, 27.0398L3.6353, 29.478C2.8307, 29.747 2, 29.1461 2, 28.2952L2, 5.9906C2, 5.454 2.3422, 4.9776 2.8495, 4.8079z" fill="#FFFFFF" fill-opacity="1" class="White" stroke="#377AB5" stroke-width="2px" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-0.9333, -1.089)">
+    <g transform="matrix(0.9333, 0, 0, 0.9333, 0, 0)">
+      <g transform="matrix(1.0715, 0, 0, 1.0715, 0, 0)">
+        <g transform="matrix(0.9333, 0, 0, 0.9333, 0, 0)">
+          <g id="icon">
+            <line x1="11.5" y1="2.1" x2="11.5" y2="26.9" fill="none" stroke="#377AB5" stroke-width="1px" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-0.9333, -1.089)">
+    <g transform="matrix(0.9333, 0, 0, 0.9333, 0, 0)">
+      <g transform="matrix(1.0715, 0, 0, 1.0715, 0, 0)">
+        <g transform="matrix(0.9333, 0, 0, 0.9333, 0, 0)">
+          <g id="icon">
+            <line x1="20.5" y1="5.1" x2="20.5" y2="29.9" fill="none" stroke="#377AB5" stroke-width="1px" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-opacity="1" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
