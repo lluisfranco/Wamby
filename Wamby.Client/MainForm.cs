@@ -47,7 +47,7 @@ namespace Wamby.Client
                 $"{Assembly.GetExecutingAssembly().GetName().Version}");
             Shown += (s, e) =>
             {
-                var settings = WambyApplication.SettingsService.LoadSettings();
+                var settings = ViewModel.LoadSettings();
                 DevExpressSkinHelper.SetTheme(settings.Skin.SkinName, settings.Skin.SkinPalette);
                 DevExpressSkinHelper.SetCompactUI(settings.Skin.UseCompactUI, barCheckItemCompactUI);
                 DevExpressSkinHelper.AddDisplayAdvancedOptions(

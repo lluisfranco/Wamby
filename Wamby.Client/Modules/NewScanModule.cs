@@ -57,11 +57,6 @@ namespace Wamby.Client.Modules
             gridViewLog.FocusedRowHandle = gridViewLog.RowCount - 1;
         }
 
-        //public string GetSelectedPath()
-        //{
-        //    return newScanPathButtonEdit.Text;
-        //}
-
         public void InitializeControl(MainForm mainform, FileSystemScanService scanService)
         {
             try
@@ -228,9 +223,6 @@ namespace Wamby.Client.Modules
 
         private void ActivateUI(bool activated)
         {
-            //barButtonItemChangeFolder.Enabled = activated;
-            //barButtonItemOpenFolder.Enabled = activated;
-            //barButtonItemOpenInNewWamby.Enabled = activated;
             newScanPathButtonEdit.ReadOnly = !activated;
             newScanPathButtonEdit.Properties.Buttons[0].Enabled = activated;
             newScanPathButtonEdit.Properties.Buttons[1].Enabled = activated;

@@ -112,6 +112,7 @@
             barEditItemProgress.EditWidth = 150;
             barEditItemProgress.Id = 7;
             barEditItemProgress.Name = "barEditItemProgress";
+            barEditItemProgress.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // repositoryItemProgressBar1
             // 
