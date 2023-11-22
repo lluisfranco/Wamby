@@ -23,6 +23,9 @@
     <EmbeddedResource Remove="MainRibbonForm.resx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Forms\WelcomeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Modules\AnalysisModule.cs">
       <SubType>UserControl</SubType>
     </Compile>

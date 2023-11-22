@@ -15,6 +15,7 @@ namespace Wamby.Settings
         public bool Layouts_SaveOnExit { get; set; } = true;
         public bool Layouts_LoadOnStart { get; set; } = true;
         public bool SaveToFileReadableFormat { get; set; } = true;
+        public bool ShowWelcomeOnStartup { get; set; } = true;
         public SkinSettings Skin { get; set; } = new();
         public class SkinSettings
         {

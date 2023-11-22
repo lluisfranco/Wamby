@@ -44,6 +44,7 @@
     <None Remove="Images\NewScan_CancelScan.svg" />
     <None Remove="Images\NewScan_Change_Folder.svg" />
     <None Remove="Images\NewScan_ScanNow.svg" />
+    <None Remove="Images\Octocat\WambyOctocat_small.png" />
     <None Remove="Images\Open.svg" />
     <None Remove="Images\Open_Run_File.svg" />
     <None Remove="Images\Print_Preview.svg" />
@@ -98,6 +99,7 @@
     <EmbeddedResource Include="Images\NewScan_CancelScan.svg" />
     <EmbeddedResource Include="Images\NewScan_Change_Folder.svg" />
     <EmbeddedResource Include="Images\NewScan_ScanNow.svg" />
+    <EmbeddedResource Include="Images\Octocat\WambyOctocat_small.png" />
     <EmbeddedResource Include="Images\Open.svg" />
     <EmbeddedResource Include="Images\Open_Run_File.svg" />
     <EmbeddedResource Include="Images\Print_Preview.svg" />
