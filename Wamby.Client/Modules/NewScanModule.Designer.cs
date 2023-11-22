@@ -30,7 +30,6 @@
         {
             components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewScanModule));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -40,6 +39,7 @@
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            svgImageCollection16 = new DevExpress.Utils.SvgImageCollection(components);
             gridControlLog = new DevExpress.XtraGrid.GridControl();
             logLineBindingSource = new System.Windows.Forms.BindingSource(components);
             gridViewLog = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -61,6 +61,8 @@
             emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
+            svgImageCollection32 = new DevExpress.Utils.SvgImageCollection(components);
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection16).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControlLog).BeginInit();
             ((System.ComponentModel.ISupportInitialize)logLineBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridViewLog).BeginInit();
@@ -81,7 +83,14 @@
             ((System.ComponentModel.ISupportInitialize)emptySpaceItem2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlGroup2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection32).BeginInit();
             SuspendLayout();
+            // 
+            // svgImageCollection16
+            // 
+            svgImageCollection16.Add("NewScan_CancelScan", "Wamby.Resources.Images.NewScan_CancelScan.svg", "Wamby.Resources");
+            svgImageCollection16.Add("NewScan_Change_Folder", "Wamby.Resources.Images.NewScan_Change_Folder.svg", "Wamby.Resources");
+            svgImageCollection16.Add("NewScan_ScanNow", "Wamby.Resources.Images.NewScan_ScanNow.svg", "Wamby.Resources");
             // 
             // gridControlLog
             // 
@@ -195,11 +204,13 @@
             newScanPathButtonEdit.Location = new System.Drawing.Point(24, 45);
             newScanPathButtonEdit.Name = "newScanPathButtonEdit";
             newScanPathButtonEdit.Properties.AdvancedModeOptions.Label = "Path to Scan";
-            editorButtonImageOptions1.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions1.SvgImage");
+            editorButtonImageOptions1.ImageIndex = 2;
+            editorButtonImageOptions1.ImageList = svgImageCollection16;
             editorButtonImageOptions1.SvgImageSize = new System.Drawing.Size(16, 16);
-            editorButtonImageOptions2.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("editorButtonImageOptions2.SvgImage");
+            editorButtonImageOptions2.ImageIndex = 1;
+            editorButtonImageOptions2.ImageList = svgImageCollection16;
             editorButtonImageOptions2.SvgImageSize = new System.Drawing.Size(16, 16);
-            newScanPathButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "Change folder", null, null, DevExpress.Utils.ToolTipAnchor.Default), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "Scan now", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
+            newScanPathButtonEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] { new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "Scan Now", null, null, DevExpress.Utils.ToolTipAnchor.Default), new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "Change Folder", null, null, DevExpress.Utils.ToolTipAnchor.Default) });
             newScanPathButtonEdit.Properties.UseAdvancedMode = DevExpress.Utils.DefaultBoolean.True;
             newScanPathButtonEdit.Size = new System.Drawing.Size(419, 34);
             newScanPathButtonEdit.StyleController = layoutControl;
@@ -293,6 +304,13 @@
             layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             layoutControlItem5.TextVisible = false;
             // 
+            // svgImageCollection32
+            // 
+            svgImageCollection32.ImageSize = new System.Drawing.Size(32, 32);
+            svgImageCollection32.Add("NewScan_CancelScan", "Wamby.Resources.Images.NewScan_CancelScan.svg", "Wamby.Resources");
+            svgImageCollection32.Add("NewScan_Change_Folder", "Wamby.Resources.Images.NewScan_Change_Folder.svg", "Wamby.Resources");
+            svgImageCollection32.Add("NewScan_ScanNow", "Wamby.Resources.Images.NewScan_ScanNow.svg", "Wamby.Resources");
+            // 
             // NewScanModule
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,6 +318,7 @@
             Controls.Add(layoutControl);
             Name = "NewScanModule";
             Size = new System.Drawing.Size(678, 583);
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection16).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridControlLog).EndInit();
             ((System.ComponentModel.ISupportInitialize)logLineBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)gridViewLog).EndInit();
@@ -320,6 +339,7 @@
             ((System.ComponentModel.ISupportInitialize)emptySpaceItem2).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlGroup2).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection32).EndInit();
             ResumeLayout(false);
         }
 
@@ -345,5 +365,7 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.Utils.SvgImageCollection svgImageCollection16;
+        private DevExpress.Utils.SvgImageCollection svgImageCollection32;
     }
 }

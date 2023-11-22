@@ -88,6 +88,7 @@
             barButtonItemNewScan.Id = 0;
             barButtonItemNewScan.ImageOptions.ImageIndex = 2;
             barButtonItemNewScan.ImageOptions.LargeImageIndex = 2;
+            barButtonItemNewScan.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
             barButtonItemNewScan.Name = "barButtonItemNewScan";
             // 
             // barButtonItemCancelScan
@@ -105,6 +106,7 @@
             barButtonItemChangeFolder.Id = 2;
             barButtonItemChangeFolder.ImageOptions.ImageIndex = 1;
             barButtonItemChangeFolder.ImageOptions.LargeImageIndex = 1;
+            barButtonItemChangeFolder.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift | System.Windows.Forms.Keys.F);
             barButtonItemChangeFolder.Name = "barButtonItemChangeFolder";
             // 
             // barDockControlTop
@@ -191,7 +193,8 @@
             navigationPageResults.Caption = "Results";
             navigationPageResults.ImageOptions.ImageIndex = 1;
             navigationPageResults.Name = "navigationPageResults";
-            navigationPageResults.Size = new System.Drawing.Size(677, 431);
+            navigationPageResults.PageEnabled = false;
+            navigationPageResults.Size = new System.Drawing.Size(764, 504);
             navigationPageResults.ToolTip = "Results";
             // 
             // navigationPageFiles
@@ -199,7 +202,8 @@
             navigationPageFiles.Caption = "Files";
             navigationPageFiles.ImageOptions.ImageIndex = 2;
             navigationPageFiles.Name = "navigationPageFiles";
-            navigationPageFiles.Size = new System.Drawing.Size(677, 431);
+            navigationPageFiles.PageEnabled = false;
+            navigationPageFiles.Size = new System.Drawing.Size(764, 504);
             navigationPageFiles.ToolTip = "Files";
             // 
             // navigationPageMap
@@ -207,7 +211,8 @@
             navigationPageMap.Caption = "Map";
             navigationPageMap.ImageOptions.ImageIndex = 3;
             navigationPageMap.Name = "navigationPageMap";
-            navigationPageMap.Size = new System.Drawing.Size(677, 431);
+            navigationPageMap.PageEnabled = false;
+            navigationPageMap.Size = new System.Drawing.Size(764, 504);
             navigationPageMap.ToolTip = "Map";
             // 
             // navigationPageAnalysis
@@ -215,7 +220,8 @@
             navigationPageAnalysis.Caption = "Analysis";
             navigationPageAnalysis.ImageOptions.ImageIndex = 4;
             navigationPageAnalysis.Name = "navigationPageAnalysis";
-            navigationPageAnalysis.Size = new System.Drawing.Size(677, 431);
+            navigationPageAnalysis.PageEnabled = false;
+            navigationPageAnalysis.Size = new System.Drawing.Size(764, 504);
             navigationPageAnalysis.ToolTip = "Analysis";
             // 
             // navigationPageErrors
@@ -223,7 +229,8 @@
             navigationPageErrors.Caption = "Errors";
             navigationPageErrors.ImageOptions.ImageIndex = 5;
             navigationPageErrors.Name = "navigationPageErrors";
-            navigationPageErrors.Size = new System.Drawing.Size(677, 431);
+            navigationPageErrors.PageEnabled = false;
+            navigationPageErrors.Size = new System.Drawing.Size(764, 504);
             navigationPageErrors.ToolTip = "Errors";
             // 
             // navigationPageSchedule
@@ -231,7 +238,8 @@
             navigationPageSchedule.Caption = "Schedule";
             navigationPageSchedule.ImageOptions.ImageIndex = 6;
             navigationPageSchedule.Name = "navigationPageSchedule";
-            navigationPageSchedule.Size = new System.Drawing.Size(677, 431);
+            navigationPageSchedule.PageEnabled = false;
+            navigationPageSchedule.Size = new System.Drawing.Size(764, 504);
             navigationPageSchedule.ToolTip = "Schedule";
             // 
             // navigationPageSettings
@@ -239,7 +247,8 @@
             navigationPageSettings.Caption = "Settings";
             navigationPageSettings.ImageOptions.ImageIndex = 7;
             navigationPageSettings.Name = "navigationPageSettings";
-            navigationPageSettings.Size = new System.Drawing.Size(677, 431);
+            navigationPageSettings.PageEnabled = false;
+            navigationPageSettings.Size = new System.Drawing.Size(764, 504);
             navigationPageSettings.ToolTip = "Settings";
             // 
             // svgImageCollectionNavigation
