@@ -13,20 +13,30 @@ namespace Wamby.Client
         int docsCount = 1;
         public MainFormViewModel(MainForm form)
         {
-            Form = form;            
+            Form = form;
         }
 
-        public static void SaveSkin()
+        public Settings.Settings LoadSettings()
         {
-            var settings = Properties.Settings.Default;
-            settings.SkinName = WindowsFormsSettings.DefaultLookAndFeel.SkinName;
-            settings.SkinPalette = WindowsFormsSettings.DefaultLookAndFeel.ActiveSvgPaletteName;
-            settings.SkinAdvancedUseWindowsAppMode = ToBoolean(WindowsFormsSettings.TrackWindowsAppMode);
-            settings.SkinAdvancedSystemAccentColor = ToBoolean(WindowsFormsSettings.TrackWindowsAccentColor);
-            settings.SkinAdvancedCustomColor = ToHex(WindowsFormsSettings.GetAccentColor());
-            settings.SkinAdvancedCustomColor2 = ToHex(WindowsFormsSettings.GetAccentColor2());
-            settings.UseCompactUI = ToBoolean(WindowsFormsSettings.CompactUIMode);
-            settings.Save();
+            WambyApplication.Settings = WambyApplication.SettingsService.LoadSettings();
+            return WambyApplication.Settings;
+        }
+
+        public static void SaveSettings()
+        {
+            SaveSkinSettings();
+            WambyApplication.SettingsService.SaveSettings(WambyApplication.Settings);
+        }
+
+        private static void SaveSkinSettings()
+        {
+            WambyApplication.Settings.Skin.SkinName = WindowsFormsSettings.DefaultLookAndFeel.SkinName;
+            WambyApplication.Settings.Skin.SkinPalette = WindowsFormsSettings.DefaultLookAndFeel.ActiveSvgPaletteName;
+            WambyApplication.Settings.Skin.SkinAdvancedUseWindowsAppMode = ToBoolean(WindowsFormsSettings.TrackWindowsAppMode);
+            WambyApplication.Settings.Skin.SkinAdvancedSystemAccentColor = ToBoolean(WindowsFormsSettings.TrackWindowsAccentColor);
+            WambyApplication.Settings.Skin.SkinAdvancedCustomColor = ToHex(WindowsFormsSettings.GetAccentColor());
+            WambyApplication.Settings.Skin.SkinAdvancedCustomColor2 = ToHex(WindowsFormsSettings.GetAccentColor2());
+            WambyApplication.Settings.Skin.UseCompactUI = ToBoolean(WindowsFormsSettings.CompactUIMode);
         }
 
         private static bool ToBoolean(DefaultBoolean value) => 

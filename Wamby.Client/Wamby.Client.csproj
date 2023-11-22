@@ -14,6 +14,15 @@
     <FileVersion>2023.10.24.1</FileVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Helpers\AppArgumentHelper.cs" />
+    <Compile Remove="MainRibbonForm.cs" />
+    <Compile Remove="MainRibbonForm.Designer.cs" />
+    <Compile Remove="ViewModels\MainFormViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="MainRibbonForm.resx" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Update="Modules\AnalysisModule.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -41,6 +50,7 @@
     <ProjectReference Include="..\Wamby.Client.DevExpressSkins\Wamby.Client.DevExpressSkins.csproj" />
     <ProjectReference Include="..\Wamby.Core\Wamby.Core.csproj" />
     <ProjectReference Include="..\Wamby.Resources\Wamby.Resources.csproj" />
+    <ProjectReference Include="..\Wamby.Settings\Wamby.Settings.csproj" />
     <ProjectReference Include="..\Wamby.SystemShell\Wamby.SystemShell.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -57,5 +67,8 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 </Project>

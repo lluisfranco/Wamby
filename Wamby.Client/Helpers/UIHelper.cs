@@ -1,56 +1,54 @@
-﻿using DevExpress.Utils.Svg;
+﻿using DevExpress.Utils;
+using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Wamby.Core.Model;
 
 namespace Wamby.Client.Helpers
 {
     public class UIHelper
     {
-        public static DevExpress.Utils.SvgImageCollection GetLogImageCollection()
+        public static SvgImageCollection GetLogImageCollection()
         {
-            var imgscol = new DevExpress.Utils.SvgImageCollection();
-            var keys = DevExpress.Images.ImageResourceCache.Default.GetAllResourceKeys();
-            imgscol.Add("Log_Info", "image://svgimages/outlook%20inspired/about.svg");
-            imgscol.Add("Log_Folder", "image://svgimages/icon%20builder/actions_folderclose.svg");
-            imgscol.Add("Errors", "image://svgimages/icon%20builder/actions_deletecircled.svg");
-            return imgscol;
+            return new SvgImageCollection
+            {
+                { "Log_Info", "image://svgimages/outlook%20inspired/about.svg" },
+                { "Log_Folder", "image://svgimages/icon%20builder/actions_folderclose.svg" },
+                { "Errors", "image://svgimages/icon%20builder/actions_deletecircled.svg" }
+            };
         }
         
         public static RepositoryItemImageComboBox GetLogTypesCombo()
         {
             var imgscol = GetLogImageCollection();
             var combo = new RepositoryItemImageComboBox() { SmallImages = imgscol };
-            combo.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem()
+            combo.Items.Add(new ImageComboBoxItem()
             {
-                Value = Core.Model.LogLineTypeEnum.Info,
-                Description = Core.Model.LogLineTypeEnum.Info.ToString(),
+                Value = LogLineTypeEnum.Info,
+                Description = LogLineTypeEnum.Info.ToString(),
                 ImageIndex = 0
             });
-            combo.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem()
+            combo.Items.Add(new ImageComboBoxItem()
             {
-                Value = Core.Model.LogLineTypeEnum.ReadingFolder,
-                Description = Core.Model.LogLineTypeEnum.ReadingFolder.ToString(),
+                Value = LogLineTypeEnum.ReadingFolder,
+                Description = LogLineTypeEnum.ReadingFolder.ToString(),
                 ImageIndex = 1
             });
-            combo.Items.Add(new DevExpress.XtraEditors.Controls.ImageComboBoxItem()
+            combo.Items.Add(new ImageComboBoxItem()
             {
-                Value = Core.Model.LogLineTypeEnum.Error,
-                Description = Core.Model.LogLineTypeEnum.Error.ToString(),
+                Value = LogLineTypeEnum.Error,
+                Description = LogLineTypeEnum.Error.ToString(),
                 ImageIndex = 2
             });
             return combo;
         }
 
-        public static DevExpress.Utils.SvgImageCollection GetResultsItemTypeImageCollection()
+        public static SvgImageCollection GetResultsItemTypeImageCollection()
         {
-            var imgscol = new DevExpress.Utils.SvgImageCollection();
-            imgscol.Add("Log_Folder", "image://svgimages/icon%20builder/actions_folderclose.svg");
-            imgscol.Add("Log_File", "image://svgimages/spreadsheet/multipledocuments.svg");
-            return imgscol;
+            return new SvgImageCollection
+            {
+                { "Log_Folder", "image://svgimages/icon%20builder/actions_folderclose.svg" },
+                { "Log_File", "image://svgimages/spreadsheet/multipledocuments.svg" }
+            };
         }
     }
 }
