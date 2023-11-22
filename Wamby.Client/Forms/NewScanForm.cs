@@ -76,11 +76,12 @@ namespace Wamby.Client
                 ScanDate = DateTime.Now,
                 DetailType = ScanDetailTypeEnum.Fast
             };
-            if (Directory.Exists(Properties.Settings.Default.DefaultBaseFolderPath))
-                FileSystemScanService.ScanOptions.BaseFolderPath = Properties.Settings.Default.DefaultBaseFolderPath;
-            FileSystemScanService.ScanOptions.IncludeSubFolders = Properties.Settings.Default.DefaultIncludeSubFolders;
-            FileSystemScanService.ScanOptions.SearchPattern = Properties.Settings.Default.DefaultSearchPattern;
-            FileSystemScanService.DetailType = Properties.Settings.Default.DefaultDetailedScanType;
+            var settings = WambyApplication.Settings;
+            if (Directory.Exists(settings.DefaultBaseFolderPath))
+                FileSystemScanService.ScanOptions.BaseFolderPath = settings.DefaultBaseFolderPath;
+            FileSystemScanService.ScanOptions.IncludeSubFolders = settings.DefaultIncludeSubFolders;
+            FileSystemScanService.ScanOptions.SearchPattern = settings.DefaultSearchPattern;
+            FileSystemScanService.DetailType = settings.DefaultDetailedScanType;
             FileSystemScanService.BeginScan += (s, e) =>
             {
                 UpdateFormTitle();
