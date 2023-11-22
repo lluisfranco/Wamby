@@ -21,8 +21,6 @@ namespace Wamby.Client.Modules
         [Browsable(false)]
         public FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
-        //public event EventHandler StartingScan;
-        //public event EventHandler EndingScan;
         public event EventHandler RequestNewScan;
 
         Progress<WambyFolderEventArgs> ScanningFolderProgress;

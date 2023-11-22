@@ -1,7 +1,10 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
-using System.Windows.Forms;
+using System;
+using System.IO;
+using System.Security.Principal;
+using Wamby.API.Enums;
 using Wamby.API.Services;
 using Wamby.Client.Extensions;
 using Wamby.Client.Modules;
@@ -13,9 +16,9 @@ namespace Wamby.Client
         public MainForm MainForm { get; private set; }
         public Bar Bar { get { return bar; } }
         public FileSystemScanService FileSystemScanService { get; private set; }
-        IOverlaySplashScreenHandle handle = null;
         public void ShowProgressPanel() => handle = OverlayFormExtensions.ShowProgressPanel(navigationPane);
         public void HideProgressPanel() { if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle); }
+        IOverlaySplashScreenHandle handle = null;
 
         public NewScanForm()
         {
@@ -36,9 +39,21 @@ namespace Wamby.Client
             MainForm.ClearMessage().ClearProgress();
         }
 
-        public void InitializeControl(FileSystemScanService fileSystemScanService)
+        public void InitializeControl()
         {
-            FileSystemScanService = fileSystemScanService;
+            FileSystemScanService = new FileSystemScanService()
+            {
+                UserName = WindowsIdentity.GetCurrent().Name,
+                ComputerName = Environment.MachineName,
+                OSVersionName = Environment.OSVersion.ToString(),
+                ScanDate = DateTime.Now,
+                DetailType = ScanDetailTypeEnum.Fast
+            };
+            if (Directory.Exists(Properties.Settings.Default.DefaultBaseFolderPath))
+                FileSystemScanService.ScanOptions.BaseFolderPath = Properties.Settings.Default.DefaultBaseFolderPath;
+            FileSystemScanService.ScanOptions.IncludeSubFolders = Properties.Settings.Default.DefaultIncludeSubFolders;
+            FileSystemScanService.ScanOptions.SearchPattern = Properties.Settings.Default.DefaultSearchPattern;
+            FileSystemScanService.DetailType = Properties.Settings.Default.DefaultDetailedScanType;
             FileSystemScanService.BeginScan += (s, e) => ShowProgressPanel();
             FileSystemScanService.EndScan += (s, e) =>
             {
