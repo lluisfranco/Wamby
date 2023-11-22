@@ -149,7 +149,7 @@ namespace Wamby.API.Services
             {
                 try
                 {
-                    foreach (var folder in currentDirectoryInfo.GetDirectories())
+                    foreach (var folder in currentDirectoryInfo.GetDirectories().OrderBy(p =>p.Name))
                     {
                         _CurrentFileSystemInfo = folder;                        
                         if (CheckIfCancellationRequested()) return wambyFolder;
@@ -168,7 +168,7 @@ namespace Wamby.API.Services
             }
             try
             {
-                foreach (var file in currentDirectoryInfo.GetFiles(ScanOptions.SearchPattern))
+                foreach (var file in currentDirectoryInfo.GetFiles(ScanOptions.SearchPattern).OrderBy(p => p.Name))
                 {
                     _CurrentFileSystemInfo = file;
                     if (CheckIfCancellationRequested()) return wambyFolder;

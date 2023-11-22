@@ -62,6 +62,7 @@
             layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             svgImageCollection32 = new DevExpress.Utils.SvgImageCollection(components);
+            dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)svgImageCollection16).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControlLog).BeginInit();
             ((System.ComponentModel.ISupportInitialize)logLineBindingSource).BeginInit();
@@ -84,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlGroup2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection32).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dxErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // svgImageCollection16
@@ -311,6 +313,10 @@
             svgImageCollection32.Add("NewScan_Change_Folder", "Wamby.Resources.Images.NewScan_Change_Folder.svg", "Wamby.Resources");
             svgImageCollection32.Add("NewScan_ScanNow", "Wamby.Resources.Images.NewScan_ScanNow.svg", "Wamby.Resources");
             // 
+            // dxErrorProvider
+            // 
+            dxErrorProvider.ContainerControl = this;
+            // 
             // NewScanModule
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -340,6 +346,7 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlGroup2).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).EndInit();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection32).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dxErrorProvider).EndInit();
             ResumeLayout(false);
         }
 
@@ -367,5 +374,6 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.Utils.SvgImageCollection svgImageCollection16;
         private DevExpress.Utils.SvgImageCollection svgImageCollection32;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
     }
 }
