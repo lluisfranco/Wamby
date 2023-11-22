@@ -1,12 +1,15 @@
-﻿using DevExpress.XtraBars;
+﻿using DevExpress.Utils.MVVM;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
 using System;
 using System.IO;
 using System.Security.Principal;
+using System.Threading.Tasks;
 using Wamby.API.Enums;
 using Wamby.API.Services;
 using Wamby.Client.Extensions;
+using Wamby.Client.Interfaces;
 using Wamby.Client.Modules;
 
 namespace Wamby.Client
@@ -16,8 +19,10 @@ namespace Wamby.Client
         public MainForm MainForm { get; private set; }
         public Bar Bar { get { return bar; } }
         public FileSystemScanService FileSystemScanService { get; private set; }
-        public void ShowProgressPanel() => handle = OverlayFormExtensions.ShowProgressPanel(navigationPane);
-        public void HideProgressPanel() { if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle); }
+        public NewScanForm SetParent(MainForm form) { MainForm = form; MdiParent = MainForm; return this; }
+        public NewScanForm ShowProgressPanel() { handle = OverlayFormExtensions.ShowProgressPanel(navigationPane); return this; }
+        public NewScanForm HideProgressPanel() { if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle); return this; }
+
         IOverlaySplashScreenHandle handle = null;
 
         public NewScanForm()
@@ -25,11 +30,18 @@ namespace Wamby.Client
             InitializeComponent();
             IconOptions.SvgImage = svgImageCollectionForm[0];
             navigationPane.AddTabMergeModulesRibbonSupport();
+            SetEventHandlers();
         }
 
-        public void InitializeModules(MainForm mainform)
+        private void SetEventHandlers()
         {
-            MainForm = mainform;
+            barButtonItemNewScan.ItemClick += async (s, e) => await StartScan();
+            barButtonItemCancelScan.ItemClick += (s, e) => CancelScan();
+            barButtonItemChangeFolder.ItemClick += async (s, e) => await ChangeSelectedFolder();    
+        }
+
+        public NewScanForm InitializeModules()
+        {
             navigationPageScanFolder.InitializeModule(new NewScanModule(), MainForm, "New Scan", 15, true);
             navigationPageResults.InitializeModule(new ResultsModule(), MainForm, "Results", 30);
             navigationPageFiles.InitializeModule(new FilesModule(), MainForm, "Files", 45);
@@ -37,9 +49,24 @@ namespace Wamby.Client
             navigationPageAnalysis.InitializeModule(new AnalysisModule(), MainForm, "Analisys", 75);
             navigationPageErrors.InitializeModule(new ErrorsModule(), MainForm, "Errors", 90);
             MainForm.ClearMessage().ClearProgress();
+            return this;
         }
 
-        public void InitializeControl()
+        public NewScanForm InitializeControl()
+        {
+            InitializeFileSystemScanService();
+            var modules = navigationPane.GetModules();
+            foreach (var module in modules)
+            {
+                module.InitializeControl(MainForm, FileSystemScanService);
+            }
+            var scanmodule = navigationPageScanFolder.GetPageModule() as IScanModule;
+            scanmodule.NewScanButtonPressed += async (s, e) => await StartScan();
+            scanmodule.ChangeFolderButtonPressed += async (s, e) => await ChangeSelectedFolder();
+            return this;
+        }
+
+        private void InitializeFileSystemScanService()
         {
             FileSystemScanService = new FileSystemScanService()
             {
@@ -54,18 +81,23 @@ namespace Wamby.Client
             FileSystemScanService.ScanOptions.IncludeSubFolders = Properties.Settings.Default.DefaultIncludeSubFolders;
             FileSystemScanService.ScanOptions.SearchPattern = Properties.Settings.Default.DefaultSearchPattern;
             FileSystemScanService.DetailType = Properties.Settings.Default.DefaultDetailedScanType;
-            FileSystemScanService.BeginScan += (s, e) => ShowProgressPanel();
+            FileSystemScanService.BeginScan += (s, e) =>
+            {
+                UpdateFormTitle();
+                ShowProgressPanel();
+            };
             FileSystemScanService.EndScan += (s, e) =>
             {
                 ShowScanResults();
                 HideProgressPanel();
             };
-            var modules = navigationPane.GetModules();
-            foreach (var module in modules)
-            {
-                module.InitializeControl(MainForm, FileSystemScanService);
-            }
-        }      
+        }
+
+        private void UpdateFormTitle()
+        {
+            var folder = new DirectoryInfo(FileSystemScanService.ScanOptions.BaseFolderPath);
+            if (folder.Exists) Text = $"{folder.Name}";
+        }
 
         private void ShowScanResults()
         {
@@ -75,12 +107,38 @@ namespace Wamby.Client
             navigationPageFiles.PageEnabled = results;
             navigationPageMap.PageEnabled = results;
             navigationPageAnalysis.PageEnabled = results;
-            navigationPageErrors.PageEnabled = results;
             navigationPageErrors.PageEnabled = errors;
 
-            navigationPageResults.GetPageModule().RefreshModuleData();
-            navigationPageFiles.GetPageModule().RefreshModuleData();
-            navigationPageMap.GetPageModule().RefreshModuleData();
+            if (results) navigationPageScanFolder.GetPageModule().RefreshModuleData();
+            if (results) navigationPageResults.GetPageModule().RefreshModuleData();
+            if (results) navigationPageFiles.GetPageModule().RefreshModuleData();
+            if (results) navigationPageMap.GetPageModule().RefreshModuleData();
+            if (results) navigationPageAnalysis.GetPageModule().RefreshModuleData();
+            if (errors) navigationPageErrors.GetPageModule().RefreshModuleData();
+        }
+
+        private async Task StartScan()
+        {
+            barButtonItemNewScan.Visibility = BarItemVisibility.Never;
+            barButtonItemCancelScan.Visibility = BarItemVisibility.Always;
+            var module = navigationPageScanFolder.GetPageModule() as IScanModule;
+            await module?.DoScan();
+            barButtonItemCancelScan.Visibility = BarItemVisibility.Never;
+            barButtonItemNewScan.Visibility = BarItemVisibility.Always;
+        }
+
+        private void CancelScan()
+        {
+            var module = navigationPageScanFolder.GetPageModule() as IScanModule;
+            module?.CancelScan();
+            barButtonItemCancelScan.Visibility = BarItemVisibility.Never;
+            barButtonItemNewScan.Visibility = BarItemVisibility.Always;
+        }
+
+        private async Task ChangeSelectedFolder()
+        {
+            var module = navigationPageScanFolder.GetPageModule() as IShowChangeFolderDialog;
+            await module?.ShowChangeFolderDialog();
         }
     }
 }

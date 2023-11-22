@@ -10,6 +10,7 @@ namespace Wamby.Client
     {
         public MainForm Form { get; }
         public FileSystemStorageService FileSystemStorageService { get; private set; }
+        int docsCount = 1;
         public MainFormViewModel(MainForm form)
         {
             Form = form;            
@@ -38,14 +39,11 @@ namespace Wamby.Client
             Application.UseWaitCursor = true;
             var f = new NewScanForm
             {
-                MdiParent = Form
+                Text = $"New Scan: #{docsCount++}"
             };
-            f.Show();
+            f.SetParent(Form).Show();
             Application.DoEvents();
-            f.ShowProgressPanel();
-            f.InitializeModules(Form);
-            f.InitializeControl();
-            f.HideProgressPanel();
+            f.ShowProgressPanel().InitializeModules().InitializeControl().HideProgressPanel();
             Application.UseWaitCursor = false;
         }
     }

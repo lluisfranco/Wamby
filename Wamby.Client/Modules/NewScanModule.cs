@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraEditors;
+﻿using DevExpress.Utils;
+using DevExpress.XtraEditors;
 using System;
 using System.ComponentModel;
 using System.Linq;
@@ -13,18 +14,22 @@ using Wamby.Core.Model;
 
 namespace Wamby.Client.Modules
 {
-    public partial class NewScanModule : XtraUserControl,
-        IModule, IModuleNewScanRequested
+    public partial class NewScanModule : XtraUserControl, IModule, IScanModule, IShowChangeFolderDialog
     {
-        public MainForm MainForm { get; private set; }
-
         [Browsable(false)]
         public FileSystemScanService FileSystemScanService { get; private set; }
+        public MainForm MainForm { get; private set; }
         public bool Initialized { get; private set; }
-        public event EventHandler RequestNewScan;
+        //public event EventHandler RequestNewScan;
 
         Progress<WambyFolderEventArgs> ScanningFolderProgress;
         Progress<WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress;
+
+        public event EventHandler NewScanButtonPressed;
+        public event EventHandler ChangeFolderButtonPressed;
+
+        public void RaiseNewScanButtonPressed() => NewScanButtonPressed?.Invoke(this, new EventArgs());
+        public void RaiseChangeFolderButtonPressed() => ChangeFolderButtonPressed?.Invoke(this, new EventArgs());
 
         public NewScanModule()
         {
@@ -41,14 +46,8 @@ namespace Wamby.Client.Modules
 
         private void SetProgressHandlers()
         {
-            ScanningFolderProgress = new Progress<WambyFolderEventArgs>(args =>
-            {
-                RefreshModuleData();
-            });
-            ErrorReadingFileSystemInfoProgress = new Progress<WambyFileSystemInfoEventArgs>(args =>
-            {
-                RefreshModuleData();
-            });
+            ScanningFolderProgress = new Progress<WambyFolderEventArgs>(args => RefreshModuleData());
+            ErrorReadingFileSystemInfoProgress = new Progress<WambyFileSystemInfoEventArgs>(args => RefreshModuleData());
         }
 
         public void RefreshModuleData()
@@ -58,10 +57,10 @@ namespace Wamby.Client.Modules
             gridViewLog.FocusedRowHandle = gridViewLog.RowCount - 1;
         }
 
-        public string GetSelectedPath()
-        {
-            return newScanPathButtonEdit.Text;
-        }
+        //public string GetSelectedPath()
+        //{
+        //    return newScanPathButtonEdit.Text;
+        //}
 
         public void InitializeControl(MainForm mainform, FileSystemScanService scanService)
         {
@@ -75,7 +74,7 @@ namespace Wamby.Client.Modules
                 FileSystemScanService.ErrorReadingFileSystemInfoProgress = ErrorReadingFileSystemInfoProgress;
                 FileSystemScanService.CancelledScan += (s, e) => RefreshModuleData();
                 var logcombo = Helpers.UIHelper.GetLogTypesCombo();
-                logcombo.GlyphAlignment = DevExpress.Utils.HorzAlignment.Center;
+                logcombo.GlyphAlignment = HorzAlignment.Center;
                 colLogLineType.ColumnEdit = logcombo;
                 Initialized = true;
                 SetEventHandlers();
@@ -86,41 +85,34 @@ namespace Wamby.Client.Modules
             }
         }
 
+        private void SetEventHandlers()
+        {
+            newScanPathButtonEdit.ButtonClick += (s, e) =>
+            {
+                if (e.Button.Index == 0) RaiseNewScanButtonPressed();
+                if (e.Button.Index == 1) RaiseChangeFolderButtonPressed();
+            };
+            newScanPathButtonEdit.KeyDown += async (s, e) => { if (e.KeyCode == Keys.Enter) await DoScan(); };
+            gridViewLog.FocusedRowObjectChanged += GridViewLog_FocusedRowObjectChanged;
+            gridViewLog.MouseDown += GridViewLog_MouseDown;
+        }
+
         public void SetFocus()
         {
             gridControlLog.Focus();
         }
 
-        private void FileSystemScanService_CancelledScan(object sender, EventArgs e)
-        {
-            RefreshModuleData();
-        }
+        //private void FileSystemScanService_CancelledScan(object sender, EventArgs e)
+        //{
+        //    RefreshModuleData();
+        //}
 
         public void RefreshScanOptionsControls()
         {
-            //scanOptionsGroupControl.Text = $"Scan options - {FileSystemScanService.UserName} on " +
-            //    $"{FileSystemScanService.ComputerName} ({FileSystemScanService.OSVersionName}) at " +
-            //    $"{FileSystemScanService.ScanDate.ToString()}";
             newScanPathButtonEdit.Text = FileSystemScanService.ScanOptions.BaseFolderPath;
             includeSubfoldersCheckEdit.IsOn = FileSystemScanService.ScanOptions.IncludeSubFolders;
             searchPatternButtonEdit.Text = FileSystemScanService.ScanOptions.SearchPattern;
             imageComboBoxEditType.EditValue = FileSystemScanService.DetailType;
-        }
-
-        private void SetEventHandlers()
-        {
-            newScanPathButtonEdit.ButtonClick += NewScanPathButtonEdit_ButtonClick;
-            //scanLogGroupControl.CustomButtonClick += ScanLogGroupControl_CustomButtonClick;
-            newScanPathButtonEdit.KeyDown += NewScanPathButtonEdit_KeyDown;
-            //barButtonItemChangeFolder.ItemClick += BarButtonItemChangeFolder_ItemClick;
-            //barButtonItemOpenFolder.ItemClick += BarButtonItemOpenFolder_ItemClick;
-            //barButtonItemOpenTerminal.ItemClick += BarButtonItemOpenTerminal_ItemClick;
-            //barButtonItemOpenInNewWamby.ItemClick += BarButtonItemOpenInNewWamby_ItemClick;
-            //barButtonItemCopyPath.ItemClick += BarButtonItemCopyPath_ItemClick;
-            //barButtonItemShowProperties.ItemClick += BarButtonItemShowProperties_ItemClick;
-            //barButtonItemDelete.ItemClick += BarButtonItemDelete_ItemClick;
-            gridViewLog.FocusedRowObjectChanged += GridViewLog_FocusedRowObjectChanged;
-            gridViewLog.MouseDown += GridViewLog_MouseDown;
         }
 
         private void GridViewLog_MouseDown(object sender, MouseEventArgs e)
@@ -128,36 +120,38 @@ namespace Wamby.Client.Modules
             if (e.Button == MouseButtons.Right) popupMenu.ShowPopup(MousePosition);
         }
 
-        private void ScanLogGroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
-        {
-            if (e.Button.Properties.Caption == "Cancel") CancelScan();
-        }
+        //private void ScanLogGroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
+        //{
+        //    if (e.Button.Properties.Caption == "Cancel") CancelScan();
+        //}
 
-        private void BarButtonItemChangeFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            ShowSelectPathDialog();
-        }
+        //private void BarButtonItemChangeFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        //{
+        //    ShowSelectPathDialog();
+        //}
 
-        private async void NewScanPathButtonEdit_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter) await DoScan();
-        }
+        //private async void NewScanPathButtonEdit_KeyDown(object sender, KeyEventArgs e)
+        //{
+        //    if (e.KeyCode == Keys.Enter) await DoScan();
+        //}
 
-        private async void NewScanPathButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 0) ShowSelectPathDialog();
-            if (e.Button.Index == 1) await DoScan();
-        }
+        //private async void NewScanPathButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        //{
+        //    if (e.Button.Index == 0) ShowSelectPathDialog();
+        //    if (e.Button.Index == 1) await DoScan();
+        //}
 
-        public void RequestScan()
-        {
-            RequestNewScan?.Invoke(this, new EventArgs());
-        }
+        //public void RequestScan()
+        //{
+        //    RequestNewScan?.Invoke(this, new EventArgs());
+        //}
 
-        private async void ShowSelectPathDialog()
+        public async Task ShowChangeFolderDialog()
         {
-            var fd = new FolderBrowserDialog();
-            fd.SelectedPath = newScanPathButtonEdit.Text;
+            var fd = new FolderBrowserDialog
+            {
+                SelectedPath = newScanPathButtonEdit.Text
+            };
             if (fd.ShowDialog() == DialogResult.OK)
             {
                 newScanPathButtonEdit.Text = fd.SelectedPath;
@@ -224,7 +218,6 @@ namespace Wamby.Client.Modules
 
         void StartScan()
         {
-
             ActivateUI(false);
         }
 
@@ -232,7 +225,7 @@ namespace Wamby.Client.Modules
         {
             ActivateUI(true);
             RefreshScanOptionsControls();
-            FileSystemScanService?.RaiseEndScan();
+            //FileSystemScanService?.RaiseEndScan();
         }
 
         private void ActivateUI(bool activated)
@@ -291,14 +284,14 @@ namespace Wamby.Client.Modules
                 Helpers.ShellHelper.ShowFileSystemItemProperties(item.Value);
         }
 
-        private void BarButtonItemDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
-            if (System.IO.Directory.Exists(item.Value))
-            {
-                var deleted = Helpers.ShellHelper.DeleteFileSystemItemProperties(FindForm(), item.Value);
-                if (deleted) RequestNewScan?.Invoke(this, new EventArgs());
-            }
-        }
+        //private void BarButtonItemDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        //{
+        //    var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
+        //    if (System.IO.Directory.Exists(item.Value))
+        //    {
+        //        var deleted = Helpers.ShellHelper.DeleteFileSystemItemProperties(FindForm(), item.Value);
+        //        if (deleted) RequestNewScan?.Invoke(this, new EventArgs());
+        //    }
+        //}
     }
 }

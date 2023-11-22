@@ -59,7 +59,7 @@ namespace Wamby.Client
             barButtonItemGoToErrorsModule.ItemClick += BarButtonItemGoToErrorsModule_ItemClick;
             //newScanModule.StartingScan += NewScanModule_StartingScan;
             //newScanModule.EndingScan += NewScanModule_EndingScan;
-            newScanModule.RequestNewScan += NewScanModule_RequestNewScan;
+            //newScanModule.RequestNewScan += NewScanModule_RequestNewScan;
             resultsModule.RequestNewScan += ResultsModule_RequestNewScan;
             filesModule.RequestNewScan += FilesModule_RequestNewScan;
         }
