@@ -1,7 +1,9 @@
 ﻿using DevExpress.Utils;
 using DevExpress.XtraEditors;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Wamby.PreviousScansPersistence;
 
 namespace Wamby.Client
 {
@@ -18,6 +20,12 @@ namespace Wamby.Client
         {
             WambyApplication.Settings = WambyApplication.SettingsService.LoadSettings();
             return WambyApplication.Settings;
+        }
+
+        public List<PreviousScan> LoadPreviousScans()
+        {
+            WambyApplication.PreviousScans = WambyApplication.PreviousScansPersistenceService.LoadPreviousScans();
+            return WambyApplication.PreviousScans;
         }
 
         public static void SaveSettings()

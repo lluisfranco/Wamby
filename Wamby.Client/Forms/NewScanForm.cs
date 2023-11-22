@@ -4,6 +4,7 @@ using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
 using System;
 using System.IO;
+using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ using Wamby.API.Services;
 using Wamby.Client.Extensions;
 using Wamby.Client.Interfaces;
 using Wamby.Client.Modules;
+using Wamby.PreviousScansPersistence;
 
 namespace Wamby.Client
 {
@@ -93,6 +95,7 @@ namespace Wamby.Client
             FileSystemScanService.EndScan += (s, e) =>
             {
                 ShowScanResults();
+                SaveScanToPreviousList();
                 HideProgressPanel();
             };
         }
@@ -119,6 +122,28 @@ namespace Wamby.Client
             if (results) navigationPageMap.GetPageModule().RefreshModuleData();
             if (results) navigationPageAnalysis.GetPageModule().RefreshModuleData();
             if (errors) navigationPageErrors.GetPageModule().RefreshModuleData();
+        }
+
+        private void SaveScanToPreviousList()
+        {
+            var previousScans = WambyApplication.PreviousScansPersistenceService.LoadPreviousScans();
+            var scan = new PreviousScan()
+            {
+                BaseFolderPath = FileSystemScanService.ScanOptions.BaseFolderPath,
+                IncludeSubFolders = FileSystemScanService.ScanOptions.IncludeSubFolders,
+                SearchPattern = FileSystemScanService.ScanOptions.SearchPattern,
+                DetailType = FileSystemScanService.DetailType,
+                ScanDate = FileSystemScanService.ScanDate,
+                ComputerName = FileSystemScanService.ComputerName,
+                UserName = FileSystemScanService.UserName,
+                OSVersionName = FileSystemScanService.OSVersionName,
+                ShowMinimumFolderLevelInLog = FileSystemScanService.ScanOptions.ShowMinimumFolderLevelInLog,
+            };
+            if (previousScans.Exists(p => p.BaseFolderPath == FileSystemScanService.ScanOptions.BaseFolderPath)) 
+                previousScans.RemoveAll(p => p.BaseFolderPath == FileSystemScanService.ScanOptions.BaseFolderPath);
+            previousScans.Insert(0, scan);
+            WambyApplication.PreviousScansPersistenceService.SavePreviousScans(
+                previousScans.Take(WambyApplication.Settings.SavePreviousScansMaxCount).ToList());
         }
 
         private async Task SaveScan()

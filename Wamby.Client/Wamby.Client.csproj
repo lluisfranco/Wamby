@@ -49,6 +49,7 @@
     <ProjectReference Include="..\Wamby.API\Wamby.API.csproj" />
     <ProjectReference Include="..\Wamby.Client.DevExpressSkins\Wamby.Client.DevExpressSkins.csproj" />
     <ProjectReference Include="..\Wamby.Core\Wamby.Core.csproj" />
+    <ProjectReference Include="..\Wamby.PreviousScansPersistence\Wamby.PreviousScansPersistence.csproj" />
     <ProjectReference Include="..\Wamby.Resources\Wamby.Resources.csproj" />
     <ProjectReference Include="..\Wamby.Settings\Wamby.Settings.csproj" />
     <ProjectReference Include="..\Wamby.SystemShell\Wamby.SystemShell.csproj" />
