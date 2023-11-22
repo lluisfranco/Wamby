@@ -2,6 +2,7 @@
 using DevExpress.XtraEditors;
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Security.Principal;
 using System.Threading.Tasks;
@@ -20,7 +21,6 @@ namespace Wamby.Client.Modules
         public FileSystemScanService FileSystemScanService { get; private set; }
         public MainForm MainForm { get; private set; }
         public bool Initialized { get; private set; }
-        //public event EventHandler RequestNewScan;
 
         Progress<WambyFolderEventArgs> ScanningFolderProgress;
         Progress<WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress;
@@ -167,14 +167,13 @@ namespace Wamby.Client.Modules
 
         public async Task<ScanResult> DoScan()
         {
-            if (newScanPathButtonEdit.Text.LastOrDefault() == System.IO.Path.DirectorySeparatorChar &&
-                newScanPathButtonEdit.Text.Split(System.IO.Path.DirectorySeparatorChar).Length > 2)
+            dxErrorProvider.ClearErrors();
+            if (newScanPathButtonEdit.Text.LastOrDefault() == Path.DirectorySeparatorChar &&
+                newScanPathButtonEdit.Text.Split(Path.DirectorySeparatorChar).Length > 2)
                 newScanPathButtonEdit.Text = newScanPathButtonEdit.Text.Remove(newScanPathButtonEdit.Text.Length - 1, 1);
-            //TODO - validation control
-            if (!System.IO.Directory.Exists(newScanPathButtonEdit.Text))
+            if (!Directory.Exists(newScanPathButtonEdit.Text))
             {
-                MessageBox.Show($"Folder: '{newScanPathButtonEdit.Text}' doesn't exists.",
-                    Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                dxErrorProvider.SetError(newScanPathButtonEdit, "Folder doesn't exists.");
                 return null;
             }
             FileSystemScanService.Clear();
