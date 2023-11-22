@@ -6,7 +6,7 @@ namespace Wamby.Settings
     {
         public void SaveSettings(Settings settings)
         {
-            var settingsString = JsonSerializer.Serialize(settings);
+            var settingsString = JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(Settings.FILENAME, settingsString);
         }
 

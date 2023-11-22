@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Wamby.Core.Model
 {
@@ -15,7 +15,6 @@ namespace Wamby.Core.Model
         public double DeepLenghtPercent { get; set; }
         public double DeepFilesCountPercent { get; set; }
         public double DeepLengthInKB { get { return DeepLenght / 1024; } }
-
         [JsonIgnore]
         public System.IO.DirectoryInfo DirectoryInfo { get; set; }
         [JsonIgnore]

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewScanForm));
             barManager = new DevExpress.XtraBars.BarManager(components);
             bar = new DevExpress.XtraBars.Bar();
             barButtonItemNewScan = new DevExpress.XtraBars.BarButtonItem();
@@ -51,6 +52,7 @@
             navigationPageSchedule = new DevExpress.XtraBars.Navigation.NavigationPage();
             navigationPageSettings = new DevExpress.XtraBars.Navigation.NavigationPage();
             svgImageCollectionNavigation = new DevExpress.Utils.SvgImageCollection(components);
+            barButtonItemSave = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)barManager).BeginInit();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection16).BeginInit();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection32).BeginInit();
@@ -69,9 +71,9 @@
             barManager.DockControls.Add(barDockControlRight);
             barManager.Form = this;
             barManager.Images = svgImageCollection16;
-            barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemNewScan, barButtonItemCancelScan, barButtonItemChangeFolder });
+            barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemNewScan, barButtonItemCancelScan, barButtonItemChangeFolder, barButtonItemSave });
             barManager.LargeImages = svgImageCollection16;
-            barManager.MaxItemId = 3;
+            barManager.MaxItemId = 4;
             // 
             // bar
             // 
@@ -79,7 +81,7 @@
             bar.DockCol = 0;
             bar.DockRow = 0;
             bar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            bar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(barButtonItemNewScan), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemCancelScan), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemChangeFolder, true) });
+            bar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(barButtonItemSave), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemNewScan), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemCancelScan), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemChangeFolder, true) });
             bar.Text = "Tools";
             // 
             // barButtonItemNewScan
@@ -263,6 +265,13 @@
             svgImageCollectionNavigation.Add("Schedule", "Wamby.Resources.Images.Menu.Schedule.svg", "Wamby.Resources");
             svgImageCollectionNavigation.Add("Settings", "Wamby.Resources.Images.Menu.Settings.svg", "Wamby.Resources");
             // 
+            // barButtonItemSave
+            // 
+            barButtonItemSave.Caption = "Save...";
+            barButtonItemSave.Id = 3;
+            barButtonItemSave.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemSave.ImageOptions.SvgImage");
+            barButtonItemSave.Name = "barButtonItemSave";
+            // 
             // NewScanForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -310,5 +319,6 @@
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageErrors;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageSchedule;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageSettings;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemSave;
     }
 }

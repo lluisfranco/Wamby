@@ -1,4 +1,4 @@
-﻿using DevExpress.Utils.MVVM;
+﻿using DevExpress.Internal;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
@@ -6,6 +6,7 @@ using System;
 using System.IO;
 using System.Security.Principal;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Wamby.API.Enums;
 using Wamby.API.Services;
 using Wamby.Client.Extensions;
@@ -19,6 +20,7 @@ namespace Wamby.Client
         public MainForm MainForm { get; private set; }
         public Bar Bar { get { return bar; } }
         public FileSystemScanService FileSystemScanService { get; private set; }
+        public FileSystemStorageService FileSystemStorageService { get; private set; } = new();
         public NewScanForm SetParent(MainForm form) { MainForm = form; MdiParent = MainForm; return this; }
         public NewScanForm ShowProgressPanel() { handle = OverlayFormExtensions.ShowProgressPanel(navigationPane); return this; }
         public NewScanForm HideProgressPanel() { if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle); return this; }
@@ -35,9 +37,10 @@ namespace Wamby.Client
 
         private void SetEventHandlers()
         {
+            barButtonItemSave.ItemClick += async (s, e) => await SaveScan();
             barButtonItemNewScan.ItemClick += async (s, e) => await StartScan();
             barButtonItemCancelScan.ItemClick += (s, e) => CancelScan();
-            barButtonItemChangeFolder.ItemClick += async (s, e) => await ChangeSelectedFolder();    
+            barButtonItemChangeFolder.ItemClick += async (s, e) => await ChangeSelectedFolder();
         }
 
         public NewScanForm InitializeModules()
@@ -116,6 +119,31 @@ namespace Wamby.Client
             if (results) navigationPageMap.GetPageModule().RefreshModuleData();
             if (results) navigationPageAnalysis.GetPageModule().RefreshModuleData();
             if (errors) navigationPageErrors.GetPageModule().RefreshModuleData();
+        }
+
+        private async Task SaveScan()
+        {
+            using (var sd = new SaveFileDialog())
+            {
+                sd.Filter = FileSystemStorageService.GetFilterDescription();
+                var filename = new FileInfo(FileSystemScanService.ScanOptions.BaseFolderPath);
+                sd.FileName = $"{filename.Name}";
+                if (sd.ShowDialog() == DialogResult.OK)
+                {
+                    Application.UseWaitCursor = true;
+                    try
+                    {
+                        FileSystemStorageService.SaveReadableFormat = WambyApplication.Settings.SaveToFileReadableFormat;
+                        await FileSystemStorageService.SaveToFile(sd.FileName, FileSystemScanService);
+                        Application.UseWaitCursor = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Application.UseWaitCursor = false;
+                        MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            };
         }
 
         private async Task StartScan()

@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-
-namespace Wamby.Core.Model
+﻿namespace Wamby.Core.Model
 {
     public class ScanException
     {

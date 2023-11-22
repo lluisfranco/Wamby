@@ -2,14 +2,12 @@
 using DevExpress.XtraEditors;
 using System.Drawing;
 using System.Windows.Forms;
-using Wamby.API.Services;
 
 namespace Wamby.Client
 {
     public class MainFormViewModel
     {
         public MainForm Form { get; }
-        public FileSystemStorageService FileSystemStorageService { get; private set; }
         int docsCount = 1;
         public MainFormViewModel(MainForm form)
         {
