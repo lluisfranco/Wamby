@@ -1,11 +1,7 @@
 ﻿using DevExpress.Utils;
 using DevExpress.XtraEditors;
-using System;
 using System.Drawing;
-using System.IO;
-using System.Security.Principal;
 using System.Windows.Forms;
-using Wamby.API.Enums;
 using Wamby.API.Services;
 
 namespace Wamby.Client
@@ -13,25 +9,10 @@ namespace Wamby.Client
     public class MainFormViewModel
     {
         public MainForm Form { get; }
-        public FileSystemScanService FileSystemScanService { get; private set; }
         public FileSystemStorageService FileSystemStorageService { get; private set; }
         public MainFormViewModel(MainForm form)
         {
-            Form = form;
-            FileSystemScanService = new FileSystemScanService()
-            {
-                UserName = WindowsIdentity.GetCurrent().Name,
-                ComputerName = Environment.MachineName,
-                OSVersionName = Environment.OSVersion.ToString(),
-                ScanDate = DateTime.Now,
-                DetailType = ScanDetailTypeEnum.Fast
-            };
-            if (Directory.Exists(Properties.Settings.Default.DefaultBaseFolderPath))
-                FileSystemScanService.ScanOptions.BaseFolderPath = Properties.Settings.Default.DefaultBaseFolderPath;
-            FileSystemScanService.ScanOptions.IncludeSubFolders = Properties.Settings.Default.DefaultIncludeSubFolders;
-            FileSystemScanService.ScanOptions.SearchPattern = Properties.Settings.Default.DefaultSearchPattern;
-            FileSystemScanService.DetailType = Properties.Settings.Default.DefaultDetailedScanType;
-            FileSystemStorageService = new FileSystemStorageService();
+            Form = form;            
         }
 
         public static void SaveSkin()
@@ -63,7 +44,7 @@ namespace Wamby.Client
             Application.DoEvents();
             f.ShowProgressPanel();
             f.InitializeModules(Form);
-            f.InitializeControl(FileSystemScanService);
+            f.InitializeControl();
             f.HideProgressPanel();
             Application.UseWaitCursor = false;
         }
