@@ -155,7 +155,7 @@ namespace Wamby.Client.Modules
             if (fd.ShowDialog() == DialogResult.OK)
             {
                 newScanPathButtonEdit.Text = fd.SelectedPath;
-                if (Properties.Settings.Default.DoScanAfterChangingBaseFolderPath)
+                if (WambyApplication.Settings.DoScanAfterChangingBaseFolderPath)
                     await DoScan();
             }
         }
@@ -182,7 +182,7 @@ namespace Wamby.Client.Modules
             FileSystemScanService.ScanOptions.IncludeSubFolders = includeSubfoldersCheckEdit.IsOn;
             FileSystemScanService.ScanOptions.SearchPattern = searchPatternButtonEdit.Text;
             FileSystemScanService.ScanOptions.ShowMinimumFolderLevelInLog =
-                Properties.Settings.Default.ShowMinimumFolderLevelInLog;
+                 WambyApplication.Settings.ShowMinimumFolderLevelInLog;
             FileSystemScanService.UserName = WindowsIdentity.GetCurrent().Name;
             FileSystemScanService.ComputerName = Environment.MachineName;
             FileSystemScanService.OSVersionName = Environment.OSVersion.ToString();
@@ -208,11 +208,11 @@ namespace Wamby.Client.Modules
 
         void SaveScanOptions()
         {
-            Properties.Settings.Default.DefaultBaseFolderPath = FileSystemScanService.ScanOptions.BaseFolderPath;
-            Properties.Settings.Default.DefaultIncludeSubFolders = FileSystemScanService.ScanOptions.IncludeSubFolders;
-            Properties.Settings.Default.DefaultSearchPattern = FileSystemScanService.ScanOptions.SearchPattern;
-            Properties.Settings.Default.DefaultDetailedScanType = FileSystemScanService.DetailType;
-            Properties.Settings.Default.Save();
+            WambyApplication.Settings.DefaultBaseFolderPath = FileSystemScanService.ScanOptions.BaseFolderPath;
+            WambyApplication.Settings.DefaultIncludeSubFolders = FileSystemScanService.ScanOptions.IncludeSubFolders;
+            WambyApplication.Settings.DefaultSearchPattern = FileSystemScanService.ScanOptions.SearchPattern;
+            WambyApplication.Settings.DefaultDetailedScanType = FileSystemScanService.DetailType;
+            WambyApplication.SettingsService.SaveSettings(WambyApplication.Settings);
         }
 
         void StartScan()
@@ -224,7 +224,6 @@ namespace Wamby.Client.Modules
         {
             ActivateUI(true);
             RefreshScanOptionsControls();
-            //FileSystemScanService?.RaiseEndScan();
         }
 
         private void ActivateUI(bool activated)
