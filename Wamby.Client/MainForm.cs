@@ -56,6 +56,7 @@ namespace Wamby.Client
                     settings.Skin.SkinAdvancedCustomColor, settings.Skin.SkinAdvancedCustomColor2);
                 DevExpressSkinHelper.RemoveSkinGroups(skinDropDownButtonItem);
                 DevExpressSkinHelper.RemoveSkins(skinDropDownButtonItem);
+                if (settings.ShowWelcomeOnStartup) ViewModel.Welcome();
             };
             FormClosed += (s, e) =>
             {

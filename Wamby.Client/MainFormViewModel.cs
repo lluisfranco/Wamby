@@ -50,7 +50,7 @@ namespace Wamby.Client
         private static string ToHex(Color c) =>
             "#FF" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
 
-        internal void NewScan()
+        public void NewScan()
         {
             Application.UseWaitCursor = true;
             var f = new NewScanForm
@@ -60,6 +60,15 @@ namespace Wamby.Client
             f.SetParent(Form).Show();
             Application.DoEvents();
             f.ShowProgressPanel().InitializeModules().InitializeControl().HideProgressPanel();
+            Application.UseWaitCursor = false;
+        }
+
+        public void Welcome()
+        {
+            Application.UseWaitCursor = true;
+            var f = new WelcomeForm();
+            f.SetParent(Form).Show();
+            Application.DoEvents();
             Application.UseWaitCursor = false;
         }
     }

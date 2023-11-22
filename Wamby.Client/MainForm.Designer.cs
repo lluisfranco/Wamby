@@ -47,7 +47,6 @@
             skinPaletteDropDownButtonItem = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             barCheckItemCompactUI = new DevExpress.XtraBars.BarCheckItem();
             barButtonItemOpenScan = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItemSaveScan = new DevExpress.XtraBars.BarButtonItem();
             svgImageCollection32 = new DevExpress.Utils.SvgImageCollection(components);
             documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(components);
             tabbedView = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(components);
@@ -75,7 +74,6 @@
             toolbarFormControl.TitleItemLinks.Add(skinPaletteDropDownButtonItem);
             toolbarFormControl.TitleItemLinks.Add(skinDropDownButtonItem, true);
             toolbarFormControl.TitleItemLinks.Add(barButtonItemOpenScan);
-            toolbarFormControl.TitleItemLinks.Add(barButtonItemSaveScan);
             toolbarFormControl.ToolbarForm = this;
             // 
             // toolbarFormManager
@@ -87,7 +85,7 @@
             toolbarFormManager.DockControls.Add(barDockControlRight);
             toolbarFormManager.Form = this;
             toolbarFormManager.Images = svgImageCollection16;
-            toolbarFormManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemNewScan, skinDropDownButtonItem, skinPaletteDropDownButtonItem, barCheckItemCompactUI, barButtonItemOpenScan, barButtonItemSaveScan, barEditItemProgress, barStaticItemMessage, barStaticItemMessageLastScan });
+            toolbarFormManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemNewScan, skinDropDownButtonItem, skinPaletteDropDownButtonItem, barCheckItemCompactUI, barButtonItemOpenScan, barEditItemProgress, barStaticItemMessage, barStaticItemMessageLastScan });
             toolbarFormManager.LargeImages = svgImageCollection32;
             toolbarFormManager.MaxItemId = 10;
             toolbarFormManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemProgressBar1 });
@@ -206,15 +204,6 @@
             barButtonItemOpenScan.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O);
             barButtonItemOpenScan.Name = "barButtonItemOpenScan";
             // 
-            // barButtonItemSaveScan
-            // 
-            barButtonItemSaveScan.Caption = "Save Scan...";
-            barButtonItemSaveScan.Enabled = false;
-            barButtonItemSaveScan.Id = 6;
-            barButtonItemSaveScan.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemSaveScan.ImageOptions.SvgImage");
-            barButtonItemSaveScan.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S);
-            barButtonItemSaveScan.Name = "barButtonItemSaveScan";
-            // 
             // svgImageCollection32
             // 
             svgImageCollection32.ImageSize = new System.Drawing.Size(32, 32);
@@ -279,7 +268,6 @@
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView;
         private DevExpress.XtraBars.BarCheckItem barCheckItemCompactUI;
         private DevExpress.XtraBars.BarButtonItem barButtonItemOpenScan;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemSaveScan;
         private DevExpress.Utils.SvgImageCollection svgImageCollectionForm;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarEditItem barEditItemProgress;
