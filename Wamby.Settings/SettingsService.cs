@@ -6,16 +6,16 @@ namespace Wamby.Settings
     {
         public void SaveSettings(Settings settings)
         {
-            var settingsString = JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(Settings.FILENAME, settingsString);
+            var content = JsonSerializer.Serialize(settings, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(Settings.FILENAME, content);
         }
 
         public Settings? LoadSettings()
         {
             if (File.Exists(Settings.FILENAME))
             {
-                var settingsString = File.ReadAllText(Settings.FILENAME);
-                return JsonSerializer.Deserialize<Settings>(settingsString);
+                var content = File.ReadAllText(Settings.FILENAME);
+                return JsonSerializer.Deserialize<Settings>(content);
             }
             else
             {

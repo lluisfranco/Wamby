@@ -10,11 +10,12 @@ namespace Wamby.Settings
         public bool DefaultIncludeSubFolders { get; set; } = true;
         public ScanDetailTypeEnum DefaultDetailedScanType { get; set; } = ScanDetailTypeEnum.Fast;
         public int ShowMinimumFolderLevelInLog { get; set; } = 3;
+        public int SavePreviousScansMaxCount { get; set; } = 1000;
         public bool DoScanAfterChangingBaseFolderPath { get; set; } = true;
         public bool Layouts_SaveOnExit { get; set; } = true;
         public bool Layouts_LoadOnStart { get; set; } = true;
         public bool SaveToFileReadableFormat { get; set; } = true;
-        public SkinSettings Skin { get; set; } = new SkinSettings();
+        public SkinSettings Skin { get; set; } = new();
         public class SkinSettings
         {
             public string SkinName { get; set; } = string.Empty;
