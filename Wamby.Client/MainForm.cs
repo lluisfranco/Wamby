@@ -37,6 +37,7 @@ namespace Wamby.Client
         {
             barEditItemProgress.EditValue = 0; barEditItemProgress.Visibility = BarItemVisibility.Never; return this;
         }
+
         public MainForm()
         {
             InitializeComponent();
@@ -46,19 +47,19 @@ namespace Wamby.Client
                 $"{Assembly.GetExecutingAssembly().GetName().Version}");
             Shown += (s, e) =>
             {
-                var settings = Properties.Settings.Default;
-                DevExpressSkinHelper.SetTheme(settings.SkinName, settings.SkinPalette);
-                DevExpressSkinHelper.SetCompactUI(settings.UseCompactUI, barCheckItemCompactUI);
+                var settings = WambyApplication.SettingsService.LoadSettings();
+                DevExpressSkinHelper.SetTheme(settings.Skin.SkinName, settings.Skin.SkinPalette);
+                DevExpressSkinHelper.SetCompactUI(settings.Skin.UseCompactUI, barCheckItemCompactUI);
                 DevExpressSkinHelper.AddDisplayAdvancedOptions(
                     toolbarFormManager, toolbarFormControl,
-                    settings.SkinAdvancedUseWindowsAppMode, settings.SkinAdvancedSystemAccentColor,
-                    settings.SkinAdvancedCustomColor, settings.SkinAdvancedCustomColor2);
+                    settings.Skin.SkinAdvancedUseWindowsAppMode, settings.Skin.SkinAdvancedSystemAccentColor,
+                    settings.Skin.SkinAdvancedCustomColor, settings.Skin.SkinAdvancedCustomColor2);
                 DevExpressSkinHelper.RemoveSkinGroups(skinDropDownButtonItem);
                 DevExpressSkinHelper.RemoveSkins(skinDropDownButtonItem);
             };
             FormClosed += (s, e) =>
             {
-                MainFormViewModel.SaveSkin();
+                MainFormViewModel.SaveSettings();
             };
             barCheckItemCompactUI.ItemClick += (s, e) =>
             {

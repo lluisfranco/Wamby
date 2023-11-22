@@ -140,9 +140,9 @@ namespace Wamby.Client.Modules
 
         private void BarButtonItemOpenInNewWamby_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var filename = (gridViewFiles.GetRow(gridViewFiles.FocusedRowHandle) as Core.Model.WambyFileInfo)?.ParentFullName;
-            if (filename == null) return;
-            if (System.IO.Directory.Exists(filename)) Helpers.ShellHelper.OpenWamby(filename);
+            //var filename = (gridViewFiles.GetRow(gridViewFiles.FocusedRowHandle) as Core.Model.WambyFileInfo)?.ParentFullName;
+            //if (filename == null) return;
+            //if (System.IO.Directory.Exists(filename)) Helpers.ShellHelper.OpenWamby(filename);
         }
 
         private void BarButtonItemCopyPath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

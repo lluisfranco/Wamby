@@ -21,25 +21,6 @@ namespace Wamby.Client.Helpers
             }
         }
 
-        public static void OpenWamby(string initialfolder)
-        {
-            string separator = Properties.Settings.Default.AppArgumentsSeparator;
-            string partsseparator = Properties.Settings.Default.AppArgumentPartsSeparator;
-            try
-            {
-                var arguments = initialfolder != null ?
-                    $"{Enums.AppArgumentsEnum.InitialFolder}{partsseparator}{initialfolder}" +
-                    $"{separator}" +
-                    $"{Enums.AppArgumentsEnum.AutoStartScan}{partsseparator}{true}" : null;
-                Process.Start(Application.ExecutablePath, arguments);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, Application.ProductName,
-                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
         public static void OpenTerminal(string path)
         {
             try
@@ -60,23 +41,25 @@ namespace Wamby.Client.Helpers
         {
             try
             {
-                SystemShell.ShellFileOperation.ShowFileProperties(path);
+                ShellFileOperation.ShowFileProperties(path);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, Application.ProductName,
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-        }   
+        }
 
         public static bool DeleteFileSystemItemProperties(Form owner, string path)
         {
             try
             {
-                var fo = new ShellFileOperation();
-                fo.Operation = ShellFileOperation.FileOperations.FO_DELETE;
-                fo.OwnerWindow = owner.Handle;
-                fo.SourceFiles = new string[] { path };
+                var fo = new ShellFileOperation
+                {
+                    Operation = ShellFileOperation.FileOperations.FO_DELETE,
+                    OwnerWindow = owner.Handle,
+                    SourceFiles = new string[] { path }
+                };
                 return fo.DoOperation();
             }
             catch (Exception ex)
@@ -85,6 +68,6 @@ namespace Wamby.Client.Helpers
                     MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
             }
-        }   
+        }
     }
 }

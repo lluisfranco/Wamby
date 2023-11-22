@@ -183,8 +183,8 @@ namespace Wamby.Client.Modules
 
         private void OpenCurrentItemInNewInstance()
         {
-            if (resultsTreeList.GetFocusedRow() is not Core.Model.WambyFolderInfo item) return;
-            Helpers.ShellHelper.OpenWamby(item?.DirectoryInfo.FullName);
+            //if (resultsTreeList.GetFocusedRow() is not Core.Model.WambyFolderInfo item) return;
+            //Helpers.ShellHelper.OpenWamby(item?.DirectoryInfo.FullName);
         }
 
         private void CopyCurrentItemPath()
