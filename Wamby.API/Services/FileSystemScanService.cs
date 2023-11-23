@@ -429,7 +429,7 @@ namespace Wamby.API.Services
             var folder = new DirectoryInfo(ScanOptions.BaseFolderPath);
             return $"Scaned '{folder.Name}' in {(ScanResult.ElapsedTime.TotalMilliseconds / 1000):n1}s. Found: " +
                 $"{ScanResult.AllFiles.Count:n0} file(s) in {ScanResult.AllFolders.Count:n0} folder(s)" +
-                (ScanResult.ScanExceptions.Count > 0 ? $". {ScanResult.ScanExceptions} error(s)" : string.Empty);
+                (ScanResult.ScanExceptions.Count > 0 ? $". {ScanResult.ScanExceptions.Count} error(s)" : string.Empty);
         }
     }
 }

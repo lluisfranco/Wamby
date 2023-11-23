@@ -15,7 +15,7 @@ using Wamby.Core.Model;
 
 namespace Wamby.Client.Modules
 {
-    public partial class NewScanModule : XtraUserControl, IModule, IScanModule
+    public partial class NewScanModule : XtraUserControl, IModule, IScanModule, IShowChangeFolderDialog
     {
         [Browsable(false)]
         public FileSystemScanService FileSystemScanService { get; private set; }
