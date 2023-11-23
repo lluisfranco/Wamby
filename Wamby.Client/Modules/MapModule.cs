@@ -1,35 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraTreeMap;
+using System.ComponentModel;
+using System.Data;
+using System.Linq;
+using System.Windows.Forms;
+using Wamby.API.Services;
+using Wamby.Client.Enums;
+using Wamby.Client.Interfaces;
+using Wamby.Client.Model;
 
 namespace Wamby.Client.Modules
 {
-    public partial class MapModule : DevExpress.XtraEditors.XtraUserControl, 
-        Interfaces.IModule, Interfaces.IModulePrintAndExport, Interfaces.IModuleMap, Interfaces.IModuleRibbon
+    public partial class MapModule : XtraUserControl, IModule
     {
         [Browsable(false)]
         public API.Services.FileSystemScanService FileSystemScanService { get; private set; }
         public bool Initialized { get; private set; }
-        public Enums.MapValueDataMemberEnum MapValueDataMember { get; private set; }
-        public DevExpress.XtraBars.Ribbon.RibbonControl Ribbon { get { return ribbon; } }
+        public MapValueDataMemberEnum MapValueDataMember { get; private set; }
 
         public MapModule()
         {
             InitializeComponent();
         }
 
-        public void InitializeControl(MainForm mainform, API.Services.FileSystemScanService scanService)
+        public void InitializeControl(MainForm mainform, FileSystemScanService scanService)
         {
             FileSystemScanService = scanService;
             Initialized = true;
-            setEventHandlers();
+            SetEventHandlers();
         }
 
         public void SetFocus()
@@ -37,129 +36,113 @@ namespace Wamby.Client.Modules
             treeMapControl.Focus();
         }
 
-        private void setEventHandlers()
+        private void SetEventHandlers()
         {
-            barCheckItemMapBySize.ItemClick += BarCheckItemMapBySize_ItemClick;
-            barCheckItemMapByFilesCount.ItemClick += BarCheckItemMapByFilesCount_ItemClick;
-            barButtonItemLayoutAlgorithmSliceAndDice.ItemClick += BarButtonItemLayoutAlgorithmSliceAndDice_ItemClick;
-            barButtonItemLayoutAlgorithmSquarified.ItemClick += BarButtonItemLayoutAlgorithmSquarified_ItemClick;
-            barButtonItemLayoutAlgorithmStriped.ItemClick += BarButtonItemLayoutAlgorithmStriped_ItemClick;
-            barButtonItemDirectionBottomLeftToTopRight.ItemClick += BarButtonItemDirectionBottomLeftToTopRight_ItemClick;
-            barButtonItemDirectionBottomRightToTopLeft.ItemClick += BarButtonItemDirectionBottomRightToTopLeft_ItemClick;
-            barButtonItemDirectionTopLeftToBottomRight.ItemClick += BarButtonItemDirectionTopLeftToBottomRight_ItemClick;
-            barButtonItemDirectionTopRightToBottomLeft.ItemClick += BarButtonItemDirectionTopRightToBottomLeft_ItemClick;
+            treeMapControl.MouseDown += (s, e) =>
+            {
+                if (e.Button == MouseButtons.Right)
+                    popupMenu.ShowPopup(MousePosition);
+            };
+            barCheckItemBySize.ItemClick += BarCheckItemMapBySize_ItemClick;
+            barCheckItemShowByCount.ItemClick += BarCheckItemMapByFilesCount_ItemClick;
+            barCheckItemSliceAndDice.ItemClick += BarButtonItemLayoutAlgorithmSliceAndDice_ItemClick;
+            barCheckItemSquarified.ItemClick += BarButtonItemLayoutAlgorithmSquarified_ItemClick;
+            barCheckItemStriped.ItemClick += BarButtonItemLayoutAlgorithmStriped_ItemClick;
+            barCheckItemBottomLeftToTopRight.ItemClick += BarButtonItemDirectionBottomLeftToTopRight_ItemClick;
+            barCheckItemBottomRightToTopLeft.ItemClick += BarButtonItemDirectionBottomRightToTopLeft_ItemClick;
+            barCheckItemTopLeftToBottomRight.ItemClick += BarButtonItemDirectionTopLeftToBottomRight_ItemClick;
+            barCheckItemTopRightToBottomLeft.ItemClick += BarButtonItemDirectionTopRightToBottomLeft_ItemClick;
         }
-        
+
         public void RefreshModuleData()
         {
             var files = FileSystemScanService.ScanResult.AllFiles.
-                GroupBy(p => p.Extension).Select(g => new Model.FileMapInfo()
+                GroupBy(p => p.Extension).Select(g => new FileMapInfo()
                 {
                     Extension = g.Key,
                     Size = g.Sum(p => p.Length / 1024),
                     FilesCount = g.Count()
                 });
-            var adapter = new DevExpress.XtraTreeMap.TreeMapFlatDataAdapter
+            var adapter = new TreeMapFlatDataAdapter
             {
                 DataSource = files,
                 LabelDataMember = "Extension",
                 ValueDataMember = MapValueDataMember.ToString()
             };
-            if (MapValueDataMember == Enums.MapValueDataMemberEnum.Size)
+            if (MapValueDataMember == MapValueDataMemberEnum.Size)
                 treeMapControl.ToolTipLeafPattern = "Extension {L}: {V:n0} KB";
-            if (MapValueDataMember == Enums.MapValueDataMemberEnum.FilesCount)
+            if (MapValueDataMember == MapValueDataMemberEnum.FilesCount)
                 treeMapControl.ToolTipLeafPattern = "Extension {L}: {V:n0} files";
             treeMapControl.DataAdapter = adapter;
         }
 
-        public void SetMapByDataMember(Enums.MapValueDataMemberEnum member)
+        public void SetMapByDataMember(MapValueDataMemberEnum member)
         {
             MapValueDataMember = member;
             RefreshModuleData();
         }
 
-        public void SetLayoutAlgorithm(Enums.MapLayoutAlgorithmEnum layoutAlgorithm)
+        public void SetLayoutAlgorithm(MapLayoutAlgorithmEnum layoutAlgorithm)
         {
-            DevExpress.XtraTreeMap.ITreeMapLayoutAlgorithm algorithm = 
-                new DevExpress.XtraTreeMap.TreeMapSquarifiedLayoutAlgorithm();
-            if(layoutAlgorithm == Enums.MapLayoutAlgorithmEnum.SliceAndDice)
-                algorithm = new DevExpress.XtraTreeMap.TreeMapSliceAndDiceLayoutAlgorithm();
+            ITreeMapLayoutAlgorithm algorithm =
+                new TreeMapSquarifiedLayoutAlgorithm();
+            if (layoutAlgorithm == MapLayoutAlgorithmEnum.SliceAndDice)
+                algorithm = new TreeMapSliceAndDiceLayoutAlgorithm();
             if (layoutAlgorithm == Enums.MapLayoutAlgorithmEnum.Squarified)
-                algorithm = new DevExpress.XtraTreeMap.TreeMapSquarifiedLayoutAlgorithm();
+                algorithm = new TreeMapSquarifiedLayoutAlgorithm();
             if (layoutAlgorithm == Enums.MapLayoutAlgorithmEnum.Striped)
-                algorithm = new DevExpress.XtraTreeMap.TreeMapStripedLayoutAlgorithm();
+                algorithm = new TreeMapStripedLayoutAlgorithm();
             treeMapControl.LayoutAlgorithm = algorithm;
         }
 
-        public void SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection layoutAlgorithmDirection)
+        public void SetLayoutAlgorithmDirection(TreeMapLayoutDirection layoutAlgorithmDirection)
         {
-            (treeMapControl.LayoutAlgorithm as
-                    DevExpress.XtraTreeMap.TreeMapLayoutAlgorithmBase).Direction = layoutAlgorithmDirection;
+            (treeMapControl.LayoutAlgorithm as TreeMapLayoutAlgorithmBase).Direction = layoutAlgorithmDirection;
         }
 
-        private void BarCheckItemMapBySize_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BarCheckItemMapBySize_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SetMapByDataMember(Enums.MapValueDataMemberEnum.Size);
+            SetMapByDataMember(MapValueDataMemberEnum.Size);
         }
 
-        private void BarCheckItemMapByFilesCount_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BarCheckItemMapByFilesCount_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SetMapByDataMember(Enums.MapValueDataMemberEnum.FilesCount);
+            SetMapByDataMember(MapValueDataMemberEnum.FilesCount);
         }
 
-        private void BarButtonItemLayoutAlgorithmSliceAndDice_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BarButtonItemLayoutAlgorithmSliceAndDice_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SetLayoutAlgorithm(Enums.MapLayoutAlgorithmEnum.SliceAndDice);
+            SetLayoutAlgorithm(MapLayoutAlgorithmEnum.SliceAndDice);
         }
 
-        private void BarButtonItemLayoutAlgorithmSquarified_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BarButtonItemLayoutAlgorithmSquarified_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SetLayoutAlgorithm(Enums.MapLayoutAlgorithmEnum.Squarified);
+            SetLayoutAlgorithm(MapLayoutAlgorithmEnum.Squarified);
         }
 
-        private void BarButtonItemLayoutAlgorithmStriped_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BarButtonItemLayoutAlgorithmStriped_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SetLayoutAlgorithm(Enums.MapLayoutAlgorithmEnum.Striped);
+            SetLayoutAlgorithm(MapLayoutAlgorithmEnum.Striped);
         }
 
-        private void BarButtonItemDirectionBottomLeftToTopRight_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BarButtonItemDirectionBottomLeftToTopRight_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.BottomLeftToTopRight);
+            SetLayoutAlgorithmDirection(TreeMapLayoutDirection.BottomLeftToTopRight);
         }
 
-        private void BarButtonItemDirectionBottomRightToTopLeft_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BarButtonItemDirectionBottomRightToTopLeft_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.BottomRightToTopLeft);
+            SetLayoutAlgorithmDirection(TreeMapLayoutDirection.BottomRightToTopLeft);
         }
 
-        private void BarButtonItemDirectionTopLeftToBottomRight_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BarButtonItemDirectionTopLeftToBottomRight_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.TopLeftToBottomRight);
+            SetLayoutAlgorithmDirection(TreeMapLayoutDirection.TopLeftToBottomRight);
         }
 
-        private void BarButtonItemDirectionTopRightToBottomLeft_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void BarButtonItemDirectionTopRightToBottomLeft_ItemClick(object sender, ItemClickEventArgs e)
         {
-            SetLayoutAlgorithmDirection(DevExpress.XtraTreeMap.TreeMapLayoutDirection.TopRightToBottomLeft);
+            SetLayoutAlgorithmDirection(TreeMapLayoutDirection.TopRightToBottomLeft);
         }
-        public void Print()
-        {
-            treeMapControl.ShowRibbonPrintPreview();
-        }
-
-        public void ExportToXls()
-        {
-            var filename = FileSystemScanService.GetTempFileName("xlsx");
-            treeMapControl.ExportToXlsx(filename);
-            Helpers.ShellHelper.Open(filename);
-        }
-
-        public void ExportToPdf()
-        {
-            var filename = FileSystemScanService.GetTempFileName("pdf");
-            treeMapControl.ExportToPdf(filename);
-            Helpers.ShellHelper.Open(filename);
-        }
-
     }
-
 }
