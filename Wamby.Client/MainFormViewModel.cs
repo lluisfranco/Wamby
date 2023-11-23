@@ -2,6 +2,7 @@
 using DevExpress.XtraEditors;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wamby.PreviousScansPersistence;
 
@@ -63,11 +64,24 @@ namespace Wamby.Client
             Application.UseWaitCursor = false;
         }
 
+        public async Task OpenScan()
+        {
+
+        }
+
+        public async Task OpenPreviousScan(string path)
+        {
+
+        }
+
         public void Welcome()
         {
             Application.UseWaitCursor = true;
             var f = new WelcomeForm();
             f.SetParent(Form).Show();
+            f.NewScanClick += (s, e) => NewScan();  
+            f.OpenScanClick += async (s, e) => await OpenScan();
+            f.OpenPreviousScanClick += async (s, e) => { if (string.IsNullOrEmpty(e.Path)) NewScan(); else await OpenPreviousScan(e.Path); };
             Application.DoEvents();
             Application.UseWaitCursor = false;
         }

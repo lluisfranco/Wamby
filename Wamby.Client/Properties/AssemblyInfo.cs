@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Wamby")]
-[assembly: AssemblyDescription("Where are my bytes?")]
+[assembly: AssemblyDescription("Where Are My BYtes?")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Wamby")]
