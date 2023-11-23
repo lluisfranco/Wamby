@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
-namespace Wamby.Client.Args
-{
-    public class GotoTabButtonEventArgs : EventArgs
-    {
-        public string TabName { get; set; }
-    }
-}
+//namespace Wamby.Client.Args
+//{
+//    public class GotoTabButtonEventArgs : EventArgs
+//    {
+//        public string TabName { get; set; }
+//    }
+//}
