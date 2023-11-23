@@ -139,7 +139,7 @@ namespace Wamby.Client
                 OSVersionName = FileSystemScanService.OSVersionName,
                 ShowMinimumFolderLevelInLog = FileSystemScanService.ScanOptions.ShowMinimumFolderLevelInLog,
             };
-            if (previousScans.Exists(p => p.BaseFolderPath == FileSystemScanService.ScanOptions.BaseFolderPath)) 
+            if (previousScans.Exists(p => p.BaseFolderPath == FileSystemScanService.ScanOptions.BaseFolderPath))
                 previousScans.RemoveAll(p => p.BaseFolderPath == FileSystemScanService.ScanOptions.BaseFolderPath);
             previousScans.Insert(0, scan);
             WambyApplication.PreviousScansPersistenceService.SavePreviousScans(

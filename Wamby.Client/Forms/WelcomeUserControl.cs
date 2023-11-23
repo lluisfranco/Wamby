@@ -61,7 +61,7 @@ namespace Wamby.Client.Forms
 
         private void SetLinkLabelScanInfo(HyperlinkLabelControl label, PreviousScan item)
         {
-            var file = new FileInfo(item.BaseFolderPath);
+            var file = new DirectoryInfo(item.BaseFolderPath);
             label.Text = $"{file.Name} ({item.ScanDate:dd/MM/yyy HH:mm})";
             label.ToolTip = item.BaseFolderPath;
             label.Visible = true;

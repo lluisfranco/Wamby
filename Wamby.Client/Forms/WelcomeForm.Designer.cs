@@ -95,7 +95,7 @@ namespace Wamby.Client
             // 
             // svgImageCollectionForm
             // 
-            svgImageCollectionForm.Add("AppIcon", "Wamby.Resources.Images.AppIcon.svg", "Wamby.Resources");
+            svgImageCollectionForm.Add("Welcome", "Wamby.Resources.Images.App.Welcome.svg", "Wamby.Resources");
             // 
             // WelcomeUserControl
             // 

@@ -90,9 +90,9 @@
             // 
             // svgImageCollection16
             // 
-            svgImageCollection16.Add("NewScan_CancelScan", "Wamby.Resources.Images.NewScan_CancelScan.svg", "Wamby.Resources");
-            svgImageCollection16.Add("NewScan_Change_Folder", "Wamby.Resources.Images.NewScan_Change_Folder.svg", "Wamby.Resources");
-            svgImageCollection16.Add("NewScan_ScanNow", "Wamby.Resources.Images.NewScan_ScanNow.svg", "Wamby.Resources");
+            svgImageCollection16.Add("RefreshCancel", "Wamby.Resources.Images.Actions.RefreshCancel.svg", "Wamby.Resources");
+            svgImageCollection16.Add("ChangeFolder", "Wamby.Resources.Images.Actions.ChangeFolder.svg", "Wamby.Resources");
+            svgImageCollection16.Add("Refresh", "Wamby.Resources.Images.Actions.Refresh.svg", "Wamby.Resources");
             // 
             // gridControlLog
             // 
@@ -309,9 +309,9 @@
             // svgImageCollection32
             // 
             svgImageCollection32.ImageSize = new System.Drawing.Size(32, 32);
-            svgImageCollection32.Add("NewScan_CancelScan", "Wamby.Resources.Images.NewScan_CancelScan.svg", "Wamby.Resources");
-            svgImageCollection32.Add("NewScan_Change_Folder", "Wamby.Resources.Images.NewScan_Change_Folder.svg", "Wamby.Resources");
-            svgImageCollection32.Add("NewScan_ScanNow", "Wamby.Resources.Images.NewScan_ScanNow.svg", "Wamby.Resources");
+            svgImageCollection32.Add("RefreshCancel", "Wamby.Resources.Images.Actions.RefreshCancel.svg", "Wamby.Resources");
+            svgImageCollection32.Add("ChangeFolder", "Wamby.Resources.Images.Actions.ChangeFolder.svg", "Wamby.Resources");
+            svgImageCollection32.Add("Refresh", "Wamby.Resources.Images.Actions.Refresh.svg", "Wamby.Resources");
             // 
             // dxErrorProvider
             // 

@@ -10,7 +10,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\AppIcon.ico</ApplicationIcon>
+    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
     <AssemblyVersion>2023.10.24.1</AssemblyVersion>
     <FileVersion>2023.10.24.1</FileVersion>
   </PropertyGroup>
@@ -22,6 +22,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="MainRibbonForm.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Forms\WelcomeForm.cs">
