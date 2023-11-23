@@ -1,9 +1,13 @@
 ﻿using DevExpress.Utils;
 using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Wamby.API.Enums;
+using Wamby.API.Services;
 using Wamby.PreviousScansPersistence;
 
 namespace Wamby.Client
@@ -51,7 +55,7 @@ namespace Wamby.Client
         private static string ToHex(Color c) =>
             "#FF" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
 
-        public void NewScan()
+        public async Task NewScan(FileSystemScanService service = null)
         {
             Application.UseWaitCursor = true;
             var f = new NewScanForm
@@ -59,8 +63,10 @@ namespace Wamby.Client
                 Text = $"New Scan: #{docsCount++}"
             };
             f.SetParent(Form).Show();
+            if (service != null) f.SetFileSystemScanService(service);
             Application.DoEvents();
             f.ShowProgressPanel().InitializeModules().InitializeControl().HideProgressPanel();
+            if (service != null) await f.StartScan();
             Application.UseWaitCursor = false;
         }
 
@@ -71,7 +77,16 @@ namespace Wamby.Client
 
         public async Task OpenPreviousScan(string path)
         {
-
+            var scanService = new FileSystemScanService()
+            {
+                UserName = WindowsIdentity.GetCurrent().Name,
+                ComputerName = Environment.MachineName,
+                OSVersionName = Environment.OSVersion.ToString(),
+                ScanDate = DateTime.Now,
+                DetailType = ScanDetailTypeEnum.Fast
+            };
+            scanService.ScanOptions.BaseFolderPath = path;
+            await NewScan(scanService);
         }
 
         public void Welcome()
@@ -79,9 +94,12 @@ namespace Wamby.Client
             Application.UseWaitCursor = true;
             var f = new WelcomeForm();
             f.SetParent(Form).Show();
-            f.NewScanClick += (s, e) => NewScan();  
+            f.NewScanClick += async (s, e) => await NewScan();  
             f.OpenScanClick += async (s, e) => await OpenScan();
-            f.OpenPreviousScanClick += async (s, e) => { if (string.IsNullOrEmpty(e.Path)) NewScan(); else await OpenPreviousScan(e.Path); };
+            f.OpenPreviousScanClick += async (s, e) =>
+            {
+                if (string.IsNullOrEmpty(e.Path)) await NewScan(); else await OpenPreviousScan(e.Path);
+            };
             Application.DoEvents();
             Application.UseWaitCursor = false;
         }
