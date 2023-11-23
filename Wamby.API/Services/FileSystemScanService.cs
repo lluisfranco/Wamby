@@ -110,9 +110,9 @@ namespace Wamby.API.Services
             ScanResult.ElapsedTime = clock.Elapsed;
             LogLines.Add(new Core.Model.LogLine()
             {
-                Message = $"Finished scan. Ellapsed time: {ScanResult.ElapsedTime.TotalSeconds.ToString("n2")} sec.",
+                Message = $"Finished scan. Ellapsed time: {ScanResult.ElapsedTime.TotalSeconds:n1}s.",
                 Value = string.Empty,
-                LogLineType = Core.Model.LogLineTypeEnum.Info
+                LogLineType = LogLineTypeEnum.Info
             });
             RaiseEndScan();
             return ScanResult;
@@ -123,10 +123,10 @@ namespace Wamby.API.Services
             CancellationToken.Cancel();
         }
         
-        private Core.Model.WambyFolderInfo ScanFolder(string basefolderpath)
+        private WambyFolderInfo ScanFolder(string basefolderpath)
         {
             var currentDirectoryInfo = new DirectoryInfo(basefolderpath);
-            var wambyFolder = new Core.Model.WambyFolderInfo()
+            var wambyFolder = new WambyFolderInfo()
             {
                 DirectoryInfo = currentDirectoryInfo,
                 DisplayName = basefolderpath == BaseFolder ? currentDirectoryInfo.FullName : currentDirectoryInfo.Name,
@@ -172,7 +172,7 @@ namespace Wamby.API.Services
                 {
                     _CurrentFileSystemInfo = file;
                     if (CheckIfCancellationRequested()) return wambyFolder;
-                    var wambyfile = new Core.Model.WambyFileInfo()
+                    var wambyfile = new WambyFileInfo()
                     {
                         FullName = file.FullName,
                         Name = file.Name,
@@ -233,7 +233,7 @@ namespace Wamby.API.Services
             wambyFileSystemItem.IsTemporary = (wambyFileSystemItem.Attributes & FileAttributes.Temporary) == FileAttributes.Temporary;
         }
 
-        private Core.Model.WambyFolderInfo AddCurrentFolderFileSummary(Core.Model.WambyFolderInfo currentFolderInfo)
+        private Core.Model.WambyFolderInfo AddCurrentFolderFileSummary(WambyFolderInfo currentFolderInfo)
         {
             var currentFolderFilesSummaryInfo = new Core.Model.WambyFolderInfo()
             {
@@ -265,29 +265,29 @@ namespace Wamby.API.Services
                 p.FileFullPath == currentFileSystemInfo.FullName);
         }
 
-        private void UpdateScanningFolderProgress(Core.Model.WambyFolderInfo currentFolderInfo)
+        private void UpdateScanningFolderProgress(WambyFolderInfo currentFolderInfo)
         {
             if (Cancelled) return;
             if (DetailType == Enums.ScanDetailTypeEnum.Detailed)
             {
                 if (currentFolderInfo.Level <= ScanOptions.ShowMinimumFolderLevelInLog)
                 {
-                    LogLines.Add(new Core.Model.LogLine()
+                    LogLines.Add(new LogLine()
                     {
                         Message = $"Reading: {currentFolderInfo.FullName}",
                         Value = currentFolderInfo.FullName,
-                        LogLineType = Core.Model.LogLineTypeEnum.ReadingFolder
+                        LogLineType = LogLineTypeEnum.ReadingFolder
                     });
                     ScanningFolderProgress?.Report(new Args.WambyFolderEventArgs() { WambyFolderInfo = currentFolderInfo });
                 }
             }
             else if(currentFolderInfo.Level <= 2)
             {
-                LogLines.Add(new Core.Model.LogLine()
+                LogLines.Add(new LogLine()
                 {
                     Message = $"Reading: {currentFolderInfo.FullName}",
                     Value = currentFolderInfo.FullName,
-                    LogLineType = Core.Model.LogLineTypeEnum.ReadingFolder
+                    LogLineType = LogLineTypeEnum.ReadingFolder
                 });
                 ScanningFolderProgress?.Report(new Args.WambyFolderEventArgs() { WambyFolderInfo = currentFolderInfo });
             }
@@ -296,18 +296,18 @@ namespace Wamby.API.Services
         private void UpdateErrorReadingFileSystemInfoProgress(FileSystemInfo currentItem)
         {
             if (Cancelled) return;
-            LogLines.Add(new Core.Model.LogLine()
+            LogLines.Add(new LogLine()
             {
                 Message = $"ERROR: {currentItem.FullName}",
                 Value = currentItem.FullName,
-                LogLineType = Core.Model.LogLineTypeEnum.Error
+                LogLineType = LogLineTypeEnum.Error
             });
             ErrorReadingFileSystemInfoProgress?.Report(new Args.WambyFileSystemInfoEventArgs() { WambyFileSystemItem = currentItem });
         }
 
         private void AddExceptionToResult(Exception ex, FileSystemInfo currentFileSystemInfo)
         {
-            ScanResult.ScanExceptions.Add(new Core.Model.ScanException()
+            ScanResult.ScanExceptions.Add(new ScanException()
             {
                 FileFullPath = currentFileSystemInfo.FullName,
                 Message = ex.Message,
@@ -326,11 +326,11 @@ namespace Wamby.API.Services
             {
                 Cancelled = true;
                 var username = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
-                LogLines.Add(new Core.Model.LogLine()
+                LogLines.Add(new LogLine()
                 {
                     Message = $"** Scan cancelled by user {username} **".ToUpper(),
                     Value = string.Empty,
-                    LogLineType = Core.Model.LogLineTypeEnum.Error
+                    LogLineType = LogLineTypeEnum.Error
                 });
                 //CancelledByUserProgress?.Report(username);
                 RaiseCancelledScan();
@@ -421,7 +421,15 @@ namespace Wamby.API.Services
 
         public string GetTempFileName(string extension)
         {
-            return System.IO.Path.GetTempFileName().Replace("tmp", extension);
+            return Path.GetTempFileName().Replace("tmp", extension);
+        }
+
+        public string GetSummary()
+        {
+            var folder = new DirectoryInfo(ScanOptions.BaseFolderPath);
+            return $"Scaned '{folder.Name}' in {(ScanResult.ElapsedTime.TotalMilliseconds / 1000):n1}s. Found: " +
+                $"{ScanResult.AllFiles.Count:n0} file(s) in {ScanResult.AllFolders.Count:n0} folder(s)" +
+                (ScanResult.ScanExceptions.Count > 0 ? $". {ScanResult.ScanExceptions} error(s)" : string.Empty);
         }
     }
 }

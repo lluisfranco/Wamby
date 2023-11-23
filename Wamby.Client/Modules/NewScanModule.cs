@@ -15,7 +15,7 @@ using Wamby.Core.Model;
 
 namespace Wamby.Client.Modules
 {
-    public partial class NewScanModule : XtraUserControl, IModule, IScanModule, IShowChangeFolderDialog
+    public partial class NewScanModule : XtraUserControl, IModule, IScanModule
     {
         [Browsable(false)]
         public FileSystemScanService FileSystemScanService { get; private set; }
@@ -55,12 +55,14 @@ namespace Wamby.Client.Modules
             logLineBindingSource.DataSource = FileSystemScanService.LogLines;
             gridControlLog.RefreshDataSource();
             gridViewLog.FocusedRowHandle = gridViewLog.RowCount - 1;
+            MainForm?.SetMessage(FileSystemScanService.LogLines.LastOrDefault().Message);
         }
 
         public void InitializeControl(MainForm mainform, FileSystemScanService scanService)
         {
             try
             {
+                MainForm = mainform;
                 FileSystemScanService = scanService;
                 newScanPathButtonEdit.Properties.AdvancedModeOptions.AutoCompleteMode = TextEditAutoCompleteMode.SuggestAppend;
                 newScanPathButtonEdit.Properties.AdvancedModeOptions.AutoCompleteSource = AutoCompleteSource.FileSystemDirectories;
@@ -88,7 +90,6 @@ namespace Wamby.Client.Modules
                 if (e.Button.Index == 1) RaiseChangeFolderButtonPressed();
             };
             newScanPathButtonEdit.KeyDown += async (s, e) => { if (e.KeyCode == Keys.Enter) await DoScan(); };
-            gridViewLog.FocusedRowObjectChanged += GridViewLog_FocusedRowObjectChanged;
             gridViewLog.MouseDown += GridViewLog_MouseDown;
         }
 
@@ -96,11 +97,6 @@ namespace Wamby.Client.Modules
         {
             gridControlLog.Focus();
         }
-
-        //private void FileSystemScanService_CancelledScan(object sender, EventArgs e)
-        //{
-        //    RefreshModuleData();
-        //}
 
         public void RefreshScanOptionsControls()
         {
@@ -114,32 +110,6 @@ namespace Wamby.Client.Modules
         {
             if (e.Button == MouseButtons.Right) popupMenu.ShowPopup(MousePosition);
         }
-
-        //private void ScanLogGroupControl_CustomButtonClick(object sender, DevExpress.XtraBars.Docking2010.BaseButtonEventArgs e)
-        //{
-        //    if (e.Button.Properties.Caption == "Cancel") CancelScan();
-        //}
-
-        //private void BarButtonItemChangeFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        //{
-        //    ShowSelectPathDialog();
-        //}
-
-        //private async void NewScanPathButtonEdit_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyCode == Keys.Enter) await DoScan();
-        //}
-
-        //private async void NewScanPathButtonEdit_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        //{
-        //    if (e.Button.Index == 0) ShowSelectPathDialog();
-        //    if (e.Button.Index == 1) await DoScan();
-        //}
-
-        //public void RequestScan()
-        //{
-        //    RequestNewScan?.Invoke(this, new EventArgs());
-        //}
 
         public async Task ShowChangeFolderDialog()
         {
@@ -219,6 +189,8 @@ namespace Wamby.Client.Modules
         {
             ActivateUI(true);
             RefreshScanOptionsControls();
+            MainForm?.ClearMessage();
+            MainForm?.SetMessageLastScan(FileSystemScanService.GetSummary());
         }
 
         private void ActivateUI(bool activated)
@@ -230,58 +202,5 @@ namespace Wamby.Client.Modules
             includeSubfoldersCheckEdit.ReadOnly = !activated;
             imageComboBoxEditType.ReadOnly = !activated;
         }
-
-        private void GridViewLog_FocusedRowObjectChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowObjectChangedEventArgs e)
-        {
-            var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
-            var exists = System.IO.Directory.Exists(item.Value);
-            //barButtonItemOpenFolder.Enabled = exists;
-            //barButtonItemOpenTerminal.Enabled = exists;
-            //barButtonItemOpenInNewWamby.Enabled = exists;
-            //barButtonItemCopyPath.Enabled = exists;
-            //barButtonItemShowProperties.Enabled = exists;
-            //barButtonItemDelete.Enabled = exists;
-        }
-
-        private void BarButtonItemOpenFolder_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
-            if (System.IO.Directory.Exists(item.Value)) Helpers.ShellHelper.Open(item.Value);
-        }
-
-        private void BarButtonItemOpenTerminal_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
-            if (System.IO.Directory.Exists(item.Value)) Helpers.ShellHelper.OpenTerminal(item.Value);
-        }
-
-        private void BarButtonItemOpenInNewWamby_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            //var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
-            //if (System.IO.Directory.Exists(item.Value)) Helpers.ShellHelper.OpenWamby(item.Value);
-        }
-
-        private void BarButtonItemCopyPath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
-            Clipboard.SetText(item.Value);
-        }
-
-        private void BarButtonItemShowProperties_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
-            if (System.IO.Directory.Exists(item.Value))
-                Helpers.ShellHelper.ShowFileSystemItemProperties(item.Value);
-        }
-
-        //private void BarButtonItemDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        //{
-        //    var item = gridViewLog.GetRow(gridViewLog.FocusedRowHandle) as Core.Model.LogLine;
-        //    if (System.IO.Directory.Exists(item.Value))
-        //    {
-        //        var deleted = Helpers.ShellHelper.DeleteFileSystemItemProperties(FindForm(), item.Value);
-        //        if (deleted) RequestNewScan?.Invoke(this, new EventArgs());
-        //    }
-        //}
     }
 }
