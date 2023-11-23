@@ -63,6 +63,11 @@
             layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             svgImageCollection32 = new DevExpress.Utils.SvgImageCollection(components);
             dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(components);
+            barManager = new DevExpress.XtraBars.BarManager(components);
+            barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection16).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gridControlLog).BeginInit();
             ((System.ComponentModel.ISupportInitialize)logLineBindingSource).BeginInit();
@@ -86,6 +91,7 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).BeginInit();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection32).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dxErrorProvider).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)barManager).BeginInit();
             SuspendLayout();
             // 
             // svgImageCollection16
@@ -149,6 +155,7 @@
             // 
             // popupMenu
             // 
+            popupMenu.Manager = barManager;
             popupMenu.Name = "popupMenu";
             // 
             // searchPatternButtonEdit
@@ -164,6 +171,7 @@
             // 
             // layoutControl
             // 
+            layoutControl.AllowCustomization = false;
             layoutControl.Controls.Add(gridControlLog);
             layoutControl.Controls.Add(imageComboBoxEditType);
             layoutControl.Controls.Add(includeSubfoldersCheckEdit);
@@ -317,11 +325,55 @@
             // 
             dxErrorProvider.ContainerControl = this;
             // 
+            // barManager
+            // 
+            barManager.DockControls.Add(barDockControlTop);
+            barManager.DockControls.Add(barDockControlBottom);
+            barManager.DockControls.Add(barDockControlLeft);
+            barManager.DockControls.Add(barDockControlRight);
+            barManager.Form = this;
+            // 
+            // barDockControlTop
+            // 
+            barDockControlTop.CausesValidation = false;
+            barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            barDockControlTop.Manager = barManager;
+            barDockControlTop.Size = new System.Drawing.Size(678, 0);
+            // 
+            // barDockControlBottom
+            // 
+            barDockControlBottom.CausesValidation = false;
+            barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            barDockControlBottom.Location = new System.Drawing.Point(0, 583);
+            barDockControlBottom.Manager = barManager;
+            barDockControlBottom.Size = new System.Drawing.Size(678, 0);
+            // 
+            // barDockControlLeft
+            // 
+            barDockControlLeft.CausesValidation = false;
+            barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            barDockControlLeft.Manager = barManager;
+            barDockControlLeft.Size = new System.Drawing.Size(0, 583);
+            // 
+            // barDockControlRight
+            // 
+            barDockControlRight.CausesValidation = false;
+            barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            barDockControlRight.Location = new System.Drawing.Point(678, 0);
+            barDockControlRight.Manager = barManager;
+            barDockControlRight.Size = new System.Drawing.Size(0, 583);
+            // 
             // NewScanModule
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             Controls.Add(layoutControl);
+            Controls.Add(barDockControlLeft);
+            Controls.Add(barDockControlRight);
+            Controls.Add(barDockControlBottom);
+            Controls.Add(barDockControlTop);
             Name = "NewScanModule";
             Size = new System.Drawing.Size(678, 583);
             ((System.ComponentModel.ISupportInitialize)svgImageCollection16).EndInit();
@@ -347,7 +399,9 @@
             ((System.ComponentModel.ISupportInitialize)layoutControlItem5).EndInit();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection32).EndInit();
             ((System.ComponentModel.ISupportInitialize)dxErrorProvider).EndInit();
+            ((System.ComponentModel.ISupportInitialize)barManager).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -375,5 +429,10 @@
         private DevExpress.Utils.SvgImageCollection svgImageCollection16;
         private DevExpress.Utils.SvgImageCollection svgImageCollection32;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider;
+        private DevExpress.XtraBars.BarManager barManager;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
     }
 }
