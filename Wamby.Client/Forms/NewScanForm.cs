@@ -26,6 +26,7 @@ namespace Wamby.Client
         public NewScanForm SetParent(MainForm form) { MainForm = form; MdiParent = MainForm; return this; }
         public NewScanForm ShowProgressPanel() { handle = OverlayFormExtensions.ShowProgressPanel(navigationPane); return this; }
         public NewScanForm HideProgressPanel() { if (handle != null) OverlayFormExtensions.CloseProgressPanel(handle); return this; }
+        public void SetFileSystemScanService(FileSystemScanService service) { FileSystemScanService = service; }
 
         IOverlaySplashScreenHandle handle = null;
 
@@ -73,20 +74,23 @@ namespace Wamby.Client
 
         private void InitializeFileSystemScanService()
         {
-            FileSystemScanService = new FileSystemScanService()
+            if (FileSystemScanService == null)
             {
-                UserName = WindowsIdentity.GetCurrent().Name,
-                ComputerName = Environment.MachineName,
-                OSVersionName = Environment.OSVersion.ToString(),
-                ScanDate = DateTime.Now,
-                DetailType = ScanDetailTypeEnum.Fast
-            };
-            var settings = WambyApplication.Settings;
-            if (Directory.Exists(settings.DefaultBaseFolderPath))
-                FileSystemScanService.ScanOptions.BaseFolderPath = settings.DefaultBaseFolderPath;
-            FileSystemScanService.ScanOptions.IncludeSubFolders = settings.DefaultIncludeSubFolders;
-            FileSystemScanService.ScanOptions.SearchPattern = settings.DefaultSearchPattern;
-            FileSystemScanService.DetailType = settings.DefaultDetailedScanType;
+                FileSystemScanService = new FileSystemScanService()
+                {
+                    UserName = WindowsIdentity.GetCurrent().Name,
+                    ComputerName = Environment.MachineName,
+                    OSVersionName = Environment.OSVersion.ToString(),
+                    ScanDate = DateTime.Now,
+                    DetailType = ScanDetailTypeEnum.Fast
+                };
+                var settings = WambyApplication.Settings;
+                if (Directory.Exists(settings.DefaultBaseFolderPath))
+                    FileSystemScanService.ScanOptions.BaseFolderPath = settings.DefaultBaseFolderPath;
+                FileSystemScanService.ScanOptions.IncludeSubFolders = settings.DefaultIncludeSubFolders;
+                FileSystemScanService.ScanOptions.SearchPattern = settings.DefaultSearchPattern;
+                FileSystemScanService.DetailType = settings.DefaultDetailedScanType;
+            }            
             FileSystemScanService.BeginScan += (s, e) =>
             {
                 UpdateFormTitle();
@@ -171,7 +175,7 @@ namespace Wamby.Client
             };
         }
 
-        private async Task StartScan()
+        public async Task StartScan()
         {
             barButtonItemNewScan.Visibility = BarItemVisibility.Never;
             barButtonItemCancelScan.Visibility = BarItemVisibility.Always;

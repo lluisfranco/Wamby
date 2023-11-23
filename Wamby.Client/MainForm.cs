@@ -78,10 +78,10 @@ namespace Wamby.Client
                 toolbarFormControl.TitleItemLinks.UnMerge();
             };
             tabbedView.DocumentAdded += (s, e) => e.Document.ImageOptions.SvgImageSize = new Size(16, 16);
-            barButtonItemNewScan.ItemClick += (s, e) =>
+            barButtonItemNewScan.ItemClick += async (s, e) =>
             {
                 documentManager.BeginUpdate();
-                ViewModel.NewScan();
+                await ViewModel.NewScan();
                 documentManager.EndUpdate();
             };
         }
