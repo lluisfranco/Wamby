@@ -28,470 +28,443 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FilesModule));
-            this.colLengthInKB = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.filesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridControlFiles = new DevExpress.XtraGrid.GridControl();
-            this.gridViewFiles = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colExtension = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colParentFullName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFullName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLength = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLastWriteTime = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLastAccessTime = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCreationTime = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colOwnerName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAttributes = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsArchive = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsCompressed = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsDevice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsDirectory = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsEncrypted = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsHidden = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsIntegrityStream = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsNormal = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsNoScrubData = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsNotContentIndexed = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsOffline = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsReadOnly = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsReparsePoint = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsSparseFile = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsSystem = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colIsTemporary = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.barButtonItemShowColumnList = new DevExpress.XtraBars.BarButtonItem();
-            this.barCheckItemShowFooter = new DevExpress.XtraBars.BarCheckItem();
-            this.barButtonItemSearch = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemOpenFolder = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemOpenInNewWamby = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemOpenTerminal = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemCopyPath = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemShowProperties = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemDelete = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemOpenRunFile = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroupFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroupOptions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.filesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlFiles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewFiles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            colLengthInKB = new DevExpress.XtraGrid.Columns.GridColumn();
+            filesBindingSource = new System.Windows.Forms.BindingSource(components);
+            gridControlFiles = new DevExpress.XtraGrid.GridControl();
+            gridViewFiles = new DevExpress.XtraGrid.Views.Grid.GridView();
+            colExtension = new DevExpress.XtraGrid.Columns.GridColumn();
+            colParentFullName = new DevExpress.XtraGrid.Columns.GridColumn();
+            colFullName = new DevExpress.XtraGrid.Columns.GridColumn();
+            colName = new DevExpress.XtraGrid.Columns.GridColumn();
+            colLength = new DevExpress.XtraGrid.Columns.GridColumn();
+            colLastWriteTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            colLastAccessTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            colCreationTime = new DevExpress.XtraGrid.Columns.GridColumn();
+            colOwnerName = new DevExpress.XtraGrid.Columns.GridColumn();
+            colAttributes = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsArchive = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsCompressed = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsDevice = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsDirectory = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsEncrypted = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsHidden = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsIntegrityStream = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsNormal = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsNoScrubData = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsNotContentIndexed = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsOffline = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsReadOnly = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsReparsePoint = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsSparseFile = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsSystem = new DevExpress.XtraGrid.Columns.GridColumn();
+            colIsTemporary = new DevExpress.XtraGrid.Columns.GridColumn();
+            popupMenu = new DevExpress.XtraBars.PopupMenu(components);
+            barButtonItemShowInExplorer = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemShowInCmd = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemOpenFile = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemCopyPath = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemProperties = new DevExpress.XtraBars.BarButtonItem();
+            barManager = new DevExpress.XtraBars.BarManager(components);
+            barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            svgImageCollection16 = new DevExpress.Utils.SvgImageCollection(components);
+            svgImageCollection32 = new DevExpress.Utils.SvgImageCollection(components);
+            layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            ((System.ComponentModel.ISupportInitialize)filesBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridControlFiles).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gridViewFiles).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)popupMenu).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)barManager).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection16).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection32).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControl).BeginInit();
+            layoutControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)Root).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem1).BeginInit();
+            SuspendLayout();
             // 
             // colLengthInKB
             // 
-            this.colLengthInKB.Caption = "Size (KB)";
-            this.colLengthInKB.DisplayFormat.FormatString = "n0";
-            this.colLengthInKB.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colLengthInKB.FieldName = "LengthInKB";
-            this.colLengthInKB.Name = "colLengthInKB";
-            this.colLengthInKB.OptionsColumn.ReadOnly = true;
-            this.colLengthInKB.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "LengthInKB", "{0:n0}")});
-            this.colLengthInKB.Visible = true;
-            this.colLengthInKB.VisibleIndex = 1;
-            this.colLengthInKB.Width = 51;
+            colLengthInKB.Caption = "Size (KB)";
+            colLengthInKB.DisplayFormat.FormatString = "n0";
+            colLengthInKB.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            colLengthInKB.FieldName = "LengthInKB";
+            colLengthInKB.Name = "colLengthInKB";
+            colLengthInKB.OptionsColumn.ReadOnly = true;
+            colLengthInKB.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "LengthInKB", "{0:n0}") });
+            colLengthInKB.Visible = true;
+            colLengthInKB.VisibleIndex = 1;
+            colLengthInKB.Width = 51;
             // 
             // filesBindingSource
             // 
-            this.filesBindingSource.DataSource = typeof(Wamby.Core.Model.WambyFileInfo);
+            filesBindingSource.DataSource = typeof(Core.Model.WambyFileInfo);
             // 
             // gridControlFiles
             // 
-            this.gridControlFiles.DataSource = this.filesBindingSource;
-            this.gridControlFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridControlFiles.EmbeddedNavigator.Buttons.Append.Visible = false;
-            this.gridControlFiles.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
-            this.gridControlFiles.EmbeddedNavigator.Buttons.Edit.Visible = false;
-            this.gridControlFiles.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
-            this.gridControlFiles.EmbeddedNavigator.Buttons.Remove.Visible = false;
-            this.gridControlFiles.Location = new System.Drawing.Point(0, 31);
-            this.gridControlFiles.MainView = this.gridViewFiles;
-            this.gridControlFiles.Name = "gridControlFiles";
-            this.gridControlFiles.Size = new System.Drawing.Size(919, 365);
-            this.gridControlFiles.TabIndex = 0;
-            this.gridControlFiles.UseEmbeddedNavigator = true;
-            this.gridControlFiles.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridViewFiles});
+            gridControlFiles.DataSource = filesBindingSource;
+            gridControlFiles.EmbeddedNavigator.Buttons.Append.Visible = false;
+            gridControlFiles.EmbeddedNavigator.Buttons.CancelEdit.Visible = false;
+            gridControlFiles.EmbeddedNavigator.Buttons.Edit.Visible = false;
+            gridControlFiles.EmbeddedNavigator.Buttons.EndEdit.Visible = false;
+            gridControlFiles.EmbeddedNavigator.Buttons.Remove.Visible = false;
+            gridControlFiles.Location = new System.Drawing.Point(12, 12);
+            gridControlFiles.MainView = gridViewFiles;
+            gridControlFiles.Name = "gridControlFiles";
+            gridControlFiles.Size = new System.Drawing.Size(895, 372);
+            gridControlFiles.TabIndex = 0;
+            gridControlFiles.UseEmbeddedNavigator = true;
+            gridControlFiles.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] { gridViewFiles });
             // 
             // gridViewFiles
             // 
-            this.gridViewFiles.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colExtension,
-            this.colParentFullName,
-            this.colFullName,
-            this.colName,
-            this.colLength,
-            this.colLengthInKB,
-            this.colLastWriteTime,
-            this.colLastAccessTime,
-            this.colCreationTime,
-            this.colOwnerName,
-            this.colAttributes,
-            this.colIsArchive,
-            this.colIsCompressed,
-            this.colIsDevice,
-            this.colIsDirectory,
-            this.colIsEncrypted,
-            this.colIsHidden,
-            this.colIsIntegrityStream,
-            this.colIsNormal,
-            this.colIsNoScrubData,
-            this.colIsNotContentIndexed,
-            this.colIsOffline,
-            this.colIsReadOnly,
-            this.colIsReparsePoint,
-            this.colIsSparseFile,
-            this.colIsSystem,
-            this.colIsTemporary});
-            gridFormatRule1.Column = this.colLengthInKB;
-            gridFormatRule1.Name = "Format0";
-            formatConditionRuleDataBar1.PredefinedName = "Mint";
-            gridFormatRule1.Rule = formatConditionRuleDataBar1;
-            this.gridViewFiles.FormatRules.Add(gridFormatRule1);
-            this.gridViewFiles.GridControl = this.gridControlFiles;
-            this.gridViewFiles.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Extension", null, "({0} items)")});
-            this.gridViewFiles.Name = "gridViewFiles";
-            this.gridViewFiles.OptionsBehavior.Editable = false;
-            this.gridViewFiles.OptionsMenu.ShowConditionalFormattingItem = true;
-            this.gridViewFiles.OptionsView.ShowFooter = true;
-            this.gridViewFiles.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
-            this.gridViewFiles.OptionsView.ShowIndicator = false;
-            this.gridViewFiles.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] {
-            new DevExpress.XtraGrid.Columns.GridColumnSortInfo(this.colFullName, DevExpress.Data.ColumnSortOrder.Ascending)});
+            gridViewFiles.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colExtension, colParentFullName, colFullName, colName, colLength, colLengthInKB, colLastWriteTime, colLastAccessTime, colCreationTime, colOwnerName, colAttributes, colIsArchive, colIsCompressed, colIsDevice, colIsDirectory, colIsEncrypted, colIsHidden, colIsIntegrityStream, colIsNormal, colIsNoScrubData, colIsNotContentIndexed, colIsOffline, colIsReadOnly, colIsReparsePoint, colIsSparseFile, colIsSystem, colIsTemporary });
+            gridFormatRule2.Column = colLengthInKB;
+            gridFormatRule2.Name = "Format0";
+            formatConditionRuleDataBar2.PredefinedName = "Mint";
+            gridFormatRule2.Rule = formatConditionRuleDataBar2;
+            gridViewFiles.FormatRules.Add(gridFormatRule2);
+            gridViewFiles.GridControl = gridControlFiles;
+            gridViewFiles.GroupSummary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridGroupSummaryItem(DevExpress.Data.SummaryItemType.Count, "Extension", null, "({0} items)") });
+            gridViewFiles.Name = "gridViewFiles";
+            gridViewFiles.OptionsBehavior.Editable = false;
+            gridViewFiles.OptionsMenu.ShowConditionalFormattingItem = true;
+            gridViewFiles.OptionsView.ShowFooter = true;
+            gridViewFiles.OptionsView.ShowGroupPanel = false;
+            gridViewFiles.OptionsView.ShowHorizontalLines = DevExpress.Utils.DefaultBoolean.False;
+            gridViewFiles.OptionsView.ShowIndicator = false;
+            gridViewFiles.SortInfo.AddRange(new DevExpress.XtraGrid.Columns.GridColumnSortInfo[] { new DevExpress.XtraGrid.Columns.GridColumnSortInfo(colFullName, DevExpress.Data.ColumnSortOrder.Ascending) });
             // 
             // colExtension
             // 
-            this.colExtension.FieldName = "Extension";
-            this.colExtension.Name = "colExtension";
+            colExtension.FieldName = "Extension";
+            colExtension.Name = "colExtension";
             // 
             // colParentFullName
             // 
-            this.colParentFullName.FieldName = "ParentFullName";
-            this.colParentFullName.Name = "colParentFullName";
+            colParentFullName.FieldName = "ParentFullName";
+            colParentFullName.Name = "colParentFullName";
             // 
             // colFullName
             // 
-            this.colFullName.FieldName = "FullName";
-            this.colFullName.Name = "colFullName";
-            this.colFullName.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "FullName", "{0}")});
-            this.colFullName.Visible = true;
-            this.colFullName.VisibleIndex = 0;
-            this.colFullName.Width = 214;
+            colFullName.FieldName = "FullName";
+            colFullName.Name = "colFullName";
+            colFullName.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] { new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "FullName", "{0}") });
+            colFullName.Visible = true;
+            colFullName.VisibleIndex = 0;
+            colFullName.Width = 214;
             // 
             // colName
             // 
-            this.colName.FieldName = "Name";
-            this.colName.Name = "colName";
+            colName.FieldName = "Name";
+            colName.Name = "colName";
             // 
             // colLength
             // 
-            this.colLength.FieldName = "Length";
-            this.colLength.Name = "colLength";
+            colLength.FieldName = "Length";
+            colLength.Name = "colLength";
             // 
             // colLastWriteTime
             // 
-            this.colLastWriteTime.DisplayFormat.FormatString = "g";
-            this.colLastWriteTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.colLastWriteTime.FieldName = "LastWriteTime";
-            this.colLastWriteTime.Name = "colLastWriteTime";
-            this.colLastWriteTime.OptionsColumn.AllowSize = false;
-            this.colLastWriteTime.OptionsColumn.FixedWidth = true;
-            this.colLastWriteTime.Visible = true;
-            this.colLastWriteTime.VisibleIndex = 4;
-            this.colLastWriteTime.Width = 100;
+            colLastWriteTime.DisplayFormat.FormatString = "g";
+            colLastWriteTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            colLastWriteTime.FieldName = "LastWriteTime";
+            colLastWriteTime.Name = "colLastWriteTime";
+            colLastWriteTime.OptionsColumn.AllowSize = false;
+            colLastWriteTime.OptionsColumn.FixedWidth = true;
+            colLastWriteTime.Visible = true;
+            colLastWriteTime.VisibleIndex = 4;
+            colLastWriteTime.Width = 100;
             // 
             // colLastAccessTime
             // 
-            this.colLastAccessTime.DisplayFormat.FormatString = "g";
-            this.colLastAccessTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.colLastAccessTime.FieldName = "LastAccessTime";
-            this.colLastAccessTime.Name = "colLastAccessTime";
-            this.colLastAccessTime.OptionsColumn.AllowSize = false;
-            this.colLastAccessTime.OptionsColumn.FixedWidth = true;
-            this.colLastAccessTime.Visible = true;
-            this.colLastAccessTime.VisibleIndex = 3;
-            this.colLastAccessTime.Width = 100;
+            colLastAccessTime.DisplayFormat.FormatString = "g";
+            colLastAccessTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            colLastAccessTime.FieldName = "LastAccessTime";
+            colLastAccessTime.Name = "colLastAccessTime";
+            colLastAccessTime.OptionsColumn.AllowSize = false;
+            colLastAccessTime.OptionsColumn.FixedWidth = true;
+            colLastAccessTime.Visible = true;
+            colLastAccessTime.VisibleIndex = 3;
+            colLastAccessTime.Width = 100;
             // 
             // colCreationTime
             // 
-            this.colCreationTime.DisplayFormat.FormatString = "g";
-            this.colCreationTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.colCreationTime.FieldName = "CreationTime";
-            this.colCreationTime.Name = "colCreationTime";
-            this.colCreationTime.OptionsColumn.AllowSize = false;
-            this.colCreationTime.OptionsColumn.FixedWidth = true;
-            this.colCreationTime.Visible = true;
-            this.colCreationTime.VisibleIndex = 2;
-            this.colCreationTime.Width = 100;
+            colCreationTime.DisplayFormat.FormatString = "g";
+            colCreationTime.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            colCreationTime.FieldName = "CreationTime";
+            colCreationTime.Name = "colCreationTime";
+            colCreationTime.OptionsColumn.AllowSize = false;
+            colCreationTime.OptionsColumn.FixedWidth = true;
+            colCreationTime.Visible = true;
+            colCreationTime.VisibleIndex = 2;
+            colCreationTime.Width = 100;
             // 
             // colOwnerName
             // 
-            this.colOwnerName.FieldName = "OwnerName";
-            this.colOwnerName.Name = "colOwnerName";
-            this.colOwnerName.Visible = true;
-            this.colOwnerName.VisibleIndex = 5;
-            this.colOwnerName.Width = 54;
+            colOwnerName.FieldName = "OwnerName";
+            colOwnerName.Name = "colOwnerName";
+            colOwnerName.Visible = true;
+            colOwnerName.VisibleIndex = 5;
+            colOwnerName.Width = 54;
             // 
             // colAttributes
             // 
-            this.colAttributes.FieldName = "Attributes";
-            this.colAttributes.Name = "colAttributes";
-            this.colAttributes.Visible = true;
-            this.colAttributes.VisibleIndex = 6;
+            colAttributes.FieldName = "Attributes";
+            colAttributes.Name = "colAttributes";
+            colAttributes.Visible = true;
+            colAttributes.VisibleIndex = 6;
             // 
             // colIsArchive
             // 
-            this.colIsArchive.FieldName = "IsArchive";
-            this.colIsArchive.Name = "colIsArchive";
+            colIsArchive.FieldName = "IsArchive";
+            colIsArchive.Name = "colIsArchive";
             // 
             // colIsCompressed
             // 
-            this.colIsCompressed.FieldName = "IsCompressed";
-            this.colIsCompressed.Name = "colIsCompressed";
+            colIsCompressed.FieldName = "IsCompressed";
+            colIsCompressed.Name = "colIsCompressed";
             // 
             // colIsDevice
             // 
-            this.colIsDevice.FieldName = "IsDevice";
-            this.colIsDevice.Name = "colIsDevice";
+            colIsDevice.FieldName = "IsDevice";
+            colIsDevice.Name = "colIsDevice";
             // 
             // colIsDirectory
             // 
-            this.colIsDirectory.FieldName = "IsDirectory";
-            this.colIsDirectory.Name = "colIsDirectory";
+            colIsDirectory.FieldName = "IsDirectory";
+            colIsDirectory.Name = "colIsDirectory";
             // 
             // colIsEncrypted
             // 
-            this.colIsEncrypted.FieldName = "IsEncrypted";
-            this.colIsEncrypted.Name = "colIsEncrypted";
+            colIsEncrypted.FieldName = "IsEncrypted";
+            colIsEncrypted.Name = "colIsEncrypted";
             // 
             // colIsHidden
             // 
-            this.colIsHidden.FieldName = "IsHidden";
-            this.colIsHidden.Name = "colIsHidden";
+            colIsHidden.FieldName = "IsHidden";
+            colIsHidden.Name = "colIsHidden";
             // 
             // colIsIntegrityStream
             // 
-            this.colIsIntegrityStream.FieldName = "IsIntegrityStream";
-            this.colIsIntegrityStream.Name = "colIsIntegrityStream";
+            colIsIntegrityStream.FieldName = "IsIntegrityStream";
+            colIsIntegrityStream.Name = "colIsIntegrityStream";
             // 
             // colIsNormal
             // 
-            this.colIsNormal.FieldName = "IsNormal";
-            this.colIsNormal.Name = "colIsNormal";
+            colIsNormal.FieldName = "IsNormal";
+            colIsNormal.Name = "colIsNormal";
             // 
             // colIsNoScrubData
             // 
-            this.colIsNoScrubData.FieldName = "IsNoScrubData";
-            this.colIsNoScrubData.Name = "colIsNoScrubData";
+            colIsNoScrubData.FieldName = "IsNoScrubData";
+            colIsNoScrubData.Name = "colIsNoScrubData";
             // 
             // colIsNotContentIndexed
             // 
-            this.colIsNotContentIndexed.FieldName = "IsNotContentIndexed";
-            this.colIsNotContentIndexed.Name = "colIsNotContentIndexed";
+            colIsNotContentIndexed.FieldName = "IsNotContentIndexed";
+            colIsNotContentIndexed.Name = "colIsNotContentIndexed";
             // 
             // colIsOffline
             // 
-            this.colIsOffline.FieldName = "IsOffline";
-            this.colIsOffline.Name = "colIsOffline";
+            colIsOffline.FieldName = "IsOffline";
+            colIsOffline.Name = "colIsOffline";
             // 
             // colIsReadOnly
             // 
-            this.colIsReadOnly.FieldName = "IsReadOnly";
-            this.colIsReadOnly.Name = "colIsReadOnly";
+            colIsReadOnly.FieldName = "IsReadOnly";
+            colIsReadOnly.Name = "colIsReadOnly";
             // 
             // colIsReparsePoint
             // 
-            this.colIsReparsePoint.FieldName = "IsReparsePoint";
-            this.colIsReparsePoint.Name = "colIsReparsePoint";
+            colIsReparsePoint.FieldName = "IsReparsePoint";
+            colIsReparsePoint.Name = "colIsReparsePoint";
             // 
             // colIsSparseFile
             // 
-            this.colIsSparseFile.FieldName = "IsSparseFile";
-            this.colIsSparseFile.Name = "colIsSparseFile";
+            colIsSparseFile.FieldName = "IsSparseFile";
+            colIsSparseFile.Name = "colIsSparseFile";
             // 
             // colIsSystem
             // 
-            this.colIsSystem.FieldName = "IsSystem";
-            this.colIsSystem.Name = "colIsSystem";
+            colIsSystem.FieldName = "IsSystem";
+            colIsSystem.Name = "colIsSystem";
             // 
             // colIsTemporary
             // 
-            this.colIsTemporary.FieldName = "IsTemporary";
-            this.colIsTemporary.Name = "colIsTemporary";
-            // 
-            // ribbon
-            // 
-            this.ribbon.AllowMinimizeRibbon = false;
-            this.ribbon.ExpandCollapseItem.Id = 0;
-            this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbon.ExpandCollapseItem,
-            this.barButtonItemShowColumnList,
-            this.barCheckItemShowFooter,
-            this.barButtonItemSearch,
-            this.barButtonItemOpenFolder,
-            this.barButtonItemOpenInNewWamby,
-            this.barButtonItemOpenTerminal,
-            this.barButtonItemCopyPath,
-            this.barButtonItemShowProperties,
-            this.barButtonItemDelete,
-            this.barButtonItemOpenRunFile});
-            this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 36;
-            this.ribbon.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
-            this.ribbon.Name = "ribbon";
-            this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPageMain});
-            this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal;
-            this.ribbon.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Hide;
-            this.ribbon.Size = new System.Drawing.Size(919, 31);
-            // 
-            // barButtonItemShowColumnList
-            // 
-            this.barButtonItemShowColumnList.Caption = "Show columns list";
-            this.barButtonItemShowColumnList.Id = 32;
-            this.barButtonItemShowColumnList.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemShowColumnList.ImageOptions.SvgImage")));
-            this.barButtonItemShowColumnList.Name = "barButtonItemShowColumnList";
-            // 
-            // barCheckItemShowFooter
-            // 
-            this.barCheckItemShowFooter.BindableChecked = true;
-            this.barCheckItemShowFooter.Caption = "Show footer";
-            this.barCheckItemShowFooter.Checked = true;
-            this.barCheckItemShowFooter.Id = 33;
-            this.barCheckItemShowFooter.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barCheckItemShowFooter.ImageOptions.SvgImage")));
-            this.barCheckItemShowFooter.Name = "barCheckItemShowFooter";
-            // 
-            // barButtonItemSearch
-            // 
-            this.barButtonItemSearch.Caption = "Search";
-            this.barButtonItemSearch.Id = 34;
-            this.barButtonItemSearch.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemSearch.ImageOptions.SvgImage")));
-            this.barButtonItemSearch.Name = "barButtonItemSearch";
-            // 
-            // barButtonItemOpenFolder
-            // 
-            this.barButtonItemOpenFolder.Caption = "Open folder (Explorer)";
-            this.barButtonItemOpenFolder.Id = 32;
-            this.barButtonItemOpenFolder.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenFolder.ImageOptions.SvgImage")));
-            this.barButtonItemOpenFolder.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E));
-            this.barButtonItemOpenFolder.Name = "barButtonItemOpenFolder";
-            // 
-            // barButtonItemOpenInNewWamby
-            // 
-            this.barButtonItemOpenInNewWamby.Caption = "Scan in new Wamby";
-            this.barButtonItemOpenInNewWamby.Id = 33;
-            this.barButtonItemOpenInNewWamby.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenInNewWamby.ImageOptions.SvgImage")));
-            this.barButtonItemOpenInNewWamby.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W));
-            this.barButtonItemOpenInNewWamby.Name = "barButtonItemOpenInNewWamby";
-            // 
-            // barButtonItemOpenTerminal
-            // 
-            this.barButtonItemOpenTerminal.Caption = "Open folder (Terminal)";
-            this.barButtonItemOpenTerminal.Id = 34;
-            this.barButtonItemOpenTerminal.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenTerminal.ImageOptions.SvgImage")));
-            this.barButtonItemOpenTerminal.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P));
-            this.barButtonItemOpenTerminal.Name = "barButtonItemOpenTerminal";
-            // 
-            // barButtonItemCopyPath
-            // 
-            this.barButtonItemCopyPath.Caption = "Copy path";
-            this.barButtonItemCopyPath.Id = 35;
-            this.barButtonItemCopyPath.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemCopyPath.ImageOptions.SvgImage")));
-            this.barButtonItemCopyPath.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C));
-            this.barButtonItemCopyPath.Name = "barButtonItemCopyPath";
-            this.barButtonItemCopyPath.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            // 
-            // barButtonItemShowProperties
-            // 
-            this.barButtonItemShowProperties.Caption = "Show properties";
-            this.barButtonItemShowProperties.Id = 36;
-            this.barButtonItemShowProperties.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemShowProperties.ImageOptions.SvgImage")));
-            this.barButtonItemShowProperties.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Enter));
-            this.barButtonItemShowProperties.Name = "barButtonItemShowProperties";
-            this.barButtonItemShowProperties.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            // 
-            // barButtonItemDelete
-            // 
-            this.barButtonItemDelete.Caption = "Delete";
-            this.barButtonItemDelete.Id = 37;
-            this.barButtonItemDelete.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemDelete.ImageOptions.SvgImage")));
-            this.barButtonItemDelete.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Delete);
-            this.barButtonItemDelete.Name = "barButtonItemDelete";
-            this.barButtonItemDelete.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            // 
-            // barButtonItemOpenRunFile
-            // 
-            this.barButtonItemOpenRunFile.Caption = "Open/Run file";
-            this.barButtonItemOpenRunFile.Id = 35;
-            this.barButtonItemOpenRunFile.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItemOpenRunFile.ImageOptions.SvgImage")));
-            this.barButtonItemOpenRunFile.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R));
-            this.barButtonItemOpenRunFile.Name = "barButtonItemOpenRunFile";
-            // 
-            // ribbonPageMain
-            // 
-            this.ribbonPageMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroupFiles,
-            this.ribbonPageGroupOptions});
-            this.ribbonPageMain.Name = "ribbonPageMain";
-            this.ribbonPageMain.Text = "Main Page";
-            // 
-            // ribbonPageGroupFiles
-            // 
-            this.ribbonPageGroupFiles.ItemLinks.Add(this.barButtonItemShowColumnList);
-            this.ribbonPageGroupFiles.ItemLinks.Add(this.barButtonItemSearch);
-            this.ribbonPageGroupFiles.ItemLinks.Add(this.barCheckItemShowFooter);
-            this.ribbonPageGroupFiles.Name = "ribbonPageGroupFiles";
-            this.ribbonPageGroupFiles.Text = "Files Main";
-            // 
-            // ribbonPageGroupOptions
-            // 
-            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemOpenFolder);
-            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemOpenTerminal);
-            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemOpenInNewWamby);
-            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemOpenRunFile, true);
-            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemCopyPath);
-            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemShowProperties);
-            this.ribbonPageGroupOptions.ItemLinks.Add(this.barButtonItemDelete);
-            this.ribbonPageGroupOptions.Name = "ribbonPageGroupOptions";
-            this.ribbonPageGroupOptions.Text = "Options";
+            colIsTemporary.FieldName = "IsTemporary";
+            colIsTemporary.Name = "colIsTemporary";
             // 
             // popupMenu
             // 
-            this.popupMenu.ItemLinks.Add(this.barButtonItemOpenFolder);
-            this.popupMenu.ItemLinks.Add(this.barButtonItemOpenTerminal);
-            this.popupMenu.ItemLinks.Add(this.barButtonItemOpenInNewWamby);
-            this.popupMenu.ItemLinks.Add(this.barButtonItemOpenRunFile, true);
-            this.popupMenu.ItemLinks.Add(this.barButtonItemCopyPath);
-            this.popupMenu.ItemLinks.Add(this.barButtonItemShowProperties);
-            this.popupMenu.ItemLinks.Add(this.barButtonItemDelete);
-            this.popupMenu.Name = "popupMenu";
-            this.popupMenu.Ribbon = this.ribbon;
+            popupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(barButtonItemShowInExplorer), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemShowInCmd), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemOpenFile), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemCopyPath), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemProperties, true) });
+            popupMenu.Manager = barManager;
+            popupMenu.Name = "popupMenu";
+            // 
+            // barButtonItemShowInExplorer
+            // 
+            barButtonItemShowInExplorer.Caption = "Open Folder (Explorer)";
+            barButtonItemShowInExplorer.Id = 0;
+            barButtonItemShowInExplorer.ImageOptions.ImageIndex = 4;
+            barButtonItemShowInExplorer.ImageOptions.LargeImageIndex = 4;
+            barButtonItemShowInExplorer.Name = "barButtonItemShowInExplorer";
+            // 
+            // barButtonItemShowInCmd
+            // 
+            barButtonItemShowInCmd.Caption = "Open Folder (Cmd)";
+            barButtonItemShowInCmd.Id = 1;
+            barButtonItemShowInCmd.ImageOptions.ImageIndex = 3;
+            barButtonItemShowInCmd.ImageOptions.LargeImageIndex = 3;
+            barButtonItemShowInCmd.Name = "barButtonItemShowInCmd";
+            // 
+            // barButtonItemOpenFile
+            // 
+            barButtonItemOpenFile.Caption = "Open/Run File";
+            barButtonItemOpenFile.Id = 5;
+            barButtonItemOpenFile.ImageOptions.ImageIndex = 5;
+            barButtonItemOpenFile.ImageOptions.LargeImageIndex = 5;
+            barButtonItemOpenFile.Name = "barButtonItemOpenFile";
+            // 
+            // barButtonItemCopyPath
+            // 
+            barButtonItemCopyPath.Caption = "Copy Path";
+            barButtonItemCopyPath.Id = 2;
+            barButtonItemCopyPath.ImageOptions.ImageIndex = 0;
+            barButtonItemCopyPath.ImageOptions.LargeImageIndex = 0;
+            barButtonItemCopyPath.Name = "barButtonItemCopyPath";
+            // 
+            // barButtonItemProperties
+            // 
+            barButtonItemProperties.Caption = "Properties";
+            barButtonItemProperties.Id = 3;
+            barButtonItemProperties.ImageOptions.ImageIndex = 2;
+            barButtonItemProperties.ImageOptions.LargeImageIndex = 2;
+            barButtonItemProperties.Name = "barButtonItemProperties";
+            // 
+            // barManager
+            // 
+            barManager.DockControls.Add(barDockControlTop);
+            barManager.DockControls.Add(barDockControlBottom);
+            barManager.DockControls.Add(barDockControlLeft);
+            barManager.DockControls.Add(barDockControlRight);
+            barManager.Form = this;
+            barManager.Images = svgImageCollection16;
+            barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemShowInExplorer, barButtonItemShowInCmd, barButtonItemCopyPath, barButtonItemProperties, barButtonItemOpenFile });
+            barManager.LargeImages = svgImageCollection32;
+            barManager.MaxItemId = 6;
+            // 
+            // barDockControlTop
+            // 
+            barDockControlTop.CausesValidation = false;
+            barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            barDockControlTop.Manager = barManager;
+            barDockControlTop.Size = new System.Drawing.Size(919, 0);
+            // 
+            // barDockControlBottom
+            // 
+            barDockControlBottom.CausesValidation = false;
+            barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            barDockControlBottom.Location = new System.Drawing.Point(0, 396);
+            barDockControlBottom.Manager = barManager;
+            barDockControlBottom.Size = new System.Drawing.Size(919, 0);
+            // 
+            // barDockControlLeft
+            // 
+            barDockControlLeft.CausesValidation = false;
+            barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            barDockControlLeft.Manager = barManager;
+            barDockControlLeft.Size = new System.Drawing.Size(0, 396);
+            // 
+            // barDockControlRight
+            // 
+            barDockControlRight.CausesValidation = false;
+            barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            barDockControlRight.Location = new System.Drawing.Point(919, 0);
+            barDockControlRight.Manager = barManager;
+            barDockControlRight.Size = new System.Drawing.Size(0, 396);
+            // 
+            // svgImageCollection16
+            // 
+            svgImageCollection16.Add("CopyPath", "Wamby.Resources.Images.Results.CopyPath.svg", "Wamby.Resources");
+            svgImageCollection16.Add("Delete", "Wamby.Resources.Images.Results.Delete.svg", "Wamby.Resources");
+            svgImageCollection16.Add("Properties", "Wamby.Resources.Images.Results.Properties.svg", "Wamby.Resources");
+            svgImageCollection16.Add("ShowInCmd", "Wamby.Resources.Images.Results.ShowInCmd.svg", "Wamby.Resources");
+            svgImageCollection16.Add("ShowInExplorer", "Wamby.Resources.Images.Results.ShowInExplorer.svg", "Wamby.Resources");
+            svgImageCollection16.Add("weather_lightning", "image://svgimages/icon builder/weather_lightning.svg");
+            // 
+            // svgImageCollection32
+            // 
+            svgImageCollection32.ImageSize = new System.Drawing.Size(32, 32);
+            svgImageCollection32.Add("CopyPath", "Wamby.Resources.Images.Results.CopyPath.svg", "Wamby.Resources");
+            svgImageCollection32.Add("Delete", "Wamby.Resources.Images.Results.Delete.svg", "Wamby.Resources");
+            svgImageCollection32.Add("Properties", "Wamby.Resources.Images.Results.Properties.svg", "Wamby.Resources");
+            svgImageCollection32.Add("ShowInCmd", "Wamby.Resources.Images.Results.ShowInCmd.svg", "Wamby.Resources");
+            svgImageCollection32.Add("ShowInExplorer", "Wamby.Resources.Images.Results.ShowInExplorer.svg", "Wamby.Resources");
+            svgImageCollection32.Add("weather_lightning", "image://svgimages/icon builder/weather_lightning.svg");
+            // 
+            // layoutControl
+            // 
+            layoutControl.AllowCustomization = false;
+            layoutControl.Controls.Add(gridControlFiles);
+            layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            layoutControl.Location = new System.Drawing.Point(0, 0);
+            layoutControl.Name = "layoutControl";
+            layoutControl.Root = Root;
+            layoutControl.Size = new System.Drawing.Size(919, 396);
+            layoutControl.TabIndex = 2;
+            layoutControl.Text = "layoutControl1";
+            // 
+            // Root
+            // 
+            Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            Root.GroupBordersVisible = false;
+            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1 });
+            Root.Name = "Root";
+            Root.Size = new System.Drawing.Size(919, 396);
+            Root.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            layoutControlItem1.Control = gridControlFiles;
+            layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            layoutControlItem1.Name = "layoutControlItem1";
+            layoutControlItem1.Size = new System.Drawing.Size(899, 376);
+            layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            layoutControlItem1.TextVisible = false;
             // 
             // FilesModule
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.gridControlFiles);
-            this.Controls.Add(this.ribbon);
-            this.Name = "FilesModule";
-            this.Size = new System.Drawing.Size(919, 396);
-            ((System.ComponentModel.ISupportInitialize)(this.filesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControlFiles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridViewFiles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            Controls.Add(layoutControl);
+            Controls.Add(barDockControlLeft);
+            Controls.Add(barDockControlRight);
+            Controls.Add(barDockControlBottom);
+            Controls.Add(barDockControlTop);
+            Name = "FilesModule";
+            Size = new System.Drawing.Size(919, 396);
+            ((System.ComponentModel.ISupportInitialize)filesBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridControlFiles).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gridViewFiles).EndInit();
+            ((System.ComponentModel.ISupportInitialize)popupMenu).EndInit();
+            ((System.ComponentModel.ISupportInitialize)barManager).EndInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection16).EndInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection32).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControl).EndInit();
+            layoutControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)Root).EndInit();
+            ((System.ComponentModel.ISupportInitialize)layoutControlItem1).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -508,20 +481,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colLastAccessTime;
         private DevExpress.XtraGrid.Columns.GridColumn colCreationTime;
         private DevExpress.XtraGrid.Columns.GridColumn colOwnerName;
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemShowColumnList;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageMain;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupFiles;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupOptions;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenFolder;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenInNewWamby;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenTerminal;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemCopyPath;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemShowProperties;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemDelete;
         private DevExpress.XtraBars.PopupMenu popupMenu;
-        private DevExpress.XtraBars.BarCheckItem barCheckItemShowFooter;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemSearch;
         private DevExpress.XtraGrid.Columns.GridColumn colAttributes;
         private DevExpress.XtraGrid.Columns.GridColumn colIsArchive;
         private DevExpress.XtraGrid.Columns.GridColumn colIsCompressed;
@@ -539,6 +499,20 @@
         private DevExpress.XtraGrid.Columns.GridColumn colIsSparseFile;
         private DevExpress.XtraGrid.Columns.GridColumn colIsSystem;
         private DevExpress.XtraGrid.Columns.GridColumn colIsTemporary;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenRunFile;
+        private DevExpress.XtraLayout.LayoutControl layoutControl;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.Utils.SvgImageCollection svgImageCollection16;
+        private DevExpress.Utils.SvgImageCollection svgImageCollection32;
+        private DevExpress.XtraBars.BarManager barManager;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemShowInExplorer;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemShowInCmd;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemCopyPath;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemProperties;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenFile;
     }
 }
