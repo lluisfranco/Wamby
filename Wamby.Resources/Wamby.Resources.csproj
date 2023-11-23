@@ -7,11 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Actions\ChangeFolder.svg" />
+    <None Remove="Images\Actions\New.svg" />
+    <None Remove="Images\Actions\Open.svg" />
+    <None Remove="Images\Actions\Refresh.svg" />
+    <None Remove="Images\Actions\RefreshCancel.svg" />
+    <None Remove="Images\Actions\Save.svg" />
     <None Remove="Images\Analysis_Show_Chart.svg" />
     <None Remove="Images\Analysis_Show_Properties.svg" />
     <None Remove="Images\Analyze.svg" />
     <None Remove="Images\AppIcon.ico" />
     <None Remove="Images\AppIcon.svg" />
+    <None Remove="Images\App\AppIcon.svg" />
+    <None Remove="Images\App\Welcome.svg" />
     <None Remove="Images\Browse.svg" />
     <None Remove="Images\Copy_Url.svg" />
     <None Remove="Images\Delete.svg" />
@@ -62,11 +70,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Images\Actions\ChangeFolder.svg" />
+    <EmbeddedResource Include="Images\Actions\New.svg" />
+    <EmbeddedResource Include="Images\Actions\Open.svg" />
+    <EmbeddedResource Include="Images\Actions\Refresh.svg" />
+    <EmbeddedResource Include="Images\Actions\RefreshCancel.svg" />
+    <EmbeddedResource Include="Images\Actions\Save.svg" />
     <EmbeddedResource Include="Images\Analysis_Show_Chart.svg" />
     <EmbeddedResource Include="Images\Analysis_Show_Properties.svg" />
     <EmbeddedResource Include="Images\Analyze.svg" />
     <EmbeddedResource Include="Images\AppIcon.ico" />
     <EmbeddedResource Include="Images\AppIcon.svg" />
+    <EmbeddedResource Include="Images\App\AppIcon.svg" />
+    <EmbeddedResource Include="Images\App\Welcome.svg" />
     <EmbeddedResource Include="Images\Browse.svg" />
     <EmbeddedResource Include="Images\Copy_Url.svg" />
     <EmbeddedResource Include="Images\Delete.svg" />

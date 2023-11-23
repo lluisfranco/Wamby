@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewScanForm));
             barManager = new DevExpress.XtraBars.BarManager(components);
             bar = new DevExpress.XtraBars.Bar();
+            barButtonItemSave = new DevExpress.XtraBars.BarButtonItem();
             barButtonItemNewScan = new DevExpress.XtraBars.BarButtonItem();
             barButtonItemCancelScan = new DevExpress.XtraBars.BarButtonItem();
             barButtonItemChangeFolder = new DevExpress.XtraBars.BarButtonItem();
@@ -52,7 +52,6 @@
             navigationPageSchedule = new DevExpress.XtraBars.Navigation.NavigationPage();
             navigationPageSettings = new DevExpress.XtraBars.Navigation.NavigationPage();
             svgImageCollectionNavigation = new DevExpress.Utils.SvgImageCollection(components);
-            barButtonItemSave = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)barManager).BeginInit();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection16).BeginInit();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection32).BeginInit();
@@ -83,6 +82,14 @@
             bar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             bar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] { new DevExpress.XtraBars.LinkPersistInfo(barButtonItemSave), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemNewScan), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemCancelScan), new DevExpress.XtraBars.LinkPersistInfo(barButtonItemChangeFolder, true) });
             bar.Text = "Tools";
+            // 
+            // barButtonItemSave
+            // 
+            barButtonItemSave.Caption = "Save...";
+            barButtonItemSave.Id = 3;
+            barButtonItemSave.ImageOptions.ImageIndex = 3;
+            barButtonItemSave.ImageOptions.LargeImageIndex = 3;
+            barButtonItemSave.Name = "barButtonItemSave";
             // 
             // barButtonItemNewScan
             // 
@@ -145,20 +152,22 @@
             // 
             // svgImageCollection16
             // 
-            svgImageCollection16.Add("NewScan_CancelScan", "Wamby.Resources.Images.NewScan_CancelScan.svg", "Wamby.Resources");
-            svgImageCollection16.Add("NewScan_Change_Folder", "Wamby.Resources.Images.NewScan_Change_Folder.svg", "Wamby.Resources");
-            svgImageCollection16.Add("NewScan_ScanNow", "Wamby.Resources.Images.NewScan_ScanNow.svg", "Wamby.Resources");
+            svgImageCollection16.Add("RefreshCancel", "Wamby.Resources.Images.Actions.RefreshCancel.svg", "Wamby.Resources");
+            svgImageCollection16.Add("ChangeFolder", "Wamby.Resources.Images.Actions.ChangeFolder.svg", "Wamby.Resources");
+            svgImageCollection16.Add("Refresh", "Wamby.Resources.Images.Actions.Refresh.svg", "Wamby.Resources");
+            svgImageCollection16.Add("Save", "Wamby.Resources.Images.Actions.Save.svg", "Wamby.Resources");
             // 
             // svgImageCollection32
             // 
             svgImageCollection32.ImageSize = new System.Drawing.Size(32, 32);
-            svgImageCollection32.Add("NewScan_CancelScan", "Wamby.Resources.Images.NewScan_CancelScan.svg", "Wamby.Resources");
-            svgImageCollection32.Add("NewScan_Change_Folder", "Wamby.Resources.Images.NewScan_Change_Folder.svg", "Wamby.Resources");
-            svgImageCollection32.Add("NewScan_ScanNow", "Wamby.Resources.Images.NewScan_ScanNow.svg", "Wamby.Resources");
+            svgImageCollection32.Add("RefreshCancel", "Wamby.Resources.Images.Actions.RefreshCancel.svg", "Wamby.Resources");
+            svgImageCollection32.Add("ChangeFolder", "Wamby.Resources.Images.Actions.ChangeFolder.svg", "Wamby.Resources");
+            svgImageCollection32.Add("Refresh", "Wamby.Resources.Images.Actions.Refresh.svg", "Wamby.Resources");
+            svgImageCollection32.Add("Save", "Wamby.Resources.Images.Actions.Save.svg", "Wamby.Resources");
             // 
             // svgImageCollectionForm
             // 
-            svgImageCollectionForm.Add("Browse", "Wamby.Resources.Images.Browse.svg", "Wamby.Resources");
+            svgImageCollectionForm.Add("Scan", "Wamby.Resources.Images.Menu.Scan.svg", "Wamby.Resources");
             // 
             // navigationPane
             // 
@@ -264,13 +273,6 @@
             svgImageCollectionNavigation.Add("Errors", "Wamby.Resources.Images.Menu.Errors.svg", "Wamby.Resources");
             svgImageCollectionNavigation.Add("Schedule", "Wamby.Resources.Images.Menu.Schedule.svg", "Wamby.Resources");
             svgImageCollectionNavigation.Add("Settings", "Wamby.Resources.Images.Menu.Settings.svg", "Wamby.Resources");
-            // 
-            // barButtonItemSave
-            // 
-            barButtonItemSave.Caption = "Save...";
-            barButtonItemSave.Id = 3;
-            barButtonItemSave.ImageOptions.SvgImage = (DevExpress.Utils.Svg.SvgImage)resources.GetObject("barButtonItemSave.ImageOptions.SvgImage");
-            barButtonItemSave.Name = "barButtonItemSave";
             // 
             // NewScanForm
             // 

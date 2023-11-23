@@ -61,6 +61,11 @@
             ((System.ComponentModel.ISupportInitialize)svgImageCollectionForm).BeginInit();
             SuspendLayout();
             // 
+            // svgImageCollection16
+            // 
+            svgImageCollection16.Add("New", "Wamby.Resources.Images.Actions.New.svg", "Wamby.Resources");
+            svgImageCollection16.Add("Open", "Wamby.Resources.Images.Actions.Open.svg", "Wamby.Resources");
+            // 
             // toolbarFormControl
             // 
             toolbarFormControl.Location = new System.Drawing.Point(0, 0);
@@ -207,6 +212,8 @@
             // svgImageCollection32
             // 
             svgImageCollection32.ImageSize = new System.Drawing.Size(32, 32);
+            svgImageCollection32.Add("New", "Wamby.Resources.Images.Actions.New.svg", "Wamby.Resources");
+            svgImageCollection32.Add("Open", "Wamby.Resources.Images.Actions.Open.svg", "Wamby.Resources");
             // 
             // documentManager
             // 
@@ -222,7 +229,7 @@
             // 
             // svgImageCollectionForm
             // 
-            svgImageCollectionForm.Add("AppIcon", "Wamby.Resources.Images.AppIcon.svg", "Wamby.Resources");
+            svgImageCollectionForm.Add("AppIcon", "Wamby.Resources.Images.App.AppIcon.svg", "Wamby.Resources");
             // 
             // MainForm
             // 
