@@ -64,31 +64,31 @@
             colDeepFilesCountPercent = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             resultsBindingSource = new System.Windows.Forms.BindingSource(components);
             popupMenu = new DevExpress.XtraBars.PopupMenu(components);
-            layoutControl = new DevExpress.XtraLayout.LayoutControl();
-            Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            barButtonItemCopyPath = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemShowInExplorer = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemShowInCmd = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemProperties = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemDelete = new DevExpress.XtraBars.BarButtonItem();
             barManager = new DevExpress.XtraBars.BarManager(components);
             barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            barButtonItemShowInExplorer = new DevExpress.XtraBars.BarButtonItem();
             svgImageCollection16 = new DevExpress.Utils.SvgImageCollection(components);
             svgImageCollection32 = new DevExpress.Utils.SvgImageCollection(components);
-            barButtonItemShowInCmd = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItemCopyPath = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItemProperties = new DevExpress.XtraBars.BarButtonItem();
-            barButtonItemDelete = new DevExpress.XtraBars.BarButtonItem();
+            layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)resultsTreeList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)resultsBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)popupMenu).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)barManager).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection16).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection32).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControl).BeginInit();
             layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Root).BeginInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)barManager).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)svgImageCollection16).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)svgImageCollection32).BeginInit();
             SuspendLayout();
             // 
             // colDeepLength
@@ -343,35 +343,45 @@
             popupMenu.Manager = barManager;
             popupMenu.Name = "popupMenu";
             // 
-            // layoutControl
+            // barButtonItemCopyPath
             // 
-            layoutControl.AllowCustomization = false;
-            layoutControl.Controls.Add(resultsTreeList);
-            layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            layoutControl.Location = new System.Drawing.Point(0, 0);
-            layoutControl.Name = "layoutControl";
-            layoutControl.Root = Root;
-            layoutControl.Size = new System.Drawing.Size(1012, 524);
-            layoutControl.TabIndex = 2;
-            layoutControl.Text = "layoutControl1";
+            barButtonItemCopyPath.Caption = "Copy Path";
+            barButtonItemCopyPath.Id = 2;
+            barButtonItemCopyPath.ImageOptions.ImageIndex = 0;
+            barButtonItemCopyPath.ImageOptions.LargeImageIndex = 0;
+            barButtonItemCopyPath.Name = "barButtonItemCopyPath";
             // 
-            // Root
+            // barButtonItemShowInExplorer
             // 
-            Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            Root.GroupBordersVisible = false;
-            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1 });
-            Root.Name = "Root";
-            Root.Size = new System.Drawing.Size(1012, 524);
-            Root.TextVisible = false;
+            barButtonItemShowInExplorer.Caption = "Open Folder (Explorer)";
+            barButtonItemShowInExplorer.Id = 0;
+            barButtonItemShowInExplorer.ImageOptions.ImageIndex = 4;
+            barButtonItemShowInExplorer.ImageOptions.LargeImageIndex = 4;
+            barButtonItemShowInExplorer.Name = "barButtonItemShowInExplorer";
             // 
-            // layoutControlItem1
+            // barButtonItemShowInCmd
             // 
-            layoutControlItem1.Control = resultsTreeList;
-            layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            layoutControlItem1.Name = "layoutControlItem1";
-            layoutControlItem1.Size = new System.Drawing.Size(992, 504);
-            layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            layoutControlItem1.TextVisible = false;
+            barButtonItemShowInCmd.Caption = "Open Folder (Cmd)";
+            barButtonItemShowInCmd.Id = 1;
+            barButtonItemShowInCmd.ImageOptions.ImageIndex = 3;
+            barButtonItemShowInCmd.ImageOptions.LargeImageIndex = 3;
+            barButtonItemShowInCmd.Name = "barButtonItemShowInCmd";
+            // 
+            // barButtonItemProperties
+            // 
+            barButtonItemProperties.Caption = "Properties";
+            barButtonItemProperties.Id = 3;
+            barButtonItemProperties.ImageOptions.ImageIndex = 2;
+            barButtonItemProperties.ImageOptions.LargeImageIndex = 2;
+            barButtonItemProperties.Name = "barButtonItemProperties";
+            // 
+            // barButtonItemDelete
+            // 
+            barButtonItemDelete.Caption = "Delete";
+            barButtonItemDelete.Id = 4;
+            barButtonItemDelete.ImageOptions.ImageIndex = 1;
+            barButtonItemDelete.ImageOptions.LargeImageIndex = 1;
+            barButtonItemDelete.Name = "barButtonItemDelete";
             // 
             // barManager
             // 
@@ -417,14 +427,6 @@
             barDockControlRight.Manager = barManager;
             barDockControlRight.Size = new System.Drawing.Size(0, 524);
             // 
-            // barButtonItemShowInExplorer
-            // 
-            barButtonItemShowInExplorer.Caption = "Open (Explorer)";
-            barButtonItemShowInExplorer.Id = 0;
-            barButtonItemShowInExplorer.ImageOptions.ImageIndex = 4;
-            barButtonItemShowInExplorer.ImageOptions.LargeImageIndex = 4;
-            barButtonItemShowInExplorer.Name = "barButtonItemShowInExplorer";
-            // 
             // svgImageCollection16
             // 
             svgImageCollection16.Add("CopyPath", "Wamby.Resources.Images.Results.CopyPath.svg", "Wamby.Resources");
@@ -442,37 +444,35 @@
             svgImageCollection32.Add("ShowInCmd", "Wamby.Resources.Images.Results.ShowInCmd.svg", "Wamby.Resources");
             svgImageCollection32.Add("ShowInExplorer", "Wamby.Resources.Images.Results.ShowInExplorer.svg", "Wamby.Resources");
             // 
-            // barButtonItemShowInCmd
+            // layoutControl
             // 
-            barButtonItemShowInCmd.Caption = "Open (Cmd)";
-            barButtonItemShowInCmd.Id = 1;
-            barButtonItemShowInCmd.ImageOptions.ImageIndex = 3;
-            barButtonItemShowInCmd.ImageOptions.LargeImageIndex = 3;
-            barButtonItemShowInCmd.Name = "barButtonItemShowInCmd";
+            layoutControl.AllowCustomization = false;
+            layoutControl.Controls.Add(resultsTreeList);
+            layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            layoutControl.Location = new System.Drawing.Point(0, 0);
+            layoutControl.Name = "layoutControl";
+            layoutControl.Root = Root;
+            layoutControl.Size = new System.Drawing.Size(1012, 524);
+            layoutControl.TabIndex = 2;
+            layoutControl.Text = "layoutControl1";
             // 
-            // barButtonItemCopyPath
+            // Root
             // 
-            barButtonItemCopyPath.Caption = "Copy Path";
-            barButtonItemCopyPath.Id = 2;
-            barButtonItemCopyPath.ImageOptions.ImageIndex = 0;
-            barButtonItemCopyPath.ImageOptions.LargeImageIndex = 0;
-            barButtonItemCopyPath.Name = "barButtonItemCopyPath";
+            Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            Root.GroupBordersVisible = false;
+            Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] { layoutControlItem1 });
+            Root.Name = "Root";
+            Root.Size = new System.Drawing.Size(1012, 524);
+            Root.TextVisible = false;
             // 
-            // barButtonItemProperties
+            // layoutControlItem1
             // 
-            barButtonItemProperties.Caption = "Properties";
-            barButtonItemProperties.Id = 3;
-            barButtonItemProperties.ImageOptions.ImageIndex = 2;
-            barButtonItemProperties.ImageOptions.LargeImageIndex = 2;
-            barButtonItemProperties.Name = "barButtonItemProperties";
-            // 
-            // barButtonItemDelete
-            // 
-            barButtonItemDelete.Caption = "Delete";
-            barButtonItemDelete.Id = 4;
-            barButtonItemDelete.ImageOptions.ImageIndex = 1;
-            barButtonItemDelete.ImageOptions.LargeImageIndex = 1;
-            barButtonItemDelete.Name = "barButtonItemDelete";
+            layoutControlItem1.Control = resultsTreeList;
+            layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            layoutControlItem1.Name = "layoutControlItem1";
+            layoutControlItem1.Size = new System.Drawing.Size(992, 504);
+            layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            layoutControlItem1.TextVisible = false;
             // 
             // ResultsModule
             // 
@@ -488,13 +488,13 @@
             ((System.ComponentModel.ISupportInitialize)resultsTreeList).EndInit();
             ((System.ComponentModel.ISupportInitialize)resultsBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)popupMenu).EndInit();
+            ((System.ComponentModel.ISupportInitialize)barManager).EndInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection16).EndInit();
+            ((System.ComponentModel.ISupportInitialize)svgImageCollection32).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControl).EndInit();
             layoutControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)Root).EndInit();
             ((System.ComponentModel.ISupportInitialize)layoutControlItem1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)barManager).EndInit();
-            ((System.ComponentModel.ISupportInitialize)svgImageCollection16).EndInit();
-            ((System.ComponentModel.ISupportInitialize)svgImageCollection32).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
