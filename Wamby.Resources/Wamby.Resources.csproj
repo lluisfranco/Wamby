@@ -57,6 +57,11 @@
     <None Remove="Images\Open_Run_File.svg" />
     <None Remove="Images\Print_Preview.svg" />
     <None Remove="Images\Results.svg" />
+    <None Remove="Images\Results\CopyPath.svg" />
+    <None Remove="Images\Results\Delete.svg" />
+    <None Remove="Images\Results\Properties.svg" />
+    <None Remove="Images\Results\ShowInCmd.svg" />
+    <None Remove="Images\Results\ShowInExplorer.svg" />
     <None Remove="Images\Save.svg" />
     <None Remove="Images\Schedule.svg" />
     <None Remove="Images\Select_All.svg" />
@@ -120,6 +125,11 @@
     <EmbeddedResource Include="Images\Open_Run_File.svg" />
     <EmbeddedResource Include="Images\Print_Preview.svg" />
     <EmbeddedResource Include="Images\Results.svg" />
+    <EmbeddedResource Include="Images\Results\CopyPath.svg" />
+    <EmbeddedResource Include="Images\Results\Delete.svg" />
+    <EmbeddedResource Include="Images\Results\Properties.svg" />
+    <EmbeddedResource Include="Images\Results\ShowInCmd.svg" />
+    <EmbeddedResource Include="Images\Results\ShowInExplorer.svg" />
     <EmbeddedResource Include="Images\Save.svg" />
     <EmbeddedResource Include="Images\Schedule.svg" />
     <EmbeddedResource Include="Images\Select_All.svg" />
@@ -131,5 +141,4 @@
     <EmbeddedResource Include="Images\Tree_Expand.svg" />
     <EmbeddedResource Include="Images\Tree_Expand_Level.svg" />
   </ItemGroup>
-
 </Project>
