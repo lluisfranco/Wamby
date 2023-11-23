@@ -1,7 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Base;
-using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
@@ -11,8 +10,7 @@ using Wamby.Core.Model;
 
 namespace Wamby.Client.Modules
 {
-    public partial class FilesModule : XtraUserControl,
-        IModule, IModuleFiles
+    public partial class FilesModule : XtraUserControl, IModule
     {
         [Browsable(false)]
         public FileSystemScanService FileSystemScanService { get; private set; }
