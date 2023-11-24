@@ -41,6 +41,7 @@ namespace Wamby.Client
         public MainForm()
         {
             InitializeComponent();
+            AllowDrop = true;
             ViewModel = new MainFormViewModel(this);
             IconOptions.SvgImage = svgImageCollectionForm[0];
             Text = string.Format($"{Application.ProductName} - " +
@@ -73,17 +74,11 @@ namespace Wamby.Client
                 var items = bar?.ItemLinks;
                 toolbarFormControl.TitleItemLinks.Merge(items);
             };
-            toolbarFormManager.UnMerge += (s, e) =>
-            {
-                toolbarFormControl.TitleItemLinks.UnMerge();
-            };
+            toolbarFormManager.UnMerge += (s, e) => toolbarFormControl.TitleItemLinks.UnMerge();
             tabbedView.DocumentAdded += (s, e) => e.Document.ImageOptions.SvgImageSize = new Size(16, 16);
-            barButtonItemNewScan.ItemClick += async (s, e) =>
-            {
-                documentManager.BeginUpdate();
-                await ViewModel.NewScan();
-                documentManager.EndUpdate();
-            };
+            barButtonItemNewScan.ItemClick += async (s, e) => await ViewModel.NewScan();
+            DragOver += (s, e) => e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
+            DragDrop += async (s, e) => await ViewModel.ScanDroppedFolders(e.Data);
         }
     }
 }

@@ -3,6 +3,7 @@ using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -55,6 +56,12 @@ namespace Wamby.Client
         private static string ToHex(Color c) =>
             "#FF" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
 
+        public async Task NewScan(string path)
+        {
+            var scanService = GetScanServiceFromFolderPath(path);
+            await NewScan(scanService);
+        }
+
         public async Task NewScan(FileSystemScanService service = null)
         {
             Application.UseWaitCursor = true;
@@ -70,12 +77,7 @@ namespace Wamby.Client
             Application.UseWaitCursor = false;
         }
 
-        public async Task OpenScan()
-        {
-
-        }
-
-        public async Task OpenPreviousScan(string path)
+        private static FileSystemScanService GetScanServiceFromFolderPath(string path)
         {
             var scanService = new FileSystemScanService()
             {
@@ -86,6 +88,17 @@ namespace Wamby.Client
                 DetailType = ScanDetailTypeEnum.Fast
             };
             scanService.ScanOptions.BaseFolderPath = path;
+            return scanService;
+        }
+
+        public async Task OpenScan()
+        {
+
+        }
+
+        public async Task OpenPreviousScan(string path)
+        {
+            var scanService = GetScanServiceFromFolderPath(path);
             await NewScan(scanService);
         }
 
@@ -102,6 +115,17 @@ namespace Wamby.Client
             };
             Application.DoEvents();
             Application.UseWaitCursor = false;
+        }
+
+        public async Task ScanDroppedFolders(IDataObject data)
+        {
+            if (!data.GetDataPresent(DataFormats.FileDrop)) return;
+            var files = (string[])data.GetData(DataFormats.FileDrop);
+            foreach (var item in files)
+            {
+                var folder = new DirectoryInfo(item);
+                if (folder.Exists) await NewScan(folder.FullName);
+            }
         }
     }
 }
