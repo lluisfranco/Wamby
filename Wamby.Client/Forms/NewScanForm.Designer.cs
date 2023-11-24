@@ -49,8 +49,6 @@
             navigationPageMap = new DevExpress.XtraBars.Navigation.NavigationPage();
             navigationPageAnalysis = new DevExpress.XtraBars.Navigation.NavigationPage();
             navigationPageErrors = new DevExpress.XtraBars.Navigation.NavigationPage();
-            navigationPageSchedule = new DevExpress.XtraBars.Navigation.NavigationPage();
-            navigationPageSettings = new DevExpress.XtraBars.Navigation.NavigationPage();
             svgImageCollectionNavigation = new DevExpress.Utils.SvgImageCollection(components);
             ((System.ComponentModel.ISupportInitialize)barManager).BeginInit();
             ((System.ComponentModel.ISupportInitialize)svgImageCollection16).BeginInit();
@@ -177,13 +175,11 @@
             navigationPane.Controls.Add(navigationPageMap);
             navigationPane.Controls.Add(navigationPageAnalysis);
             navigationPane.Controls.Add(navigationPageErrors);
-            navigationPane.Controls.Add(navigationPageSchedule);
-            navigationPane.Controls.Add(navigationPageSettings);
             navigationPane.Dock = System.Windows.Forms.DockStyle.Fill;
             navigationPane.Images = svgImageCollectionNavigation;
             navigationPane.Location = new System.Drawing.Point(0, 24);
             navigationPane.Name = "navigationPane";
-            navigationPane.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] { navigationPageScanFolder, navigationPageResults, navigationPageFiles, navigationPageMap, navigationPageAnalysis, navigationPageErrors, navigationPageSchedule, navigationPageSettings });
+            navigationPane.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] { navigationPageScanFolder, navigationPageResults, navigationPageFiles, navigationPageMap, navigationPageAnalysis, navigationPageErrors });
             navigationPane.RegularSize = new System.Drawing.Size(764, 504);
             navigationPane.RibbonAndBarsMergeStyle = DevExpress.XtraBars.Docking2010.Views.RibbonAndBarsMergeStyle.Always;
             navigationPane.SelectedPage = navigationPageScanFolder;
@@ -244,24 +240,6 @@
             navigationPageErrors.Size = new System.Drawing.Size(764, 504);
             navigationPageErrors.ToolTip = "Errors";
             // 
-            // navigationPageSchedule
-            // 
-            navigationPageSchedule.Caption = "Schedule";
-            navigationPageSchedule.ImageOptions.ImageIndex = 6;
-            navigationPageSchedule.Name = "navigationPageSchedule";
-            navigationPageSchedule.PageEnabled = false;
-            navigationPageSchedule.Size = new System.Drawing.Size(764, 504);
-            navigationPageSchedule.ToolTip = "Schedule";
-            // 
-            // navigationPageSettings
-            // 
-            navigationPageSettings.Caption = "Settings";
-            navigationPageSettings.ImageOptions.ImageIndex = 7;
-            navigationPageSettings.Name = "navigationPageSettings";
-            navigationPageSettings.PageEnabled = false;
-            navigationPageSettings.Size = new System.Drawing.Size(764, 504);
-            navigationPageSettings.ToolTip = "Settings";
-            // 
             // svgImageCollectionNavigation
             // 
             svgImageCollectionNavigation.ImageSize = new System.Drawing.Size(32, 32);
@@ -319,8 +297,6 @@
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageMap;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageAnalysis;
         private DevExpress.XtraBars.Navigation.NavigationPage navigationPageErrors;
-        private DevExpress.XtraBars.Navigation.NavigationPage navigationPageSchedule;
-        private DevExpress.XtraBars.Navigation.NavigationPage navigationPageSettings;
         private DevExpress.XtraBars.BarButtonItem barButtonItemSave;
     }
 }
