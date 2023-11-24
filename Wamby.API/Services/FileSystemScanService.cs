@@ -24,7 +24,7 @@ namespace Wamby.API.Services
         public string UserName { get; set; }
         public string ComputerName { get; set; }
         public string OSVersionName { get; set; }
-        public Enums.ScanDetailTypeEnum DetailType { get; set; }
+        public ScanDetailTypeEnum DetailType { get; set; }
         public DateTime ScanDate { get; set; }
         public ScanOptions ScanOptions { get; private set; }
         public ScanResult ScanResult { get; private set; }
@@ -33,6 +33,8 @@ namespace Wamby.API.Services
         public IProgress<WambyFolderEventArgs> ScanningFolderProgress { get; set; }
         [JsonIgnore]
         public IProgress<WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress { get; set; }
+
+        public ScanStats Statistics { get; private set; }
 
         public event EventHandler BeginScan;
         public event EventHandler EndScan;
@@ -45,8 +47,9 @@ namespace Wamby.API.Services
         {
             ScanOptions = new ScanOptions()
             {
-                BaseFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),                
+                BaseFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
             };
+            Statistics = new(this);
             Clear();
         }
 

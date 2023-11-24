@@ -12,6 +12,5 @@ namespace Wamby.Core.Model
         public List<ScanException> ScanExceptions { get; set; } = new List<ScanException>();
         public List<WambyFolderInfo> AllFolders { get; set; } = new List<WambyFolderInfo>();
         public List<WambyFileInfo> AllFiles { get; set; } = new List<WambyFileInfo>();
-
     }
 }

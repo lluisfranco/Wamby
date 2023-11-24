@@ -69,6 +69,8 @@ namespace Wamby.Client
             var scanmodule = navigationPageScanFolder.GetPageModule() as IScanModule;
             scanmodule.NewScanButtonPressed += async (s, e) => await StartScan();
             scanmodule.ChangeFolderButtonPressed += async (s, e) => await ChangeSelectedFolder();
+            var resultsmodule = navigationPageResults.GetPageModule() as IResultsModule;
+            resultsmodule.OpenFolderInNewTabClick += async (s, e) => await MainForm.ViewModel.NewScan(e.Path);
             return this;
         }
 

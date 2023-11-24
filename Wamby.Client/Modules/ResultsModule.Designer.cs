@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule3 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar3 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
-            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule4 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar4 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule1 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar1 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
+            DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule treeListFormatRule2 = new DevExpress.XtraTreeList.StyleFormatConditions.TreeListFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleDataBar formatConditionRuleDataBar2 = new DevExpress.XtraEditors.FormatConditionRuleDataBar();
             colDeepLength = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             colDeepFilesCount = new DevExpress.XtraTreeList.Columns.TreeListColumn();
             resultsTreeList = new DevExpress.XtraTreeList.TreeList();
@@ -79,6 +79,7 @@
             layoutControl = new DevExpress.XtraLayout.LayoutControl();
             Root = new DevExpress.XtraLayout.LayoutControlGroup();
             layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            barButtonItemOpenInNewTab = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)resultsTreeList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)resultsBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)popupMenu).BeginInit();
@@ -117,16 +118,16 @@
             // 
             resultsTreeList.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] { colLevel, colIsFolder, colFullName, colDeepLength, colDeepFilesCount, colCreationTime, colLastAccessTime, colLastWriteTime, colOwnerName, colAttributes, colIsArchive, colIsCompressed, colIsDevice, colIsDirectory, colIsEncrypted, colIsHidden, colIsIntegrityStream, colIsNormal, colIsNoScrubData, colIsNotContentIndexed, colIsOffline, colIsReadOnly, colIsReparsePoint, colIsSparseFile, colIsSystem, colIsTemporary, colDeepPercent, colDeepFilesCountPercent });
             resultsTreeList.DataSource = resultsBindingSource;
-            treeListFormatRule3.Column = colDeepLength;
-            treeListFormatRule3.Name = "Format0";
-            formatConditionRuleDataBar3.PredefinedName = "Mint";
-            treeListFormatRule3.Rule = formatConditionRuleDataBar3;
-            treeListFormatRule4.Column = colDeepFilesCount;
-            treeListFormatRule4.Name = "Format1";
-            formatConditionRuleDataBar4.PredefinedName = "Violet";
-            treeListFormatRule4.Rule = formatConditionRuleDataBar4;
-            resultsTreeList.FormatRules.Add(treeListFormatRule3);
-            resultsTreeList.FormatRules.Add(treeListFormatRule4);
+            treeListFormatRule1.Column = colDeepLength;
+            treeListFormatRule1.Name = "Format0";
+            formatConditionRuleDataBar1.PredefinedName = "Mint";
+            treeListFormatRule1.Rule = formatConditionRuleDataBar1;
+            treeListFormatRule2.Column = colDeepFilesCount;
+            treeListFormatRule2.Name = "Format1";
+            formatConditionRuleDataBar2.PredefinedName = "Violet";
+            treeListFormatRule2.Rule = formatConditionRuleDataBar2;
+            resultsTreeList.FormatRules.Add(treeListFormatRule1);
+            resultsTreeList.FormatRules.Add(treeListFormatRule2);
             resultsTreeList.KeyFieldName = "FullName";
             resultsTreeList.Location = new System.Drawing.Point(12, 12);
             resultsTreeList.Name = "resultsTreeList";
@@ -391,9 +392,9 @@
             barManager.DockControls.Add(barDockControlRight);
             barManager.Form = this;
             barManager.Images = svgImageCollection16;
-            barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemShowInExplorer, barButtonItemShowInCmd, barButtonItemCopyPath, barButtonItemProperties, barButtonItemDelete });
+            barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemShowInExplorer, barButtonItemShowInCmd, barButtonItemCopyPath, barButtonItemProperties, barButtonItemDelete, barButtonItemOpenInNewTab });
             barManager.LargeImages = svgImageCollection32;
-            barManager.MaxItemId = 5;
+            barManager.MaxItemId = 6;
             // 
             // barDockControlTop
             // 
@@ -434,6 +435,7 @@
             svgImageCollection16.Add("Properties", "Wamby.Resources.Images.Results.Properties.svg", "Wamby.Resources");
             svgImageCollection16.Add("ShowInCmd", "Wamby.Resources.Images.Results.ShowInCmd.svg", "Wamby.Resources");
             svgImageCollection16.Add("ShowInExplorer", "Wamby.Resources.Images.Results.ShowInExplorer.svg", "Wamby.Resources");
+            svgImageCollection16.Add("Scan", "Wamby.Resources.Images.Menu.Scan.svg", "Wamby.Resources");
             // 
             // svgImageCollection32
             // 
@@ -443,6 +445,7 @@
             svgImageCollection32.Add("Properties", "Wamby.Resources.Images.Results.Properties.svg", "Wamby.Resources");
             svgImageCollection32.Add("ShowInCmd", "Wamby.Resources.Images.Results.ShowInCmd.svg", "Wamby.Resources");
             svgImageCollection32.Add("ShowInExplorer", "Wamby.Resources.Images.Results.ShowInExplorer.svg", "Wamby.Resources");
+            svgImageCollection32.Add("Scan", "Wamby.Resources.Images.Menu.Scan.svg", "Wamby.Resources");
             // 
             // layoutControl
             // 
@@ -473,6 +476,14 @@
             layoutControlItem1.Size = new System.Drawing.Size(992, 504);
             layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             layoutControlItem1.TextVisible = false;
+            // 
+            // barButtonItemOpenInNewTab
+            // 
+            barButtonItemOpenInNewTab.Caption = "Open In New Tab";
+            barButtonItemOpenInNewTab.Id = 5;
+            barButtonItemOpenInNewTab.ImageOptions.ImageIndex = 5;
+            barButtonItemOpenInNewTab.ImageOptions.LargeImageIndex = 5;
+            barButtonItemOpenInNewTab.Name = "barButtonItemOpenInNewTab";
             // 
             // ResultsModule
             // 
@@ -547,5 +558,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemCopyPath;
         private DevExpress.XtraBars.BarButtonItem barButtonItemProperties;
         private DevExpress.XtraBars.BarButtonItem barButtonItemDelete;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemOpenInNewTab;
     }
 }

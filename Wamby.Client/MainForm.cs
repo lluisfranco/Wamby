@@ -77,6 +77,7 @@ namespace Wamby.Client
             toolbarFormManager.UnMerge += (s, e) => toolbarFormControl.TitleItemLinks.UnMerge();
             tabbedView.DocumentAdded += (s, e) => e.Document.ImageOptions.SvgImageSize = new Size(16, 16);
             barButtonItemNewScan.ItemClick += async (s, e) => await ViewModel.NewScan();
+            barButtonItemOpenScan.ItemClick += async (s, e) => await ViewModel.OpenScan();
             DragOver += (s, e) => e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
             DragDrop += async (s, e) => await ViewModel.ScanDroppedFolders(e.Data);
         }

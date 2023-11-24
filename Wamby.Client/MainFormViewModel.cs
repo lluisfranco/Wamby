@@ -95,7 +95,25 @@ namespace Wamby.Client
 
         public async Task OpenScan()
         {
-
+            using (var sd = new OpenFileDialog())
+            {
+                sd.Filter = FileSystemStorageService.GetFilterDescription();
+                if (sd.ShowDialog() == DialogResult.OK)
+                {
+                    Application.UseWaitCursor = true;
+                    try
+                    {
+                        //var service = await FileSystemStorageService.OpenFromFile(sd.FileName);
+                        //await NewScan(service);
+                        Application.UseWaitCursor = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Application.UseWaitCursor = false;
+                        MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            };
         }
 
         public async Task OpenPreviousScan(string path, string pattern, ScanDetailTypeEnum type)
@@ -109,7 +127,7 @@ namespace Wamby.Client
             Application.UseWaitCursor = true;
             var f = new WelcomeForm();
             f.SetParent(Form).Show();
-            f.NewScanClick += async (s, e) => await NewScan();  
+            f.NewScanClick += async (s, e) => await NewScan();
             f.OpenScanClick += async (s, e) => await OpenScan();
             f.OpenPreviousScanClick += async (s, e) =>
             {
