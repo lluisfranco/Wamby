@@ -118,6 +118,23 @@ namespace Wamby.Client
                 else 
                     await OpenPreviousScan(e.Path, e.SearchPattern, e.DetailType);
             };
+            f.OpenHistoryClick += (s, e) => ShowHistory();
+            Application.DoEvents();
+            Application.UseWaitCursor = false;
+        }
+
+        public void ShowHistory()
+        {
+            Application.UseWaitCursor = true;
+            var f = new ScanHistoryForm();
+            f.SetParent(Form).Show();
+            f.OpenPreviousScanClick += async (s, e) =>
+            {
+                if (string.IsNullOrEmpty(e.Path)) 
+                    await NewScan(); 
+                else 
+                    await OpenPreviousScan(e.Path, e.SearchPattern, e.DetailType);
+            };
             Application.DoEvents();
             Application.UseWaitCursor = false;
         }

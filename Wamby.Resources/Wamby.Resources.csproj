@@ -19,6 +19,7 @@
     <None Remove="Images\AppIcon.ico" />
     <None Remove="Images\AppIcon.svg" />
     <None Remove="Images\App\AppIcon.svg" />
+    <None Remove="Images\App\History.svg" />
     <None Remove="Images\App\Welcome.svg" />
     <None Remove="Images\Browse.svg" />
     <None Remove="Images\Copy_Url.svg" />
@@ -87,6 +88,7 @@
     <EmbeddedResource Include="Images\AppIcon.ico" />
     <EmbeddedResource Include="Images\AppIcon.svg" />
     <EmbeddedResource Include="Images\App\AppIcon.svg" />
+    <EmbeddedResource Include="Images\App\History.svg" />
     <EmbeddedResource Include="Images\App\Welcome.svg" />
     <EmbeddedResource Include="Images\Browse.svg" />
     <EmbeddedResource Include="Images\Copy_Url.svg" />
