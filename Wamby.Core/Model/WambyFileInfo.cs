@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.IO;
+using System.Text.Json.Serialization;
 
 namespace Wamby.Core.Model
 {
@@ -6,7 +7,7 @@ namespace Wamby.Core.Model
     {
         public string Extension { get; set; }
         [JsonIgnore]
-        public System.IO.FileInfo FileInfo { get; set; }
+        public FileInfo FileInfo { get; set; }
         public string ParentFullName { get; set; }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Wamby.Client.Enums
+﻿namespace Wamby.Client.Enums
 {
     public enum MapLayoutAlgorithmEnum
     {

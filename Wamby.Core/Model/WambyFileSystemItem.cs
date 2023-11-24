@@ -1,11 +1,11 @@
 ﻿using System;
+using System.IO;
 
 namespace Wamby.Core.Model
 {
     public class WambyFileSystemItem
     {
         public string FullName { get; set; }
-        //public string ParentFullName { get; set; }
         public string Name { get; set; }
         public double Length { get; set; }
         public double LengthInKB { get { return Length / 1024; } }
@@ -13,7 +13,7 @@ namespace Wamby.Core.Model
         public DateTime LastAccessTime { get; set; }
         public DateTime CreationTime { get; set; }
         public string OwnerName { get; set; }
-        public System.IO.FileAttributes Attributes { get; set; }
+        public FileAttributes Attributes { get; set; }
         public bool IsArchive { get; set; }
         public bool IsCompressed { get; set; }
         public bool IsDevice { get; set; }

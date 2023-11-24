@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-
-namespace Wamby.Core.Model
+﻿namespace Wamby.Core.Model
 {
     public class ScanOptions
     {

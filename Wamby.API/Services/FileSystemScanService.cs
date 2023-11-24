@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.Text.Json.Serialization;
+using System.Threading;
 using System.Threading.Tasks;
+using Wamby.API.Args;
+using Wamby.API.Enums;
 using Wamby.Core.Extensions;
 using Wamby.Core.Model;
 
@@ -14,20 +19,20 @@ namespace Wamby.API.Services
         [JsonIgnore]
         public bool Cancelled { get; private set; }
         [JsonIgnore]
-        System.Threading.CancellationTokenSource CancellationToken;
+        CancellationTokenSource CancellationToken;
         public string BaseFolder { get; private set; }
         public string UserName { get; set; }
         public string ComputerName { get; set; }
         public string OSVersionName { get; set; }
         public Enums.ScanDetailTypeEnum DetailType { get; set; }
         public DateTime ScanDate { get; set; }
-        public Core.Model.ScanOptions ScanOptions { get; private set; }
-        public Core.Model.ScanResult ScanResult { get; private set; }
-        public List<Core.Model.LogLine> LogLines { get; private set; }
+        public ScanOptions ScanOptions { get; private set; }
+        public ScanResult ScanResult { get; private set; }
+        public List<LogLine> LogLines { get; private set; }
         [JsonIgnore]
-        public IProgress<Args.WambyFolderEventArgs> ScanningFolderProgress { get; set; }
+        public IProgress<WambyFolderEventArgs> ScanningFolderProgress { get; set; }
         [JsonIgnore]
-        public IProgress<Args.WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress { get; set; }
+        public IProgress<WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress { get; set; }
 
         public event EventHandler BeginScan;
         public event EventHandler EndScan;
@@ -50,42 +55,23 @@ namespace Wamby.API.Services
             ScanResult = new ScanResult();
             LogLines = new List<LogLine>();
         }
-
-        public void CopyProperties(FileSystemScanService fromScanService)
-        {
-            BaseFolder = fromScanService.BaseFolder;
-            ComputerName = fromScanService.ComputerName;
-            OSVersionName = fromScanService.OSVersionName;
-            ScanDate = fromScanService.ScanDate;
-            ScanOptions.BaseFolderPath = fromScanService.ScanOptions.BaseFolderPath;
-            ScanOptions.IncludeSubFolders = fromScanService.ScanOptions.IncludeSubFolders;
-            ScanOptions.SearchPattern = fromScanService.ScanOptions.SearchPattern;
-            ScanOptions.ShowMinimumFolderLevelInLog = fromScanService.ScanOptions.ShowMinimumFolderLevelInLog;
-            UserName = fromScanService.UserName;
-            DetailType = fromScanService.DetailType;
-            Clear();
-            ScanResult.AllFolders.AddRange(fromScanService.ScanResult.AllFolders);
-            ScanResult.AllFiles.AddRange(fromScanService.ScanResult.AllFiles);
-            ScanResult.ScanExceptions.AddRange(fromScanService.ScanResult.ScanExceptions);
-            LogLines.AddRange(fromScanService.LogLines);
-        }
-
+                
         FileSystemInfo _CurrentFileSystemInfo;
-        public async Task<Core.Model.ScanResult> DoScan()
+        public async Task<ScanResult> DoScan()
         {
             RaiseBeginScan();
             Clear();
-            LogLines.Add(new Core.Model.LogLine()
+            LogLines.Add(new LogLine()
             {
                 Message = $"Started scan at {DateTime.Now.ToLongTimeString()}",
                 Value = string.Empty,
-                LogLineType = Core.Model.LogLineTypeEnum.Info
+                LogLineType = LogLineTypeEnum.Info
             });
             BaseFolder = ScanOptions.BaseFolderPath;
             CheckBaseFolder(ScanOptions.BaseFolderPath);
-            CancellationToken = new System.Threading.CancellationTokenSource();
+            CancellationToken = new CancellationTokenSource();
             Cancelled = false;
-            var clock = new System.Diagnostics.Stopwatch();
+            var clock = new Stopwatch();
             clock.Restart();
             var f = await Task.Run(() => ScanFolder(BaseFolder));
             if (!Cancelled)
@@ -108,7 +94,7 @@ namespace Wamby.API.Services
             }
             clock.Stop();
             ScanResult.ElapsedTime = clock.Elapsed;
-            LogLines.Add(new Core.Model.LogLine()
+            LogLines.Add(new LogLine()
             {
                 Message = $"Finished scan. Ellapsed time: {ScanResult.ElapsedTime.TotalSeconds:n1}s.",
                 Value = string.Empty,
@@ -159,7 +145,7 @@ namespace Wamby.API.Services
                 }
                 catch (Exception ex)
                 {
-                    if (!existsExceptionInResult(ex, _CurrentFileSystemInfo))
+                    if (!ExistsExceptionInResult(ex, _CurrentFileSystemInfo))
                     {
                         AddExceptionToResult(ex, _CurrentFileSystemInfo);
                         UpdateErrorReadingFileSystemInfoProgress(_CurrentFileSystemInfo);
@@ -203,7 +189,7 @@ namespace Wamby.API.Services
             }
             catch (Exception ex)
             {
-                if (!existsExceptionInResult(ex, _CurrentFileSystemInfo))
+                if (!ExistsExceptionInResult(ex, _CurrentFileSystemInfo))
                 {
                     AddExceptionToResult(ex, _CurrentFileSystemInfo);
                     UpdateErrorReadingFileSystemInfoProgress(_CurrentFileSystemInfo);
@@ -233,9 +219,9 @@ namespace Wamby.API.Services
             wambyFileSystemItem.IsTemporary = (wambyFileSystemItem.Attributes & FileAttributes.Temporary) == FileAttributes.Temporary;
         }
 
-        private Core.Model.WambyFolderInfo AddCurrentFolderFileSummary(WambyFolderInfo currentFolderInfo)
+        private WambyFolderInfo AddCurrentFolderFileSummary(WambyFolderInfo currentFolderInfo)
         {
-            var currentFolderFilesSummaryInfo = new Core.Model.WambyFolderInfo()
+            var currentFolderFilesSummaryInfo = new WambyFolderInfo()
             {
                 DirectoryInfo = new DirectoryInfo(currentFolderInfo.FullName),
                 FullName = $"Files in: {currentFolderInfo.FullName}",
@@ -257,7 +243,7 @@ namespace Wamby.API.Services
             return currentFolderFilesSummaryInfo;           
         }
 
-        bool existsExceptionInResult(Exception ex, FileSystemInfo currentFileSystemInfo)
+        bool ExistsExceptionInResult(Exception ex, FileSystemInfo currentFileSystemInfo)
         {
             if (currentFileSystemInfo == null) return false;
             return ScanResult.ScanExceptions.Any(p =>
@@ -268,7 +254,7 @@ namespace Wamby.API.Services
         private void UpdateScanningFolderProgress(WambyFolderInfo currentFolderInfo)
         {
             if (Cancelled) return;
-            if (DetailType == Enums.ScanDetailTypeEnum.Detailed)
+            if (DetailType == ScanDetailTypeEnum.Detailed)
             {
                 if (currentFolderInfo.Level <= ScanOptions.ShowMinimumFolderLevelInLog)
                 {
@@ -278,7 +264,7 @@ namespace Wamby.API.Services
                         Value = currentFolderInfo.FullName,
                         LogLineType = LogLineTypeEnum.ReadingFolder
                     });
-                    ScanningFolderProgress?.Report(new Args.WambyFolderEventArgs() { WambyFolderInfo = currentFolderInfo });
+                    ScanningFolderProgress?.Report(new WambyFolderEventArgs() { WambyFolderInfo = currentFolderInfo });
                 }
             }
             else if(currentFolderInfo.Level <= 2)
@@ -289,7 +275,7 @@ namespace Wamby.API.Services
                     Value = currentFolderInfo.FullName,
                     LogLineType = LogLineTypeEnum.ReadingFolder
                 });
-                ScanningFolderProgress?.Report(new Args.WambyFolderEventArgs() { WambyFolderInfo = currentFolderInfo });
+                ScanningFolderProgress?.Report(new WambyFolderEventArgs() { WambyFolderInfo = currentFolderInfo });
             }
         }
 
@@ -302,7 +288,7 @@ namespace Wamby.API.Services
                 Value = currentItem.FullName,
                 LogLineType = LogLineTypeEnum.Error
             });
-            ErrorReadingFileSystemInfoProgress?.Report(new Args.WambyFileSystemInfoEventArgs() { WambyFileSystemItem = currentItem });
+            ErrorReadingFileSystemInfoProgress?.Report(new WambyFileSystemInfoEventArgs() { WambyFileSystemItem = currentItem });
         }
 
         private void AddExceptionToResult(Exception ex, FileSystemInfo currentFileSystemInfo)
@@ -325,14 +311,13 @@ namespace Wamby.API.Services
             if (CancellationToken.IsCancellationRequested && !Cancelled)
             {
                 Cancelled = true;
-                var username = System.Security.Principal.WindowsIdentity.GetCurrent().Name;
+                var username = WindowsIdentity.GetCurrent().Name;
                 LogLines.Add(new LogLine()
                 {
                     Message = $"** Scan cancelled by user {username} **".ToUpper(),
                     Value = string.Empty,
                     LogLineType = LogLineTypeEnum.Error
                 });
-                //CancelledByUserProgress?.Report(username);
                 RaiseCancelledScan();
                 return true;
             }
@@ -361,7 +346,7 @@ namespace Wamby.API.Services
 
         private FileAttributes GetAttributes(FileInfo file)
         {
-            if (DetailType == Enums.ScanDetailTypeEnum.Fast) return FileAttributes.Normal;
+            if (DetailType == ScanDetailTypeEnum.Fast) return FileAttributes.Normal;
             try
             {
                 var fa = File.GetAttributes(file.FullName);
@@ -375,7 +360,7 @@ namespace Wamby.API.Services
 
         private FileAttributes GetAttributes(DirectoryInfo folder)
         {
-            if (DetailType == Enums.ScanDetailTypeEnum.Fast) return FileAttributes.Normal;
+            if (DetailType == ScanDetailTypeEnum.Fast) return FileAttributes.Normal;
             try
             {
                 var fa = folder.Attributes;
@@ -389,12 +374,12 @@ namespace Wamby.API.Services
 
         public string GetOwner(FileInfo file)
         {
-            if (DetailType == Enums.ScanDetailTypeEnum.Fast) return "(Owner)";
+            if (DetailType == ScanDetailTypeEnum.Fast) return "(Owner)";
             try
             {
                 var fs = file.GetAccessControl();
-                var sid = fs.GetOwner(typeof(System.Security.Principal.SecurityIdentifier));
-                var ntAccount = sid.Translate(typeof(System.Security.Principal.NTAccount));
+                var sid = fs.GetOwner(typeof(SecurityIdentifier));
+                var ntAccount = sid.Translate(typeof(NTAccount));
                 return ntAccount.ToString();
             }
             catch (Exception)
@@ -405,23 +390,18 @@ namespace Wamby.API.Services
 
         public string GetOwner(DirectoryInfo folder)
         {
-            if (DetailType == Enums.ScanDetailTypeEnum.Fast) return "(Owner)";
+            if (DetailType == ScanDetailTypeEnum.Fast) return "(Owner)";
             try
             {
                 var fs = folder.GetAccessControl();
-                var sid = fs.GetOwner(typeof(System.Security.Principal.SecurityIdentifier));
-                var ntAccount = sid.Translate(typeof(System.Security.Principal.NTAccount));
+                var sid = fs.GetOwner(typeof(SecurityIdentifier));
+                var ntAccount = sid.Translate(typeof(NTAccount));
                 return ntAccount.ToString();
             }
             catch (Exception)
             {
                 return null;
             }
-        }
-
-        public string GetTempFileName(string extension)
-        {
-            return Path.GetTempFileName().Replace("tmp", extension);
         }
 
         public string GetSummary()

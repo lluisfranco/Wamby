@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
+using System.IO;
 
 namespace Wamby.API.Args
 {
     public class WambyFileSystemInfoEventArgs : EventArgs
     {
-        public System.IO.FileSystemInfo WambyFileSystemItem { get; set; }
+        public FileSystemInfo WambyFileSystemItem { get; set; }
     }
 }

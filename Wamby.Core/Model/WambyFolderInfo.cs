@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Text.Json.Serialization;
 
 namespace Wamby.Core.Model
@@ -16,7 +17,7 @@ namespace Wamby.Core.Model
         public double DeepFilesCountPercent { get; set; }
         public double DeepLengthInKB { get { return DeepLenght / 1024; } }
         [JsonIgnore]
-        public System.IO.DirectoryInfo DirectoryInfo { get; set; }
+        public DirectoryInfo DirectoryInfo { get; set; }
         [JsonIgnore]
         public List<WambyFolderInfo> Folders { get; set; } = new List<WambyFolderInfo>();
         [JsonIgnore]
