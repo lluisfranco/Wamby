@@ -24,8 +24,14 @@ namespace Wamby.Client
         {
             InitializeComponent();
             IconOptions.SvgImage = svgImageCollectionForm[0];
-            //Activated += (s, e) => WelcomeUserControl.RefreshPreviousScansList();
-            //WelcomeUserControl.OpenPreviousScanClick += (s, e) => OpenPreviousScanEvent(e.Path, e.SearchPattern, e.DetailType);
+            Activated += (s, e) => RefreshHistory();
+            scanHistoryUserControl.OpenPreviousScanClick += (s, e) => OpenPreviousScanEvent(e.Path, e.SearchPattern, e.DetailType);
+        }
+
+        public void RefreshHistory()
+        {
+            var scans = WambyApplication.PreviousScansPersistenceService.LoadPreviousScans();
+            scanHistoryUserControl.SetData(scans);
         }
     }
 }

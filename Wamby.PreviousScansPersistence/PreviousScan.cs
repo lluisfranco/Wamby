@@ -14,5 +14,8 @@ namespace Wamby.PreviousScansPersistence
         public string OSVersionName { get; set; } = string.Empty;
         public ScanDetailTypeEnum DetailType { get; set; }
         public DateTime ScanDate { get; set; }
+        public int FolderCount { get; set; }
+        public int FileCount { get; set; }
+        public int ErrorCount { get; set; }
     }
 }
