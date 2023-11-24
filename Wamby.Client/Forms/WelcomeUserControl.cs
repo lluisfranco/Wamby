@@ -37,8 +37,10 @@ namespace Wamby.Client.Forms
 
         private void RaiseOpenPreviousScanEventFromLabel(HyperlinkLabelControl label)
         {
-            if (label.Tag is not PreviousScan scan) return;
-            RaiseOpenPreviousScanEvent(scan.BaseFolderPath, scan.SearchPattern, scan.DetailType);
+            if (label.Tag is not PreviousScan scan)
+                RaiseOpenPreviousScanEvent(null, "*.*", ScanDetailTypeEnum.Fast);
+            else
+                RaiseOpenPreviousScanEvent(scan.BaseFolderPath, scan.SearchPattern, scan.DetailType);
         }
 
         public void InitializeControl()

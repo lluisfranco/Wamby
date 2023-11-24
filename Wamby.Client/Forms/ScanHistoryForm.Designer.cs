@@ -38,6 +38,7 @@ namespace Wamby.Client
             barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             svgImageCollectionForm = new DevExpress.Utils.SvgImageCollection(components);
+            scanHistoryUserControl = new ScanHistoryUserControl();
             ((System.ComponentModel.ISupportInitialize)barManager).BeginInit();
             ((System.ComponentModel.ISupportInitialize)svgImageCollectionForm).BeginInit();
             SuspendLayout();
@@ -96,11 +97,20 @@ namespace Wamby.Client
             // 
             svgImageCollectionForm.Add("History", "Wamby.Resources.Images.App.History.svg", "Wamby.Resources");
             // 
+            // scanHistoryUserControl
+            // 
+            scanHistoryUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            scanHistoryUserControl.Location = new System.Drawing.Point(0, 20);
+            scanHistoryUserControl.Name = "scanHistoryUserControl";
+            scanHistoryUserControl.Size = new System.Drawing.Size(1025, 717);
+            scanHistoryUserControl.TabIndex = 4;
+            // 
             // ScanHistoryForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(1025, 737);
+            Controls.Add(scanHistoryUserControl);
             Controls.Add(barDockControlLeft);
             Controls.Add(barDockControlRight);
             Controls.Add(barDockControlBottom);
@@ -122,5 +132,6 @@ namespace Wamby.Client
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.Utils.SvgImageCollection svgImageCollectionForm;
+        private ScanHistoryUserControl scanHistoryUserControl;
     }
 }
