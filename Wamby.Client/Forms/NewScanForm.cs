@@ -90,7 +90,7 @@ namespace Wamby.Client
                 FileSystemScanService.ScanOptions.IncludeSubFolders = settings.DefaultIncludeSubFolders;
                 FileSystemScanService.ScanOptions.SearchPattern = settings.DefaultSearchPattern;
                 FileSystemScanService.DetailType = settings.DefaultDetailedScanType;
-            }            
+            }
             FileSystemScanService.BeginScan += (s, e) =>
             {
                 UpdateFormTitle();
