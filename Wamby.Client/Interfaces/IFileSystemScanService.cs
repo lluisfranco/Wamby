@@ -1,11 +1,9 @@
-﻿using System;
-using System.Linq;
+﻿using Wamby.API.Services;
 
 namespace Wamby.Client.Interfaces
 {
     public interface IFileSystemScanService
     {
-        API.Services.FileSystemScanService FileSystemScanService { get; }
-
+        FileSystemScanService FileSystemScanService { get; }
     }
 }

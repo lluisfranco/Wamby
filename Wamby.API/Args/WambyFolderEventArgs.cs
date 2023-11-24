@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
+using Wamby.Core.Model;
 
 namespace Wamby.API.Args
 {
     public class WambyFolderEventArgs : EventArgs
     {
-        public Core.Model.WambyFolderInfo WambyFolderInfo { get; set; }
+        public WambyFolderInfo WambyFolderInfo { get; set; }
     }
 }

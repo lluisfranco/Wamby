@@ -5,6 +5,5 @@
         public string Extension { get; set; }
         public double Size { get; set; }
         public double FilesCount { get; set; }
-
     }
 }

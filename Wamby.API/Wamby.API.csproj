@@ -8,9 +8,6 @@
     <ProjectReference Include="..\Wamby.Core\Wamby.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
   <ItemGroup>
