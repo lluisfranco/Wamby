@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using System;
+using Wamby.API.Enums;
 using Wamby.API.Services;
 using Wamby.Client.Args;
 
@@ -20,8 +21,8 @@ namespace Wamby.Client
 
         public void RaiseNewScanEvent() => NewScanClick?.Invoke(this, EventArgs.Empty);
         public void RaiseOpenScanEvent() => OpenScanClick?.Invoke(this, EventArgs.Empty);
-        public void OpenPreviousScanEvent(string path) =>
-            OpenPreviousScanClick?.Invoke(this, new OpenPreviousScanEventArgs() { Path = path });
+        public void OpenPreviousScanEvent(string path, string pattern, ScanDetailTypeEnum type) =>
+            OpenPreviousScanClick?.Invoke(this, new OpenPreviousScanEventArgs() { Path = path, SearchPattern = pattern, DetailType = type });
 
         public WelcomeForm()
         {
@@ -30,7 +31,7 @@ namespace Wamby.Client
             Activated += (s, e) => WelcomeUserControl.RefreshPreviousScansList();
             WelcomeUserControl.NewScanClick += (s, e) => RaiseNewScanEvent();
             WelcomeUserControl.OpenScanClick += (s, e) => RaiseOpenScanEvent();
-            WelcomeUserControl.OpenPreviousScanClick += (s, e) => OpenPreviousScanEvent(e.Path);
+            WelcomeUserControl.OpenPreviousScanClick += (s, e) => OpenPreviousScanEvent(e.Path, e.SearchPattern, e.DetailType);
         }
     }
 }

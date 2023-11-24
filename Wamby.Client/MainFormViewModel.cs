@@ -58,7 +58,7 @@ namespace Wamby.Client
 
         public async Task NewScan(string path)
         {
-            var scanService = GetScanServiceFromFolderPath(path);
+            var scanService = GetScanServiceFromFolderPath(path, "*.*", ScanDetailTypeEnum.Fast);
             await NewScan(scanService);
         }
 
@@ -77,7 +77,8 @@ namespace Wamby.Client
             Application.UseWaitCursor = false;
         }
 
-        private static FileSystemScanService GetScanServiceFromFolderPath(string path)
+        private static FileSystemScanService GetScanServiceFromFolderPath(
+            string path, string pattern, ScanDetailTypeEnum type)
         {
             var scanService = new FileSystemScanService()
             {
@@ -85,9 +86,10 @@ namespace Wamby.Client
                 ComputerName = Environment.MachineName,
                 OSVersionName = Environment.OSVersion.ToString(),
                 ScanDate = DateTime.Now,
-                DetailType = ScanDetailTypeEnum.Fast
+                DetailType = type
             };
             scanService.ScanOptions.BaseFolderPath = path;
+            scanService.ScanOptions.SearchPattern = pattern;
             return scanService;
         }
 
@@ -96,9 +98,9 @@ namespace Wamby.Client
 
         }
 
-        public async Task OpenPreviousScan(string path)
+        public async Task OpenPreviousScan(string path, string pattern, ScanDetailTypeEnum type)
         {
-            var scanService = GetScanServiceFromFolderPath(path);
+            var scanService = GetScanServiceFromFolderPath(path, pattern, type);
             await NewScan(scanService);
         }
 
@@ -111,7 +113,10 @@ namespace Wamby.Client
             f.OpenScanClick += async (s, e) => await OpenScan();
             f.OpenPreviousScanClick += async (s, e) =>
             {
-                if (string.IsNullOrEmpty(e.Path)) await NewScan(); else await OpenPreviousScan(e.Path);
+                if (string.IsNullOrEmpty(e.Path)) 
+                    await NewScan(); 
+                else 
+                    await OpenPreviousScan(e.Path, e.SearchPattern, e.DetailType);
             };
             Application.DoEvents();
             Application.UseWaitCursor = false;
