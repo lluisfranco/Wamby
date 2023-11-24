@@ -47,6 +47,8 @@
             skinPaletteDropDownButtonItem = new DevExpress.XtraBars.SkinPaletteDropDownButtonItem();
             barCheckItemCompactUI = new DevExpress.XtraBars.BarCheckItem();
             barButtonItemOpenScan = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemSchedule = new DevExpress.XtraBars.BarButtonItem();
+            barButtonItemSettings = new DevExpress.XtraBars.BarButtonItem();
             svgImageCollection32 = new DevExpress.Utils.SvgImageCollection(components);
             documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(components);
             tabbedView = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(components);
@@ -65,6 +67,8 @@
             // 
             svgImageCollection16.Add("New", "Wamby.Resources.Images.Actions.New.svg", "Wamby.Resources");
             svgImageCollection16.Add("Open", "Wamby.Resources.Images.Actions.Open.svg", "Wamby.Resources");
+            svgImageCollection16.Add("Schedule", "Wamby.Resources.Images.Menu.Schedule.svg", "Wamby.Resources");
+            svgImageCollection16.Add("Settings", "Wamby.Resources.Images.Menu.Settings.svg", "Wamby.Resources");
             // 
             // toolbarFormControl
             // 
@@ -79,6 +83,8 @@
             toolbarFormControl.TitleItemLinks.Add(skinPaletteDropDownButtonItem);
             toolbarFormControl.TitleItemLinks.Add(skinDropDownButtonItem, true);
             toolbarFormControl.TitleItemLinks.Add(barButtonItemOpenScan);
+            toolbarFormControl.TitleItemLinks.Add(barButtonItemSchedule);
+            toolbarFormControl.TitleItemLinks.Add(barButtonItemSettings);
             toolbarFormControl.ToolbarForm = this;
             // 
             // toolbarFormManager
@@ -90,9 +96,9 @@
             toolbarFormManager.DockControls.Add(barDockControlRight);
             toolbarFormManager.Form = this;
             toolbarFormManager.Images = svgImageCollection16;
-            toolbarFormManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemNewScan, skinDropDownButtonItem, skinPaletteDropDownButtonItem, barCheckItemCompactUI, barButtonItemOpenScan, barEditItemProgress, barStaticItemMessage, barStaticItemMessageLastScan });
+            toolbarFormManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] { barButtonItemNewScan, skinDropDownButtonItem, skinPaletteDropDownButtonItem, barCheckItemCompactUI, barButtonItemOpenScan, barEditItemProgress, barStaticItemMessage, barStaticItemMessageLastScan, barButtonItemSchedule, barButtonItemSettings });
             toolbarFormManager.LargeImages = svgImageCollection32;
-            toolbarFormManager.MaxItemId = 10;
+            toolbarFormManager.MaxItemId = 12;
             toolbarFormManager.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] { repositoryItemProgressBar1 });
             toolbarFormManager.StatusBar = bar1;
             // 
@@ -209,11 +215,30 @@
             barButtonItemOpenScan.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O);
             barButtonItemOpenScan.Name = "barButtonItemOpenScan";
             // 
+            // barButtonItemSchedule
+            // 
+            barButtonItemSchedule.Caption = "Schedule";
+            barButtonItemSchedule.Enabled = false;
+            barButtonItemSchedule.Id = 10;
+            barButtonItemSchedule.ImageOptions.ImageIndex = 2;
+            barButtonItemSchedule.ImageOptions.LargeImageIndex = 2;
+            barButtonItemSchedule.Name = "barButtonItemSchedule";
+            // 
+            // barButtonItemSettings
+            // 
+            barButtonItemSettings.Caption = "Settings";
+            barButtonItemSettings.Id = 11;
+            barButtonItemSettings.ImageOptions.ImageIndex = 3;
+            barButtonItemSettings.ImageOptions.LargeImageIndex = 3;
+            barButtonItemSettings.Name = "barButtonItemSettings";
+            // 
             // svgImageCollection32
             // 
             svgImageCollection32.ImageSize = new System.Drawing.Size(32, 32);
             svgImageCollection32.Add("New", "Wamby.Resources.Images.Actions.New.svg", "Wamby.Resources");
             svgImageCollection32.Add("Open", "Wamby.Resources.Images.Actions.Open.svg", "Wamby.Resources");
+            svgImageCollection32.Add("Schedule", "Wamby.Resources.Images.Menu.Schedule.svg", "Wamby.Resources");
+            svgImageCollection32.Add("Settings", "Wamby.Resources.Images.Menu.Settings.svg", "Wamby.Resources");
             // 
             // documentManager
             // 
@@ -281,5 +306,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemProgressBar repositoryItemProgressBar1;
         private DevExpress.XtraBars.BarStaticItem barStaticItemMessage;
         private DevExpress.XtraBars.BarStaticItem barStaticItemMessageLastScan;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemSchedule;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemSettings;
     }
 }
