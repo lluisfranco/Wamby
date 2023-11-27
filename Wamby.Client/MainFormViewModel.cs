@@ -58,7 +58,8 @@ namespace Wamby.Client
 
         public async Task NewScan(string path)
         {
-            var scanService = GetScanServiceFromFolderPath(path, "*.*", ScanDetailTypeEnum.Fast);
+            var scanService = GetScanServiceFromFolderPath(path, 
+                WambyApplication.Settings.DefaultSearchPattern, WambyApplication.Settings.DefaultDetailedScanType);
             await NewScan(scanService);
         }
 

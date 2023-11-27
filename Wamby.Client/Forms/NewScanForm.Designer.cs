@@ -83,7 +83,7 @@
             // 
             // barButtonItemSave
             // 
-            barButtonItemSave.Caption = "Save...";
+            barButtonItemSave.Caption = "Save As...";
             barButtonItemSave.Id = 3;
             barButtonItemSave.ImageOptions.ImageIndex = 3;
             barButtonItemSave.ImageOptions.LargeImageIndex = 3;

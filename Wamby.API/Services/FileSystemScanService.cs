@@ -33,7 +33,7 @@ namespace Wamby.API.Services
         public IProgress<WambyFolderEventArgs> ScanningFolderProgress { get; set; }
         [JsonIgnore]
         public IProgress<WambyFileSystemInfoEventArgs> ErrorReadingFileSystemInfoProgress { get; set; }
-
+        [JsonIgnore]
         public ScanStats Statistics { get; private set; }
 
         public event EventHandler BeginScan;

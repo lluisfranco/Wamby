@@ -1,5 +1,4 @@
-﻿using DevExpress.Internal;
-using DevExpress.XtraBars;
+﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
 using System;
@@ -21,6 +20,7 @@ namespace Wamby.Client
     {
         public MainForm MainForm { get; private set; }
         public Bar Bar { get { return bar; } }
+        public Settings.Settings Settings { get; private set; }
         public FileSystemScanService FileSystemScanService { get; private set; }
         public FileSystemStorageService FileSystemStorageService { get; private set; } = new();
         public NewScanForm SetParent(MainForm form) { MainForm = form; MdiParent = MainForm; return this; }
@@ -60,6 +60,7 @@ namespace Wamby.Client
 
         public NewScanForm InitializeControl()
         {
+            Settings = WambyApplication.Settings;
             InitializeFileSystemScanService();
             var modules = navigationPane.GetModules();
             foreach (var module in modules)
@@ -76,7 +77,6 @@ namespace Wamby.Client
 
         private void InitializeFileSystemScanService()
         {
-            var settings = WambyApplication.Settings;
             if (FileSystemScanService == null)
             {
                 FileSystemScanService = new FileSystemScanService()
@@ -87,11 +87,11 @@ namespace Wamby.Client
                     ScanDate = DateTime.Now,
                     DetailType = ScanDetailTypeEnum.Fast
                 };
-                if (Directory.Exists(settings.DefaultBaseFolderPath))
-                    FileSystemScanService.ScanOptions.BaseFolderPath = settings.DefaultBaseFolderPath;
-                FileSystemScanService.ScanOptions.IncludeSubFolders = settings.DefaultIncludeSubFolders;
-                FileSystemScanService.ScanOptions.SearchPattern = settings.DefaultSearchPattern;
-                FileSystemScanService.DetailType = settings.DefaultDetailedScanType;
+                if (Directory.Exists(Settings.DefaultBaseFolderPath))
+                    FileSystemScanService.ScanOptions.BaseFolderPath = Settings.DefaultBaseFolderPath;
+                FileSystemScanService.ScanOptions.IncludeSubFolders = Settings.DefaultIncludeSubFolders;
+                FileSystemScanService.ScanOptions.SearchPattern = Settings.DefaultSearchPattern;
+                FileSystemScanService.DetailType = Settings.DefaultDetailedScanType;
             }
             FileSystemScanService.BeginScan += (s, e) =>
             {
@@ -103,8 +103,6 @@ namespace Wamby.Client
                 ShowScanResults();
                 SaveScanToPreviousList();
                 HideProgressPanel();
-                if (settings.ShowResultsPageAfterScan)
-                    navigationPane.SelectedPage = navigationPageResults;
             };
         }
 
@@ -130,6 +128,8 @@ namespace Wamby.Client
             if (results) navigationPageMap.GetPageModule().RefreshModuleData();
             if (results) navigationPageAnalysis.GetPageModule().RefreshModuleData();
             if (errors) navigationPageErrors.GetPageModule().RefreshModuleData();
+            if (Settings.ShowResultsPageAfterScan && navigationPageResults.PageEnabled)
+                navigationPane.SelectedPage = navigationPageResults;
         }
 
         private void SaveScanToPreviousList()
@@ -169,7 +169,7 @@ namespace Wamby.Client
                     Application.UseWaitCursor = true;
                     try
                     {
-                        FileSystemStorageService.SaveReadableFormat = WambyApplication.Settings.SaveToFileReadableFormat;
+                        FileSystemStorageService.SaveReadableFormat = Settings.SaveToFileReadableFormat;
                         await FileSystemStorageService.SaveToFile(sd.FileName, FileSystemScanService);
                         Application.UseWaitCursor = false;
                     }

@@ -20,10 +20,12 @@ namespace Wamby.Client.Forms
         public void RaiseOpenPreviousScanEvent(string path, string pattern, ScanDetailTypeEnum type) => 
             OpenPreviousScanClick?.Invoke(this, new OpenPreviousScanEventArgs() { Path = path, SearchPattern = pattern, DetailType = type });
         public void RaiseOpenHistoryEvent() => OpenHistoryClick?.Invoke(this, EventArgs.Empty);
+        public Settings.Settings Settings { get; private set; }
 
         public WelcomeUserControl()
         {
             InitializeComponent();
+            Settings = WambyApplication.Settings;
             pictureEdit.Image = imageCollection.Images[0];
             hyperlinkLabelControlNew.HyperlinkClick += (s, e) => RaiseNewScanEvent();
             hyperlinkLabelControlOpen.HyperlinkClick += (s, e) => RaiseOpenScanEvent();
@@ -38,7 +40,7 @@ namespace Wamby.Client.Forms
         private void RaiseOpenPreviousScanEventFromLabel(HyperlinkLabelControl label)
         {
             if (label.Tag is not PreviousScan scan)
-                RaiseOpenPreviousScanEvent(null, "*.*", ScanDetailTypeEnum.Fast);
+                RaiseOpenPreviousScanEvent(null, Settings.DefaultSearchPattern, Settings.DefaultDetailedScanType);
             else
                 RaiseOpenPreviousScanEvent(scan.BaseFolderPath, scan.SearchPattern, scan.DetailType);
         }
