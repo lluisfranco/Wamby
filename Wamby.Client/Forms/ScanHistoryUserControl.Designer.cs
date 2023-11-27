@@ -47,6 +47,7 @@
             colErrorCount = new DevExpress.XtraGrid.Columns.GridColumn();
             Root = new DevExpress.XtraLayout.LayoutControlGroup();
             layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            colElapsedTime = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)layoutControl).BeginInit();
             layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gridControl).BeginInit();
@@ -84,7 +85,7 @@
             // 
             // gridView
             // 
-            gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colBaseFolderPath, colIncludeSubFolders, colSearchPattern, colShowMinimumFolderLevelInLog, colUserName, colComputerName, colOSVersionName, colDetailType, colScanDate, colFolderCount, colFileCount, colErrorCount });
+            gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] { colBaseFolderPath, colIncludeSubFolders, colSearchPattern, colShowMinimumFolderLevelInLog, colUserName, colComputerName, colOSVersionName, colDetailType, colScanDate, colFolderCount, colFileCount, colErrorCount, colElapsedTime });
             gridView.GridControl = gridControl;
             gridView.Name = "gridView";
             gridView.OptionsBehavior.Editable = false;
@@ -97,7 +98,7 @@
             colBaseFolderPath.FieldName = "BaseFolderPath";
             colBaseFolderPath.Name = "colBaseFolderPath";
             colBaseFolderPath.Visible = true;
-            colBaseFolderPath.VisibleIndex = 1;
+            colBaseFolderPath.VisibleIndex = 2;
             colBaseFolderPath.Width = 300;
             // 
             // colIncludeSubFolders
@@ -105,7 +106,7 @@
             colIncludeSubFolders.FieldName = "IncludeSubFolders";
             colIncludeSubFolders.Name = "colIncludeSubFolders";
             colIncludeSubFolders.Visible = true;
-            colIncludeSubFolders.VisibleIndex = 4;
+            colIncludeSubFolders.VisibleIndex = 5;
             colIncludeSubFolders.Width = 62;
             // 
             // colSearchPattern
@@ -113,7 +114,7 @@
             colSearchPattern.FieldName = "SearchPattern";
             colSearchPattern.Name = "colSearchPattern";
             colSearchPattern.Visible = true;
-            colSearchPattern.VisibleIndex = 2;
+            colSearchPattern.VisibleIndex = 3;
             colSearchPattern.Width = 62;
             // 
             // colShowMinimumFolderLevelInLog
@@ -141,7 +142,7 @@
             colDetailType.FieldName = "DetailType";
             colDetailType.Name = "colDetailType";
             colDetailType.Visible = true;
-            colDetailType.VisibleIndex = 3;
+            colDetailType.VisibleIndex = 4;
             colDetailType.Width = 62;
             // 
             // colScanDate
@@ -159,7 +160,7 @@
             colFolderCount.FieldName = "FolderCount";
             colFolderCount.Name = "colFolderCount";
             colFolderCount.Visible = true;
-            colFolderCount.VisibleIndex = 5;
+            colFolderCount.VisibleIndex = 6;
             colFolderCount.Width = 62;
             // 
             // colFileCount
@@ -167,7 +168,7 @@
             colFileCount.FieldName = "FileCount";
             colFileCount.Name = "colFileCount";
             colFileCount.Visible = true;
-            colFileCount.VisibleIndex = 6;
+            colFileCount.VisibleIndex = 7;
             colFileCount.Width = 80;
             // 
             // colErrorCount
@@ -175,7 +176,7 @@
             colErrorCount.FieldName = "ErrorCount";
             colErrorCount.Name = "colErrorCount";
             colErrorCount.Visible = true;
-            colErrorCount.VisibleIndex = 7;
+            colErrorCount.VisibleIndex = 8;
             colErrorCount.Width = 80;
             // 
             // Root
@@ -195,6 +196,13 @@
             layoutControlItem1.Size = new System.Drawing.Size(1037, 645);
             layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             layoutControlItem1.TextVisible = false;
+            // 
+            // colElapsedTime
+            // 
+            colElapsedTime.FieldName = "ElapsedTime";
+            colElapsedTime.Name = "colElapsedTime";
+            colElapsedTime.Visible = true;
+            colElapsedTime.VisibleIndex = 1;
             // 
             // ScanHistoryUserControl
             // 
@@ -233,5 +241,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colFolderCount;
         private DevExpress.XtraGrid.Columns.GridColumn colFileCount;
         private DevExpress.XtraGrid.Columns.GridColumn colErrorCount;
+        private DevExpress.XtraGrid.Columns.GridColumn colElapsedTime;
     }
 }
