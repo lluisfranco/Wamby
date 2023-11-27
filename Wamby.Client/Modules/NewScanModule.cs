@@ -141,7 +141,7 @@ namespace Wamby.Client.Modules
                 dxErrorProvider.SetError(newScanPathButtonEdit, "Folder doesn't exists.");
                 return null;
             }
-            FileSystemScanService.Clear();
+            FileSystemScanService.InitializeService();
             FileSystemScanService.DetailType = (ScanDetailTypeEnum)imageComboBoxEditType.EditValue;
             FileSystemScanService.ScanOptions.BaseFolderPath = newScanPathButtonEdit.Text;
             FileSystemScanService.ScanOptions.IncludeSubFolders = includeSubfoldersCheckEdit.IsOn;

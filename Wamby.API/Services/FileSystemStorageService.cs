@@ -21,7 +21,8 @@ namespace Wamby.API.Services
         public static async Task<FileSystemScanService> OpenFromFile(string filename)
         {
             var jsonScanData = await Task.Run(() => File.ReadAllText(filename));
-            return JsonSerializer.Deserialize<FileSystemScanService>(jsonScanData);
+            var data = JsonSerializer.Deserialize<FileSystemScanService>(jsonScanData);
+            return data;
         }
     }
 }

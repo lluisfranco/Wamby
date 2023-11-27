@@ -56,14 +56,14 @@ namespace Wamby.Client
         private static string ToHex(Color c) =>
             "#FF" + c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
 
-        public async Task NewScan(string path)
+        public async Task NewScan(string path, bool startscan = true)
         {
             var scanService = GetScanServiceFromFolderPath(path, 
                 WambyApplication.Settings.DefaultSearchPattern, WambyApplication.Settings.DefaultDetailedScanType);
-            await NewScan(scanService);
+            await NewScan(scanService, startscan);
         }
 
-        public async Task NewScan(FileSystemScanService service = null)
+        public async Task NewScan(FileSystemScanService service = null, bool startscan = true)
         {
             Application.UseWaitCursor = true;
             var f = new NewScanForm
@@ -74,7 +74,10 @@ namespace Wamby.Client
             if (service != null) f.SetFileSystemScanService(service);
             Application.DoEvents();
             f.ShowProgressPanel().InitializeModules().InitializeControl().HideProgressPanel();
-            if (service != null) await f.StartScan();
+            if (service != null && startscan) 
+                await f.StartScan();
+            else
+                f.ShowScanResultsAndAddToPreviousList();
             Application.UseWaitCursor = false;
         }
 
@@ -89,6 +92,7 @@ namespace Wamby.Client
                 ScanDate = DateTime.Now,
                 DetailType = type
             };
+            scanService.InitializeService();
             scanService.ScanOptions.BaseFolderPath = path;
             scanService.ScanOptions.SearchPattern = pattern;
             return scanService;
@@ -104,8 +108,8 @@ namespace Wamby.Client
                     Application.UseWaitCursor = true;
                     try
                     {
-                        //var service = await FileSystemStorageService.OpenFromFile(sd.FileName);
-                        //await NewScan(service);
+                        var service = await FileSystemStorageService.OpenFromFile(sd.FileName);
+                        await NewScan(service, startscan: false);
                         Application.UseWaitCursor = false;
                     }
                     catch (Exception ex)

@@ -87,6 +87,7 @@ namespace Wamby.Client
                     ScanDate = DateTime.Now,
                     DetailType = ScanDetailTypeEnum.Fast
                 };
+                FileSystemScanService.InitializeService();
                 if (Directory.Exists(Settings.DefaultBaseFolderPath))
                     FileSystemScanService.ScanOptions.BaseFolderPath = Settings.DefaultBaseFolderPath;
                 FileSystemScanService.ScanOptions.IncludeSubFolders = Settings.DefaultIncludeSubFolders;
@@ -100,8 +101,7 @@ namespace Wamby.Client
             };
             FileSystemScanService.EndScan += (s, e) =>
             {
-                ShowScanResults();
-                SaveScanToPreviousList();
+                ShowScanResultsAndAddToPreviousList();
                 HideProgressPanel();
             };
         }
@@ -112,7 +112,14 @@ namespace Wamby.Client
             if (folder.Exists) Text = $"{folder.Name}";
         }
 
-        private void ShowScanResults()
+        public void ShowScanResultsAndAddToPreviousList()
+        {
+            UpdateFormTitle();
+            ShowScanResults();
+            SaveScanToPreviousList();
+        }
+
+        public void ShowScanResults()
         {
             var results = FileSystemScanService.ScanResult.AllFiles.Count > 0;
             var errors = FileSystemScanService.ScanResult.ScanExceptions.Count > 0;
@@ -132,7 +139,7 @@ namespace Wamby.Client
                 navigationPane.SelectedPage = navigationPageResults;
         }
 
-        private void SaveScanToPreviousList()
+        public void SaveScanToPreviousList()
         {
             var previousScans = WambyApplication.PreviousScansPersistenceService.LoadPreviousScans();
             var scan = new PreviousScan()

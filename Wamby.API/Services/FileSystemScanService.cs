@@ -20,15 +20,15 @@ namespace Wamby.API.Services
         public bool Cancelled { get; private set; }
         [JsonIgnore]
         CancellationTokenSource CancellationToken;
-        public string BaseFolder { get; private set; }
+        public string BaseFolder { get; set; }
         public string UserName { get; set; }
         public string ComputerName { get; set; }
         public string OSVersionName { get; set; }
         public ScanDetailTypeEnum DetailType { get; set; }
         public DateTime ScanDate { get; set; }
-        public ScanOptions ScanOptions { get; private set; }
-        public ScanResult ScanResult { get; private set; }
-        public List<LogLine> LogLines { get; private set; }
+        public ScanOptions ScanOptions { get; set; }
+        public ScanResult ScanResult { get; set; }
+        public List<LogLine> LogLines { get; set; }
         [JsonIgnore]
         public IProgress<WambyFolderEventArgs> ScanningFolderProgress { get; set; }
         [JsonIgnore]
@@ -45,25 +45,23 @@ namespace Wamby.API.Services
 
         public FileSystemScanService()
         {
-            ScanOptions = new ScanOptions()
-            {
-                BaseFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            };
-            Statistics = new(this);
-            Clear();
         }
 
-        public void Clear()
+        public void InitializeService()
         {
-            ScanResult = new ScanResult();
-            LogLines = new List<LogLine>();
+            ScanOptions ??= new();
+            ScanResult ??= new();
+            LogLines ??= new();
+            Statistics ??= new(this);
+            if (ScanOptions.BaseFolderPath == null) 
+                ScanOptions.BaseFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
         }
-                
+    
         FileSystemInfo _CurrentFileSystemInfo;
         public async Task<ScanResult> DoScan()
         {
             RaiseBeginScan();
-            Clear();
+            InitializeService();
             LogLines.Add(new LogLine()
             {
                 Message = $"Started scan at {DateTime.Now.ToLongTimeString()}",
