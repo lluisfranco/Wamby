@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Wamby.API.Enums;
 using Wamby.API.Services;
+using Wamby.Client.Forms;
 using Wamby.PreviousScansPersistence;
 
 namespace Wamby.Client
@@ -119,6 +120,12 @@ namespace Wamby.Client
                     }
                 }
             };
+        }
+
+        public async Task Settings()
+        {
+            var f = new SettingsForm();
+            f.ShowDialog(Form);
         }
 
         public async Task OpenPreviousScan(string path, string pattern, ScanDetailTypeEnum type)

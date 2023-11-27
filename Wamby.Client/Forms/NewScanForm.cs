@@ -155,7 +155,8 @@ namespace Wamby.Client
                 ShowMinimumFolderLevelInLog = FileSystemScanService.ScanOptions.ShowMinimumFolderLevelInLog,
                 FolderCount = FileSystemScanService.ScanResult.AllFolders.Count,
                 FileCount = FileSystemScanService.ScanResult.AllFiles.Count,
-                ErrorCount = FileSystemScanService.ScanResult.ScanExceptions.Count
+                ErrorCount = FileSystemScanService.ScanResult.ScanExceptions.Count,
+                ElapsedTime = FileSystemScanService.ScanResult.ElapsedTime
             };
             if (previousScans.Exists(p => p.BaseFolderPath == FileSystemScanService.ScanOptions.BaseFolderPath))
                 previousScans.RemoveAll(p => p.BaseFolderPath == FileSystemScanService.ScanOptions.BaseFolderPath);

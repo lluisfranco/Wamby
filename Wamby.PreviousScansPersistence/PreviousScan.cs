@@ -17,5 +17,6 @@ namespace Wamby.PreviousScansPersistence
         public int FolderCount { get; set; }
         public int FileCount { get; set; }
         public int ErrorCount { get; set; }
+        public TimeSpan ElapsedTime { get; set; }
     }
 }
