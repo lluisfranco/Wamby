@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Wamby.Client": {
+      "commandName": "Project",
+      "commandLineArgs": "-p C:\\_"
+    }
+  }
+}

@@ -3,6 +3,7 @@ using DevExpress.XtraBars;
 using DevExpress.XtraBars.ToolbarForm;
 using DevExpress.XtraEditors;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using Wamby.Client.DevExpressSkins;
@@ -12,6 +13,7 @@ namespace Wamby.Client
 {
     public partial class MainForm : ToolbarForm, IProgressMessage
     {
+        public string DefaultPath { get; private set; }
         public MainFormViewModel ViewModel { get; set; }
         public IProgressMessage SetMessage(string message)
         {
@@ -38,6 +40,11 @@ namespace Wamby.Client
             barEditItemProgress.EditValue = 0; barEditItemProgress.Visibility = BarItemVisibility.Never; return this;
         }
 
+        internal void SetDefaultPath(string defaultPath)
+        {
+            DefaultPath = defaultPath;
+        }
+
         public MainForm()
         {
             InitializeComponent();
@@ -46,7 +53,7 @@ namespace Wamby.Client
             IconOptions.SvgImage = svgImageCollectionForm[0];
             Text = string.Format($"{Application.ProductName} - " +
                 $"{Assembly.GetExecutingAssembly().GetName().Version}");
-            Shown += (s, e) =>
+            Shown += async (s, e) =>
             {
                 var settings = ViewModel.LoadSettings();
                 DevExpressSkinHelper.SetTheme(settings.Skin.SkinName, settings.Skin.SkinPalette);
@@ -57,7 +64,10 @@ namespace Wamby.Client
                     settings.Skin.SkinAdvancedCustomColor, settings.Skin.SkinAdvancedCustomColor2);
                 DevExpressSkinHelper.RemoveSkinGroups(skinDropDownButtonItem);
                 DevExpressSkinHelper.RemoveSkins(skinDropDownButtonItem);
-                if (settings.ShowWelcomeOnStartup) ViewModel.Welcome();
+                if (DefaultPath != null && Directory.Exists(DefaultPath))
+                    await ViewModel.NewScan(DefaultPath, true);
+                else 
+                    if (settings.ShowWelcomeOnStartup) ViewModel.Welcome();
             };
             FormClosed += (s, e) =>
             {
@@ -78,7 +88,7 @@ namespace Wamby.Client
             tabbedView.DocumentAdded += (s, e) => e.Document.ImageOptions.SvgImageSize = new Size(16, 16);
             barButtonItemNewScan.ItemClick += async (s, e) => await ViewModel.NewScan();
             barButtonItemOpenScan.ItemClick += async (s, e) => await ViewModel.OpenScan();
-            barButtonItemSettings.ItemClick += (s, e) => ViewModel.Settings();  
+            barButtonItemSettings.ItemClick += async (s, e) => await ViewModel.Settings();  
             DragOver += (s, e) => e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
             DragDrop += async (s, e) => await ViewModel.ScanDroppedFolders(e.Data);
         }

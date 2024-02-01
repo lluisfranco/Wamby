@@ -72,10 +72,10 @@
     <ProjectReference Include="..\Wamby.SystemShell\Wamby.SystemShell.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="DevExpress.Win.WinterJoySkin" Version="1.0.2" />
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="DevExpress.Win" Version="23.2.3" />
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="DevExpress.Win.TreeMap" Version="23.2.3" />
-    <PackageReference Include="DevExpress.Win.Design" Version="23.2.3" />
   </ItemGroup>
   <ItemGroup>
     <None Update="Properties\Settings.settings">

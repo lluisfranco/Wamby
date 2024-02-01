@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommandLine;
+using System;
 using System.Windows.Forms;
 
 namespace Wamby.Client
@@ -11,12 +12,20 @@ namespace Wamby.Client
         [STAThread]
         static void Main(string[] args)
         {
-            var asm = typeof(DevExpress.UserSkins.WinterJoy).Assembly;
-            DevExpress.Skins.SkinManager.Default.RegisterAssembly(asm);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.XtraEditors.WindowsFormsSettings.ForceDirectXPaint();
-            Application.Run(new MainForm());
+            string defaultPath = null;
+            var result = CommandLine.Parser.Default.ParseArguments<CmdArgumentsOptions>(args)
+                   .WithParsed(o =>
+                   {
+                       defaultPath = o.Path;
+                   });
+            if (result.Tag == ParserResultType.NotParsed && args.Length > 0 &&
+                args[0].ToLowerInvariant().Trim() == "--help") return;
+            var f = new MainForm();
+            f.SetDefaultPath(defaultPath);
+            Application.Run(f);
         }
     }
 }
