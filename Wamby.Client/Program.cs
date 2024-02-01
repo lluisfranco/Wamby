@@ -1,6 +1,7 @@
 ﻿using CommandLine;
 using System;
 using System.Windows.Forms;
+using Wamby.API.Enums;
 
 namespace Wamby.Client
 {
@@ -15,16 +16,25 @@ namespace Wamby.Client
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DevExpress.XtraEditors.WindowsFormsSettings.ForceDirectXPaint();
-            string defaultPath = null;
-            var result = CommandLine.Parser.Default.ParseArguments<CmdArgumentsOptions>(args)
+            string path = null;
+            string filter = null;
+            int? type = null;
+            var result = Parser.Default.ParseArguments<CmdArgumentsOptions>(args)
                    .WithParsed(o =>
                    {
-                       defaultPath = o.Path;
+                       path = o.Path;
+                       filter = o.Pattern ?? WambyApplication.Settings.DefaultSearchPattern;
+                       type = o.Type;
                    });
             if (result.Tag == ParserResultType.NotParsed && args.Length > 0 &&
                 args[0].ToLowerInvariant().Trim() == "--help") return;
             var f = new MainForm();
-            f.SetDefaultPath(defaultPath);
+            if (path != null) f.SetPath(path);
+            if (filter != null) f.SetFilter(filter);
+            if (type.HasValue)
+                f.SetType((ScanDetailTypeEnum)type);
+            else 
+                f.SetType(WambyApplication.Settings.DefaultDetailedScanType);
             Application.Run(f);
         }
     }

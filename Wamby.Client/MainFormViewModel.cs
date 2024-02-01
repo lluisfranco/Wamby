@@ -64,6 +64,12 @@ namespace Wamby.Client
             await NewScan(scanService, startscan);
         }
 
+        public async Task NewScan(string path, string pattern, ScanDetailTypeEnum type, bool startscan = true)
+        {
+            var scanService = GetScanServiceFromFolderPath(path, pattern, type);
+            await NewScan(scanService, startscan);
+        }
+
         public async Task NewScan(FileSystemScanService service = null, bool startscan = true)
         {
             Application.UseWaitCursor = true;

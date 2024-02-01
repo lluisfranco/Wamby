@@ -75,7 +75,7 @@
             toolbarFormControl.Location = new System.Drawing.Point(0, 0);
             toolbarFormControl.Manager = toolbarFormManager;
             toolbarFormControl.Name = "toolbarFormControl";
-            toolbarFormControl.Size = new System.Drawing.Size(1330, 31);
+            toolbarFormControl.Size = new System.Drawing.Size(1330, 33);
             toolbarFormControl.TabIndex = 4;
             toolbarFormControl.TabStop = false;
             toolbarFormControl.TitleItemLinks.Add(barButtonItemNewScan);
@@ -104,7 +104,7 @@
             // 
             // bar1
             // 
-            bar1.BarName = "Custom 2";
+            bar1.BarName = "StatusBar";
             bar1.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
             bar1.DockCol = 0;
             bar1.DockRow = 0;
@@ -145,7 +145,7 @@
             // 
             barDockControlTop.CausesValidation = false;
             barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            barDockControlTop.Location = new System.Drawing.Point(0, 31);
+            barDockControlTop.Location = new System.Drawing.Point(0, 33);
             barDockControlTop.Manager = toolbarFormManager;
             barDockControlTop.Size = new System.Drawing.Size(1330, 0);
             // 
@@ -153,25 +153,25 @@
             // 
             barDockControlBottom.CausesValidation = false;
             barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            barDockControlBottom.Location = new System.Drawing.Point(0, 893);
+            barDockControlBottom.Location = new System.Drawing.Point(0, 881);
             barDockControlBottom.Manager = toolbarFormManager;
-            barDockControlBottom.Size = new System.Drawing.Size(1330, 25);
+            barDockControlBottom.Size = new System.Drawing.Size(1330, 37);
             // 
             // barDockControlLeft
             // 
             barDockControlLeft.CausesValidation = false;
             barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            barDockControlLeft.Location = new System.Drawing.Point(0, 31);
+            barDockControlLeft.Location = new System.Drawing.Point(0, 33);
             barDockControlLeft.Manager = toolbarFormManager;
-            barDockControlLeft.Size = new System.Drawing.Size(0, 862);
+            barDockControlLeft.Size = new System.Drawing.Size(0, 848);
             // 
             // barDockControlRight
             // 
             barDockControlRight.CausesValidation = false;
             barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            barDockControlRight.Location = new System.Drawing.Point(1330, 31);
+            barDockControlRight.Location = new System.Drawing.Point(1330, 33);
             barDockControlRight.Manager = toolbarFormManager;
-            barDockControlRight.Size = new System.Drawing.Size(0, 862);
+            barDockControlRight.Size = new System.Drawing.Size(0, 848);
             // 
             // barButtonItemNewScan
             // 

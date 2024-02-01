@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using Wamby.API.Enums;
 using Wamby.Client.DevExpressSkins;
 using Wamby.Client.Interfaces;
 
@@ -13,7 +14,10 @@ namespace Wamby.Client
 {
     public partial class MainForm : ToolbarForm, IProgressMessage
     {
-        public string DefaultPath { get; private set; }
+        public string Path { get; private set; }
+        public string Filter { get; private set; }
+        public ScanDetailTypeEnum Type { get; private set; }
+
         public MainFormViewModel ViewModel { get; set; }
         public IProgressMessage SetMessage(string message)
         {
@@ -40,9 +44,22 @@ namespace Wamby.Client
             barEditItemProgress.EditValue = 0; barEditItemProgress.Visibility = BarItemVisibility.Never; return this;
         }
 
-        internal void SetDefaultPath(string defaultPath)
+        public MainForm SetPath(string path)
         {
-            DefaultPath = defaultPath;
+            Path = path;
+            return this;
+        }
+
+        public MainForm SetFilter(string filter)
+        {
+            Filter = filter;
+            return this;
+        }
+
+        public MainForm SetType(ScanDetailTypeEnum type)
+        {
+            Type = type;
+            return this;
         }
 
         public MainForm()
@@ -64,8 +81,8 @@ namespace Wamby.Client
                     settings.Skin.SkinAdvancedCustomColor, settings.Skin.SkinAdvancedCustomColor2);
                 DevExpressSkinHelper.RemoveSkinGroups(skinDropDownButtonItem);
                 DevExpressSkinHelper.RemoveSkins(skinDropDownButtonItem);
-                if (DefaultPath != null && Directory.Exists(DefaultPath))
-                    await ViewModel.NewScan(DefaultPath, true);
+                if (Path != null && Directory.Exists(Path))
+                    await ViewModel.NewScan(Path, Filter, Type, true);
                 else 
                     if (settings.ShowWelcomeOnStartup) ViewModel.Welcome();
             };
